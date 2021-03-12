@@ -7,17 +7,14 @@ import NavBar from "./components/NavBar/NavBar"
 import { API } from "./API"
 
 function App() {
-  // useEffect(() => {
-  //   const getMovie = async () => {
-  //     await API.getMoviesByTitle("alien")
-  //   }
+  useEffect(() => {
+    const getMovie = async () => {
+      await API.getMoviesByTitle("alien")
+    }
 
-  //   const movie = getMovie()
-  //   console.log(movie)
-  // })
-
-  const movie = API.getMoviesByTitle("alien")
-  console.log(movie)
+    const movie = getMovie()
+    console.log(movie)
+  })
 
   return (
     <div className="App">
