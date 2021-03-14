@@ -1,0 +1,13 @@
+img {
+  max-width: 250px;
+  margin-left: 0;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.nav-items {
+  position: absolute;
+  right: 250px;
+}
