@@ -5,6 +5,8 @@ import { Route } from "react-router-dom"
 import Backoffice from "./pages/Backoffice/Backoffice"
 import NavBar from "./components/NavBar/NavBar"
 import { API } from "./API"
+import { Container } from "react-bootstrap"
+import SignUp from "./pages/SignUp/SignUp"
 
 function App() {
   useEffect(() => {
@@ -17,12 +19,18 @@ function App() {
   })
 
   return (
-    <div className="App">
-      <NavBar />
-      <Route path="/backoffice">
-        {" "}
-        <Backoffice />{" "}
-      </Route>
+    <div className="app">
+      <Container>
+        <NavBar />
+        <Route path="/">
+          <SignUp />
+        </Route>
+
+        <Route path="/backoffice">
+          {" "}
+          <Backoffice />{" "}
+        </Route>
+      </Container>
     </div>
   )
 }
