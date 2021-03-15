@@ -18,3 +18,9 @@ img {
   border-radius: 25px;
   background-color: #b3b9c5;
 }
+
+.modal-content {
+  background-color: #445566;
+  width: 350px;
+  font-family: Rubik, sans-serif, semi-bold;
+}
