@@ -5,11 +5,13 @@ img {
 
 .navbar {
   padding: 0;
+  background-color: #14181c !important;
 }
 
 .nav-items {
   position: absolute;
   right: 250px;
+  font-family: Rubik, sans-serif, bold;
 }
 
 .search-bar {

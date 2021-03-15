@@ -10,11 +10,11 @@ const NavBar = () => {
       <Navbar bg="dark" variant="dark" className="justify-content-between">
         <img src={letterboxd} />
         <Nav className="mr-auto nav-items">
-          <Nav.Link href="#home">Sign In</Nav.Link>
-          <Nav.Link href="#features">Create Account</Nav.Link>
-          <Nav.Link href="#pricing">Films</Nav.Link>
-          <Nav.Link href="#pricing">Lists</Nav.Link>
-          <Nav.Link href="#pricing">Members</Nav.Link>
+          <Nav.Link href="#home">SIGN IN</Nav.Link>
+          <Nav.Link href="#features">CREATE ACCOUNT</Nav.Link>
+          <Nav.Link href="#pricing">FILMS</Nav.Link>
+          <Nav.Link href="#pricing">LISTS</Nav.Link>
+          <Nav.Link href="#pricing">MEMBERS</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" className="mr-sm-2 search-bar" />
