@@ -11,3 +11,8 @@ img {
   position: absolute;
   right: 250px;
 }
+
+.search-bar {
+  border-radius: 25px;
+  background-color: #b3b9c5;
+}

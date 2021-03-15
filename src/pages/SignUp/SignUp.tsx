@@ -7,16 +7,14 @@ const SignUp = () => {
     <div className="colorScheme">
       <Row>
         <Col>
-          <Jumbotron>
-            <h1>Hello, world!</h1>
-            <p>
-              This is a simple hero unit, a simple jumbotron-style component for
-              calling extra attention to featured content or information.
-            </p>
-            <p>
-              <Button variant="primary">Learn more</Button>
-            </p>
-          </Jumbotron>
+          <Jumbotron></Jumbotron>
+          <div className="welcome-texts">
+            <h1>Track films you watched.</h1>
+            <h1>Save those you want to see.</h1>
+            <h1>Tell your friends what's good.</h1>
+            <Button variant="success">GET STARTED - IT'S FREE!</Button>
+            <p>The social network for film lovers</p>
+          </div>
         </Col>
       </Row>
     </div>

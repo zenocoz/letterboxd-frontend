@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar/NavBar"
 import { API } from "./API"
 import { Container } from "react-bootstrap"
 import SignUp from "./pages/SignUp/SignUp"
+import Footer from "./components/Footer/Footer"
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
           {" "}
           <Backoffice />{" "}
         </Route>
+        <Footer />
       </Container>
     </div>
   )

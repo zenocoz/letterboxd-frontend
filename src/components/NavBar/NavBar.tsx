@@ -17,7 +17,7 @@ const NavBar = () => {
           <Nav.Link href="#pricing">Members</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <FormControl type="text" className="mr-sm-2 search-bar" />
         </Form>
       </Navbar>
     </div>
