@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react"
 import "./SignUp.css"
 import { IMovieObject } from "./interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
+import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
 
 const SignUp = () => {
   const [movies, setMovies] = useState<any>([]) //ANY
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
+  const [createAccount, setCreateAccount] = useState(false)
+
+  const handleClose = (show: boolean) => {
+    setCreateAccount(show)
+  }
 
   const getMovies = (): void => {
     const titles: Array<string> = [
@@ -49,9 +55,14 @@ const SignUp = () => {
             <h1>Track films you've watched.</h1>
             <h1>Save those you want to see.</h1>
             <h1>Tell your friends what's good.</h1>
-            <Button variant="success">GET STARTED - IT'S FREE!</Button>
+            <Button onClick={() => setCreateAccount(true)} variant="success">
+              GET STARTED - IT'S FREE!
+            </Button>
             <p>The social network for film lovers</p>
           </div>
+          {createAccount === true && (
+            <CreateAccount handleClose={handleClose} />
+          )}
         </Col>
       </Row>
       <Row>
