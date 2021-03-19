@@ -15,7 +15,7 @@ const NavBar = () => {
     <div>
       <Navbar bg="dark" variant="dark" className="justify-content-between">
         <img src={letterboxd} />
-        <Nav className="mr-auto nav-items">
+        <Nav className="mr-auto nav-items ">
           <Nav.Link href="#home">SIGN IN</Nav.Link>
           <Nav.Link onClick={() => setCreateAccount(true)}>
             CREATE ACCOUNT

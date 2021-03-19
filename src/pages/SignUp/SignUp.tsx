@@ -43,13 +43,13 @@ const SignUp = () => {
   return (
     <>
       <Row>
-        <Col>
+        <Col className="md-8 mb-4">
           <Jumbotron fluid></Jumbotron>
         </Col>
       </Row>
       <Row>
         {" "}
-        <Col>
+        <Col className="md-8 mb-4">
           {" "}
           <div className="welcome-texts">
             <h1>Track films you've watched.</h1>
@@ -68,7 +68,7 @@ const SignUp = () => {
       <Row>
         {movies.length > 0 &&
           movies.map((movie: IMovieObject) => (
-            <MovieCard movie={movie} loggedIn={loggedIn} />
+            <MovieCard movie={movie} loggedIn={loggedIn} key={movie.imdbID} />
           ))}
       </Row>
     </>

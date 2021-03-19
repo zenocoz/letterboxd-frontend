@@ -6,7 +6,7 @@ const MovieCard = (props: any) => {
   return (
     <>
       {props.loggedIn === false ? (
-        <Col>
+        <Col className="md-8 mb-4">
           <Card style={{ width: "10rem" }}>
             <Card.Img variant="top" src={props.movie.Poster} />
           </Card>
