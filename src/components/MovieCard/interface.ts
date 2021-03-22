@@ -1,3 +1,6 @@
+import { IMovieObject } from "../../pages/SignUp/interface"
+
 export interface IMovieCardProps {
-  movie: any
+  movie: IMovieObject
+  loggedIn: boolean
 }

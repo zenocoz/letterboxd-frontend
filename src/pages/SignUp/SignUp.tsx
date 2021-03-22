@@ -7,7 +7,7 @@ import { API } from "../../API"
 import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
 
 const SignUp = () => {
-  const [movies, setMovies] = useState<any>([]) //ANY
+  const [movies, setMovies] = useState<Array<IMovieObject>>([])
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [createAccount, setCreateAccount] = useState(false)
 

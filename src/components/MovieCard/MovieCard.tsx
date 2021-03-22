@@ -2,7 +2,7 @@ import React from "react"
 import { IMovieCardProps } from "./interface"
 import { Card, Col, Button } from "react-bootstrap"
 
-const MovieCard = (props: any) => {
+const MovieCard = (props: IMovieCardProps) => {
   return (
     <>
       {props.loggedIn === false ? (

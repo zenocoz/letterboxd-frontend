@@ -1,16 +1,13 @@
 import React, { useState } from "react"
-import "./CreateAccount.css"
 import { Modal, Form, Button } from "react-bootstrap"
-import { register } from "../../../API/auth"
 
-const CreateAccount = (props: any) => {
+const SignIn = (props: any) => {
   //ANY
   const [formData, setFormData] = useState({
     email: "",
-    username: "",
     password: "",
   })
-  const { email, username, password } = formData
+  const { email, password } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -24,7 +21,7 @@ const CreateAccount = (props: any) => {
   ): Promise<void> => {
     e.preventDefault()
     // API.registerUser(formData)
-    const response = await register(formData)
+    const response = await login(formData)
     if (response.errors) {
       // setFormData({
       //   ...formData,
@@ -34,11 +31,11 @@ const CreateAccount = (props: any) => {
     } else {
       setFormData({
         email: "",
-        username: "",
+        // username: "",
         password: "",
         // successMsg: "Successfully created! Please login",
       })
-      props.closeCreateAccount(false)
+      props.closeSignIn(false)
     }
   }
 
@@ -48,17 +45,16 @@ const CreateAccount = (props: any) => {
         dialogClassName="sign-in"
         show={true}
         onHide={() => {
-          props.handleClose(false)
+          props.closeSignIn(false)
         }}
       >
         <Modal.Header closeButton>
-          <Modal.Title>JOIN LETTERBOXD</Modal.Title>
+          <Modal.Title>SIGN IN</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Username or email</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -67,7 +63,7 @@ const CreateAccount = (props: any) => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicPassword">
+            {/* <Form.Group controlId="formBasicPassword">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
@@ -76,7 +72,7 @@ const CreateAccount = (props: any) => {
                 value={username}
                 onChange={handleChange}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
@@ -88,21 +84,9 @@ const CreateAccount = (props: any) => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="I am at least 16 years old and I accept the terms of use"
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="I accept the Privacy Policy and I accept to the processing of my personal
-              information in accordance with it."
-              />
-            </Form.Group>
+
             <Button variant="success" type="submit" onClick={handleSubmit}>
-              Submit
+              SIGN IN
             </Button>
           </Form>
         </Modal.Body>
@@ -111,4 +95,4 @@ const CreateAccount = (props: any) => {
   )
 }
 
-export default CreateAccount
+export default SignIn

@@ -1,0 +1,12 @@
+.sign-in {
+  background-color: #14181c !important;
+
+  position: absolute !important;
+  top: 100px;
+  right: 80px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
