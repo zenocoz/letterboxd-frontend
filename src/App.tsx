@@ -7,23 +7,24 @@ import { Container } from "react-bootstrap"
 import Landing from "./pages/Landing/Landing"
 import Home from "./pages/Home/Home"
 import Footer from "./components/Footer/Footer"
-
 import { UserContext } from "./context"
 
-function App() {
-  const [user, setUser] = useState(null)
+import ContextProvider from "./context/ContextProvider"
 
-  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
+function App() {
+  // const [user, setUser] = useState(null)
+
+  // const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
 
   return (
     <div className="app">
       <Container>
-        <UserContext.Provider value={providerValue}>
+        <ContextProvider>
           <NavBar />
           <Route path="/" exact render={(props) => <Landing />}></Route>
 
           <Route path="/home" exact render={(props) => <Home />}></Route>
-        </UserContext.Provider>
+        </ContextProvider>
 
         <Footer />
       </Container>
