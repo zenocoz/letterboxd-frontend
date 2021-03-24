@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "./CreateAccount.css"
 import { Modal, Form, Button } from "react-bootstrap"
-import { register } from "../../../API/auth"
+import { register } from ".."
 
 const CreateAccount = (props: any) => {
   //ANY

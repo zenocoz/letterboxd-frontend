@@ -1,7 +1,8 @@
 import axios from "axios"
+import { IUserData } from "./interface"
 
 const { REACT_APP_LOCAL_SERVER } = process.env
-export const register = async (data: object) => {
+export const register = async (data: IUserData) => {
   const config = {
     headers: {
       "Content-type": "application/json",
@@ -27,7 +28,7 @@ export const register = async (data: object) => {
   }
 }
 
-export const login = async (data: object) => {
+export const signin = async (data: IUserData) => {
   const config = {
     headers: {
       "Content-type": "application/json",

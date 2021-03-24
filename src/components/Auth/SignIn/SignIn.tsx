@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { signin } from ".."
 import { Modal, Form, Button } from "react-bootstrap"
 
 const SignIn = (props: any) => {
@@ -21,7 +22,7 @@ const SignIn = (props: any) => {
   ): Promise<void> => {
     e.preventDefault()
     // API.registerUser(formData)
-    const response = await login(formData)
+    const response = await signin(formData)
     if (response.errors) {
       // setFormData({
       //   ...formData,

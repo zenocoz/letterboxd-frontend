@@ -2,7 +2,6 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
 import { Route } from "react-router-dom"
-import Backoffice from "./pages/Backoffice/Backoffice"
 import NavBar from "./components/NavBar/NavBar"
 
 import { Container } from "react-bootstrap"
@@ -16,10 +15,7 @@ function App() {
         <NavBar />
         <Route path="/" exact render={(props) => <SignUp />}></Route>
 
-        <Route path="/backoffice">
-          {" "}
-          <Backoffice />{" "}
-        </Route>
+        <Route path="/backoffice"> </Route>
         <Footer />
       </Container>
     </div>
