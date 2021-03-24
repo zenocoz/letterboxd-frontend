@@ -11,9 +11,11 @@ const Landing = () => {
   const { providerValue }: any = useContext(UserContext)
   const { user, setUser } = providerValue
 
+  const { providerModals }: any = useContext(UserContext)
+  const { createAccount, setCreateAccount } = providerModals.accountModal
+
   const [movies, setMovies] = useState<Array<IMovieObject>>([])
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
-  const [createAccount, setCreateAccount] = useState(false)
 
   const getMovies = (): void => {
     const titles: Array<string> = [

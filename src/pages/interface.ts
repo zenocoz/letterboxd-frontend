@@ -1,7 +1,3 @@
-// export interface IMovieObject {
-//   movies: Array<any>
-// }
-
 export interface IMovieObject {
   Title: string
   Year: string

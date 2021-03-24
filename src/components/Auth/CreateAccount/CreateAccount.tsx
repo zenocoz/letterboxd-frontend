@@ -26,7 +26,6 @@ const CreateAccount = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault()
-    // API.registerUser(formData)
     const response = await register(formData)
     if (response.errors) {
       // setFormData({

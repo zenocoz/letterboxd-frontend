@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 import "./Home.css"
 import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
-import { Row, Button, Col, Card, Container } from "react-bootstrap"
+import { Row, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
 
 const Landing = () => {

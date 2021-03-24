@@ -12,7 +12,6 @@ const NavBar = () => {
   const { user, setUser } = providerValue
 
   const { providerModals }: any = useContext(UserContext)
-
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
 
@@ -53,10 +52,8 @@ const NavBar = () => {
           <FormControl type="text" className="mr-sm-2 search-bar" />
         </Form>
       </Navbar>
-      {createAccount === true && (
-        <CreateAccount /*closeCreateAccount={closeCreateAccount}*/ />
-      )}
-      {signIn === true && <SignIn /*closeSignIn={closeSignIn}*/ />}
+      {createAccount === true && <CreateAccount />}
+      {signIn === true && <SignIn />}
     </div>
   )
 }
