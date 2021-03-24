@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import "./Landing.css"
-import { IMovieObject } from "./interface"
+import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"

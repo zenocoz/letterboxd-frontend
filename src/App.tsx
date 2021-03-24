@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar"
 
 import { Container } from "react-bootstrap"
 import Landing from "./pages/Landing/Landing"
+import Home from "./pages/Home/Home"
 import Footer from "./components/Footer/Footer"
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <NavBar />
         <Route path="/" exact render={(props) => <Landing />}></Route>
 
-        <Route path="/backoffice"> </Route>
+        <Route path="/home" exact render={(props) => <Home />}></Route>
         <Footer />
       </Container>
     </div>

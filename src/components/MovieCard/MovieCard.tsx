@@ -13,15 +13,10 @@ const MovieCard = (props: IMovieCardProps) => {
         </Col>
       ) : (
         <Col>
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ width: "10rem" }}>
             <Card.Img variant="top" src={props.movie.Poster} />
-            <Card.Body>
-              <Card.Title>{props.movie.Title}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </Card.Body>
+            {/* //TODO must have an overlay showing friends name and stars or review
+            //and title */}
           </Card>
         </Col>
       )}
