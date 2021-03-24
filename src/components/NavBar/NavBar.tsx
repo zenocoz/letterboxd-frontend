@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react"
-import { Navbar, Nav, Form, Button, FormControl, Modal } from "react-bootstrap"
+import { useContext } from "react"
+import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"

@@ -50,8 +50,6 @@ const CreateAccount = () => {
         dialogClassName="sign-in"
         show={true}
         onHide={() => {
-          // props.closeCreateAccount(false)
-          //setShow(false)
           setCreateAccount(false)
         }}
       >

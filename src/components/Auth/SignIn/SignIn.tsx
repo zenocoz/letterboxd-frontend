@@ -26,7 +26,6 @@ const SignIn = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault()
-    // API.registerUser(formData)
     const response = await signin(formData)
     if (response.errors) {
       // setFormData({
