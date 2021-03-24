@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"
-import "./SignUp.css"
+import "./Landing.css"
 import { IMovieObject } from "./interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
 
-const SignUp = () => {
+const Landing = () => {
   const [movies, setMovies] = useState<Array<IMovieObject>>([])
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [createAccount, setCreateAccount] = useState(false)
@@ -75,4 +75,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Landing

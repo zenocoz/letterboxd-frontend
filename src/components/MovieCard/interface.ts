@@ -1,4 +1,4 @@
-import { IMovieObject } from "../../pages/SignUp/interface"
+import { IMovieObject } from "../../pages/Landing/interface"
 
 export interface IMovieCardProps {
   movie: IMovieObject

@@ -5,7 +5,7 @@ import { Route } from "react-router-dom"
 import NavBar from "./components/NavBar/NavBar"
 
 import { Container } from "react-bootstrap"
-import SignUp from "./pages/SignUp/SignUp"
+import Landing from "./pages/Landing/Landing"
 import Footer from "./components/Footer/Footer"
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <div className="app">
       <Container>
         <NavBar />
-        <Route path="/" exact render={(props) => <SignUp />}></Route>
+        <Route path="/" exact render={(props) => <Landing />}></Route>
 
         <Route path="/backoffice"> </Route>
         <Footer />

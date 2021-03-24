@@ -48,7 +48,7 @@ const CreateAccount = (props: any) => {
         dialogClassName="sign-in"
         show={true}
         onHide={() => {
-          props.handleClose(false)
+          props.closeCreateAccount(false)
         }}
       >
         <Modal.Header closeButton>
