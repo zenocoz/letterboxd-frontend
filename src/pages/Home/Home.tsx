@@ -5,8 +5,11 @@ import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
+import { useHistory } from "react-router-dom"
 
 const Landing = () => {
+  const history = useHistory()
+
   const [newMovies, setNewMovies] = useState<Array<IMovieObject>>([])
   const [popularMovies, setPopularMovies] = useState<Array<IMovieObject>>([])
 
@@ -82,6 +85,7 @@ const Landing = () => {
           <Button
             onClick={() => {
               setUser(null)
+              history.push("/")
             }}
           >
             logout

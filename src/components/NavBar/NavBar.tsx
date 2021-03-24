@@ -5,9 +5,12 @@ import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../context"
+import { useHistory } from "react-router-dom"
 import "./NavBar.css"
 
 const NavBar = () => {
+  const history = useHistory()
+
   const { providerValue }: any = useContext(UserContext) //ANY
   const { user, setUser } = providerValue
 
@@ -32,6 +35,7 @@ const NavBar = () => {
               href="#pricing"
               onClick={() => {
                 setUser(null)
+                history.push("/")
               }}
             >
               LOG OUT

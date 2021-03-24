@@ -6,8 +6,11 @@ import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col } from "react-bootstrap"
 import { UserContext } from "../../context"
+import { useHistory } from "react-router-dom"
 
 const Landing = () => {
+  const history = useHistory()
+
   const { providerValue }: any = useContext(UserContext)
   const { user, setUser } = providerValue
 
@@ -15,7 +18,6 @@ const Landing = () => {
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
   const [movies, setMovies] = useState<Array<IMovieObject>>([])
-  const [loggedIn, setLoggedIn] = useState<boolean>(false)
 
   const getMovies = (): void => {
     const titles: Array<string> = [
@@ -75,6 +77,7 @@ const Landing = () => {
                 onClick={() => {
                   const user = "federico"
                   setUser(user)
+                  history.push("/home")
                 }}
               >
                 login
@@ -87,7 +90,7 @@ const Landing = () => {
       <Row>
         {movies.length > 0 &&
           movies.map((movie: IMovieObject) => (
-            <MovieCard movie={movie} loggedIn={loggedIn} key={movie.imdbID} />
+            <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </Row>
     </>
