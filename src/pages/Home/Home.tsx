@@ -10,7 +10,8 @@ const Landing = () => {
   const [newMovies, setNewMovies] = useState<Array<IMovieObject>>([])
   const [popularMovies, setPopularMovies] = useState<Array<IMovieObject>>([])
 
-  const { user, setUser }: any = useContext(UserContext)
+  const { providerValue }: any = useContext(UserContext)
+  const { user, setUser } = providerValue
 
   //TODO new from friends - below is a placeholder function only for layout purposes
   const getNewFromFriends = (): void => {

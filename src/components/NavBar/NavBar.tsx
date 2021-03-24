@@ -8,18 +8,13 @@ import { UserContext } from "../../context"
 import "./NavBar.css"
 
 const NavBar = () => {
-  const closeCreateAccount = (show: boolean) => {
-    setCreateAccount(show)
-  }
+  const { providerValue }: any = useContext(UserContext) //ANY
+  const { user, setUser } = providerValue
 
-  const closeSignIn = (show: boolean) => {
-    setSignIn(show)
-  }
+  const { providerModals }: any = useContext(UserContext)
 
-  const { user, setUser }: any = useContext(UserContext) //ANY
-
-  const [createAccount, setCreateAccount] = useState(false)
-  const [signIn, setSignIn] = useState(false)
+  const { createAccount, setCreateAccount } = providerModals.accountModal
+  const { signIn, setSignIn } = providerModals.signInModal
 
   return (
     <div>
@@ -59,9 +54,9 @@ const NavBar = () => {
         </Form>
       </Navbar>
       {createAccount === true && (
-        <CreateAccount closeCreateAccount={closeCreateAccount} />
+        <CreateAccount /*closeCreateAccount={closeCreateAccount}*/ />
       )}
-      {signIn === true && <SignIn closeSignIn={closeSignIn} />}
+      {signIn === true && <SignIn /*closeSignIn={closeSignIn}*/ />}
     </div>
   )
 }

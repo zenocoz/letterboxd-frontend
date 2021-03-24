@@ -1,13 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { signin } from ".."
 import { Modal, Form, Button } from "react-bootstrap"
+import { UserContext } from "../../../context"
 
-const SignIn = (props: any) => {
-  //ANY
+const SignIn = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
+
+  const { providerModals } = useContext(UserContext)
+  const { signInModal } = providerModals
+  const { setSignIn } = signInModal
+
   const { email, password } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +41,7 @@ const SignIn = (props: any) => {
         password: "",
         // successMsg: "Successfully created! Please login",
       })
-      props.closeSignIn(false)
+      setSignIn(false)
     }
   }
 
@@ -46,7 +51,7 @@ const SignIn = (props: any) => {
         dialogClassName="sign-in"
         show={true}
         onHide={() => {
-          props.closeSignIn(false)
+          setSignIn(false)
         }}
       >
         <Modal.Header closeButton>

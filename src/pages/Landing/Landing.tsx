@@ -4,19 +4,16 @@ import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
-import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
+import { Row, Jumbotron, Button, Col } from "react-bootstrap"
 import { UserContext } from "../../context"
 
 const Landing = () => {
-  const { user, setUser }: any = useContext(UserContext)
+  const { providerValue }: any = useContext(UserContext)
+  const { user, setUser } = providerValue
 
   const [movies, setMovies] = useState<Array<IMovieObject>>([])
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [createAccount, setCreateAccount] = useState(false)
-
-  const handleClose = (show: boolean) => {
-    setCreateAccount(show)
-  }
 
   const getMovies = (): void => {
     const titles: Array<string> = [
@@ -82,9 +79,7 @@ const Landing = () => {
               </Button>
             )}
           </div>
-          {createAccount === true && (
-            <CreateAccount handleClose={handleClose} />
-          )}
+          {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
       <Row>

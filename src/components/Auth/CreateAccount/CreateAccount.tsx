@@ -1,15 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import "./CreateAccount.css"
 import { Modal, Form, Button } from "react-bootstrap"
 import { register } from ".."
+import { UserContext } from "../../../context"
 
-const CreateAccount = (props: any) => {
-  //ANY
+const CreateAccount = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
   })
+
+  const { providerModals }: any = useContext(UserContext)
+  const { setCreateAccount }: any = providerModals.accountModal
   const { email, username, password } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +41,7 @@ const CreateAccount = (props: any) => {
         password: "",
         // successMsg: "Successfully created! Please login",
       })
-      props.closeCreateAccount(false)
+      setCreateAccount(false)
     }
   }
 
@@ -48,7 +51,9 @@ const CreateAccount = (props: any) => {
         dialogClassName="sign-in"
         show={true}
         onHide={() => {
-          props.closeCreateAccount(false)
+          // props.closeCreateAccount(false)
+          //setShow(false)
+          setCreateAccount(false)
         }}
       >
         <Modal.Header closeButton>

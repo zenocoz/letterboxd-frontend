@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap"
 import Landing from "./pages/Landing/Landing"
 import Home from "./pages/Home/Home"
 import Footer from "./components/Footer/Footer"
-import { UserContext } from "./context"
+// import { UserContext } from "./context"
 
 import ContextProvider from "./context/ContextProvider"
 
