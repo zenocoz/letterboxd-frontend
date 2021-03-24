@@ -1,9 +1,13 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { IMovieCardProps } from "./interface"
-import { Card, Col, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
 
+//external dependencies
+import { Card, Col, Button } from "react-bootstrap"
+import { useHistory } from "react-router-dom"
+
 const MovieCard = ({ movie }: IMovieCardProps) => {
+  const history = useHistory()
   const { providerValue } = useContext(UserContext)
   const { user } = providerValue
 
@@ -12,7 +16,11 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
       {!user ? (
         <Col className="md-8 mb-4">
           <Card style={{ width: "10rem" }}>
-            <Card.Img variant="top" src={movie.Poster} />
+            <Card.Img
+              variant="top"
+              src={movie.Poster}
+              onClick={() => history.push(`/film/${movie.Title}`)}
+            />
           </Card>
         </Col>
       ) : (
