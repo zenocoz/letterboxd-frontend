@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useState, useEffect, useMemo } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
 import { Route } from "react-router-dom"
@@ -9,14 +9,23 @@ import Landing from "./pages/Landing/Landing"
 import Home from "./pages/Home/Home"
 import Footer from "./components/Footer/Footer"
 
+import UserContext from "./context/UserContext"
+
 function App() {
+  const [user, setUser] = useState(null)
+
+  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
+
   return (
     <div className="app">
       <Container>
-        <NavBar />
-        <Route path="/" exact render={(props) => <Landing />}></Route>
+        <UserContext.Provider value={providerValue}>
+          <NavBar />
+          <Route path="/" exact render={(props) => <Landing />}></Route>
 
-        <Route path="/home" exact render={(props) => <Home />}></Route>
+          <Route path="/home" exact render={(props) => <Home />}></Route>
+        </UserContext.Provider>
+
         <Footer />
       </Container>
     </div>

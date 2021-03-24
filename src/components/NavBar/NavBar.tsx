@@ -1,8 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Navbar, Nav, Form, Button, FormControl, Modal } from "react-bootstrap"
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
+import { Link } from "react-router-dom"
+import UserContext from "../../context/UserContext"
 import "./NavBar.css"
 
 const NavBar = () => {
@@ -14,22 +16,44 @@ const NavBar = () => {
     setSignIn(show)
   }
 
+  const { user, setUser }: any = useContext(UserContext) //ANY
+
   const [createAccount, setCreateAccount] = useState(false)
   const [signIn, setSignIn] = useState(false)
 
   return (
     <div>
       <Navbar bg="dark" variant="dark" className="justify-content-between">
-        <img src={letterboxd} />
-        <Nav className="mr-auto nav-items ">
-          <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
-          <Nav.Link onClick={() => setCreateAccount(true)}>
-            CREATE ACCOUNT
-          </Nav.Link>
-          <Nav.Link href="#pricing">FILMS</Nav.Link>
-          <Nav.Link href="#pricing">LISTS</Nav.Link>
-          <Nav.Link href="#pricing">MEMBERS</Nav.Link>
-        </Nav>
+        <Link to={user ? "/home" : "/"}>
+          <img src={letterboxd} />
+        </Link>
+        {user ? (
+          <Nav className="mr-auto nav-items ">
+            <Nav.Link>{user}</Nav.Link>
+            <Nav.Link>ACTIVITY</Nav.Link>
+            <Nav.Link href="#pricing">FILMS</Nav.Link>
+            <Nav.Link href="#pricing">LISTS</Nav.Link>
+            <Nav.Link href="#pricing">MEMBERS</Nav.Link>
+            <Nav.Link
+              href="#pricing"
+              onClick={() => {
+                setUser(null)
+              }}
+            >
+              LOG OUT
+            </Nav.Link>
+          </Nav>
+        ) : (
+          <Nav className="mr-auto nav-items ">
+            <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
+            <Nav.Link onClick={() => setCreateAccount(true)}>
+              CREATE ACCOUNT
+            </Nav.Link>
+            <Nav.Link href="#pricing">FILMS</Nav.Link>
+            <Nav.Link href="#pricing">LISTS</Nav.Link>
+            <Nav.Link href="#pricing">MEMBERS</Nav.Link>
+          </Nav>
+        )}
         <Form inline>
           <FormControl type="text" className="mr-sm-2 search-bar" />
         </Form>

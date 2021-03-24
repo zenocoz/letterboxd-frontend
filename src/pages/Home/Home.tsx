@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import "./Home.css"
 import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button, Col, Card, Container } from "react-bootstrap"
+import UserContext from "../../context/UserContext"
 
 const Landing = () => {
   const [newMovies, setNewMovies] = useState<Array<IMovieObject>>([])
   const [popularMovies, setPopularMovies] = useState<Array<IMovieObject>>([])
+
+  const { user, setUser }: any = useContext(UserContext)
 
   //TODO new from friends - below is a placeholder function only for layout purposes
   const getNewFromFriends = (): void => {
@@ -72,6 +75,27 @@ const Landing = () => {
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </Row>
+      <div className="welcome-texts">
+        <p>{user}</p>
+        {user ? (
+          <Button
+            onClick={() => {
+              setUser(null)
+            }}
+          >
+            logout
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              const user = "federico"
+              setUser(user)
+            }}
+          >
+            login
+          </Button>
+        )}
+      </div>
     </>
   )
 }

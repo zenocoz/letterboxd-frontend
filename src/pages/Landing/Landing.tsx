@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import "./Landing.css"
 import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
+import UserContext from "../../context/UserContext"
 
 const Landing = () => {
+  const { user, setUser }: any = useContext(UserContext)
+
   const [movies, setMovies] = useState<Array<IMovieObject>>([])
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [createAccount, setCreateAccount] = useState(false)
@@ -59,6 +62,25 @@ const Landing = () => {
               GET STARTED - IT'S FREE!
             </Button>
             <p>The social network for film lovers</p>
+            <p>{user}</p>
+            {user ? (
+              <Button
+                onClick={() => {
+                  setUser(null)
+                }}
+              >
+                logout
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  const user = "federico"
+                  setUser(user)
+                }}
+              >
+                login
+              </Button>
+            )}
           </div>
           {createAccount === true && (
             <CreateAccount handleClose={handleClose} />
