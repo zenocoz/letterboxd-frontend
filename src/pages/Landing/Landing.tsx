@@ -5,7 +5,7 @@ import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col, Card, Container } from "react-bootstrap"
-import UserContext from "../../context/UserContext"
+import { UserContext } from "../../context"
 
 const Landing = () => {
   const { user, setUser }: any = useContext(UserContext)

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import AppContext from "./UserContext"
+import { UserContext } from "."
 
 const ContextProvider = ({ children }: any) => {
   const [example, setExample] = useState("Hello there")
@@ -8,6 +8,6 @@ const ContextProvider = ({ children }: any) => {
     setExample,
     example,
   }
-  return <AppContext.Provider value={context}>{children}</AppContext.Provider>
+  return <UserContext.Provider value={context}>{children}</UserContext.Provider>
 }
 export default ContextProvider

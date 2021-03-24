@@ -4,7 +4,7 @@ import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
 import { Link } from "react-router-dom"
-import UserContext from "../../context/UserContext"
+import { UserContext } from "../../context"
 import "./NavBar.css"
 
 const NavBar = () => {

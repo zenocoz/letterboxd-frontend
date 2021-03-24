@@ -4,7 +4,7 @@ import { IMovieObject } from "../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button, Col, Card, Container } from "react-bootstrap"
-import UserContext from "../../context/UserContext"
+import { UserContext } from "../../context"
 
 const Landing = () => {
   const [newMovies, setNewMovies] = useState<Array<IMovieObject>>([])

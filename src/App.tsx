@@ -8,7 +8,7 @@ import Landing from "./pages/Landing/Landing"
 import Home from "./pages/Home/Home"
 import Footer from "./components/Footer/Footer"
 
-import UserContext from "./context/UserContext"
+import { UserContext } from "./context"
 
 function App() {
   const [user, setUser] = useState(null)
