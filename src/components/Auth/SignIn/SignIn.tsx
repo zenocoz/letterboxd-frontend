@@ -35,7 +35,6 @@ const SignIn = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault()
-
     if (isEmpty(email) || isEmpty(password)) {
       setFormData({ ...formData, errorMsg: "All fields are required" })
     } else if (!isEmail(email)) {
@@ -43,31 +42,8 @@ const SignIn = () => {
     } else {
       let { email, password } = formData
       let body = { email, password }
-
-      //   signin(body)
-      //     .then((response) => {
-      //       setFormData({
-      //         email: "",
-      //         // username: "",
-      //         password: "",
-      //         errorMsg: "",
-      //       })
-      //       setSignIn(false)
-      //       setUser(response.username)
-      //       history.push("/home")
-      //     })
-      //     .catch((err) => {
-      //       console.log("signing error", err)
-      //       setFormData({
-      //         ...formData,
-      //         errorMsg: err?.response?.data?.errors || "Something went wrong",
-      //       })
-      //     })
-      // }
-
       try {
         const response = await signin(body)
-
         if (response.code > 400) {
           console.log("sign in error")
           setFormData({
@@ -130,7 +106,6 @@ const SignIn = () => {
                 onChange={handleChange}
               />
             </Form.Group> */}
-
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -141,15 +116,14 @@ const SignIn = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            {errorMsg && (
-              <small className="mb-2 mt-0 text-danger text-center">
-                {errorMsg}
-              </small>
-            )}
-
             <Button variant="success" type="submit" onClick={handleSubmit}>
               SIGN IN
             </Button>
+            {errorMsg && (
+              <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                {errorMsg}
+              </small>
+            )}
           </Form>
         </Modal.Body>
       </Modal>

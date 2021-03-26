@@ -1,19 +1,26 @@
 import React, { useState, useContext } from "react"
 import "./CreateAccount.css"
-import { Modal, Form, Button } from "react-bootstrap"
 import { register } from ".."
 import { UserContext } from "../../../context"
+
+//external libraries
+import isEmail from "validator/lib/isEmail"
+import isEmpty from "validator/lib/isEmpty"
+import { Modal, Form, Button } from "react-bootstrap"
 
 const CreateAccount = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
+    errorMsg: "",
   })
 
   const { providerModals }: any = useContext(UserContext)
   const { setCreateAccount }: any = providerModals.accountModal
-  const { email, username, password } = formData
+  const { setSignIn }: any = providerModals.signInModal
+
+  const { email, username, password, errorMsg } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -26,21 +33,35 @@ const CreateAccount = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault()
-    const response = await register(formData)
-    if (response.errors) {
-      // setFormData({
-      //   ...formData,
-      //   errorMsg: response.errors,
-      //   successMsg: "",
-      // });
-    } else {
+
+    if (isEmpty(email) || isEmpty(username) || isEmpty(password)) {
       setFormData({
-        email: "",
-        username: "",
-        password: "",
-        // successMsg: "Successfully created! Please login",
+        ...formData,
+        errorMsg: "All fields are required",
       })
-      setCreateAccount(false)
+    } else if (!isEmail(email)) {
+      setFormData({ ...formData, errorMsg: "Invalid email" })
+    } else {
+      let { email, username, password } = formData
+      let body = { email, username, password }
+      const response = await register(body)
+
+      if (response.code > 400) {
+        setFormData({
+          ...formData,
+          errorMsg: response.code,
+        })
+      } else {
+        setFormData({
+          email: "",
+          username: "",
+          password: "",
+          errorMsg: "",
+        })
+        setCreateAccount(false)
+        //redirect to sign in with prefilled areas maybe
+        setTimeout(setSignIn(true), 3000)
+      }
     }
   }
 
@@ -106,6 +127,11 @@ const CreateAccount = () => {
             <Button variant="success" type="submit" onClick={handleSubmit}>
               Submit
             </Button>
+            {errorMsg && (
+              <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                {errorMsg}
+              </small>
+            )}
           </Form>
         </Modal.Body>
       </Modal>
