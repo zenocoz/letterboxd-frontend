@@ -11,8 +11,8 @@ import "./NavBar.css"
 const NavBar = () => {
   const history = useHistory()
 
-  const { providerValue }: any = useContext(UserContext) //ANY
-  const { user, setUser } = providerValue
+  const { providerUser }: any = useContext(UserContext) //ANY
+  const { user, setUser } = providerUser
 
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
@@ -20,12 +20,12 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark" className="justify-content-between">
+      <Navbar bg="dark" variant="dark" className="justify-content-between ">
         <Link to={user ? "/home" : "/"}>
-          <img src={letterboxd} />
+          <img src={letterboxd} alt={""} />
         </Link>
         {user ? (
-          <Nav className="mr-auto nav-items ">
+          <Nav className="mr-auto nav-items xs-12 md-8 mb-4">
             <Nav.Link>{user}</Nav.Link>
             <Nav.Link>ACTIVITY</Nav.Link>
             <Nav.Link href="#pricing">FILMS</Nav.Link>
@@ -42,7 +42,7 @@ const NavBar = () => {
             </Nav.Link>
           </Nav>
         ) : (
-          <Nav className="mr-auto nav-items ">
+          <Nav className="mr-auto nav-items xs-12 md-8 mb-4 ">
             <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
             <Nav.Link onClick={() => setCreateAccount(true)}>
               CREATE ACCOUNT

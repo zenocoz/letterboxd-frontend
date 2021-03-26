@@ -9,9 +9,11 @@ const SignIn = () => {
     password: "",
   })
 
-  const { providerModals } = useContext(UserContext)
-  const { signInModal } = providerModals
-  const { setSignIn } = signInModal
+  const { providerUser, providerModals } = useContext(UserContext)
+
+  const { setUser } = providerUser
+  // const { signInModal } = providerModals
+  const { setSignIn } = providerModals.signInModal
 
   const { email, password } = formData
 
@@ -27,12 +29,14 @@ const SignIn = () => {
   ): Promise<void> => {
     e.preventDefault()
     const response = await signin(formData)
+    console.log(response)
     if (response.errors) {
       // setFormData({
       //   ...formData,
       //   errorMsg: response.errors,
       //   successMsg: "",
       // });
+      console.log(response.errors)
     } else {
       setFormData({
         email: "",
@@ -41,6 +45,7 @@ const SignIn = () => {
         // successMsg: "Successfully created! Please login",
       })
       setSignIn(false)
+      setUser(response.email)
     }
   }
 

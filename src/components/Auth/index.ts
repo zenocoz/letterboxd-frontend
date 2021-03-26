@@ -32,8 +32,8 @@ export const signin = async (data: IUserData) => {
   const config = {
     headers: {
       "Content-type": "application/json",
-      "Access-Control-Allow-Origin": "*",
     },
+    withCredentials: true,
   }
   try {
     const response = await axios.post(

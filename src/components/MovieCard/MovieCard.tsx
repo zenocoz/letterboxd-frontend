@@ -3,13 +3,13 @@ import { IMovieCardProps } from "./interface"
 import { UserContext } from "../../context"
 
 //external dependencies
-import { Card, Col, Button } from "react-bootstrap"
+import { Card, Col } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 
 const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
-  const { providerValue } = useContext(UserContext)
-  const { user } = providerValue
+  const { providerUser } = useContext(UserContext)
+  const { user } = providerUser
 
   return (
     <>
@@ -26,7 +26,11 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
       ) : (
         <Col>
           <Card style={{ width: "10rem" }}>
-            <Card.Img variant="top" src={movie.Poster} />
+            <Card.Img
+              variant="top"
+              src={movie.Poster}
+              onClick={() => history.push(`/film/${movie.Title}`)}
+            />
             {/* //TODO must have an overlay showing friends name and stars or review
             //and title */}
           </Card>

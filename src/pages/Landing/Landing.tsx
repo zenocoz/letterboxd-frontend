@@ -11,8 +11,8 @@ import { useHistory } from "react-router-dom"
 const Landing = () => {
   const history = useHistory()
 
-  const { providerValue }: any = useContext(UserContext)
-  const { user, setUser } = providerValue
+  const { providerUser }: any = useContext(UserContext)
+  const { user, setUser } = providerUser
 
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal

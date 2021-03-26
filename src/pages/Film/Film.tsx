@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import { Row, Col, Jumbotron } from "react-bootstrap"
 
 const Film = () => {
-  const { title }: any = useParams()
+  const { title }: any = useParams() //ANY
   return (
     <Row>
       <h1>{title}</h1>
