@@ -1,21 +1,27 @@
 import React, { useState, useContext } from "react"
-import { signin } from ".."
+
+//external libraries
 import { Modal, Form, Button } from "react-bootstrap"
+import { useHistory } from "react-router-dom"
+import isEmail from "validator/lib/isEmail"
+import isEmpty from "validator/lib/isEmpty"
+
+//context and own functions
 import { UserContext } from "../../../context"
+import { signin } from ".."
 
 const SignIn = () => {
+  const history = useHistory()
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
+  const { email, password } = formData
 
   const { providerUser, providerModals } = useContext(UserContext)
-
   const { setUser } = providerUser
-  // const { signInModal } = providerModals
   const { setSignIn } = providerModals.signInModal
-
-  const { email, password } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -45,7 +51,8 @@ const SignIn = () => {
         // successMsg: "Successfully created! Please login",
       })
       setSignIn(false)
-      setUser(response.email)
+      setUser(response.username)
+      history.push("/home")
     }
   }
 
