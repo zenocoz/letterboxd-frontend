@@ -20,12 +20,19 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark" className="justify-content-between ">
+      <Navbar
+        collapseOnSelect
+        bg="dark"
+        variant="dark"
+        expand="lg"
+        className="justify-content-between "
+      >
         <Link to={user ? "/home" : "/"}>
           <img src={letterboxd} alt={""} />
         </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         {user ? (
-          <Nav className="mr-auto nav-items xs-12 md-8 mb-4">
+          <Nav>
             <Nav.Link>{user}</Nav.Link>
             <Nav.Link>ACTIVITY</Nav.Link>
             <Nav.Link href="#pricing">FILMS</Nav.Link>
@@ -42,15 +49,17 @@ const NavBar = () => {
             </Nav.Link>
           </Nav>
         ) : (
-          <Nav className="mr-auto nav-items xs-12 md-8 mb-4 ">
-            <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
-            <Nav.Link onClick={() => setCreateAccount(true)}>
-              CREATE ACCOUNT
-            </Nav.Link>
-            <Nav.Link href="#pricing">FILMS</Nav.Link>
-            <Nav.Link href="#pricing">LISTS</Nav.Link>
-            <Nav.Link href="#pricing">MEMBERS</Nav.Link>
-          </Nav>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr=auto nav-items xs-12 md-8 mb-4 ">
+              <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
+              <Nav.Link onClick={() => setCreateAccount(true)}>
+                CREATE ACCOUNT
+              </Nav.Link>
+              <Nav.Link href="#pricing">FILMS</Nav.Link>
+              <Nav.Link href="#pricing">LISTS</Nav.Link>
+              <Nav.Link href="#pricing">MEMBERS</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         )}
         <Form inline>
           <FormControl type="text" className="mr-sm-2 search-bar" />
