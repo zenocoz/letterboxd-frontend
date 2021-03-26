@@ -49,7 +49,7 @@ export const signin = async (data: IUserData) => {
     }
   } catch (error) {
     console.log("Error in signup fetching", error)
-    console.log("error response data", error.response.data)
+    console.log("error response DATA", error.response.data)
     return error.response.data
   }
 }

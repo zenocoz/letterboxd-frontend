@@ -16,8 +16,9 @@ const SignIn = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    errorMsg: "",
   })
-  const { email, password } = formData
+  const { email, password, errorMsg } = formData
 
   const { providerUser, providerModals } = useContext(UserContext)
   const { setUser } = providerUser
@@ -34,25 +35,64 @@ const SignIn = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
     e.preventDefault()
-    const response = await signin(formData)
-    console.log(response)
-    if (response.errors) {
-      // setFormData({
-      //   ...formData,
-      //   errorMsg: response.errors,
-      //   successMsg: "",
-      // });
-      console.log(response.errors)
+
+    if (isEmpty(email) || isEmpty(password)) {
+      setFormData({ ...formData, errorMsg: "All fields are required" })
+    } else if (!isEmail(email)) {
+      setFormData({ ...formData, errorMsg: "Invalid email" })
     } else {
-      setFormData({
-        email: "",
-        // username: "",
-        password: "",
-        // successMsg: "Successfully created! Please login",
-      })
-      setSignIn(false)
-      setUser(response.username)
-      history.push("/home")
+      let { email, password } = formData
+      let body = { email, password }
+
+      //   signin(body)
+      //     .then((response) => {
+      //       setFormData({
+      //         email: "",
+      //         // username: "",
+      //         password: "",
+      //         errorMsg: "",
+      //       })
+      //       setSignIn(false)
+      //       setUser(response.username)
+      //       history.push("/home")
+      //     })
+      //     .catch((err) => {
+      //       console.log("signing error", err)
+      //       setFormData({
+      //         ...formData,
+      //         errorMsg: err?.response?.data?.errors || "Something went wrong",
+      //       })
+      //     })
+      // }
+
+      try {
+        const response = await signin(body)
+
+        if (response.code > 400) {
+          console.log("sign in error")
+          setFormData({
+            ...formData,
+            errorMsg: response.message,
+          })
+          console.log(response.message)
+        } else {
+          setFormData({
+            email: "",
+            // username: "",
+            password: "",
+            errorMsg: "",
+          })
+          setSignIn(false)
+          setUser(response.username)
+          history.push("/home")
+        }
+      } catch (err) {
+        console.log("signin error", err)
+        setFormData({
+          ...formData,
+          errorMsg: err?.response?.data?.errors || "Something went wrong",
+        })
+      }
     }
   }
 
@@ -101,6 +141,11 @@ const SignIn = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {errorMsg && (
+              <small className="mb-2 mt-0 text-danger text-center">
+                {errorMsg}
+              </small>
+            )}
 
             <Button variant="success" type="submit" onClick={handleSubmit}>
               SIGN IN
