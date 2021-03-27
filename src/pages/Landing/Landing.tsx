@@ -87,7 +87,7 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <Row>
+      <Row className="md-8 mb-4">
         {movies.length > 0 &&
           movies.map((movie: IMovieObject) => (
             <MovieCard movie={movie} key={movie.imdbID} />
