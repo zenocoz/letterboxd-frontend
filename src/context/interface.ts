@@ -1,4 +1,14 @@
 export interface IModal {
-  accountModal: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
-  signInModal: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+  accountModal: AccountModal
+  signInModal: SignInModal
+}
+
+type AccountModal = {
+  createAccount: boolean
+  setCreateAccount: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+type SignInModal = {
+  signIn: boolean
+  setSignIn: React.Dispatch<React.SetStateAction<boolean>>
 }

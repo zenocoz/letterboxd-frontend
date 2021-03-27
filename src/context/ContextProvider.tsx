@@ -1,17 +1,16 @@
 import React, { useState, useMemo } from "react"
-// import { IModal } from "./interface"
+import { IModal } from "./interface"
 
 import { UserContext } from "."
 
-//ANY
-const ContextProvider = ({ children }: any) => {
+const ContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState(null)
   const [createAccount, setCreateAccount] = useState(false)
   const [signIn, setSignIn] = useState(false)
 
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser])
 
-  const providerModals: any = {
+  const providerModals: IModal = {
     accountModal: { createAccount, setCreateAccount },
     signInModal: { signIn, setSignIn },
   }
