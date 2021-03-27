@@ -28,7 +28,6 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
               className="img-fluid rounded w-100"
               variant="top"
               src={movie.Poster}
-              onClick={() => history.push(`/film/${movie.Title}`)}
             />
             <div className="options-container">
               <div className="options-content">
@@ -39,9 +38,14 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                     {/* <!-- <i class="fa fa-plus fa-lg" aria-hidden="true"></i> --> */}
                   </span>
                 </div>
-                <h6>{movie.Title}</h6>
-                <h6>{movie.Year}</h6>
-                <div className="icons  align-items-center">
+                <div
+                  className="movie-info"
+                  onClick={() => history.push(`/film/${movie.Title}`)}
+                >
+                  <h6>{movie.Title}</h6>
+                  <h6>{movie.Year}</h6>
+                </div>
+                <div className="icons">
                   <p>
                     {" "}
                     <FontAwesomeIcon icon={faEye} size="3x" color="green" />
@@ -61,14 +65,38 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
         </Col>
       ) : (
         <Col>
-          <Card style={{ width: "10rem" }}>
+          <Card
+            style={{ width: "10rem" }}
+            className="movie-card position-relative"
+          >
             <Card.Img
+              className="img-fluid rounded w-100"
               variant="top"
               src={movie.Poster}
               onClick={() => history.push(`/film/${movie.Title}`)}
             />
-            {/* //TODO must have an overlay showing friends name and stars or review
-            //and title */}
+            <div className="options-container">
+              <div className="options-content">
+                {/* <div className="icons">
+                  <p>
+                    {" "}
+                    <FontAwesomeIcon icon={faEye} size="3x" color="green" />
+                  </p>
+                  <p>
+                    {" "}
+                    <FontAwesomeIcon icon={faClock} size="3x" color="gold" />
+                  </p>
+                </div> */}
+                <p style={{ height: "4em" }}></p>{" "}
+                <div className="movie-footer">
+                  <span className="mr-2">
+                    {" "}
+                    <FontAwesomeIcon icon={faEye} size="3x" color="green" />
+                    <FontAwesomeIcon icon={faClock} size="3x" color="gold" />
+                  </span>
+                </div>
+              </div>
+            </div>
           </Card>
         </Col>
       )}

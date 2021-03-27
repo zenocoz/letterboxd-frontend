@@ -19,7 +19,7 @@
   border-bottom-left-radius: 0.25rem;
 }
 
-.options-content .plus {
+/* .options-content .plus {
   width: 20px;
   height: 20px;
   position: relative;
@@ -53,9 +53,9 @@
   bottom: 0;
   margin: auto;
   z-index: 9;
-}
+} */
 
-.play-btn {
+/* .play-btn {
   position: relative;
   width: 40px;
   height: 40px;
@@ -87,7 +87,7 @@
   border-style: solid;
   border-width: 7px 0 7px 10px;
   border-color: transparent transparent transparent #fff;
-}
+} */
 
 .gradient {
   background: linear-gradient(
@@ -112,10 +112,10 @@
   }
 }
 
-.options-content > div h6:first-of-type {
+/* .options-content > div h6:first-of-type {
   transform: translateX(-41px);
   transition: transform 0.3s cubic-bezier(0.75, 0.32, 0.33, 0.99) 0.35s;
-}
+} */
 
 .options-content p {
   font-size: 0.8rem;
