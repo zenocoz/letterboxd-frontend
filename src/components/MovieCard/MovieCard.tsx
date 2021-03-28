@@ -6,7 +6,7 @@ import { UserContext } from "../../context"
 import { Card, Col } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faClock } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faStar } from "@fortawesome/free-solid-svg-icons"
 
 //style
 import "./MovieCard.css"
@@ -52,7 +52,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                   </p>
                   <p>
                     {" "}
-                    <FontAwesomeIcon icon={faClock} size="3x" color="gold" />
+                    <FontAwesomeIcon icon={faStar} size="3x" color="gold" />
                   </p>
                 </div>
                 <p style={{ height: "4em" }}></p>{" "}
@@ -92,7 +92,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                   <span className="mr-2">
                     {" "}
                     <FontAwesomeIcon icon={faEye} size="3x" color="green" />
-                    <FontAwesomeIcon icon={faClock} size="3x" color="gold" />
+                    <FontAwesomeIcon icon={faStar} size="3x" color="gold" />
                   </span>
                 </div>
               </div>

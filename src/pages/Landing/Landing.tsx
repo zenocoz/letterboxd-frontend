@@ -21,12 +21,12 @@ const Landing = () => {
 
   const getMovies = (): void => {
     const titles: Array<string> = [
-      "barry lyndon",
-      "apocalypse now",
-      "mad max",
-      "body double",
-      "sorcerer",
-      "Three women",
+      "Barry Lyndon",
+      "Apocalypse Now",
+      "Mad Max",
+      "Body Double",
+      "Sorcerer",
+      "Three Women",
     ]
     const retrievedMovies: Array<Promise<IMovieObject>> = []
     titles.forEach((title) => {

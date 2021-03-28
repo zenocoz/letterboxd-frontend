@@ -24,7 +24,7 @@ const Landing = () => {
       "Isle of the Dead",
       "Four Nights of a Dreamer",
       "A Clockwork Orange",
-      "The mother and the whore",
+      "The Mother and the Whore",
     ]
     const retrievedMovies: Array<Promise<IMovieObject>> = []
     titles.forEach((title) => {
@@ -41,10 +41,10 @@ const Landing = () => {
   //TODO Popular with friends - below is a placeholder function only for layout purposes
   const getPopularFromFriends = (): void => {
     const titles: Array<string> = [
-      "blue velvet",
+      "Blue Velvet",
       "Naked Lunch",
       "Top Gun",
-      "solaris",
+      "Solaris",
       "La Dolce Vita",
       "The Year of Living Dangerously",
     ]
