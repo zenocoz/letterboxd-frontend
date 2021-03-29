@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
@@ -6,6 +6,7 @@ import SignIn from "../Auth/SignIn/SignIn"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../context"
 import { useHistory } from "react-router-dom"
+import { API } from "../../API"
 import "./NavBar.css"
 
 const NavBar = () => {
@@ -17,6 +18,20 @@ const NavBar = () => {
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
+
+  const [value, setSearchValue] = useState("")
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+  }
+
+  const handleSubmit = async (e: any) => {
+    console.log("submit")
+    e.preventDefault()
+    const movie = await API.getMoviesByTitle(value)
+    setSearchValue("")
+    console.log("movie", movie)
+  }
 
   return (
     <div>
@@ -61,8 +76,13 @@ const NavBar = () => {
             </Nav>
           </Navbar.Collapse>
         )}
-        <Form inline>
-          <FormControl type="text" className="mr-sm-2 search-bar" />
+        <Form inline onSubmit={handleSubmit}>
+          <FormControl
+            type="text"
+            className="mr-sm-2 search-bar"
+            value={value}
+            onChange={handleSearch}
+          />
         </Form>
       </Navbar>
       {createAccount === true && <CreateAccount />}
