@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import "./Home.css"
-import { IMovieObject } from "../interface"
+import { IMovieObject } from "../../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button } from "react-bootstrap"
