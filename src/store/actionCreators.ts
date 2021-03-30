@@ -19,9 +19,9 @@ export function removeMovie(movie: IMovie) {
   return
 }
 
-export const getMovie = async () => (dispatch: any) => {
+export const getMovie = async (name: string) => (dispatch: any) => {
   dispatch({ type: actionTypes.ADD_MOVIE })
-  API.getMoviesByTitle("Serpico")
+  API.getMoviesByTitle(name)
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
