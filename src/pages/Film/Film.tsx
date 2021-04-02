@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMovie } from "../../../src/store/reducer"
-import { API } from "../../API"
+// import { API } from "../../API"
 
 //styles
 import "./Film.css"
@@ -36,12 +36,14 @@ const Film = () => {
     dispatch(getMovie(title))
   }, [title, dispatch])
 
-  const movie = useSelector((state: any) => state.movie)
+  const { Title, Poster, Year, Runtime, Genre, Director } = useSelector(
+    (state: any) => state.movie
+  )
 
   return (
     <Row>
       <h1>{title}</h1>
-      <img src={movie.Poster} style={{ width: "100%" }} />
+      <img src={Poster} style={{ width: "100%" }} />
     </Row>
   )
 }
