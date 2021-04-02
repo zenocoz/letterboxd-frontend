@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getMovie } from "../../../src/store/actionCreators"
+import { getMovie } from "../../../src/store/reducer"
+import { API } from "../../API"
 
 //styles
 import "./Film.css"
@@ -13,14 +14,29 @@ import { Row, Col, Jumbotron } from "react-bootstrap"
 
 const Film = () => {
   const { title }: any = useParams() //ANY
+  console.log(title)
 
   const dispatch = useDispatch()
+
+  //WORKS PROTOTYPE
+  // function getData(query: string) {
+  //   return (dispatch: any) => {
+  //     API.getMoviesByTitle(query)
+  //       .then((res) =>
+  //         dispatch({
+  //           type: "ADD_MOVIE",
+  //           payload: res,
+  //         })
+  //       )
+  //       .catch((err) => console.log(err))
+  //   }
+  // }
 
   useEffect(() => {
     dispatch(getMovie(title))
   }, [title, dispatch])
 
-  const { movie }: any = useSelector((state) => state)
+  const movie = useSelector((state: any) => state.movie)
 
   return (
     <Row>

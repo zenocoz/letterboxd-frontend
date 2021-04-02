@@ -26,6 +26,7 @@ import { MovieState } from "./store.d"
 
 export const initialState: MovieState = {
   movie: {
+    _id: "",
     Title: "",
     Year: "",
     Runtime: "",

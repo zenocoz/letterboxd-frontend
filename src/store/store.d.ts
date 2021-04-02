@@ -5,6 +5,7 @@ declare global {
 }
 
 export interface IMovie {
+  _id: string
   Title: string
   Year: string
   Runtime: string
@@ -25,7 +26,7 @@ export type MovieState = {
 
 export type MovieAction = {
   type: string
-  movie: IMovie
+  payload: IMovie
 }
 
 export type DispatchType = (args: MovieAction) => MovieAction
