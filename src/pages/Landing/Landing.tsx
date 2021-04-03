@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react"
 import "./Landing.css"
-import { IMovieObject } from "../../interface"
+import { IMovie } from "../../store/store.d"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
@@ -17,7 +17,7 @@ const Landing = () => {
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
-  const [movies, setMovies] = useState<Array<IMovieObject>>([])
+  const [movies, setMovies] = useState<Array<IMovie>>([])
 
   const getMovies = (): void => {
     const titles: Array<string> = [
@@ -28,9 +28,9 @@ const Landing = () => {
       "Sorcerer",
       "Three Women",
     ]
-    const retrievedMovies: Array<Promise<IMovieObject>> = []
+    const retrievedMovies: Array<Promise<IMovie>> = []
     titles.forEach((title) => {
-      let movie: Promise<IMovieObject> = API.getMoviesByTitle(title)
+      let movie: Promise<IMovie> = API.getMoviesByTitle(title)
       retrievedMovies.push(movie)
     })
 
@@ -89,7 +89,7 @@ const Landing = () => {
       </Row>
       <Row className="md-8 mb-4">
         {movies.length > 0 &&
-          movies.map((movie: IMovieObject) => (
+          movies.map((movie: IMovie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </Row>

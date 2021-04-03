@@ -1,6 +1,6 @@
-import { IMovieObject } from "../../interface"
+import { IMovie } from "../../store/store.d"
 
 export interface IMovieCardProps {
-  movie: IMovieObject
+  movie: IMovie
   // loggedIn?: boolean
 }

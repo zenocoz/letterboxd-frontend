@@ -2,23 +2,57 @@ import { useContext } from "react"
 import { IMovieCardProps } from "./interface"
 import { UserContext } from "../../context"
 
-//external dependencies
+//external libraries
 import { Card, Col } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar } from "@fortawesome/free-solid-svg-icons"
+import axios from "axios"
 
 //style
 import "./MovieCard.css"
 
 const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
-  const { providerUser } = useContext(UserContext)
-  const { user } = providerUser
+  const { providerUserId } = useContext(UserContext)
+  const { userId } = providerUserId
+
+  //reserved route
+  const addSeenToMovie = async () => {
+    console.log("user ID", userId)
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
+        {
+          headers: { "Content-type": "application/json" },
+        }
+      )
+
+      if (response.statusText === "OK") {
+        console.log(`${movie.Title} watched by`, response.data.seenBy)
+      }
+
+      // const response = await fetch(
+      //   `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-type": "application/json" },
+      //   }
+      // )
+      // if (response.ok) {
+      //   const data = await response.json()
+      //   console.log(data)
+      // } else {
+      //   console.log("something went wrong")
+      // }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <>
-      {!user ? (
+      {!userId ? (
         <Col className="md-8 mb-4">
           <Card
             className="movie-card position-relative"
@@ -48,7 +82,14 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                 <div className="icons">
                   <p>
                     {" "}
-                    <FontAwesomeIcon icon={faEye} size="3x" color="green" />
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      size="3x"
+                      color="green"
+                      onClick={() => {
+                        addSeenToMovie()
+                      }}
+                    />
                   </p>
                   <p>
                     {" "}
@@ -91,7 +132,14 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                 <div className="movie-footer">
                   <span className="mr-2">
                     {" "}
-                    <FontAwesomeIcon icon={faEye} size="3x" color="green" />
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      size="3x"
+                      color="green"
+                      onClick={() => {
+                        addSeenToMovie()
+                      }}
+                    />
                     <FontAwesomeIcon icon={faStar} size="3x" color="gold" />
                   </span>
                 </div>

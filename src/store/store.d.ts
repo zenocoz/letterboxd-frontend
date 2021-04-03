@@ -5,7 +5,7 @@ declare global {
 }
 
 export interface IMovie {
-  _id: string
+  _id: any
   Title: string
   Year: string
   Runtime: string

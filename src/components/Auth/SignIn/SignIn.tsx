@@ -20,9 +20,12 @@ const SignIn = () => {
   })
   const { email, password, errorMsg } = formData
 
-  const { providerUser, providerModals } = useContext(UserContext)
+  const { providerUser, providerModals, providerUserId } = useContext(
+    UserContext
+  )
   const { setUser } = providerUser
   const { setSignIn } = providerModals.signInModal
+  const { setUserId } = providerUserId
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -60,6 +63,8 @@ const SignIn = () => {
           })
           setSignIn(false)
           setUser(response.username)
+          setUserId(response._id)
+          console.log("Response", response)
           history.push("/home")
         }
       } catch (err) {
