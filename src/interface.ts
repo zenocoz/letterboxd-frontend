@@ -1,5 +1,3 @@
-//unused - get rid
-
 export interface IMovieObject {
   Title: string
   Year: string

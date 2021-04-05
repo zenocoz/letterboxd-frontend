@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { IMovie } from "../../store/store.d"
+import { IMovieCardProps } from "./interface"
 import { UserContext } from "../../context"
 
 //external libraries
@@ -12,7 +12,7 @@ import axios from "axios"
 //style
 import "./MovieCard.css"
 
-const MovieCard = ({ movie }: IMovie) => {
+const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
   const { providerUserId } = useContext(UserContext)
   const { userId } = providerUserId
