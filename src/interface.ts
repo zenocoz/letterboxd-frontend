@@ -1,4 +1,5 @@
 export interface IMovieObject {
+  _id: string
   Title: string
   Year: string
   Rated: string
