@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getMovie } from "../../../src/store/reducer"
+import { getMovie } from "../../store/movie/reducer"
 // import { API } from "../../API"
 
 //styles

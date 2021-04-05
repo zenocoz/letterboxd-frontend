@@ -1,7 +1,8 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
-import rootReducer from "./reducer"
-import { MovieState } from "./store.d"
+import movieReducer from "./movie/reducer"
+import userReducer from "./user/reducer"
+
 // import api from "./middleware/api"
 // export const initialState = {
 //   // currentSong: {},
@@ -24,28 +25,17 @@ import { MovieState } from "./store.d"
 //   user: { userInfo: {}, isLoggedIn: false, playLists: [] },
 // }
 
-export const initialState: MovieState = {
-  movie: {
-    _id: "",
-    Title: "",
-    Year: "",
-    Runtime: "",
-    Genre: "",
-    Director: "",
-    Writer: "",
-    Actors: "",
-    Plot: "",
-    Language: "",
-    Country: "",
-    Poster: "",
-    imdbID: "",
-  },
+export const initialState = {
+  movie: {},
+  user: {},
 }
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
+const rootReducer = combineReducers({ movie: movieReducer, user: userReducer })
+
 export default function () {
-  return createStore(
+  return createStore<any, any, any, any>(
     rootReducer,
     initialState,
     composedEnhancer(applyMiddleware(thunk))

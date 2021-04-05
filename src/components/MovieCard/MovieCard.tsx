@@ -6,7 +6,7 @@ import { UserContext } from "../../context"
 import { Card, Col } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faStar } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 
 //style
@@ -29,7 +29,9 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
       )
 
       if (response.statusText === "OK") {
-        console.log(`${movie.Title} watched by`, response.data.seenBy)
+        console.log(`${movie.Title} watched by`, userId)
+      } else {
+        console.log("something went wrong in adding to seenBy")
       }
 
       // const response = await fetch(

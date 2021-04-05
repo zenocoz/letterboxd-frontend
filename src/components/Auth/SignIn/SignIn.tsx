@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
 //external libraries
 import { Modal, Form, Button } from "react-bootstrap"
@@ -12,6 +13,7 @@ import { signin } from ".."
 
 const SignIn = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
     email: "",
@@ -20,12 +22,8 @@ const SignIn = () => {
   })
   const { email, password, errorMsg } = formData
 
-  const { providerUser, providerModals, providerUserId } = useContext(
-    UserContext
-  )
-  const { setUser } = providerUser
+  const { providerModals } = useContext(UserContext)
   const { setSignIn } = providerModals.signInModal
-  const { setUserId } = providerUserId
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -62,8 +60,6 @@ const SignIn = () => {
             errorMsg: "",
           })
           setSignIn(false)
-          setUser(response.username)
-          setUserId(response._id)
           console.log("Response", response)
           history.push("/home")
         }
