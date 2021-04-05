@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import "./Home.css"
-import { IMovieObject } from "../../interface"
+import { IMovie } from "../../store/store.d"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button } from "react-bootstrap"
@@ -10,8 +10,8 @@ import { useHistory } from "react-router-dom"
 const Landing = () => {
   const history = useHistory()
 
-  const [newMovies, setNewMovies] = useState<Array<IMovieObject>>([])
-  const [popularMovies, setPopularMovies] = useState<Array<IMovieObject>>([])
+  const [newMovies, setNewMovies] = useState<Array<IMovie>>([])
+  const [popularMovies, setPopularMovies] = useState<Array<IMovie>>([])
 
   const { providerUser }: any = useContext(UserContext)
   const { user, setUser } = providerUser
@@ -26,9 +26,9 @@ const Landing = () => {
       "A Clockwork Orange",
       "The Mother and the Whore",
     ]
-    const retrievedMovies: Array<Promise<IMovieObject>> = []
+    const retrievedMovies: Array<Promise<IMovie>> = []
     titles.forEach((title) => {
-      let movie: Promise<IMovieObject> = API.getMoviesByTitle(title)
+      let movie: Promise<IMovie> = API.getMoviesByTitle(title)
       retrievedMovies.push(movie)
     })
 
@@ -48,9 +48,9 @@ const Landing = () => {
       "La Dolce Vita",
       "The Year of Living Dangerously",
     ]
-    const retrievedMovies: Array<Promise<IMovieObject>> = []
+    const retrievedMovies: Array<Promise<IMovie>> = []
     titles.forEach((title) => {
-      let movie: Promise<IMovieObject> = API.getMoviesByTitle(title)
+      let movie: Promise<IMovie> = API.getMoviesByTitle(title)
       retrievedMovies.push(movie)
     })
 
@@ -69,13 +69,13 @@ const Landing = () => {
     <>
       <Row>
         {newMovies.length > 0 &&
-          newMovies.map((movie: IMovieObject) => (
+          newMovies.map((movie: IMovie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </Row>
       <Row>
         {popularMovies.length > 0 &&
-          popularMovies.map((movie: IMovieObject) => (
+          popularMovies.map((movie: IMovie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </Row>
