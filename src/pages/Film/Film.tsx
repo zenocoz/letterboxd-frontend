@@ -37,12 +37,16 @@ const Film = () => {
   }, [title, dispatch])
 
   const { Title, Poster, Year, Runtime, Genre, Director } = useSelector(
-    (state: any) => state.movie
+    (state: any) => state.movie.movie
   )
 
   return (
     <Row>
-      <h1>{title}</h1>
+      <div className="details-container">
+        <h1>{Title}</h1>
+        <h2>{Director}</h2>
+        <h6>{Year}</h6>
+      </div>
       <img src={Poster} style={{ width: "100%" }} />
     </Row>
   )

@@ -33,20 +33,6 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
       } else {
         console.log("something went wrong in adding to seenBy")
       }
-
-      // const response = await fetch(
-      //   `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
-      //   {
-      //     method: "POST",
-      //     headers: { "Content-type": "application/json" },
-      //   }
-      // )
-      // if (response.ok) {
-      //   const data = await response.json()
-      //   console.log(data)
-      // } else {
-      //   console.log("something went wrong")
-      // }
     } catch (err) {
       console.log(err)
     }
@@ -74,11 +60,10 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                     {/* <!-- <i class="fa fa-plus fa-lg" aria-hidden="true"></i> --> */}
                   </span>
                 </div>
-                <div
-                  className="movie-info"
-                  onClick={() => history.push(`/film/${movie.Title}`)}
-                >
-                  <h6>{movie.Title}</h6>
+                <div className="movie-info">
+                  <h6 onClick={() => history.push(`/film/${movie.Title}`)}>
+                    {movie.Title}
+                  </h6>
                   <h6>{movie.Year}</h6>
                 </div>
                 <div className="icons">
