@@ -2,6 +2,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import movieReducer from "./movie/reducer"
 import userReducer from "./user/reducer"
+import { initialState as userInitialState } from "./user/reducer"
 
 // import api from "./middleware/api"
 // export const initialState = {
@@ -25,15 +26,11 @@ import userReducer from "./user/reducer"
 //   user: { userInfo: {}, isLoggedIn: false, playLists: [] },
 // }
 
-// watchedMovies,
-// watchList,
-// following,
-// followers,
-// reviews,
-
-export const initialState = {
+export const initialState: any = {
   movie: {},
-  user: { userInfo: { _id: null, username: null } },
+  user: {
+    userInfo: userInitialState,
+  },
 }
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

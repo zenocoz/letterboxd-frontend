@@ -3,13 +3,17 @@ import { IUser, UserState, UserAction } from "./user.d"
 import { API } from "../../API"
 import Cookies from "js-cookie"
 
-const initialState: any = {
+export const initialState: any = {
   _id: null,
-  email: "",
+  email: null,
   username: null,
+  watchedMovies: [],
+  watchList: [],
+  followers: [],
+  reviews: [],
 }
 
-const reducer = (state = {}, action: UserAction) => {
+const reducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
