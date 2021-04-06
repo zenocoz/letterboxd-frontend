@@ -1,6 +1,5 @@
 import { IMovie } from "../../interface"
 
-export interface IMovieCardProps {
+export type MovieState = {
   movie: IMovie
-  // loggedIn?: boolean
 }

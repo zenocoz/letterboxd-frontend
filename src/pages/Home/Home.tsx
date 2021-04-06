@@ -1,14 +1,29 @@
 import { useEffect, useState, useContext } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
+import { getUserInfo } from "../../store/user/reducer"
+
 import "./Home.css"
-import { IMovie } from "../../store/store.d"
+// import { IMovie } from "../../interface"
+import { IMovie } from "../../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
 import { useHistory } from "react-router-dom"
 
-const Landing = () => {
+const Home = () => {
   const history = useHistory()
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUserInfo())
+  }, [])
+
+  const { _id, username, watchedMovies } = useSelector(
+    (state: any) => state.user
+  )
 
   const [newMovies, setNewMovies] = useState<Array<IMovie>>([])
   const [popularMovies, setPopularMovies] = useState<Array<IMovie>>([])
@@ -80,8 +95,8 @@ const Landing = () => {
           ))}
       </Row>
       <div className="welcome-texts">
-        <p>{user}</p>
-        {user ? (
+        <p>{username}</p>
+        {username ? (
           <Button
             onClick={() => {
               setUser(null)
@@ -105,4 +120,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Home

@@ -20,8 +20,7 @@ const SignIn = () => {
   })
   const { email, password, errorMsg } = formData
 
-  const { providerUser, providerModals } = useContext(UserContext)
-  const { setUser } = providerUser
+  const { providerModals } = useContext(UserContext)
   const { setSignIn } = providerModals.signInModal
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,8 +58,8 @@ const SignIn = () => {
             errorMsg: "",
           })
           setSignIn(false)
-          setUser(response.username)
-          history.push("/home")
+          console.log("Response", response)
+          window.location.replace("/home")
         }
       } catch (err) {
         console.log("signin error", err)

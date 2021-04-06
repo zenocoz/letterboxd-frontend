@@ -19,76 +19,6 @@
   border-bottom-left-radius: 0.25rem;
 }
 
-/* .options-content .plus {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  opacity: 0;
-  cursor: pointer;
-  transform: translateX(6px);
-  transition: all 0.3s ease 0.35s;
-}
-
-.options-content .plus::before {
-  content: " ";
-  position: absolute;
-  background-color: #fff;
-  width: 2px;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 9;
-}
-
-.options-content .plus::after {
-  content: " ";
-  position: absolute;
-  background-color: #fff;
-  height: 2px;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 9;
-} */
-
-/* .play-btn {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border: 2px solid white;
-  border-radius: 50%;
-  margin-right: 0.25rem;
-  cursor: pointer;
-  transform: translateX(-200px);
-  opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.35, 0.27, 0.22, 1) 0.4s,
-    opacity 0.3s cubic-bezier(0.35, 0.27, 0.22, 1) 0.4s;
-}
-
-.play-btn:hover {
-  animation: gradientSlide 4s ease infinite;
-  border: 0px solid transparent;
-}
-
-.play-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 3px;
-  width: 0;
-  height: 0;
-  margin: auto;
-  border-style: solid;
-  border-width: 7px 0 7px 10px;
-  border-color: transparent transparent transparent #fff;
-} */
-
 .gradient {
   background: linear-gradient(
     270deg,
@@ -154,8 +84,7 @@
 .movie-card:hover .options-content .movie-footer {
   opacity: 1;
 }
-.movie-card:hover .play-btn,
-.movie-card:hover .plus,
+
 .movie-card:hover .options-content h6 {
   opacity: 1;
   transform: translateX(0);
