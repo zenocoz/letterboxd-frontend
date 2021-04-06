@@ -15,7 +15,6 @@ export const API = {
     }
   },
   addSeenToMovie: async (userId: string, movie: IMovie) => {
-    console.log("user ID", userId)
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
@@ -27,6 +26,24 @@ export const API = {
         console.log(`${movie.Title} watched by`, userId)
       } else {
         console.log("something went wrong in adding to seenBy")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  removeSeenMovie: async (userId: string, movieId: string) => {
+    try {
+      console.log("MOVIE ID REM", movieId)
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/seen/${userId}`,
+        {
+          headers: { "Content-type": "application/json" },
+        }
+      )
+      if (response.statusText === "OK") {
+        console.log(`UNwatched by`, userId)
+      } else {
+        console.log("something went wrong in unwatching movie")
       }
     } catch (err) {
       console.log(err)

@@ -21,25 +21,29 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
   // const { userId } = providerUserId
   const [wasSeen, setWasSeen] = useState(false)
 
-  const { _id } = useSelector((state: any) => state.user)
-  const userId = _id
+  const { _id, username } = useSelector((state: any) => state.user.userInfo)
 
   const checkViews = () => {
-    const user = movie.seenBy.find((user) => user._id === userId)
-    console.log("USER", user)
-    console.log("seen by", movie.seenBy)
-    if (user) {
+    console.log("movie id", movie._id)
+
+    const userFound = movie.seenBy.find((userId) => userId === _id)
+
+    if (userFound) {
+      console.log(`${movie.Title} seen by ${movie.seenBy}`)
       setWasSeen(true)
+    } else {
+      console.log("FALSE")
+      setWasSeen(false)
     }
   }
 
   useEffect(() => {
     checkViews()
-  }, [movie])
+  }, [])
 
   return (
     <>
-      {!userId ? (
+      {username ? (
         <Col className="md-8 mb-4">
           <Card
             className="movie-card position-relative"
@@ -61,21 +65,33 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                 </div>
                 <div className="movie-info">
                   <h6 onClick={() => history.push(`/film/${movie.Title}`)}>
-                    {movie.Title}
+                    {movie.Director}
                   </h6>
                   <h6>{movie.Year}</h6>
                 </div>
                 <div className="icons">
                   <p>
-                    {" "}
-                    <FontAwesomeIcon
-                      icon={wasSeen ? faEye : faEyeSlash}
-                      size="3x"
-                      color={wasSeen ? "green" : "grey"}
-                      onClick={() => {
-                        API.addSeenToMovie(userId, movie)
-                      }}
-                    />
+                    {wasSeen ? (
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        size="3x"
+                        color={"green"}
+                        onClick={() => {
+                          API.removeSeenMovie(_id, movie._id)
+                          setWasSeen(false)
+                        }}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faEyeSlash}
+                        size="3x"
+                        color={"grey"}
+                        onClick={() => {
+                          API.addSeenToMovie(_id, movie)
+                          setWasSeen(true)
+                        }}
+                      />
+                    )}
                   </p>
                   <p>
                     {" "}
@@ -123,7 +139,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                       size="3x"
                       color="green"
                       onClick={() => {
-                        API.addSeenToMovie(userId, movie)
+                        API.addSeenToMovie(_id, movie)
                       }}
                     />
                     <FontAwesomeIcon icon={faStar} size="3x" color="gold" />

@@ -21,9 +21,7 @@ const Home = () => {
     dispatch(getUserInfo())
   }, [])
 
-  const { _id, username, watchedMovies } = useSelector(
-    (state: any) => state.user
-  )
+  const { username } = useSelector((state: any) => state.user.userInfo)
 
   const [newMovies, setNewMovies] = useState<Array<IMovie>>([])
   const [popularMovies, setPopularMovies] = useState<Array<IMovie>>([])
