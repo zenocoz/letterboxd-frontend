@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import { MovieState, MovieAction, IMovie } from "../store"
+import { MovieState, MovieAction } from "../store"
 // import { initialState } from "../configureStore"
 import { API } from "../../API"
 

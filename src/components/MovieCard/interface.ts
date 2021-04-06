@@ -1,4 +1,4 @@
-import { IMovie } from "../../store/store.d"
+import { IMovie } from "../../interface"
 
 export interface IMovieCardProps {
   movie: IMovie

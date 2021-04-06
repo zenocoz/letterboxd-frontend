@@ -5,7 +5,7 @@ import { getUserInfo } from "../../store/user/reducer"
 
 import "./Home.css"
 // import { IMovie } from "../../interface"
-import { IMovie } from "../../store/store.d"
+import { IMovie } from "../../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { API } from "../../API"
 import { Row, Button } from "react-bootstrap"

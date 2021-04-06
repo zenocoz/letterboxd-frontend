@@ -1,5 +1,5 @@
 import axios from "axios"
-import { IMovie } from "../store/store.d"
+import { IMovie } from "../interface"
 
 export const API = {
   getMoviesByTitle: async (query: string) => {
