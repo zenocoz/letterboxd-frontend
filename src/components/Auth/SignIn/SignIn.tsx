@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState, useContext } from "react"
 
 //external libraries
 import { Modal, Form, Button } from "react-bootstrap"
@@ -13,7 +12,6 @@ import { signin } from ".."
 
 const SignIn = () => {
   const history = useHistory()
-  const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
     email: "",

@@ -6,6 +6,7 @@ import { UserContext } from "."
 const ContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState(null)
   const [userId, setUserId] = useState(null)
+
   const [createAccount, setCreateAccount] = useState(false)
   const [signIn, setSignIn] = useState(false)
 

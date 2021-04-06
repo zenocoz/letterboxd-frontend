@@ -34,7 +34,15 @@ const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({ movie: movieReducer, user: userReducer })
 
-export default function () {
+// export default function () {
+//   return createStore<any, any, any, any>(
+//     rootReducer,
+//     initialState,
+//     composedEnhancer(applyMiddleware(thunk))
+//   )
+// }
+
+export default function configureStore(): any {
   return createStore<any, any, any, any>(
     rootReducer,
     initialState,
