@@ -23,7 +23,7 @@ const Film = () => {
   }, [title, dispatch])
 
   const { Title, Poster, Year, Runtime, Genre, Director } = useSelector(
-    (state: any) => state.movie.movie
+    (state: any) => state.movie.movieInfo
   )
 
   return (

@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import { UserAction } from "./user.d"
+import { UserAction, UserState, IUser } from "./user.d"
 import { API } from "../../API"
 import Cookies from "js-cookie"
 

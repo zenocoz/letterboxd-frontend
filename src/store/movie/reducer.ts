@@ -1,9 +1,9 @@
 import * as actionTypes from "./actionTypes"
-import { MovieState, MovieAction } from "../store"
-// import { initialState } from "../configureStore"
+import { MovieAction } from "../store"
+import { MovieState } from "./movie.d"
 import { API } from "../../API"
 
-const initialState: any = {
+export const initialState: any = {
   Title: "",
   Year: "",
   Runtime: "",
@@ -23,7 +23,7 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
     case actionTypes.ADD_MOVIE:
       return {
         ...state,
-        movie: action.payload,
+        movieInfo: action.payload,
       }
   }
   return state

@@ -3,6 +3,7 @@ import thunk from "redux-thunk"
 import movieReducer from "./movie/reducer"
 import userReducer from "./user/reducer"
 import { initialState as userInitialState } from "./user/reducer"
+import { initialState as movieInitialState } from "./movie/reducer"
 
 // import api from "./middleware/api"
 // export const initialState = {
@@ -27,7 +28,7 @@ import { initialState as userInitialState } from "./user/reducer"
 // }
 
 export const initialState: any = {
-  movie: {},
+  movie: { movieInfo: movieInitialState },
   user: {
     userInfo: userInitialState,
   },
