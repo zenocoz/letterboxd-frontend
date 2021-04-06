@@ -12,7 +12,19 @@ export interface IMovie {
   Country: string
   Poster: string
   imdbID: string
+  seenBy: IUser[]
 }
+
+export interface IUser {
+  _id: string
+  email: string
+  username: string
+  watchedMovies: IMovie[]
+  followers: IUser[]
+  following: IUser[]
+  reviews: string[]
+}
+
 // export interface Rating {
 //   Source: string
 //   Value: string

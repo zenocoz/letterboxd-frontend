@@ -1,4 +1,7 @@
-import { useContext } from "react"
+//redux and hooks
+import { useContext, useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+
 import { IMovieCardProps } from "./interface"
 import { UserContext } from "../../context"
 import { API } from "../../API"
@@ -14,8 +17,25 @@ import "./MovieCard.css"
 
 const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
-  const { providerUserId } = useContext(UserContext)
-  const { userId } = providerUserId
+  // const { providerUserId } = useContext(UserContext)
+  // const { userId } = providerUserId
+  const [wasSeen, setWasSeen] = useState(false)
+
+  const { _id } = useSelector((state: any) => state.user)
+  const userId = _id
+
+  const checkViews = () => {
+    const user = movie.seenBy.find((user) => user._id === userId)
+    console.log("USER", user)
+    console.log("seen by", movie.seenBy)
+    if (user) {
+      setWasSeen(true)
+    }
+  }
+
+  useEffect(() => {
+    checkViews()
+  }, [movie])
 
   return (
     <>
@@ -49,9 +69,9 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                   <p>
                     {" "}
                     <FontAwesomeIcon
-                      icon={faEye}
+                      icon={wasSeen ? faEye : faEyeSlash}
                       size="3x"
-                      color="green"
+                      color={wasSeen ? "green" : "grey"}
                       onClick={() => {
                         API.addSeenToMovie(userId, movie)
                       }}
