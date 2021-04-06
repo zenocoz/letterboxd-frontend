@@ -59,7 +59,7 @@ const SignIn = () => {
           })
           setSignIn(false)
           console.log("Response", response)
-          history.push("/home")
+          window.location.replace("/home")
         }
       } catch (err) {
         console.log("signin error", err)

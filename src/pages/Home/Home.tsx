@@ -12,7 +12,7 @@ import { Row, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
 import { useHistory } from "react-router-dom"
 
-const Landing = () => {
+const Home = () => {
   const history = useHistory()
 
   const dispatch = useDispatch()
@@ -120,4 +120,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Home

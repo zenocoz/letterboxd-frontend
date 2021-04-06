@@ -1,30 +1,48 @@
-import { useContext, useState } from "react"
+//hooks and context
+import { useContext, useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { UserContext } from "../../context"
+
+//external libraries
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+
+//components
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
-import { Link } from "react-router-dom"
-import { UserContext } from "../../context"
-import { useHistory } from "react-router-dom"
 import { API } from "../../API"
+import { logoutUser } from "../../store/user/reducer"
+
+//style
 import "./NavBar.css"
 
 const NavBar = () => {
   const history = useHistory()
 
-  const { providerUser }: any = useContext(UserContext) //ANY
+  //user
+  const { _id, username } = useSelector((state: any) => state.user.userInfo)
+  // const [componentInfo, setComponentInfo] = useState<any>(null)
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   setComponentInfo(userInfo)
+  // }, [userInfo])
+
+  //Context
+  const { providerUser }: any = useContext(UserContext) //ANY used only for developing
   const { user, setUser } = providerUser
 
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
 
+  //Search Bar
   const [value, setSearchValue] = useState("")
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
   }
-
   const handleSubmit = async (e: any) => {
     console.log("submit")
     e.preventDefault()
@@ -42,13 +60,13 @@ const NavBar = () => {
         expand="lg"
         className="justify-content-between "
       >
-        <Link to={user ? "/home" : "/"}>
+        <Link to={username !== null ? "/home" : "/"}>
           <img src={letterboxd} alt={""} />
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        {user ? (
+        {username !== null ? (
           <Nav>
-            <Nav.Link>{user}</Nav.Link>
+            <Nav.Link>{username}</Nav.Link>
             <Nav.Link>ACTIVITY</Nav.Link>
             <Nav.Link href="#pricing">FILMS</Nav.Link>
             <Nav.Link href="#pricing">LISTS</Nav.Link>
@@ -56,7 +74,8 @@ const NavBar = () => {
             <Nav.Link
               href="#pricing"
               onClick={() => {
-                setUser(null)
+                dispatch(logoutUser())
+
                 history.push("/")
               }}
             >

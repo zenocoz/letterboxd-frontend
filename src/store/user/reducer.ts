@@ -1,63 +1,44 @@
 import * as actionTypes from "./actionTypes"
 import { IUser, UserState, UserAction } from "./user.d"
-// import { initialState } from "../configureStore"
-import axios from "axios"
+import { API } from "../../API"
 import Cookies from "js-cookie"
 
 const initialState: any = {
-  _id: "",
+  _id: null,
   email: "",
-  username: "",
-  watchedMovies: [],
+  username: null,
 }
 
-const reducer = (state: UserState = initialState, action: UserAction) => {
+const reducer = (state = {}, action: UserAction) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
         ...state,
-        user: action.payload,
+        userInfo: action.payload,
       }
     case actionTypes.LOGOUT_USER:
       return {
         ...state,
-        user: initialState,
+        userInfo: initialState,
       }
   }
   return state
 }
 
-//with Cookies (not working)
 export const getUserInfo = () => {
   return (dispatch: any) => {
-    const accessToken = Cookies.get("accessToken")
-    console.log(accessToken)
-
-    axios
-      .get(`${process.env.REACT_APP_LOCAL_SERVER}/api/users/me`, {
-        withCredentials: true,
+    // const accessToken = Cookies.get("accessToken")
+    API.getUser()
+      .then((res) => {
+        console.log("getUserInfo", res)
+        dispatch({ type: actionTypes.SET_USER, payload: res })
       })
-      .then((res) => dispatch({ type: actionTypes.SET_USER, payload: res }))
-      .catch((err) => console.log(err))
+      .catch((err) => console.log("getUserInfoerr", err))
   }
 }
 
-//with Bearer
-// export const getUserInfo = () => {
-//   return (dispatch: any) => {
-//     const accessToken = Cookies.get("accessToken")
-//     let config = {
-//       headers: {
-//         "Access-Control-Allow-Origin": "*",
-//         Authorization: "Bearer " + accessToken,
-//       },
-//     }
-
-//     axios
-//       .get(`${process.env.REACT_APP_LOCAL_SERVER}/api/users/meBe`, config)
-//       .then((res) => dispatch({ type: actionTypes.SET_USER, payload: res }))
-//       .catch((err) => console.log(err))
-//   }
-// }
+export const logoutUser = () => {
+  return { type: actionTypes.LOGOUT_USER }
+}
 
 export default reducer

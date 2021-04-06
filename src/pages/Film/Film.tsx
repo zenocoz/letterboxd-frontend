@@ -18,20 +18,6 @@ const Film = () => {
 
   const dispatch = useDispatch()
 
-  //WORKS PROTOTYPE
-  // function getData(query: string) {
-  //   return (dispatch: any) => {
-  //     API.getMoviesByTitle(query)
-  //       .then((res) =>
-  //         dispatch({
-  //           type: "ADD_MOVIE",
-  //           payload: res,
-  //         })
-  //       )
-  //       .catch((err) => console.log(err))
-  //   }
-  // }
-
   useEffect(() => {
     dispatch(getMovie(title))
   }, [title, dispatch])

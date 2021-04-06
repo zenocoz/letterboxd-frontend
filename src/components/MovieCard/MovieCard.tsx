@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { IMovieCardProps } from "./interface"
 import { UserContext } from "../../context"
+import { API } from "../../API"
 
 //external libraries
 import { Card, Col } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import axios from "axios"
+// import axios from "axios"
 
 //style
 import "./MovieCard.css"
@@ -16,27 +17,6 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
   const { providerUserId } = useContext(UserContext)
   const { userId } = providerUserId
-
-  //reserved route
-  const addSeenToMovie = async () => {
-    console.log("user ID", userId)
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
-        {
-          headers: { "Content-type": "application/json" },
-        }
-      )
-
-      if (response.statusText === "OK") {
-        console.log(`${movie.Title} watched by`, userId)
-      } else {
-        console.log("something went wrong in adding to seenBy")
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   return (
     <>
@@ -74,7 +54,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                       size="3x"
                       color="green"
                       onClick={() => {
-                        addSeenToMovie()
+                        API.addSeenToMovie(userId, movie)
                       }}
                     />
                   </p>
@@ -124,7 +104,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                       size="3x"
                       color="green"
                       onClick={() => {
-                        addSeenToMovie()
+                        API.addSeenToMovie(userId, movie)
                       }}
                     />
                     <FontAwesomeIcon icon={faStar} size="3x" color="gold" />
