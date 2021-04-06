@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { IMovieCardProps } from "./interface"
-import { UserContext } from "../../context"
+// import { UserContext } from "../../context"
 import { API } from "../../API"
 
 //external libraries
@@ -65,7 +65,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                 </div>
                 <div className="movie-info">
                   <h6 onClick={() => history.push(`/film/${movie.Title}`)}>
-                    {movie.Director}
+                    {movie.Title}
                   </h6>
                   <h6>{movie.Year}</h6>
                 </div>
