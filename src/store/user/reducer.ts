@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import { UserAction, UserState } from "./user.d"
+import { DispatchType, UserAction, UserState } from "./user.d"
 import { API } from "../../API"
 
 export const initialState: UserState = {
@@ -32,7 +32,7 @@ const reducer = (state: UserState = initialState, action: UserAction) => {
 }
 
 export const getUserInfo = () => {
-  return (dispatch: any) => {
+  return (dispatch: DispatchType) => {
     API.getUser()
       .then((res) => {
         console.log("getUserInfo", res)

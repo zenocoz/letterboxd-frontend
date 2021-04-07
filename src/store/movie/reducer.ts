@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes"
-import { MovieAction } from "../store"
-import { MovieState } from "./movie.d"
+import { MovieState, MovieAction, DispatchType } from "./movie.d"
 import { API } from "../../API"
+import { Dispatch } from "react"
 
 export const initialState: MovieState = {
   movieInfo: {
@@ -34,7 +34,7 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
 }
 
 export const getMovie = (query: string) => {
-  return (dispatch: any) => {
+  return (dispatch: DispatchType) => {
     API.getMoviesByTitle(query)
       .then((res) => dispatch({ type: actionTypes.ADD_MOVIE, payload: res }))
       .catch((err) => console.log(err))
