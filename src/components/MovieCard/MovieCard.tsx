@@ -26,7 +26,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
   const checkViews = () => {
     console.log("movie id", movie._id)
 
-    const userFound = movie.seenBy.find((userId) => userId === _id)
+    const userFound = movie.seenBy.find((user) => user._id === _id)
 
     if (userFound) {
       console.log(`${movie.Title} seen by ${movie.seenBy}`)
