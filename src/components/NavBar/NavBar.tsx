@@ -1,4 +1,4 @@
-//hooks, context and reduc
+//hooks, context and redux
 import { useContext, useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { UserContext } from "../../context"
@@ -8,13 +8,11 @@ import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
-import axios from "axios"
 
 //components
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
-import { API } from "../../API"
 import { logoutUser } from "../../store/user/reducer"
 
 //style
@@ -25,16 +23,11 @@ const NavBar = () => {
 
   //user
   const { _id, username } = useSelector((state: any) => state.user.userInfo)
-  // const [componentInfo, setComponentInfo] = useState<any>(null)
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   setComponentInfo(userInfo)
-  // }, [userInfo])
-
   //Context
-  const { providerUser }: any = useContext(UserContext) //ANY used only for developing
-  const { user, setUser } = providerUser
+  // const { providerUser }: any = useContext(UserContext) //ANY used only for developing
+  // const { user, setUser } = providerUser
 
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal

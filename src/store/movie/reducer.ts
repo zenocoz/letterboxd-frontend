@@ -1,7 +1,6 @@
 import * as actionTypes from "./actionTypes"
 import { MovieState, MovieAction, DispatchType } from "./movie.d"
 import { API } from "../../API"
-import { Dispatch } from "react"
 
 export const initialState: MovieState = {
   movieInfo: {

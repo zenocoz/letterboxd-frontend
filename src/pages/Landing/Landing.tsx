@@ -11,8 +11,8 @@ import { useHistory } from "react-router-dom"
 const Landing = () => {
   const history = useHistory()
 
-  const { providerUser }: any = useContext(UserContext)
-  const { user, setUser } = providerUser
+  // const { providerUser }: any = useContext(UserContext)
+  // const { user, setUser } = providerUser
 
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
@@ -85,7 +85,7 @@ const Landing = () => {
               GET STARTED - IT'S FREE!
             </Button>
             <p>The social network for film lovers</p>
-            <p>{user}</p>
+            {/* <p>{user}</p>
             {user ? (
               <Button
                 onClick={() => {
@@ -104,7 +104,7 @@ const Landing = () => {
               >
                 login
               </Button>
-            )}
+            )} */}
           </div>
           {createAccount === true && <CreateAccount />}
         </Col>
