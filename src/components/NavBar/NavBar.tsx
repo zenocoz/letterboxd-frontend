@@ -7,6 +7,7 @@ import { UserContext } from "../../context"
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
+import axios from "axios"
 
 //components
 import letterboxd from "../../assets/letterboxd-logo-1000px.png"
@@ -38,17 +39,29 @@ const NavBar = () => {
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
 
+  const searchByKeyword = async (query: string) => {
+    //create search in own db in backend
+    const response = await axios.get(
+      `${process.env.REACT_APP_LOCAL_SERVER}/api/films?query=${query}`
+    )
+
+    console.log(response.data)
+  }
+
   //Search Bar
   const [value, setSearchValue] = useState("")
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
   }
   const handleSubmit = async (e: any) => {
-    console.log("submit")
     e.preventDefault()
-    const movie = await API.getMoviesByTitle(value)
+
+    //const result = searchByKeyword(query:string)
+    searchByKeyword(value)
+
+    // const movie = await API.getMoviesByTitle(value)
     setSearchValue("")
-    console.log("movie", movie)
+    // console.log("found in search: ", movie)
   }
 
   return (
