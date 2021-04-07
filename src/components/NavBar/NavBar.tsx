@@ -40,7 +40,7 @@ const NavBar = () => {
   const { signIn, setSignIn } = providerModals.signInModal
 
   const searchByKeyword = async (query: string) => {
-    //create search in own db in backend
+    //searches first in own db then external if not found
     const response = await axios.get(
       `${process.env.REACT_APP_LOCAL_SERVER}/api/films?query=${query}`
     )
@@ -56,69 +56,131 @@ const NavBar = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    //const result = searchByKeyword(query:string)
     searchByKeyword(value)
 
-    // const movie = await API.getMoviesByTitle(value)
     setSearchValue("")
-    // console.log("found in search: ", movie)
   }
 
   return (
     <div>
-      <Navbar
-        collapseOnSelect
-        bg="dark"
-        variant="dark"
-        expand="lg"
-        className="justify-content-between "
-      >
-        <Link to={username !== null ? "/home" : "/"}>
-          <img src={letterboxd} alt={""} />
-        </Link>
+      <Navbar collapseOnSelect expand="lg" variant="dark">
+        <Navbar.Brand href="#home">
+          <Link to={username !== null ? "/home" : "/"}>
+            <img src={letterboxd} alt={""} />
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        {username !== null ? (
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto"></Nav>
           <Nav>
-            <Nav.Link>{username}</Nav.Link>
-            <Nav.Link>ACTIVITY</Nav.Link>
-            <Nav.Link href="#pricing">FILMS</Nav.Link>
-            <Nav.Link href="#pricing">LISTS</Nav.Link>
-            <Nav.Link href="#pricing">MEMBERS</Nav.Link>
-            <Nav.Link
-              href="#pricing"
-              onClick={() => {
-                dispatch(logoutUser())
+            {username !== null ? (
+              <>
+                <Nav.Link>{username}</Nav.Link>
+                <Nav.Link>ACTIVITY</Nav.Link>
+                <Nav.Link>FILMS</Nav.Link>
+                <Nav.Link>LISTS</Nav.Link>
+                <Nav.Link>MEMBERS</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    dispatch(logoutUser())
 
-                history.push("/")
-              }}
-            >
-              LOG OUT
-            </Nav.Link>
+                    history.push("/")
+                  }}
+                >
+                  LOG OUT
+                </Nav.Link>
+                <Nav>
+                  <Form inline onSubmit={handleSubmit}>
+                    <FormControl
+                      type="text"
+                      className="mr-sm-2 search-bar"
+                      value={value}
+                      onChange={handleSearch}
+                    />
+                  </Form>
+                </Nav>
+              </>
+            ) : (
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr=auto nav-items xs-12 md-8 ">
+                  <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
+                  <Nav.Link onClick={() => setCreateAccount(true)}>
+                    CREATE ACCOUNT
+                  </Nav.Link>
+                  <Nav.Link>FILMS</Nav.Link>
+                  <Nav.Link>LISTS</Nav.Link>
+                  <Nav.Link>MEMBERS</Nav.Link>
+                </Nav>
+                <Nav>
+                  <Form inline onSubmit={handleSubmit}>
+                    <FormControl
+                      type="text"
+                      className="mr-sm-2 search-bar"
+                      value={value}
+                      onChange={handleSearch}
+                    />
+                  </Form>
+                </Nav>
+              </Navbar.Collapse>
+            )}
           </Nav>
-        ) : (
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr=auto nav-items xs-12 md-8 mb-4 ">
-              <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
-              <Nav.Link onClick={() => setCreateAccount(true)}>
-                CREATE ACCOUNT
-              </Nav.Link>
-              <Nav.Link href="#pricing">FILMS</Nav.Link>
-              <Nav.Link href="#pricing">LISTS</Nav.Link>
-              <Nav.Link href="#pricing">MEMBERS</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        )}
-        <Form inline onSubmit={handleSubmit}>
-          <FormControl
-            type="text"
-            className="mr-sm-2 search-bar"
-            value={value}
-            onChange={handleSearch}
-          />
-        </Form>
+        </Navbar.Collapse>
       </Navbar>
       {createAccount === true && <CreateAccount />}
       {signIn === true && <SignIn />}
+
+      {/* <Navbar collapseOnSelect variant="dark" expand="lg" fixed="top">
+        <div className="container">
+          <Link to={username !== null ? "/home" : "/"}>
+            <img src={letterboxd} alt={""} />
+          </Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          {username !== null ? (
+            <Nav>
+              <Nav.Link>{username}</Nav.Link>
+              <Nav.Link>ACTIVITY</Nav.Link>
+              <Nav.Link href="#pricing">FILMS</Nav.Link>
+              <Nav.Link href="#pricing">LISTS</Nav.Link>
+              <Nav.Link href="#pricing">MEMBERS</Nav.Link>
+              <Nav.Link
+                href="#pricing"
+                onClick={() => {
+                  dispatch(logoutUser())
+
+                  history.push("/")
+                }}
+              >
+                LOG OUT
+              </Nav.Link>
+            </Nav>
+          ) : (
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr=auto nav-items xs-12 md-8 mb-4 ">
+                <Nav.Link onClick={() => setSignIn(true)}>SIGN IN</Nav.Link>
+                <Nav.Link onClick={() => setCreateAccount(true)}>
+                  CREATE ACCOUNT
+                </Nav.Link>
+                <Nav.Link href="#pricing">FILMS</Nav.Link>
+                <Nav.Link href="#pricing">LISTS</Nav.Link>
+                <Nav.Link href="#pricing">MEMBERS</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          )}
+
+          <Nav>
+            <Form inline onSubmit={handleSubmit}>
+              <FormControl
+                type="text"
+                className="mr-sm-2 search-bar"
+                value={value}
+                onChange={handleSearch}
+              />
+            </Form>
+          </Nav>
+        </div>
+      </Navbar>
+      {createAccount === true && <CreateAccount />}
+      {signIn === true && <SignIn />} */}
     </div>
   )
 }

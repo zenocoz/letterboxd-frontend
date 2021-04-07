@@ -19,18 +19,39 @@ const Landing = () => {
 
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
+  // const getMovies = (): void => {
+  //   const titles: Array<string> = [
+  //     "Barry Lyndon",
+  //     "Apocalypse Now",
+  //     "Mad Max",
+  //     "Body Double",
+  //     "Sorcerer",
+  //     "Three Women",
+  //   ]
+  //   const retrievedMovies: Array<Promise<IMovie>> = []
+  //   titles.forEach((title) => {
+  //     let movie: Promise<IMovie> = API.getMoviesByTitle(title)
+  //     retrievedMovies.push(movie)
+  //   })
+
+  //   Promise.all(retrievedMovies).then((values) => {
+  //     console.log(values)
+  //     setMovies(values)
+  //   })
+  // }
+
   const getMovies = (): void => {
-    const titles: Array<string> = [
-      "Barry Lyndon",
-      "Apocalypse Now",
-      "Mad Max",
-      "Body Double",
-      "Sorcerer",
-      "Three Women",
+    const imdbIds: Array<string> = [
+      "tt0072684",
+      "tt0078788",
+      "tt0079501",
+      "tt0086984",
+      "tt0076740",
+      "tt0075612",
     ]
     const retrievedMovies: Array<Promise<IMovie>> = []
-    titles.forEach((title) => {
-      let movie: Promise<IMovie> = API.getMoviesByTitle(title)
+    imdbIds.forEach((imdbId) => {
+      let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
       retrievedMovies.push(movie)
     })
 
@@ -48,7 +69,8 @@ const Landing = () => {
     <>
       <Row>
         <Col className="md-8 mb-4">
-          <Jumbotron fluid></Jumbotron>
+          <div className="overlay"></div>
+          <div className="jumbotron"></div>
         </Col>
       </Row>
       <Row>

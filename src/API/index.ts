@@ -14,6 +14,17 @@ export const API = {
       console.log(err)
     }
   },
+  getMoviesByImdbId: async (query: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films?imdbId=${query}`
+      )
+
+      return response.data
+    } catch (err) {
+      console.log(err)
+    }
+  },
   addSeenToMovie: async (userId: string, movie: IMovie) => {
     try {
       const response = await axios.post(
