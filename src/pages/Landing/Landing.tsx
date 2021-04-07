@@ -11,34 +11,10 @@ import { useHistory } from "react-router-dom"
 const Landing = () => {
   const history = useHistory()
 
-  // const { providerUser }: any = useContext(UserContext)
-  // const { user, setUser } = providerUser
-
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
   const [movies, setMovies] = useState<Array<IMovie>>([])
-
-  // const getMovies = (): void => {
-  //   const titles: Array<string> = [
-  //     "Barry Lyndon",
-  //     "Apocalypse Now",
-  //     "Mad Max",
-  //     "Body Double",
-  //     "Sorcerer",
-  //     "Three Women",
-  //   ]
-  //   const retrievedMovies: Array<Promise<IMovie>> = []
-  //   titles.forEach((title) => {
-  //     let movie: Promise<IMovie> = API.getMoviesByTitle(title)
-  //     retrievedMovies.push(movie)
-  //   })
-
-  //   Promise.all(retrievedMovies).then((values) => {
-  //     console.log(values)
-  //     setMovies(values)
-  //   })
-  // }
 
   const getMovies = (): void => {
     const imdbIds: Array<string> = [
@@ -85,26 +61,6 @@ const Landing = () => {
               GET STARTED - IT'S FREE!
             </Button>
             <p>The social network for film lovers</p>
-            {/* <p>{user}</p>
-            {user ? (
-              <Button
-                onClick={() => {
-                  setUser(null)
-                }}
-              >
-                logout
-              </Button>
-            ) : (
-              <Button
-                onClick={() => {
-                  const user = "federico"
-                  setUser(user)
-                  history.push("/home")
-                }}
-              >
-                login
-              </Button>
-            )} */}
           </div>
           {createAccount === true && <CreateAccount />}
         </Col>
