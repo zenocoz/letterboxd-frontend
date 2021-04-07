@@ -1,7 +1,8 @@
-//hooks and context
+//hooks, context and reduc
 import { useContext, useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { UserContext } from "../../context"
+import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
 //external libraries
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
@@ -46,8 +47,10 @@ const NavBar = () => {
   }
   const handleSubmit = async (e: any) => {
     e.preventDefault()
+    dispatch(setKeyword(value))
+    dispatch(loadSearchResults(value))
 
-    API.searchByKeyword(value)
+    // API.searchByKeyword(value)
 
     setSearchValue("")
   }
