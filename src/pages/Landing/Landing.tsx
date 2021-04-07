@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 import "./Landing.css"
 import { IMovie } from "../../interface"
 import MovieCard from "../../components/MovieCard/MovieCard"
@@ -6,11 +6,8 @@ import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import { API } from "../../API"
 import { Row, Jumbotron, Button, Col } from "react-bootstrap"
 import { UserContext } from "../../context"
-import { useHistory } from "react-router-dom"
 
 const Landing = () => {
-  const history = useHistory()
-
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
