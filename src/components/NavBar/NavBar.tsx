@@ -39,15 +39,6 @@ const NavBar = () => {
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
 
-  const searchByKeyword = async (query: string) => {
-    //searches first in own db then external if not found
-    const response = await axios.get(
-      `${process.env.REACT_APP_LOCAL_SERVER}/api/films?query=${query}`
-    )
-
-    console.log(response.data)
-  }
-
   //Search Bar
   const [value, setSearchValue] = useState("")
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +47,7 @@ const NavBar = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    searchByKeyword(value)
+    API.searchByKeyword(value)
 
     setSearchValue("")
   }
@@ -64,11 +55,11 @@ const NavBar = () => {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" variant="dark">
-        <Navbar.Brand href="#home">
+        <Nav>
           <Link to={username !== null ? "/home" : "/"}>
             <img src={letterboxd} alt={""} />
           </Link>
-        </Navbar.Brand>
+        </Nav>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>

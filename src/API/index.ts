@@ -25,6 +25,15 @@ export const API = {
       console.log(err)
     }
   },
+  searchByKeyword: async (query: string) => {
+    //searches first in own db then external if not found
+    const response = await axios.get(
+      `${process.env.REACT_APP_LOCAL_SERVER}/api/films?query=${query}`
+    )
+
+    console.log(response.data)
+    return response.data
+  },
   addSeenToMovie: async (userId: string, movie: IMovie) => {
     try {
       const response = await axios.post(
