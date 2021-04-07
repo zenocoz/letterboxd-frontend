@@ -1,5 +1,12 @@
 import { IMovie } from "../../interface"
 
 export type MovieState = {
-  movie: IMovie
+  movieInfo: IMovie
 }
+
+export type MovieAction = {
+  type: string
+  payload: IMovie
+}
+
+export type DispatchType = (args: MovieAction) => MovieAction

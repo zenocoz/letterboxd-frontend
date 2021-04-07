@@ -1,12 +1,13 @@
 import * as actionTypes from "./actionTypes"
+import { SearchState, SearchAction } from "./search.d"
 import { API } from "../../API"
 
-export const initialState: any = {
+export const initialState: SearchState = {
   movieList: [],
   keyword: "",
 }
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state: SearchState = initialState, action: SearchAction) => {
   switch (action.type) {
     case actionTypes.SET_SEARCH_RESULT:
       return {

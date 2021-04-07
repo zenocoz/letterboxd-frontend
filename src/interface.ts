@@ -16,12 +16,14 @@ export interface IMovie {
 }
 
 export interface IUser {
-  _id: string
-  email: string
-  username: string
+  _id: string | null
+  email: string | null
+  username: string | null
   watchedMovies: IMovie[]
+  watchList: IMovie[]
   followers: IUser[]
   following: IUser[]
+
   reviews: string[]
 }
 

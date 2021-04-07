@@ -1,20 +1,21 @@
 import * as actionTypes from "./actionTypes"
 import { UserAction, UserState } from "./user.d"
-import { IUser } from "../../interface"
 import { API } from "../../API"
-import Cookies from "js-cookie"
 
-export const initialState: any = {
-  _id: null,
-  email: null,
-  username: null,
-  watchedMovies: [],
-  watchList: [],
-  followers: [],
-  reviews: [],
+export const initialState: UserState = {
+  userInfo: {
+    _id: null,
+    email: null,
+    username: null,
+    watchedMovies: [],
+    watchList: [],
+    followers: [],
+    following: [],
+    reviews: [],
+  },
 }
 
-const reducer = (state = initialState, action: UserAction) => {
+const reducer = (state: UserState = initialState, action: UserAction) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
@@ -32,7 +33,6 @@ const reducer = (state = initialState, action: UserAction) => {
 
 export const getUserInfo = () => {
   return (dispatch: any) => {
-    // const accessToken = Cookies.get("accessToken")
     API.getUser()
       .then((res) => {
         console.log("getUserInfo", res)

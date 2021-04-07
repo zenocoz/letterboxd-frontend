@@ -30,11 +30,9 @@ import { initialState as searchInitialState } from "./search/reducer"
 // }
 
 export const initialState: any = {
-  movie: { movieInfo: movieInitialState },
-  user: {
-    userInfo: userInitialState,
-  },
-  search: { searchData: searchInitialState },
+  movie: movieInitialState,
+  user: userInitialState,
+  search: searchInitialState,
 }
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

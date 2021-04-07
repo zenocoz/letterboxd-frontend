@@ -3,19 +3,23 @@ import { MovieAction } from "../store"
 import { MovieState } from "./movie.d"
 import { API } from "../../API"
 
-export const initialState: any = {
-  Title: "",
-  Year: "",
-  Runtime: "",
-  Genre: "",
-  Director: "",
-  Writer: "",
-  Actors: "",
-  Plot: "",
-  Language: "",
-  Country: "",
-  Poster: "",
-  imdbID: "",
+export const initialState: MovieState = {
+  movieInfo: {
+    _id: "",
+    Title: "",
+    Year: "",
+    Runtime: "",
+    Genre: "",
+    Director: "",
+    Writer: "",
+    Actors: "",
+    Plot: "",
+    Language: "",
+    Country: "",
+    Poster: "",
+    imdbID: "",
+    seenBy: [],
+  },
 }
 
 const reducer = (state: MovieState = initialState, action: MovieAction) => {

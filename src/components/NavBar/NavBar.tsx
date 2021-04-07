@@ -49,9 +49,6 @@ const NavBar = () => {
     e.preventDefault()
     dispatch(setKeyword(value))
     dispatch(loadSearchResults(value))
-
-    // API.searchByKeyword(value)
-
     setSearchValue("")
   }
 
