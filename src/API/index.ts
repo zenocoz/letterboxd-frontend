@@ -34,16 +34,16 @@ export const API = {
     console.log(response.data)
     return response.data
   },
-  addSeenToMovie: async (userId: string, movie: IMovie) => {
+  addSeenToMovie: async (userId: string, movieId: string) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movie._id}/seen/${userId}`,
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/seen/${userId}`,
         {
           headers: { "Content-type": "application/json" },
         }
       )
       if (response.statusText === "OK") {
-        console.log(`${movie.Title} watched by`, userId)
+        console.log(`movie watched by`, userId)
       } else {
         console.log("something went wrong in adding to seenBy")
       }

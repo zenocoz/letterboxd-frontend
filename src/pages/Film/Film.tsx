@@ -68,7 +68,7 @@ const Film = () => {
                 size="3x"
                 color={"grey"}
                 onClick={() => {
-                  API.addSeenToMovie(userInfo, _id)
+                  API.addSeenToMovie(userInfo._id, _id)
                   setWasSeen(true)
                 }}
               />

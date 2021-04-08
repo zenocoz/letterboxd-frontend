@@ -92,7 +92,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                         size="3x"
                         color={"grey"}
                         onClick={() => {
-                          API.addSeenToMovie(_id, movie)
+                          API.addSeenToMovie(_id, movie._id)
                           setWasSeen(true)
                         }}
                       />
