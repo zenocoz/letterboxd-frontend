@@ -1,6 +1,7 @@
 import { IUser } from "../../interface"
 
 export type UserState = {
+  loggedIn: boolean
   userInfo: IUser
 }
 

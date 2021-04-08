@@ -22,7 +22,7 @@ const NavBar = () => {
   const history = useHistory()
 
   //user
-  const { _id, username } = useSelector((state: any) => state.user.userInfo)
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
   const dispatch = useDispatch()
 
   //Context
@@ -50,7 +50,7 @@ const NavBar = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Nav>
-          <Link to={username !== null ? "/home" : "/"}>
+          <Link to={!loggedIn ? "/home" : "/"}>
             <img src={letterboxd} alt={""} />
           </Link>
         </Nav>
@@ -58,9 +58,9 @@ const NavBar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            {username !== null ? (
+            {loggedIn ? (
               <>
-                <Nav.Link>{username}</Nav.Link>
+                <Nav.Link>{userInfo.username}</Nav.Link>
                 <Nav.Link>ACTIVITY</Nav.Link>
                 <Nav.Link>FILMS</Nav.Link>
                 <Nav.Link>LISTS</Nav.Link>

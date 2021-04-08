@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react"
+import { useDispatch } from "react-redux"
 
 //external libraries
 import { Modal, Form, Button } from "react-bootstrap"
@@ -9,9 +10,11 @@ import isEmpty from "validator/lib/isEmpty"
 //context and own functions
 import { UserContext } from "../../../context"
 import { signin } from ".."
+import { getUserInfo } from "../../../store/user/reducer"
 
 const SignIn = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
     email: "",
@@ -59,7 +62,8 @@ const SignIn = () => {
           })
           setSignIn(false)
           console.log("Response", response)
-          window.location.replace("/home")
+          dispatch(getUserInfo())
+          // window.location.replace("/home")
         }
       } catch (err) {
         console.log("signin error", err)
