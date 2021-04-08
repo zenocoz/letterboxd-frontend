@@ -43,6 +43,7 @@ const NavBar = () => {
     dispatch(setKeyword(value))
     dispatch(loadSearchResults(value))
     setSearchValue("")
+    history.push("/search")
   }
 
   return (

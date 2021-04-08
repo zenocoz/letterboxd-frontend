@@ -13,14 +13,14 @@ import { Row, Col, Jumbotron } from "react-bootstrap"
 // import {addMovie} from "./actionCreators"
 
 const Film = () => {
-  const { title }: any = useParams() //ANY
-  console.log(title)
+  const { imdbID }: any = useParams() //ANY
+  console.log(imdbID)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getMovie(title))
-  }, [title, dispatch])
+    dispatch(getMovie(imdbID))
+  }, [imdbID, dispatch])
 
   const { Title, Poster, Year, Runtime, Genre, Director } = useSelector(
     (state: any) => state.movie.movieInfo

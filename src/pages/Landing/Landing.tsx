@@ -1,11 +1,22 @@
+//hooks and context
 import { useEffect, useState, useContext } from "react"
+import { UserContext } from "../../context"
+
+//types and style
 import "./Landing.css"
 import { IMovie } from "../../interface"
+
+//components and apis
 import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
+import Banner from "../../components/Banner/Banner"
+import SiteOffers from "../../components/SiteOffers/SiteOffers"
+import PopularMovies from "../../components/PopularMovies/PopularMovies"
+
 import { API } from "../../API"
+
+//external libraries
 import { Row, Jumbotron, Button, Col } from "react-bootstrap"
-import { UserContext } from "../../context"
 
 const Landing = () => {
   const { providerModals }: any = useContext(UserContext)
@@ -13,6 +24,7 @@ const Landing = () => {
 
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
+  //placeholder function
   const getMovies = (): void => {
     const imdbIds: Array<string> = [
       "tt0072684",
@@ -67,6 +79,15 @@ const Landing = () => {
           movies.map((movie: IMovie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
+      </Row>
+      <Row>
+        <Banner />
+      </Row>
+      <Row>
+        <SiteOffers />
+      </Row>
+      <Row>
+        <PopularMovies />
       </Row>
     </>
   )

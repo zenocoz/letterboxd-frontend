@@ -64,7 +64,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                   </span>
                 </div>
                 <div className="movie-info">
-                  <h6 onClick={() => history.push(`/film/${movie.Title}`)}>
+                  <h6 onClick={() => history.push(`/film/${movie.imdbID}`)}>
                     {movie.Title}
                   </h6>
                   <h6>{movie.Year}</h6>
@@ -116,7 +116,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
               className="img-fluid rounded w-100"
               variant="top"
               src={movie.Poster}
-              onClick={() => history.push(`/film/${movie.Title}`)}
+              onClick={() => history.push(`/film/${movie.imdbID}`)}
             />
             <div className="options-container">
               <div className="options-content">
@@ -138,9 +138,9 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                       icon={faEye}
                       size="3x"
                       color="green"
-                      onClick={() => {
-                        API.addSeenToMovie(_id, movie)
-                      }}
+                      // onClick={() => {
+                      //  go to movie page but not logged in
+                      // }}
                     />
                     <FontAwesomeIcon icon={faStar} size="3x" color="gold" />
                   </span>

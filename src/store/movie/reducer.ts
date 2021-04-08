@@ -34,7 +34,7 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
 
 export const getMovie = (query: string) => {
   return (dispatch: DispatchType) => {
-    API.getMoviesByTitle(query)
+    API.getMoviesByImdbId(query)
       .then((res) => dispatch({ type: actionTypes.ADD_MOVIE, payload: res }))
       .catch((err) => console.log(err))
   }

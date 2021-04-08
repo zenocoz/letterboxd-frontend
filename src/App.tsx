@@ -10,6 +10,7 @@ import { Container } from "react-bootstrap"
 import Landing from "./pages/Landing/Landing"
 import Home from "./pages/Home/Home"
 import Film from "./pages/Film/Film"
+import SearchResults from "./pages/SearchResults/SearchResults"
 
 //components
 import NavBar from "./components/NavBar/NavBar"
@@ -25,11 +26,18 @@ function App() {
         <ContextProvider>
           <NavBar />
           <Route path="/" exact render={(props) => <Landing />}></Route>
-
           <Route path="/home" exact render={(props) => <Home />}></Route>
-          <Route path="/film/:title" exact render={(props) => <Film />}></Route>
+          <Route
+            path="/film/:imdbID"
+            exact
+            render={(props) => <Film />}
+          ></Route>
+          <Route
+            path="/search"
+            exact
+            render={(props) => <SearchResults />}
+          ></Route>
         </ContextProvider>
-
         <Footer />
       </Container>
     </div>
