@@ -1,5 +1,5 @@
 //hooks, context and redux
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { UserContext } from "../../context"
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
