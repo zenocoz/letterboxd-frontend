@@ -64,7 +64,13 @@ const NavBar = () => {
                 <Nav.Link>ACTIVITY</Nav.Link>
                 <Nav.Link>FILMS</Nav.Link>
                 <Nav.Link>LISTS</Nav.Link>
-                <Nav.Link>MEMBERS</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/members")
+                  }}
+                >
+                  MEMBERS
+                </Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     dispatch(logoutUser())
@@ -94,7 +100,13 @@ const NavBar = () => {
                   </Nav.Link>
                   <Nav.Link>FILMS</Nav.Link>
                   <Nav.Link>LISTS</Nav.Link>
-                  <Nav.Link>MEMBERS</Nav.Link>
+                  <Nav.Link
+                    onClick={() => {
+                      history.push("/members")
+                    }}
+                  >
+                    MEMBERS
+                  </Nav.Link>
                 </Nav>
                 <Nav>
                   <Form inline onSubmit={handleSubmit}>

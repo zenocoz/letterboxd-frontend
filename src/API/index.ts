@@ -84,4 +84,15 @@ export const API = {
       console.log(err)
     }
   },
+
+  getAllMembers: async () => {
+    try {
+      const members = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users`
+      )
+      return members.data
+    } catch (err) {
+      console.log(err)
+    }
+  },
 }
