@@ -89,6 +89,133 @@ const Landing = () => {
       <Row>
         <PopularMovies />
       </Row>
+      <Row>
+        <Col sm={12} md={8}>
+          {" "}
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "30vh",
+              backgroundColor: "#e68eb5",
+            }}
+          >
+            review
+          </div>
+        </Col>
+        <Col sm={12} md={4}>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+          <div
+            className="mb-2"
+            style={{
+              width: "100%",
+              height: "25vh",
+              backgroundColor: "#848b99",
+            }}
+          >
+            popular list
+          </div>
+        </Col>
+      </Row>
     </>
   )
 }

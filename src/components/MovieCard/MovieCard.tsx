@@ -49,7 +49,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
   return (
     <>
       {username ? (
-        <Col className="md-8 mb-4">
+        <Col className="md-8 mb-4" md={1}>
           <Card
             className="movie-card position-relative"
             style={{ width: "10rem" }}
@@ -112,7 +112,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
           </Card>
         </Col>
       ) : (
-        <Col>
+        <Col md={2}>
           <Card
             style={{ width: "10rem" }}
             className="movie-card position-relative"
