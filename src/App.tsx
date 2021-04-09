@@ -41,8 +41,8 @@ function App() {
           ></Route>
           <Route path="/members" exact render={(props) => <Members />}></Route>
           <Route path="/films" exact render={(props) => <FilmSearch />}></Route>
+          <Footer />
         </ContextProvider>
-        <Footer />
       </Container>
     </div>
   )

@@ -1,11 +1,14 @@
 import React from "react"
 import "./Footer.css"
+import { Row } from "react-bootstrap"
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <span>Letterboxd - New Zealand etc...</span>
-    </footer>
+    <Row>
+      <footer className="footer">
+        <span>Letterboxd - A Social Network for Film Lovers</span>
+      </footer>
+    </Row>
   )
 }
 
