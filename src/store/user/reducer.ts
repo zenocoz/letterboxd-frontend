@@ -30,11 +30,11 @@ const reducer = (state: UserState = initialState, action: UserAction) => {
         loggedIn: false,
         userInfo: initialState,
       }
-    // case actionTypes.SET_LOGGED_IN:
-    //   return {
-    //     ...state,
-    //     loggedIn: true,
-    //   }
+    case actionTypes.SET_WATCHED_MOVIES:
+      return {
+        ...state,
+        userInfo: action.payload,
+      }
     // case actionTypes.SET_LOGGED_OUT:
     //   return {
     //     ...state,
@@ -54,6 +54,16 @@ export const getUserInfo = () => {
       .catch((err) => console.log("getUserInfoerr", err))
   }
 }
+
+// export const updateWatchedMovies = (userId:string,movieId:string) => {
+//   return (dispatch: DispatchType) => {
+//     API.addSeenToMovie(userId,movieId)
+//       .then((res) => {
+//         dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
+//       })
+//       .catch((err) => console.log("getUserInfoerr", err))
+//   }
+// }
 
 // export const setLoggedIn = () => ({
 //   type: actionTypes.SET_LOGGED_IN,

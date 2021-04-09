@@ -1,5 +1,6 @@
 import { IUser } from "../interface"
 
+//checks into movie array
 export const checkViews = (seenBy: IUser[], id: string) => {
   const userFound = seenBy.find((user) => user._id === id)
   if (userFound) {

@@ -36,10 +36,15 @@ const Film = () => {
   }, [imdbID, dispatch])
 
   useEffect(() => {
-    // dispatch(getUserInfo())
-    console.log("use effect executed")
     setWasSeen(checkViews(seenBy, userInfo._id))
-  }, [loggedIn])
+  }, [loggedIn, dispatch])
+
+  useEffect((): any => {
+    return () => {
+      dispatch(getUserInfo())
+      dispatch(getMovie(imdbID))
+    }
+  }, [])
 
   return (
     <Row>
