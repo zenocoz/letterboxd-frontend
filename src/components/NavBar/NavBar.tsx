@@ -62,7 +62,13 @@ const NavBar = () => {
               <>
                 <Nav.Link>{userInfo.username}</Nav.Link>
                 <Nav.Link>ACTIVITY</Nav.Link>
-                <Nav.Link>FILMS</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/films")
+                  }}
+                >
+                  FILMS
+                </Nav.Link>
                 <Nav.Link>LISTS</Nav.Link>
                 <Nav.Link
                   onClick={() => {
@@ -98,7 +104,13 @@ const NavBar = () => {
                   <Nav.Link onClick={() => setCreateAccount(true)}>
                     CREATE ACCOUNT
                   </Nav.Link>
-                  <Nav.Link>FILMS</Nav.Link>
+                  <Nav.Link
+                    onClick={() => {
+                      history.push("/films")
+                    }}
+                  >
+                    FILMS
+                  </Nav.Link>
                   <Nav.Link>LISTS</Nav.Link>
                   <Nav.Link
                     onClick={() => {
@@ -114,7 +126,6 @@ const NavBar = () => {
                       type="text"
                       className="mr-sm-2 search-bar"
                       value={value}
-                      onChange={handleSearch}
                     />
                   </Form>
                 </Nav>

@@ -12,6 +12,8 @@ import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import Banner from "../../components/Banner/Banner"
 import SiteOffers from "../../components/SiteOffers/SiteOffers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
+import Review from "../../components/Review/Review"
+import List from "../../components/List/List"
 
 import { API } from "../../API"
 
@@ -91,129 +93,19 @@ const Landing = () => {
       </Row>
       <Row>
         <Col sm={12} md={8}>
-          {" "}
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#e68eb5",
-            }}
-          >
-            review
-          </div>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
         </Col>
         <Col sm={12} md={4}>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "25vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular list
-          </div>
+          <List />
+          <List />
+          <List />
+          <List />
+          <List />
         </Col>
       </Row>
     </>

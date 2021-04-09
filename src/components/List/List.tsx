@@ -1,18 +1,18 @@
 import React from "react"
 
-const Review = () => {
+const List = () => {
   return (
     <div
       className="mb-2"
       style={{
         width: "100%",
-        height: "30vh",
-        backgroundColor: "#e68eb5",
+        height: "25vh",
+        backgroundColor: "#848b99",
       }}
     >
-      review
+      popular list
     </div>
   )
 }
 
-export default Review
+export default List
