@@ -2,6 +2,9 @@ import React from "react"
 import "./FilmSearch.css"
 import Banner from "../../components/Banner/Banner"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
+import PopularReviews from "../../components/PopularReviews/PopularReviews"
+import PopularMembers from "../../components/PopularMembers/PopularMembers"
+
 import {
   Row,
   Col,
@@ -133,6 +136,14 @@ const FilmSearch = () => {
       </Row>
       <Row>
         <PopularMovies />
+      </Row>
+      <Row>
+        <Col sm={12} md={8}>
+          <PopularReviews />
+        </Col>
+        <Col sm={12} md={4}>
+          <PopularMembers />
+        </Col>
       </Row>
     </>
   )

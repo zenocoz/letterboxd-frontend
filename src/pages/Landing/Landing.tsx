@@ -12,7 +12,7 @@ import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import Banner from "../../components/Banner/Banner"
 import SiteOffers from "../../components/SiteOffers/SiteOffers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
-import Review from "../../components/Review/Review"
+import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import List from "../../components/List/List"
 
 import { API } from "../../API"
@@ -93,12 +93,7 @@ const Landing = () => {
       </Row>
       <Row>
         <Col sm={12} md={8}>
-          <Review />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
+          <PopularReviews />
         </Col>
         <Col sm={12} md={4}>
           <List />

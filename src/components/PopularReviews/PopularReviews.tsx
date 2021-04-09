@@ -1,7 +1,17 @@
 import React from "react"
+import Review from "../Review/Review"
 
 const PopularReviews = () => {
-  return <div></div>
+  return (
+    <>
+      <Review />
+      <Review />
+      <Review />
+      <Review />
+      <Review />
+      <Review />
+    </>
+  )
 }
 
 export default PopularReviews
