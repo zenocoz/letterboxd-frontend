@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMovie } from "../../store/movie/reducer"
 import { API } from "../../API"
-import { getUserInfo } from "../../store/user/reducer"
+import { updateWatchedMovies } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
 
 //styles
@@ -12,7 +12,7 @@ import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 
 //external dependencies
 import { useParams } from "react-router-dom"
-import { Row, Col, Jumbotron } from "react-bootstrap"
+import { Row, Col, Jumbotron, ListGroup } from "react-bootstrap"
 
 const Film = () => {
   const { imdbID }: any = useParams() //ANY
@@ -41,14 +41,42 @@ const Film = () => {
 
   useEffect((): any => {
     return () => {
-      dispatch(getUserInfo())
+      dispatch(updateWatchedMovies())
       dispatch(getMovie(imdbID))
     }
   }, [])
 
   return (
     <Row>
-      <div className="details-container">
+      <Col xs={12} md={3}>
+        <div
+          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+        >
+          <ListGroup>
+            <ListGroup.Item className="bg-dark">Cras justo odio</ListGroup.Item>
+            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div
+          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+        >
+          1
+        </div>
+      </Col>
+      <Col xs={12} md={3}>
+        <div
+          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+        >
+          1
+        </div>
+      </Col>
+
+      {/* <div className="details-container">
         <h1>{Title}</h1>
         <h2>{Director}</h2>
         <h6>{Year}</h6>
@@ -80,7 +108,7 @@ const Film = () => {
             )}
           </p>
         </div>
-      )}
+      )} */}
     </Row>
   )
 }

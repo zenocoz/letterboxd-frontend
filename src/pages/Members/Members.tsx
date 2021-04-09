@@ -30,6 +30,10 @@ const Members = () => {
     }
   }
 
+  const unfollowMember = async (memberId: string) => {
+    //TODO
+  }
+
   useEffect(() => {
     getMembers()
   }, [])

@@ -12,6 +12,7 @@ import Home from "./pages/Home/Home"
 import Film from "./pages/Film/Film"
 import SearchResults from "./pages/SearchResults/SearchResults"
 import Members from "./pages/Members/Members"
+import UserFilms from "./pages/UserFilms/UserFilms"
 
 //components
 import NavBar from "./components/NavBar/NavBar"
@@ -39,6 +40,7 @@ function App() {
             render={(props) => <SearchResults />}
           ></Route>
           <Route path="/members" exact render={(props) => <Members />}></Route>
+          <Route path="/films" exact render={(props) => <UserFilms />}></Route>
         </ContextProvider>
         <Footer />
       </Container>

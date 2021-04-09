@@ -1,4 +1,5 @@
 import axios from "axios"
+import MovieCardSmall from "../components/MovieCardSmall/MovieCardSmall"
 import { IMovie } from "../interface"
 
 export const API = {
@@ -91,6 +92,19 @@ export const API = {
         `${process.env.REACT_APP_LOCAL_SERVER}/api/users`
       )
       return members.data
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  getWatchedMovies: async (userId: string) => {
+    try {
+      const movies = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/films/${userId}`
+      )
+      if (movies) {
+        return movies.data
+      }
     } catch (err) {
       console.log(err)
     }

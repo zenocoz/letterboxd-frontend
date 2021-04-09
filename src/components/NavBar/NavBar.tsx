@@ -50,7 +50,7 @@ const NavBar = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Nav>
-          <Link to={!loggedIn ? "/home" : "/"}>
+          <Link to={!loggedIn ? "/" : "/"}>
             <img src={letterboxd} alt={""} />
           </Link>
         </Nav>

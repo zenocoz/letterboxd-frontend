@@ -55,15 +55,16 @@ export const getUserInfo = () => {
   }
 }
 
-// export const updateWatchedMovies = (userId:string,movieId:string) => {
-//   return (dispatch: DispatchType) => {
-//     API.addSeenToMovie(userId,movieId)
-//       .then((res) => {
-//         dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
-//       })
-//       .catch((err) => console.log("getUserInfoerr", err))
-//   }
-// }
+export const updateWatchedMovies = () => {
+  return (dispatch: DispatchType) => {
+    API.getUser()
+      .then((res) => {
+        console.log("getUserInfo", res)
+        dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
+      })
+      .catch((err) => console.log("set watched movies error", err))
+  }
+}
 
 // export const setLoggedIn = () => ({
 //   type: actionTypes.SET_LOGGED_IN,
