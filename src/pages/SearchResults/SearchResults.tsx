@@ -10,369 +10,393 @@ const SearchResults = () => {
   const { movieList } = useSelector((state: any) => state.search)
 
   return (
-    <Row>
-      <Col xs={12} md={8}>
+    <p>
+      <Row>
+        <Col xs={12} md={8}>
+          <ListGroup>
+            <Row className="mb-3">
+              <Col xs={12} md={2}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={10}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={2}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={10}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={2}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={10}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+          </ListGroup>
+          <ListGroup>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+            <Row className="mb-3">
+              <Col xs={12} md={4}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+              <Col xs={12} md={8}>
+                {" "}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "10vh",
+                    backgroundColor: "#fff",
+                  }}
+                ></div>
+              </Col>
+            </Row>
+          </ListGroup>
+        </Col>
+        <Col xs={12} md={4}>
+          <ListGroup as="ul">
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+            <div
+              className="mb-1"
+              style={{
+                width: "100%",
+                height: "5vh",
+                backgroundColor: "#fff",
+              }}
+            ></div>
+          </ListGroup>
+        </Col>
+      </Row>
+
+      {/* // <div className="results">
+      //   <ul>
+      //     {movieList.length > 0 &&
+      //       movieList.map((movie: any) => (
+      //         <li
+      //           onClick={() => {
+      //             history.push(`/film/${movie.imdbID}`)
+      //           }}
+      //         >
+      //           {movie.Title}
+      //         </li>
+      //       ))}
+      //   </ul>
+      // </div> */}
+
+      <Row>
         <ListGroup>
-          <Row className="mb-3">
-            <Col xs={12} md={2}>
-              <div
+          {movieList.length > 0 &&
+            movieList.map((movie: any) => (
+              <li
+                className="mb-1"
                 style={{
                   width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
+                  height: "5vh",
+                  backgroundColor: "red",
                 }}
-              ></div>
-            </Col>
-            <Col xs={12} md={10}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
+                onClick={() => {
+                  history.push(`/film/${movie.imdbID}`)
                 }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={2}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={10}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={2}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={10}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
+              >
+                {movie.Title}
+              </li>
+            ))}
         </ListGroup>
-        <ListGroup>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col xs={12} md={4}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-            <Col xs={12} md={8}>
-              {" "}
-              <div
-                style={{
-                  width: "100%",
-                  height: "10vh",
-                  backgroundColor: "#fff",
-                }}
-              ></div>
-            </Col>
-          </Row>
-        </ListGroup>
-      </Col>
-      <Col xs={12} md={4}>
-        <ListGroup as="ul">
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-          <div
-            className="mb-1"
-            style={{
-              width: "100%",
-              height: "5vh",
-              backgroundColor: "#fff",
-            }}
-          ></div>
-        </ListGroup>
-      </Col>
-    </Row>
-    // <div className="results">
-    //   <ul>
-    //     {movieList.length > 0 &&
-    //       movieList.map((movie: any) => (
-    //         <li
-    //           onClick={() => {
-    //             history.push(`/film/${movie.imdbID}`)
-    //           }}
-    //         >
-    //           {movie.Title}
-    //         </li>
-    //       ))}
-    //   </ul>
-    // </div>
+      </Row>
+    </p>
   )
 }
 

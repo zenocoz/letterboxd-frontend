@@ -70,7 +70,16 @@ const NavBar = () => {
                   FILMS
                 </Nav.Link>
                 <Nav.Link>LISTS</Nav.Link>
-                <Nav.Link style={{ color: "#2a50e7" }}>FILM CLUB</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/filmclub")
+                  }}
+                >
+                  <div className="sign">
+                    <span className="fast-flicker">F</span>ilm
+                    <span className="flicker">C</span>lub
+                  </div>
+                </Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     history.push("/members")
@@ -113,16 +122,8 @@ const NavBar = () => {
                     FILMS
                   </Nav.Link>
                   <Nav.Link>LISTS</Nav.Link>
-                  <Nav.Link
-                    onClick={() => {
-                      history.push("/filmclub")
-                    }}
-                  >
-                    <div className="sign">
-                      <span className="fast-flicker">F</span>ilm
-                      <span className="flicker">C</span>lub
-                    </div>
-                  </Nav.Link>
+                  <Nav.Link>FILM CLUB</Nav.Link>
+
                   <Nav.Link
                     onClick={() => {
                       history.push("/members")
