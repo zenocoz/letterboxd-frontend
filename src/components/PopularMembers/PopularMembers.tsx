@@ -1,18 +1,18 @@
 import React from "react"
-import Member from "../Member/Member"
+import MemberMini from "../MemberMini/MemberMini"
 
 const PopularMembers = () => {
   return (
     <div>
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
-      <Member />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
+      <MemberMini />
     </div>
   )
 }

@@ -4,3 +4,15 @@
   background-color: #445566;
   margin-top: 20px;
 }
+
+.inner-items {
+  margin-top: 0;
+  /* margin-bottom: 1rem; */
+  margin-left: 65px;
+  margin-right: 65px;
+  margin-bottom: 65px;
+  font-size: small;
+  /* padding: 5PX; */
+  color: white;
+  display: flex;
+}

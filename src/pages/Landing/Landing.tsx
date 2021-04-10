@@ -57,7 +57,7 @@ const Landing = () => {
       <Row>
         <Col className="md-8 mb-4">
           <div className="overlay"></div>
-          <div className="jumbotron"></div>
+          <div className="jumbo"></div>
         </Col>
       </Row>
       <Row>

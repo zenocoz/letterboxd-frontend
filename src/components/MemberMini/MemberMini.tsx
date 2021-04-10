@@ -1,6 +1,6 @@
 import React from "react"
 
-const Member = () => {
+const MemberMini = () => {
   return (
     <div
       className="mb-2"
@@ -10,9 +10,9 @@ const Member = () => {
         backgroundColor: "#05c1f6",
       }}
     >
-      popular member
+      member mini
     </div>
   )
 }
 
-export default Member
+export default MemberMini
