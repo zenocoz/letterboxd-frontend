@@ -1,8 +1,28 @@
-img {
+/* img {
   max-width: 250px;
   margin-left: 0;
-}
+} */
 
+/* .site-header .site-logo {
+  margin: 22px 0 0;
+  float: left;
+  position: relative;
+} */
+
+/* site-logo > .logo {
+  width: 273px;
+  height: 25px;
+  background-position: -350px 0;
+  position: relative;
+} */
+
+.logo {
+  max-width: 273px;
+  margin-left: 0;
+  /* height: 25px; */
+  background-position: -350px 0;
+  position: relative;
+}
 .navbar {
   padding: 0;
   background-color: #14181c !important;

@@ -51,7 +51,7 @@ const NavBar = () => {
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Nav>
           <Link to={!loggedIn ? "/" : "/"}>
-            <img src={letterboxd} alt={""} />
+            <img className="logo" src={letterboxd} alt={""} />
           </Link>
         </Nav>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -138,6 +138,7 @@ const NavBar = () => {
                       type="text"
                       className="mr-sm-2 search-bar"
                       value={value}
+                      onChange={handleSearch}
                     />
                   </Form>
                 </Nav>

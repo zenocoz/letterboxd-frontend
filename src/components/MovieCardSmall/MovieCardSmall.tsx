@@ -8,7 +8,11 @@ const MovieCardSmall = ({ Poster, imdbID }: IMovieCardSmallProps) => {
   const history = useHistory()
   return (
     <div className="col sm-8 md-2 mb-4 small-card">
-      <img src={Poster} onClick={() => history.push(`/film/${imdbID}`)} />
+      <img
+        className="small-card"
+        src={Poster}
+        onClick={() => history.push(`/film/${imdbID}`)}
+      />
     </div>
   )
 }
