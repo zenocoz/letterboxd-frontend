@@ -115,7 +115,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
         <Col md={2}>
           <Card
             style={{ width: "10rem" }}
-            className="movie-card position-relative"
+            className="movie-card position-relative mb-2"
           >
             <Card.Img
               className="img-fluid rounded w-100"

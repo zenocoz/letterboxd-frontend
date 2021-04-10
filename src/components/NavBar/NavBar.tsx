@@ -72,7 +72,7 @@ const NavBar = () => {
                 <Nav.Link>LISTS</Nav.Link>
                 <Nav.Link
                   onClick={() => {
-                    history.push("/filmclub")
+                    history.push("/club")
                   }}
                 >
                   <div className="sign">
@@ -122,7 +122,13 @@ const NavBar = () => {
                     FILMS
                   </Nav.Link>
                   <Nav.Link>LISTS</Nav.Link>
-                  <Nav.Link>FILM CLUB</Nav.Link>
+                  <Nav.Link
+                    onClick={() => {
+                      history.push("/club")
+                    }}
+                  >
+                    FILM CLUB
+                  </Nav.Link>
 
                   <Nav.Link
                     onClick={() => {
