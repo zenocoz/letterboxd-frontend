@@ -18,37 +18,24 @@ import "./MovieCard.css"
 
 const MovieCard = ({ movie }: IMovieCardProps) => {
   const history = useHistory()
-  // const { providerUserId } = useContext(UserContext)
-  // const { userId } = providerUserId
   const [wasSeen, setWasSeen] = useState(false)
 
-  const { _id, username } = useSelector((state: any) => state.user.userInfo)
-
-  // const checkViews = () => {
-
-  //   const userFound = movie.seenBy.find((user) => user._id === _id)
-
-  //   if (userFound) {
-  //     console.log(`${movie.Title} seen by ${movie.seenBy}`)
-  //     setWasSeen(true)
-  //   } else {
-  //     console.log("FALSE")
-  //     setWasSeen(false)
-  //   }
-  // }
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
   useEffect(() => {
-    let movieChecked: boolean = checkViews(movie.seenBy, _id)
-    if (movieChecked === true) {
-      setWasSeen(true)
-    } else {
-      setWasSeen(false)
+    if (loggedIn) {
+      let movieChecked: boolean = checkViews(movie.seenBy, userInfo._id)
+      if (movieChecked === true) {
+        setWasSeen(true)
+      } else {
+        setWasSeen(false)
+      }
     }
-  }, [])
+  }, [loggedIn])
 
   return (
     <>
-      {username ? (
+      {loggedIn ? (
         <Col className="md-8 mb-4" md={1}>
           <Card
             className="movie-card position-relative"
@@ -82,7 +69,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                         size="3x"
                         color={"green"}
                         onClick={() => {
-                          API.removeSeenMovie(_id, movie._id)
+                          API.removeSeenMovie(userInfo._id, movie._id)
                           setWasSeen(false)
                         }}
                       />
@@ -92,7 +79,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                         size="3x"
                         color={"grey"}
                         onClick={() => {
-                          API.addSeenToMovie(_id, movie._id)
+                          API.addSeenToMovie(userInfo._id, movie._id)
                           setWasSeen(true)
                         }}
                       />

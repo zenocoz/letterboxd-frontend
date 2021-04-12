@@ -68,7 +68,11 @@ const Landing = () => {
             <h1>Track films you've watched.</h1>
             <h1>Save those you want to see.</h1>
             <h1>Tell your friends what's good.</h1>
-            <Button onClick={() => setCreateAccount(true)} variant="success">
+            <Button
+              style={{ marginTop: 30, marginBottom: 30 }}
+              onClick={() => setCreateAccount(true)}
+              variant="success"
+            >
               GET STARTED - IT'S FREE!
             </Button>
             <p>The social network for film lovers</p>

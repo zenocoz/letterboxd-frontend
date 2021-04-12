@@ -24,9 +24,11 @@ const Film = () => {
     _id,
     Title,
     Poster,
+    Actors,
     Year,
     Runtime,
     Genre,
+    Plot,
     Director,
     seenBy,
   } = useSelector((state: any) => state.movie.movieInfo)
@@ -36,8 +38,14 @@ const Film = () => {
   }, [imdbID, dispatch])
 
   useEffect(() => {
-    setWasSeen(checkViews(seenBy, userInfo._id))
+    if (loggedIn) {
+      setWasSeen(checkViews(seenBy, userInfo._id))
+    }
   }, [loggedIn, dispatch])
+
+  // useEffect(() => {
+  //   setWasSeen(checkViews(seenBy, userInfo._id))
+  // }, [loggedIn, dispatch])
 
   useEffect((): any => {
     return () => {
@@ -47,69 +55,106 @@ const Film = () => {
   }, [])
 
   return (
-    <Row>
-      <Col xs={12} md={3}>
-        <div
-          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
-        >
-          <ListGroup>
-            <ListGroup.Item className="bg-dark">Cras justo odio</ListGroup.Item>
-            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          </ListGroup>
-        </div>
-      </Col>
-      <Col xs={12} md={6}>
-        <div
-          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
-        >
-          1
-        </div>
-      </Col>
-      <Col xs={12} md={3}>
-        <div
-          style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
-        >
-          1
-        </div>
-      </Col>
+    <>
+      <Row>
+        <Jumbotron>BIG PICTURE</Jumbotron>
+      </Row>
+      <Row>
+        <Col xs={12} md={3}>
+          <div
+            style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+          >
+            <img src={Poster} />
+            <ListGroup>
+              <ListGroup.Item className="bg-dark">
+                Cras justo odio
+              </ListGroup.Item>
+              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+            </ListGroup>
+          </div>
+        </Col>
+        <Col xs={12} md={6}>
+          <div
+            style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+          >
+            <span>
+              {" "}
+              {Title} Directed by {Director}
+            </span>
+            <p>{Plot}</p>
+            <p>{Actors}</p>
+          </div>
+        </Col>
+        <Col xs={12} md={3}>
+          <div
+            style={{ width: "100%", height: "45vh", backgroundColor: "#fff" }}
+          >
+            <div className="icons">
+              <p>
+                {wasSeen ? (
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    size="3x"
+                    color={"green"}
+                    onClick={() => {
+                      API.removeSeenMovie(userInfo._id, _id)
+                      setWasSeen(false)
+                    }}
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faEyeSlash}
+                    size="3x"
+                    color={"grey"}
+                    onClick={() => {
+                      API.addSeenToMovie(userInfo._id, _id)
+                      setWasSeen(true)
+                    }}
+                  />
+                )}
+              </p>
+            </div>
+          </div>
+        </Col>
 
-      {/* <div className="details-container">
-        <h1>{Title}</h1>
-        <h2>{Director}</h2>
-        <h6>{Year}</h6>
-      </div>
-      <img src={Poster} style={{ width: "100%" }} />
-      {loggedIn && (
-        <div className="icons">
-          <p>
-            {wasSeen ? (
-              <FontAwesomeIcon
-                icon={faEye}
-                size="3x"
-                color={"green"}
-                onClick={() => {
-                  API.removeSeenMovie(userInfo._id, _id)
-                  setWasSeen(false)
-                }}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faEyeSlash}
-                size="3x"
-                color={"grey"}
-                onClick={() => {
-                  API.addSeenToMovie(userInfo._id, _id)
-                  setWasSeen(true)
-                }}
-              />
-            )}
-          </p>
+        {/* <div className="details-container">
+          <h1>{Title}</h1>
+          <h2>{Director}</h2>
+          <h6>{Year}</h6>
         </div>
-      )} */}
-    </Row>
+        <img src={Poster} style={{ width: "100%" }} />
+        {loggedIn && (
+          <div className="icons">
+            <p>
+              {wasSeen ? (
+                <FontAwesomeIcon
+                  icon={faEye}
+                  size="3x"
+                  color={"green"}
+                  onClick={() => {
+                    API.removeSeenMovie(userInfo._id, _id)
+                    setWasSeen(false)
+                  }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  size="3x"
+                  color={"grey"}
+                  onClick={() => {
+                    API.addSeenToMovie(userInfo._id, _id)
+                    setWasSeen(true)
+                  }}
+                />
+              )}
+            </p>
+          </div>
+        )} */}
+      </Row>
+    </>
   )
 }
 

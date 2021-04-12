@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 
 //components
-import letterboxd from "../../assets/letterboxd-logo-1000px.png"
+import letterboxd from "../../assets/logo_letterbox.png"
 import CreateAccount from "../Auth/CreateAccount/CreateAccount"
 import SignIn from "../Auth/SignIn/SignIn"
 import { logoutUser } from "../../store/user/reducer"
@@ -50,7 +50,7 @@ const NavBar = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Nav>
-          <Link to={!loggedIn ? "/" : "/"}>
+          <Link to={!loggedIn ? "/" : "/home"}>
             <img className="logo" src={letterboxd} alt={""} />
           </Link>
         </Nav>
