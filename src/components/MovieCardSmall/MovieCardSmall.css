@@ -1,3 +1,14 @@
-.small-card {
-  width: 4rem;
+.info-card-sm h5 {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+}
+
+.info-card-sm h6 {
+  color: #436485;
+}
+
+.info-card-sm p {
+  font-size: small;
+  color: #727068;
 }

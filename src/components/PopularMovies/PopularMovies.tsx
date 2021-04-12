@@ -11,6 +11,8 @@ import "./PopularMovies.css"
 import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 import { API } from "../../API"
 
+import { Row } from "react-bootstrap"
+
 const PopularMovies = () => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
@@ -46,12 +48,18 @@ const PopularMovies = () => {
   }, [])
 
   return (
-    <div className="popular d-flex">
+    <Row className="popular d-flex">
       {movies.length > 0 &&
         movies.map((movie): any => (
-          <MovieCardSmall {...movie} key={movie.imdbID} />
+          <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
         ))}
-    </div>
+    </Row>
+    // <div className="popular d-flex">
+    //   {movies.length > 0 &&
+    //     movies.map((movie): any => (
+    //       <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
+    //     ))}
+    // </div>
   )
 }
 
