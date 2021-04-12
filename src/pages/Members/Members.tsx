@@ -7,6 +7,7 @@ import { Row, Col, Jumbotron } from "react-bootstrap"
 import "./Members.css"
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
+import MemberCard from "../../components/MemberCard/MemberCard"
 
 const Members = () => {
   const [memberList, setMemberList] = useState([])
@@ -55,6 +56,25 @@ const Members = () => {
         </Jumbotron>
       </Row>
       <Row>
+        {memberList.length > 0 &&
+          memberList.map((member: any) => (
+            <MemberCard {...member} />
+
+            // <li key={member._id}>
+            //   {member.username}
+            //   {loggedIn && member._id !== userInfo._id && (
+            //     <button
+            //       onClick={() => {
+            //         followMember(member._id)
+            //       }}
+            //     >
+            //       follow
+            //     </button>
+            //   )}
+            // </li>
+          ))}
+
+        {/* <MemberCard />
         <Col>
           <div
             className="mb-2 mr-2"
@@ -102,19 +122,7 @@ const Members = () => {
           >
             member card
           </div>
-        </Col>
-        <Col>
-          <div
-            className="mb-2 mr-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#82ffc7",
-            }}
-          >
-            member card
-          </div>
-        </Col>
+        </Col> */}
       </Row>
       <Row>
         <Col sm={12} md={8}>

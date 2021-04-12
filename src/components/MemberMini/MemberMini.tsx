@@ -1,6 +1,7 @@
 import React from "react"
+import { IMemberMiniProps } from "./interface"
 
-const MemberMini = () => {
+const MemberMini = ({ username }: IMemberMiniProps) => {
   return (
     <div
       className="mb-2"
@@ -10,7 +11,7 @@ const MemberMini = () => {
         backgroundColor: "#05c1f6",
       }}
     >
-      member mini
+      {username}
     </div>
   )
 }
