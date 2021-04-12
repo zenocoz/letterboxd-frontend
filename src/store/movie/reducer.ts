@@ -28,6 +28,11 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
         ...state,
         movieInfo: action.payload,
       }
+    case actionTypes.REMOVE_MOVIE:
+      return {
+        ...state,
+        movieInfo: initialState,
+      }
   }
   return state
 }
@@ -40,4 +45,7 @@ export const getMovie = (query: string) => {
   }
 }
 
+export const clearMovieData = () => {
+  return { type: actionTypes.REMOVE_MOVIE }
+}
 export default reducer
