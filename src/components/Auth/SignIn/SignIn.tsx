@@ -63,7 +63,7 @@ const SignIn = () => {
           setSignIn(false)
           console.log("Response", response)
           dispatch(getUserInfo())
-          window.location.replace("/home")
+          // window.location.replace("/home")
         }
       } catch (err) {
         console.log("signin error", err)

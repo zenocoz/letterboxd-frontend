@@ -58,13 +58,13 @@ const Film = () => {
     }
   }, [])
 
-  const watch = (): void => {
-    API.addSeenToMovie(userInfo._id, _id)
+  const watch = async () => {
+    await API.addSeenToMovie(userInfo._id, _id)
     dispatch(updateWatchedMovies())
     dispatch(getMovie(imdbID))
   }
-  const unwatch = (): void => {
-    API.removeSeenMovie(userInfo._id, _id)
+  const unwatch = async () => {
+    await API.removeSeenMovie(userInfo._id, _id)
     dispatch(updateWatchedMovies())
     dispatch(getMovie(imdbID))
   }
