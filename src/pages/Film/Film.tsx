@@ -46,13 +46,16 @@ const Film = () => {
   } = useSelector((state: any) => state.movie.movieInfo)
 
   useEffect(() => {
+    setMovieRating(rating)
+  }, [rating])
+
+  useEffect(() => {
     dispatch(getMovie(imdbID))
   }, [imdbID, dispatch])
 
   useEffect(() => {
     if (seenBy && userInfo) {
       setWasSeen(checkViews(seenBy, userInfo._id))
-      console.log("use effect executed")
     }
   }, [seenBy, userInfo])
 
@@ -82,14 +85,11 @@ const Film = () => {
   const handleReviewLogChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setReviewText(e.target.value)
   }
-  // const handleRating = (e: any) => {
-  //   setMovieRating(e.target.value)
-  //   API.addRatingToMovie(userInfo._id, _id, movieRating)
-  // }
 
-  const submitRating = (e: any) => {
+  const submitRating = async (e: any) => {
     e.preventDefault()
-    API.addRatingToMovie(userInfo._id, _id, e.target.value)
+    await API.addRatingToMovie(userInfo._id, _id, e.target.value)
+    dispatch(getMovie(imdbID))
   }
 
   const submitReviewLog = async (e: any) => {
@@ -181,6 +181,7 @@ const Film = () => {
                           </Form.Control>
                         </Form.Group>
                       </div>
+                      <p>Rated {movieRating}</p>
                     </>
                   ) : (
                     <FontAwesomeIcon
@@ -193,7 +194,7 @@ const Film = () => {
                     />
                   )}
                 </p>
-                <p>Rated {rating}</p>
+
                 <button
                   onClick={() => {
                     setShowModalReview(true)
