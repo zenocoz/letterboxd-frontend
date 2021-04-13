@@ -31,7 +31,7 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
     case actionTypes.REMOVE_MOVIE:
       return {
         ...state,
-        movieInfo: initialState,
+        movieInfo: initialState.movieInfo,
       }
   }
   return state
