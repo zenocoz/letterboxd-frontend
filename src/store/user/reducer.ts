@@ -28,7 +28,7 @@ const reducer = (state: UserState = initialState, action: UserAction) => {
       return {
         ...state,
         loggedIn: false,
-        userInfo: initialState,
+        userInfo: initialState.userInfo,
       }
     case actionTypes.SET_WATCHED_MOVIES:
       return {

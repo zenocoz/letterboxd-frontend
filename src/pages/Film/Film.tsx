@@ -21,11 +21,13 @@ import {
   Button,
   Form,
 } from "react-bootstrap"
+import axios from "axios"
 
 const Film = () => {
   const { imdbID }: any = useParams() //ANY
   const [wasSeen, setWasSeen] = useState(false)
   const [showModalReview, setShowModalReview] = useState(false)
+  const [movieRating, setMovieRating] = useState(0)
 
   const dispatch = useDispatch()
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
@@ -40,6 +42,7 @@ const Film = () => {
     Plot,
     Director,
     seenBy,
+    rating,
   } = useSelector((state: any) => state.movie.movieInfo)
 
   useEffect(() => {
@@ -47,10 +50,11 @@ const Film = () => {
   }, [imdbID, dispatch])
 
   useEffect(() => {
-    if (seenBy && loggedIn) {
+    if (seenBy.length > 0 && loggedIn) {
       setWasSeen(checkViews(seenBy, userInfo._id))
+      console.log("use effect executed")
     }
-  }, [seenBy])
+  }, [seenBy, loggedIn])
 
   useEffect((): any => {
     return () => {
@@ -69,6 +73,37 @@ const Film = () => {
     dispatch(getMovie(imdbID))
   }
 
+  const [reviewText, setReviewText] = useState("")
+
+  const handleReviewLogChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setReviewText(e.target.value)
+  }
+  const handleRating = (e: any) => {
+    setMovieRating(e.target.value)
+    API.addRatingToMovie(userInfo._id, _id, movieRating)
+  }
+
+  const submitReviewLog = async (e: any) => {
+    e.preventDefault()
+    const reviewInfo = {
+      authorId: userInfo._id,
+      movieId: _id,
+      text: reviewText,
+    }
+    const config = {
+      headers: { "Content-type": "application/json" },
+    }
+    const response = await axios.post(
+      `${process.env.REACT_APP_LOCAL_SERVER}/api/reviews`,
+      reviewInfo,
+      config
+    )
+    if (response.statusText === "OK") {
+      console.log(`review added`, response.data)
+    } else {
+      console.log("something went wrong in adding review")
+    }
+  }
   return (
     <>
       <Row>
@@ -111,14 +146,36 @@ const Film = () => {
               <div className="icons">
                 <p>
                   {wasSeen ? (
-                    <FontAwesomeIcon
-                      icon={faEye}
-                      size="3x"
-                      color={"green"}
-                      onClick={() => {
-                        unwatch()
-                      }}
-                    />
+                    <>
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        size="3x"
+                        color={"green"}
+                        onClick={() => {
+                          unwatch()
+                        }}
+                      />
+
+                      <div style={{ width: "6rem" }}>
+                        <Form.Group>
+                          <Form.Label>Rate</Form.Label>
+                          <Form.Control
+                            type="number"
+                            value={movieRating}
+                            onChange={(e) => {
+                              handleRating(e)
+                            }}
+                            as="select"
+                          >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </div>
+                    </>
                   ) : (
                     <FontAwesomeIcon
                       icon={faEyeSlash}
@@ -130,7 +187,7 @@ const Film = () => {
                     />
                   )}
                 </p>
-                <p>Rated</p>
+                <p>Rated {rating}</p>
                 <button
                   onClick={() => {
                     setShowModalReview(true)
@@ -149,13 +206,14 @@ const Film = () => {
                     </Modal.Header>
 
                     <Modal.Body>
-                      <Form>
+                      <Form onSubmit={submitReviewLog}>
                         <Form.Group>
                           <Form.Control
                             type="text"
                             placeholder="Add a review"
+                            value={reviewText}
+                            onChange={handleReviewLogChange}
                           />
-                          <Form.Text>the movie was awesome</Form.Text>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicCheckbox">
@@ -189,40 +247,6 @@ const Film = () => {
             )}
           </div>
         </Col>
-
-        {/* <div className="details-container">
-          <h1>{Title}</h1>
-          <h2>{Director}</h2>
-          <h6>{Year}</h6>
-        </div>
-        <img src={Poster} style={{ width: "100%" }} />
-        {loggedIn && (
-          <div className="icons">
-            <p>
-              {wasSeen ? (
-                <FontAwesomeIcon
-                  icon={faEye}
-                  size="3x"
-                  color={"green"}
-                  onClick={() => {
-                    API.removeSeenMovie(userInfo._id, _id)
-                    setWasSeen(false)
-                  }}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  size="3x"
-                  color={"grey"}
-                  onClick={() => {
-                    API.addSeenToMovie(userInfo._id, _id)
-                    setWasSeen(true)
-                  }}
-                />
-              )}
-            </p>
-          </div>
-        )} */}
       </Row>
     </>
   )

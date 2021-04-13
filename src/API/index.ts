@@ -70,6 +70,18 @@ export const API = {
       console.log(err)
     }
   },
+  addRatingToMovie: async (userId: string, movieId: string, rating: number) => {
+    try {
+      const config = { rating, headers: { "Content-type": "application/json" } }
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/rate`,
+        config
+      )
+      console.log(response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  },
 
   getUser: async () => {
     try {
