@@ -23,7 +23,7 @@ export const initialState: MovieState = {
 
 const reducer = (state: MovieState = initialState, action: MovieAction) => {
   switch (action.type) {
-    case actionTypes.ADD_MOVIE:
+    case actionTypes.SET_MOVIE:
       return {
         ...state,
         movieInfo: action.payload,
@@ -40,7 +40,7 @@ const reducer = (state: MovieState = initialState, action: MovieAction) => {
 export const getMovie = (query: string) => {
   return (dispatch: DispatchType) => {
     API.getMoviesByImdbId(query)
-      .then((res) => dispatch({ type: actionTypes.ADD_MOVIE, payload: res }))
+      .then((res) => dispatch({ type: actionTypes.SET_MOVIE, payload: res }))
       .catch((err) => console.log(err))
   }
 }

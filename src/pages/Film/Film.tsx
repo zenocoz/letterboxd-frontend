@@ -50,11 +50,11 @@ const Film = () => {
   }, [imdbID, dispatch])
 
   useEffect(() => {
-    if (seenBy.length > 0 && loggedIn) {
+    if (seenBy && userInfo) {
       setWasSeen(checkViews(seenBy, userInfo._id))
       console.log("use effect executed")
     }
-  }, [seenBy, loggedIn])
+  }, [seenBy, userInfo])
 
   useEffect((): any => {
     return () => {
@@ -62,15 +62,19 @@ const Film = () => {
     }
   }, [])
 
-  const watch = async () => {
-    await API.addSeenToMovie(userInfo._id, _id)
-    dispatch(updateWatchedMovies())
-    dispatch(getMovie(imdbID))
+  const watch = () => {
+    Promise.all([API.addSeenToMovie(userInfo._id, _id)]).then((resp) => {
+      console.log(resp)
+      dispatch(updateWatchedMovies())
+      dispatch(getMovie(imdbID))
+    })
   }
-  const unwatch = async () => {
-    await API.removeSeenMovie(userInfo._id, _id)
-    dispatch(updateWatchedMovies())
-    dispatch(getMovie(imdbID))
+  const unwatch = () => {
+    Promise.all([API.removeSeenMovie(userInfo._id, _id)]).then((resp) => {
+      console.log(resp)
+      dispatch(updateWatchedMovies())
+      dispatch(getMovie(imdbID))
+    })
   }
 
   const [reviewText, setReviewText] = useState("")

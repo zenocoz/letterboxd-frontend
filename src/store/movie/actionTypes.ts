@@ -1,2 +1,2 @@
-export const ADD_MOVIE = "ADD_MOVIE"
+export const SET_MOVIE = "SET_MOVIE"
 export const REMOVE_MOVIE = "REMOVE_MOVIE"
