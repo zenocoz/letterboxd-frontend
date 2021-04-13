@@ -82,9 +82,14 @@ const Film = () => {
   const handleReviewLogChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setReviewText(e.target.value)
   }
-  const handleRating = (e: any) => {
-    setMovieRating(e.target.value)
-    API.addRatingToMovie(userInfo._id, _id, movieRating)
+  // const handleRating = (e: any) => {
+  //   setMovieRating(e.target.value)
+  //   API.addRatingToMovie(userInfo._id, _id, movieRating)
+  // }
+
+  const submitRating = (e: any) => {
+    e.preventDefault()
+    API.addRatingToMovie(userInfo._id, _id, e.target.value)
   }
 
   const submitReviewLog = async (e: any) => {
@@ -165,10 +170,7 @@ const Film = () => {
                           <Form.Label>Rate</Form.Label>
                           <Form.Control
                             type="number"
-                            value={movieRating}
-                            onChange={(e) => {
-                              handleRating(e)
-                            }}
+                            onChange={submitRating.bind(this)}
                             as="select"
                           >
                             <option value="1">1</option>
