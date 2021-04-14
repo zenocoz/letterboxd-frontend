@@ -27,6 +27,17 @@ export const API = {
     }
   },
 
+  getMoviesById: async (filmId: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/internal/${filmId}`
+      )
+      return response.data
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
   getAllMoviesData: async () => {
     try {
       const response = await axios.get(
@@ -144,6 +155,21 @@ export const API = {
       )
       if (movies) {
         return movies.data
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  getAllReviews: async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/reviews`
+      )
+      if (response) {
+        return response.data
+      } else {
+        console.log("didn't get reviews")
       }
     } catch (err) {
       console.log(err)

@@ -14,6 +14,7 @@ import SearchResults from "./pages/SearchResults/SearchResults"
 import Members from "./pages/Members/Members"
 import FilmSearch from "./pages/FilmSearch/FilmSearch"
 import FilmClub from "./pages/FilmClub/FilmClub"
+import Activity from "./pages/Activity/Activity"
 
 //components
 import NavBar from "./components/NavBar/NavBar"
@@ -43,6 +44,11 @@ function App() {
           <Route path="/members" exact render={(props) => <Members />}></Route>
           <Route path="/films" exact render={(props) => <FilmSearch />}></Route>
           <Route path="/club" exact render={(props) => <FilmClub />}></Route>
+          <Route
+            path="/activity"
+            exact
+            render={(props) => <Activity />}
+          ></Route>
           <Footer />
         </ContextProvider>
       </Container>

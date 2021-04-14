@@ -17,33 +17,41 @@ import {
   FormControl,
 } from "react-bootstrap"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
+import Review from "../../components/Review/Review"
 
 const FilmSearch = () => {
-  const [movies, setMovies] = useState<Array<IMovie>>([])
+  // const [movies, setMovies] = useState<Array<IMovie>>([])
+  const [reviews, setReviews] = useState([])
 
-  const findHighRatedMovies = async () => {
-    const movieData = await API.getAllMoviesData()
-    const sortedByRating = await movieData.sort(function (a: any, b: any) {
-      if (a.rating < b.rating) {
-        return 1
-      } else {
-        return -1
-      }
-    })
+  // const findHighRatedMovies = async () => {
+  //   const movieData = await API.getAllMoviesData()
+  //   const sortedByRating = await movieData.sort(function (a: any, b: any) {
+  //     if (a.rating < b.rating) {
+  //       return 1
+  //     } else {
+  //       return -1
+  //     }
+  //   })
 
-    const retrievedMovies: Array<Promise<IMovie>> = []
-    sortedByRating.slice(0, 4).forEach((sorted: any) => {
-      let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
-      retrievedMovies.push(movie)
-    })
+  //   const retrievedMovies: Array<Promise<IMovie>> = []
+  //   sortedByRating.slice(0, 4).forEach((sorted: any) => {
+  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
+  //     retrievedMovies.push(movie)
+  //   })
 
-    Promise.all(retrievedMovies).then((values) => {
-      console.log(values)
-      setMovies(values)
-    })
+  //   Promise.all(retrievedMovies).then((values) => {
+  //     console.log(values)
+  //     setMovies(values)
+  //   })
+  // }
+
+  const getPopularReviews = async () => {
+    const reviews = await API.getAllReviews()
+    setReviews(reviews)
   }
   useEffect(() => {
-    findHighRatedMovies()
+    // findHighRatedMovies()
+    getPopularReviews()
   }, [])
 
   return (
@@ -125,9 +133,16 @@ const FilmSearch = () => {
         <HighRatedMovies big={false} />
       </Row>
       <Row>
-        <Col sm={12} md={8}>
+        {reviews.length > 0 &&
+          reviews.map((review) => (
+            <Col sm={12} md={8}>
+              <Review {...review} />
+            </Col>
+          ))}
+        {/* <Col sm={12} md={8}>
+         
           <PopularReviews />
-        </Col>
+        </Col> */}
         <Col sm={12} md={4}>
           <PopularMembers />
         </Col>

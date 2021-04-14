@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Row } from "react-bootstrap"
 import { API } from "../../API"
 import MovieCard from "../../components/MovieCard/MovieCard"

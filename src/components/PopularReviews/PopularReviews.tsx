@@ -4,12 +4,12 @@ import Review from "../Review/Review"
 const PopularReviews = () => {
   return (
     <>
+      {/* <Review />
       <Review />
       <Review />
       <Review />
       <Review />
-      <Review />
-      <Review />
+      <Review /> */}
     </>
   )
 }

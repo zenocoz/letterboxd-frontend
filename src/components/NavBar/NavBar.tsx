@@ -25,10 +25,6 @@ const NavBar = () => {
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
   const dispatch = useDispatch()
 
-  //Context
-  // const { providerUser }: any = useContext(UserContext) //ANY used only for developing
-  // const { user, setUser } = providerUser
-
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
   const { signIn, setSignIn } = providerModals.signInModal
@@ -67,7 +63,13 @@ const NavBar = () => {
                 >
                   {userInfo.username}
                 </Nav.Link>
-                <Nav.Link>ACTIVITY</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/activity")
+                  }}
+                >
+                  ACTIVITY
+                </Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     history.push("/films")

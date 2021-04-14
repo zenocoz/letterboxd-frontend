@@ -25,6 +25,7 @@ const Landing = () => {
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
+  //DO NOT DELETE - use to retrieve a minimum of movies when collection is
   // const [movies, setMovies] = useState<Array<IMovie>>([])
 
   // const findHighRatedMovies = async () => {
@@ -58,6 +59,12 @@ const Landing = () => {
   //     "tt0086984",
   //     "tt0076740",
   //     "tt0075612",
+  // "tt0079256",
+  // "tt0088247",
+  // "tt0070359",
+  // "tt9620292",
+  // "tt0066921",
+  // "tt0974015"
   //   ]
   //   const retrievedMovies: Array<Promise<IMovie>> = []
   //   imdbIds.forEach((imdbId) => {
@@ -70,6 +77,11 @@ const Landing = () => {
   //     setMovies(values)
   //   })
   // }
+  //
+  // {movies.length > 0 &&
+  // movies.map((movie: IMovie) => (
+  //   <MovieCard movie={movie} key={movie.imdbID} />
+  // ))}
 
   return (
     <>

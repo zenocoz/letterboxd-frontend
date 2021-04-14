@@ -1,6 +1,7 @@
 import React from "react"
+import { IReviewProps } from "./interface"
 
-const Review = () => {
+const Review = ({ text }: IReviewProps) => {
   return (
     <div
       className="mb-2"
@@ -10,7 +11,7 @@ const Review = () => {
         backgroundColor: "#e68eb5",
       }}
     >
-      review
+      {text}
     </div>
   )
 }
