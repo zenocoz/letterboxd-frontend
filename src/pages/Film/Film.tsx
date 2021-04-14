@@ -45,9 +45,22 @@ const Film = () => {
     rating,
   } = useSelector((state: any) => state.movie.movieInfo)
 
+  const getRating = (): number => {
+    const movie = userInfo.watchedMovies.find((movie: any) => movie._id === _id)
+    if (movie) {
+      console.log("movie id", movie)
+      console.log("get rating", movie.rating)
+      return movie.rating
+    } else {
+      console.log("couldn't retrieve rating")
+      return 0
+    }
+  }
+
   useEffect(() => {
-    setMovieRating(rating)
-  }, [rating])
+    setMovieRating(getRating())
+    console.log("Effect triggered")
+  }, [userInfo.watchedMovies])
 
   useEffect(() => {
     dispatch(getMovie(imdbID))
@@ -88,8 +101,13 @@ const Film = () => {
 
   const submitRating = async (e: any) => {
     e.preventDefault()
-    await API.addRatingToMovie(userInfo._id, _id, e.target.value)
-    dispatch(getMovie(imdbID))
+    Promise.all([
+      await API.addRatingToMovie(userInfo._id, _id, e.target.value),
+    ]).then((resp) => {
+      console.log(resp)
+      dispatch(updateWatchedMovies())
+      dispatch(getMovie(imdbID))
+    })
   }
 
   const submitReviewLog = async (e: any) => {
