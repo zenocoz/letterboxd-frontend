@@ -1,5 +1,3 @@
-import React from "react"
-
 //hooks and context
 import { useEffect, useState } from "react"
 
@@ -16,24 +14,20 @@ import { Row } from "react-bootstrap"
 const PopularMovies = () => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
-  const getMovies = (): void => {
-    const imdbIds: Array<string> = [
-      "tt9620292",
-      "tt0066921",
-      "tt0067641",
-      "tt0974015",
-      "tt0070359",
-      "tt0102511",
-      "tt0037820",
-      "tt0086617",
-      "tt0090756",
-      "tt0069293",
-      "tt0092099",
-      "tt0053779",
-    ]
+  const findPopularMovies = async () => {
+    const movieData = await API.getAllMoviesData()
+
+    const sortedMovies = await movieData.sort(function (a: any, b: any) {
+      if (a.views < b.views) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+    console.log(sortedMovies)
     const retrievedMovies: Array<Promise<IMovie>> = []
-    imdbIds.forEach((imdbId) => {
-      let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
+    sortedMovies.slice(0, 11).forEach((sorted: any) => {
+      let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
       retrievedMovies.push(movie)
     })
 
@@ -44,7 +38,7 @@ const PopularMovies = () => {
   }
 
   useEffect(() => {
-    getMovies()
+    findPopularMovies()
   }, [])
 
   return (
@@ -54,12 +48,6 @@ const PopularMovies = () => {
           <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
         ))}
     </Row>
-    // <div className="popular d-flex">
-    //   {movies.length > 0 &&
-    //     movies.map((movie): any => (
-    //       <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
-    //     ))}
-    // </div>
   )
 }
 

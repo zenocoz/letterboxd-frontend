@@ -26,6 +26,21 @@ export const API = {
       console.log(err)
     }
   },
+
+  getAllMoviesData: async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/globalData`
+      )
+      if (response.statusText === "OK") {
+        return response.data
+      } else {
+        console.log("something wrong in getting all movies data")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
   searchByKeyword: async (query: string) => {
     //searches first in own db then external if not found
     const response = await axios.get(

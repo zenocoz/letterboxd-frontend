@@ -14,6 +14,7 @@ export interface IMovie {
   imdbID: string
   seenBy: IUser[]
   rating: number
+  views: number
 }
 
 export interface IUser {

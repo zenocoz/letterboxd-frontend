@@ -19,6 +19,7 @@ export const initialState: MovieState = {
     imdbID: "",
     seenBy: [],
     rating: 0,
+    views: 0,
   },
 }
 

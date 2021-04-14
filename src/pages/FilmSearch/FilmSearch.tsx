@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./FilmSearch.css"
 import Banner from "../../components/Banner/Banner"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
+import { IMovie } from "../../interface"
+import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
+import { API } from "../../API"
 
 import {
   Row,
@@ -13,8 +16,36 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap"
+import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 const FilmSearch = () => {
+  const [movies, setMovies] = useState<Array<IMovie>>([])
+
+  const findHighRatedMovies = async () => {
+    const movieData = await API.getAllMoviesData()
+    const sortedByRating = await movieData.sort(function (a: any, b: any) {
+      if (a.rating < b.rating) {
+        return 1
+      } else {
+        return -1
+      }
+    })
+
+    const retrievedMovies: Array<Promise<IMovie>> = []
+    sortedByRating.slice(0, 4).forEach((sorted: any) => {
+      let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
+      retrievedMovies.push(movie)
+    })
+
+    Promise.all(retrievedMovies).then((values) => {
+      console.log(values)
+      setMovies(values)
+    })
+  }
+  useEffect(() => {
+    findHighRatedMovies()
+  }, [])
+
   return (
     <>
       <Row>
@@ -82,60 +113,16 @@ const FilmSearch = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm={12} md={3}>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "40vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular movie
-          </div>
-        </Col>
-        <Col sm={12} md={3}>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "40vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular movie
-          </div>
-        </Col>
-        <Col sm={12} md={3}>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "40vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular movie
-          </div>
-        </Col>
-        <Col sm={12} md={3}>
-          <div
-            className="mb-2"
-            style={{
-              width: "100%",
-              height: "40vh",
-              backgroundColor: "#848b99",
-            }}
-          >
-            popular movie
-          </div>
-        </Col>
+        <HighRatedMovies big={true} />
       </Row>
       <Row>
         <Banner />
       </Row>
       <Row>
         <PopularMovies />
+      </Row>
+      <Row>
+        <HighRatedMovies big={false} />
       </Row>
       <Row>
         <Col sm={12} md={8}>

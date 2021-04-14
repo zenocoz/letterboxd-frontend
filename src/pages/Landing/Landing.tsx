@@ -7,13 +7,14 @@ import "./Landing.css"
 import { IMovie } from "../../interface"
 
 //components and apis
-import MovieCard from "../../components/MovieCard/MovieCard"
+// import MovieCard from "../../components/MovieCard/MovieCard"
 import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import Banner from "../../components/Banner/Banner"
 import SiteOffers from "../../components/SiteOffers/SiteOffers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import List from "../../components/List/List"
+import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 import { API } from "../../API"
 
@@ -24,33 +25,51 @@ const Landing = () => {
   const { providerModals }: any = useContext(UserContext)
   const { createAccount, setCreateAccount } = providerModals.accountModal
 
-  const [movies, setMovies] = useState<Array<IMovie>>([])
+  // const [movies, setMovies] = useState<Array<IMovie>>([])
+
+  // const findHighRatedMovies = async () => {
+  //   const movieData = await API.getAllMoviesData()
+  //   const sortedByRating = await movieData.sort(function (a: any, b: any) {
+  //     if (a.rating < b.rating) {
+  //       return 1
+  //     } else {
+  //       return -1
+  //     }
+  //   })
+
+  //   const retrievedMovies: Array<Promise<IMovie>> = []
+  //   sortedByRating.slice(0, 6).forEach((sorted: any) => {
+  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
+  //     retrievedMovies.push(movie)
+  //   })
+
+  //   Promise.all(retrievedMovies).then((values) => {
+  //     console.log(values)
+  //     setMovies(values)
+  //   })
+  // }
 
   //placeholder function
-  const getMovies = (): void => {
-    const imdbIds: Array<string> = [
-      "tt0072684",
-      "tt0078788",
-      "tt0079501",
-      "tt0086984",
-      "tt0076740",
-      "tt0075612",
-    ]
-    const retrievedMovies: Array<Promise<IMovie>> = []
-    imdbIds.forEach((imdbId) => {
-      let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
-      retrievedMovies.push(movie)
-    })
+  // const getMovies = (): void => {
+  //   const imdbIds: Array<string> = [
+  //     "tt0072684",
+  //     "tt0078788",
+  //     "tt0079501",
+  //     "tt0086984",
+  //     "tt0076740",
+  //     "tt0075612",
+  //   ]
+  //   const retrievedMovies: Array<Promise<IMovie>> = []
+  //   imdbIds.forEach((imdbId) => {
+  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
+  //     retrievedMovies.push(movie)
+  //   })
 
-    Promise.all(retrievedMovies).then((values) => {
-      console.log(values)
-      setMovies(values)
-    })
-  }
-
-  useEffect(() => {
-    getMovies()
-  }, [])
+  //   Promise.all(retrievedMovies).then((values) => {
+  //     console.log(values)
+  //     setMovies(values)
+  //   })
+  // }
 
   return (
     <>
@@ -80,12 +99,7 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <Row className="md-8 mb-4">
-        {movies.length > 0 &&
-          movies.map((movie: IMovie) => (
-            <MovieCard movie={movie} key={movie.imdbID} />
-          ))}
-      </Row>
+      <HighRatedMovies big={false} />
       <Row>
         <Banner />
       </Row>

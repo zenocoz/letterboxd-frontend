@@ -60,7 +60,13 @@ const NavBar = () => {
           <Nav>
             {loggedIn ? (
               <>
-                <Nav.Link>{userInfo.username}</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    history.push("/home")
+                  }}
+                >
+                  {userInfo.username}
+                </Nav.Link>
                 <Nav.Link>ACTIVITY</Nav.Link>
                 <Nav.Link
                   onClick={() => {

@@ -28,7 +28,7 @@ const Film = () => {
   const [wasSeen, setWasSeen] = useState(false)
   const [showModalReview, setShowModalReview] = useState(false)
   const [movieRating, setMovieRating] = useState(0)
-  const [globalRating, setGlobalRating] = useState(0)
+  // const [globalRating, setGlobalRating] = useState(0)
 
   const dispatch = useDispatch()
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
@@ -100,15 +100,10 @@ const Film = () => {
 
   const calculateGlobalRating = async (e: any) => {
     e.preventDefault()
-
     const userRating = parseInt(e.target.value, 10)
     const rating10 = parseInt(rating, 10)
     const members = await API.getAllMembers()
     let globalRating = (userRating + rating10) / members.length
-
-    console.log("userRating + rating", userRating + rating)
-
-    console.log("global rating", globalRating)
     await submitRating(userRating, globalRating)
   }
 

@@ -36,14 +36,15 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
   return (
     <>
       {loggedIn ? (
-        <Col className="md-8 mb-4" md={1}>
+        <Col className="md-8 mb-4 mr-2" md={1} style={{ height: "10rem" }}>
           <Card
             className="movie-card position-relative"
-            style={{ width: "10rem" }}
+            style={{ width: "100%" }}
           >
             <Card.Img
               className="img-fluid rounded w-100"
               variant="top"
+              style={{ width: "100%" }}
               src={movie.Poster}
             />
             <div className="options-container">
@@ -107,6 +108,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
             <Card.Img
               className="img-fluid rounded w-100"
               variant="top"
+              style={{ width: "100%", height: "100%" }}
               src={movie.Poster}
               onClick={() => history.push(`/film/${movie.imdbID}`)}
             />

@@ -12,6 +12,7 @@ import { Row, Button } from "react-bootstrap"
 import { UserContext } from "../../context"
 import { useHistory } from "react-router-dom"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
+import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 const Home = () => {
   const history = useHistory()
@@ -83,7 +84,7 @@ const Home = () => {
           newMovies.map((movie: IMovie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))} */}
-        <PopularMovies />
+        <HighRatedMovies big={true} />
       </Row>
       <Row>
         <PopularMovies />
