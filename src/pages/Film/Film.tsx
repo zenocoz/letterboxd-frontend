@@ -28,6 +28,7 @@ const Film = () => {
   const [wasSeen, setWasSeen] = useState(false)
   const [showModalReview, setShowModalReview] = useState(false)
   const [movieRating, setMovieRating] = useState(0)
+  const [globalRating, setGlobalRating] = useState(0)
 
   const dispatch = useDispatch()
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
@@ -48,7 +49,6 @@ const Film = () => {
   const getRating = (): number => {
     const movie = userInfo.watchedMovies.find((movie: any) => movie._id === _id)
     if (movie) {
-      console.log("movie id", movie)
       console.log("get rating", movie.rating)
       return movie.rating
     } else {
@@ -59,8 +59,7 @@ const Film = () => {
 
   useEffect(() => {
     setMovieRating(getRating())
-    console.log("Effect triggered")
-  }, [userInfo.watchedMovies])
+  }, [userInfo.watchedMovies, _id, wasSeen])
 
   useEffect(() => {
     dispatch(getMovie(imdbID))
@@ -99,10 +98,23 @@ const Film = () => {
     setReviewText(e.target.value)
   }
 
-  const submitRating = async (e: any) => {
+  const calculateGlobalRating = async (e: any) => {
     e.preventDefault()
+
+    const userRating = parseInt(e.target.value, 10)
+    const rating10 = parseInt(rating, 10)
+    const members = await API.getAllMembers()
+    let globalRating = (userRating + rating10) / members.length
+
+    console.log("userRating + rating", userRating + rating)
+
+    console.log("global rating", globalRating)
+    await submitRating(userRating, globalRating)
+  }
+
+  const submitRating = async (userRating: number, globalRating: number) => {
     Promise.all([
-      await API.addRatingToMovie(userInfo._id, _id, e.target.value),
+      await API.addRatingToMovie(userInfo._id, _id, userRating, globalRating),
     ]).then((resp) => {
       console.log(resp)
       dispatch(updateWatchedMovies())
@@ -188,7 +200,7 @@ const Film = () => {
                           <Form.Label>Rate</Form.Label>
                           <Form.Control
                             type="number"
-                            onChange={submitRating.bind(this)}
+                            onChange={calculateGlobalRating.bind(this)}
                             as="select"
                           >
                             <option value="1">1</option>

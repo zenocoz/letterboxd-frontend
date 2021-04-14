@@ -70,11 +70,17 @@ export const API = {
       console.log(err)
     }
   },
-  addRatingToMovie: async (userId: string, movieId: string, rating: number) => {
+  addRatingToMovie: async (
+    userId: string,
+    movieId: string,
+    userRating: number,
+    globalRating: number
+  ) => {
     try {
       const config = {
         userId,
-        rating,
+        userRating,
+        globalRating,
         headers: { "Content-type": "application/json" },
       }
       const response = await axios.put(
@@ -99,7 +105,6 @@ export const API = {
           withCredentials: true,
         }
       )
-      console.log("getUSer,", user.data)
       return user.data
     } catch (err) {
       console.log(err)

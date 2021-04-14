@@ -48,7 +48,6 @@ export const getUserInfo = () => {
   return (dispatch: DispatchType) => {
     API.getUser()
       .then((res) => {
-        console.log("getUserInfo", res)
         dispatch({ type: actionTypes.SET_USER, payload: res })
       })
       .catch((err) => console.log("getUserInfoerr", err))
@@ -59,7 +58,6 @@ export const updateWatchedMovies = () => {
   return (dispatch: DispatchType) => {
     API.getUser()
       .then((res) => {
-        console.log("getUserInfo", res)
         dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
       })
       .catch((err) => console.log("set watched movies error", err))

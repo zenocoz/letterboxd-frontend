@@ -13,6 +13,7 @@ export interface IMovie {
   Poster: string
   imdbID: string
   seenBy: IUser[]
+  rating: number
 }
 
 export interface IUser {
