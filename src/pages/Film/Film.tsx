@@ -4,6 +4,7 @@ import { getMovie, clearMovieData } from "../../store/movie/reducer"
 import { API } from "../../API"
 import { updateWatchedMovies } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
+import { useMovieStatus } from "../../custom_hooks"
 
 //styles
 import "./Film.css"
@@ -46,6 +47,8 @@ const Film = () => {
     rating,
   } = useSelector((state: any) => state.movie.movieInfo)
 
+  const actions = useMovieStatus(userInfo._id, _id, imdbID)
+
   const getRating = (): number => {
     const movie = userInfo.watchedMovies.find((movie: any) => movie._id === _id)
     if (movie) {
@@ -77,20 +80,20 @@ const Film = () => {
     }
   }, [])
 
-  const watch = () => {
-    Promise.all([API.addSeenToMovie(userInfo._id, _id)]).then((resp) => {
-      console.log(resp)
-      dispatch(updateWatchedMovies())
-      dispatch(getMovie(imdbID))
-    })
-  }
-  const unwatch = () => {
-    Promise.all([API.removeSeenMovie(userInfo._id, _id)]).then((resp) => {
-      console.log(resp)
-      dispatch(updateWatchedMovies())
-      dispatch(getMovie(imdbID))
-    })
-  }
+  // const watch = () => {
+  //   Promise.all([API.addSeenToMovie(userInfo._id, _id)]).then((resp) => {
+  //     console.log(resp)
+  //     dispatch(updateWatchedMovies())
+  //     dispatch(getMovie(imdbID))
+  //   })
+  // }
+  // const unwatch = () => {
+  //   Promise.all([API.removeSeenMovie(userInfo._id, _id)]).then((resp) => {
+  //     console.log(resp)
+  //     dispatch(updateWatchedMovies())
+  //     dispatch(getMovie(imdbID))
+  //   })
+  // }
 
   const [reviewText, setReviewText] = useState("")
 
@@ -188,7 +191,7 @@ const Film = () => {
                         size="3x"
                         color={"green"}
                         onClick={() => {
-                          unwatch()
+                          actions.unwatch()
                         }}
                       />
 
@@ -216,7 +219,7 @@ const Film = () => {
                       size="3x"
                       color={"grey"}
                       onClick={() => {
-                        watch()
+                        actions.watch()
                       }}
                     />
                   )}

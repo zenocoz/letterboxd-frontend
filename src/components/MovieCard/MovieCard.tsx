@@ -1,6 +1,7 @@
 //redux and hooks
 import { useContext, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useMovieStatus } from "../../custom_hooks"
 
 import { IMovieCardProps } from "./interface"
 // import { UserContext } from "../../context"
@@ -22,6 +23,8 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
 
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
+  const actions = useMovieStatus(userInfo._id, movie._id, movie.imdbID)
+
   useEffect(() => {
     if (loggedIn) {
       let movieChecked: boolean = checkViews(movie.seenBy, userInfo._id)
@@ -31,7 +34,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
         setWasSeen(false)
       }
     }
-  }, [loggedIn])
+  }, [loggedIn, actions])
 
   return (
     <>
@@ -70,8 +73,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                         size="3x"
                         color={"green"}
                         onClick={() => {
-                          API.removeSeenMovie(userInfo._id, movie._id)
-                          setWasSeen(false)
+                          actions.unwatch()
                         }}
                       />
                     ) : (
@@ -80,8 +82,7 @@ const MovieCard = ({ movie }: IMovieCardProps) => {
                         size="3x"
                         color={"grey"}
                         onClick={() => {
-                          API.addSeenToMovie(userInfo._id, movie._id)
-                          setWasSeen(true)
+                          actions.watch()
                         }}
                       />
                     )}
