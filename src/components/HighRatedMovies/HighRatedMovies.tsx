@@ -36,6 +36,15 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
     findHighRatedMovies()
   }, [])
 
+  const [hovered, setHovered] = useState(-1)
+  // const movie = {
+  //   image:
+  //     "https://i.pinimg.com/736x/dc/66/64/dc666425b307216596a9b197aa885922.jpg"
+  // };
+  function like(i: number) {
+    alert(`Liked movie is ${i}`)
+  }
+
   return (
     <>
       {big
@@ -46,11 +55,25 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               <MovieCardBig {...movie} key={movie.imdbID} />
             ))
         : movies.length > 0 &&
-          movies
-            .slice(0, limit)
-            .map((movie: IMovie) => (
-              <MovieCard movie={movie} key={movie.imdbID} />
-            ))}
+          movies.slice(0, limit).map((movie: IMovie, i: number) => (
+            <MovieCard
+              movie={movie}
+              key={movie.imdbID}
+              onMouseLeave={() => setHovered(-1)}
+              onMouseEnter={() => setHovered(i)}
+              hovered={hovered === i}
+              actions={[
+                {
+                  icon: "❤️",
+                  handler: () => like(i),
+                },
+                {
+                  icon: "⭐️",
+                  handler: () => alert(`starred movie is ${i}`),
+                },
+              ]}
+            />
+          ))}
     </>
   )
 }
