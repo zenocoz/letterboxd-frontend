@@ -121,7 +121,7 @@ const FilmSearch = () => {
         </Col>
       </Row>
       <Row>
-        <HighRatedMovies big={true} />
+        <HighRatedMovies big={true} limit={4} />
       </Row>
       <Row>
         <Banner />
@@ -130,7 +130,7 @@ const FilmSearch = () => {
         <PopularMovies />
       </Row>
       <Row>
-        <HighRatedMovies big={false} />
+        <HighRatedMovies big={false} limit={12} />
       </Row>
       <Row>
         {reviews.length > 0 &&

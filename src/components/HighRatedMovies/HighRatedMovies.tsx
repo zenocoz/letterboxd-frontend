@@ -8,7 +8,7 @@ import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
 import { IMovie } from "../../interface"
 import { IHighRatedMovies } from "./interface"
 
-const HighRatedMovies = ({ big }: IHighRatedMovies) => {
+const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
   const findHighRatedMovies = async () => {
@@ -37,19 +37,21 @@ const HighRatedMovies = ({ big }: IHighRatedMovies) => {
   }, [])
 
   return (
-    <Row className="md-8 mb-4 high-rated d-flex">
+    <>
       {big
         ? movies.length > 0 &&
           movies
-            .slice(0, 4)
+            .slice(0, limit)
             .map((movie: IMovie) => (
               <MovieCardBig {...movie} key={movie.imdbID} />
             ))
         : movies.length > 0 &&
-          movies.map((movie: IMovie) => (
-            <MovieCard movie={movie} key={movie.imdbID} />
-          ))}
-    </Row>
+          movies
+            .slice(0, limit)
+            .map((movie: IMovie) => (
+              <MovieCard movie={movie} key={movie.imdbID} />
+            ))}
+    </>
   )
 }
 

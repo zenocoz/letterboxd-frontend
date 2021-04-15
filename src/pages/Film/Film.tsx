@@ -141,7 +141,9 @@ const Film = () => {
   return (
     <>
       <Row>
-        <Jumbotron>BIG PICTURE</Jumbotron>
+        <Col>
+          <Jumbotron>BIG PICTURE</Jumbotron>
+        </Col>
       </Row>
       <Row>
         <Col xs={12} md={3}>

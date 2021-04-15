@@ -9,6 +9,7 @@ const PopularMembers = () => {
 
   const getMembers = async () => {
     const members = await API.getAllMembers()
+
     setMemberList(members)
   }
 

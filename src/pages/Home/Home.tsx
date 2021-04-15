@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <Row>
-        <HighRatedMovies big={true} />
+        <HighRatedMovies big={true} limit={4} />
       </Row>
       <Row>
         <PopularMovies />

@@ -16,7 +16,7 @@ import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import List from "../../components/List/List"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
-import { API } from "../../API"
+// import { API } from "../../API"
 
 //external libraries
 import { Row, Jumbotron, Button, Col } from "react-bootstrap"
@@ -111,7 +111,9 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <HighRatedMovies big={false} />
+      <Row className="md-8 mb-4 high-rated d-flex">
+        <HighRatedMovies big={false} limit={6} />
+      </Row>
       <Row>
         <Banner />
       </Row>

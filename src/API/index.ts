@@ -142,7 +142,11 @@ export const API = {
       const members = await axios.get(
         `${process.env.REACT_APP_LOCAL_SERVER}/api/users`
       )
-      return members.data
+      if (members) {
+        return members.data
+      } else {
+        console.log("couldn't fetch all members")
+      }
     } catch (err) {
       console.log(err)
     }
