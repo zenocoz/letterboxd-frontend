@@ -123,9 +123,7 @@ const FilmSearch = () => {
       <Row>
         <HighRatedMovies big={true} limit={4} />
       </Row>
-      <Row>
-        <Banner />
-      </Row>
+      <Banner />
       <Row>
         <PopularMovies />
       </Row>

@@ -62,7 +62,8 @@ const MovieCard = (props: any) => {
   ]
 
   return (
-    <Col
+    <div
+      className="col sm-12 md-8"
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
@@ -106,7 +107,7 @@ const MovieCard = (props: any) => {
             <span onClick={action.handler}>{action.icon}</span>
           ))}
       </div>
-    </Col>
+    </div>
   )
 }
 

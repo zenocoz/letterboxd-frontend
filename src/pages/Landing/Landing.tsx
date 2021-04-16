@@ -93,9 +93,16 @@ const Landing = () => {
       </Row>
       <Row>
         {" "}
-        <Col className="md-8 mb-4" style={{ height: "100px" }}>
+        <Col
+          className="md-8 mb-4"
+          style={{
+            height: "100px",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {" "}
-          <div className="welcome-texts">
+          <div className="welcome-texts md-8">
             <h1>Track films you've watched.</h1>
             <h1>Save those you want to see.</h1>
             <h1>Tell your friends what's good.</h1>
