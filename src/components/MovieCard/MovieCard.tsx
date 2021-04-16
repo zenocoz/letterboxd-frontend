@@ -18,6 +18,10 @@ import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import "./MovieCard.css"
 
 const MovieCard = (props: any) => {
+  const width = "100%"
+  const height = "100%"
+  const { movie, loggedIn = [] } = props
+
   const history = useHistory()
 
   const { userInfo } = useSelector((state: any) => state.user)
@@ -26,35 +30,17 @@ const MovieCard = (props: any) => {
     props.movie._id,
     props.movie.imdbID
   )
-
-  // const actions = useMovieStatus(userInfo._id, movie._id, movie.imdbID)
-
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     let movieChecked: boolean = checkViews(movie.seenBy, userInfo._id)
-  //     if (movieChecked === true) {
-  //       setWasSeen(true)
-  //     } else {
-  //       setWasSeen(false)
-  //     }
-  //   }
-  // }, [loggedIn, actions])
-
-  const width = "100%"
-  const height = "100%"
-  const { movie, actions, loggedIn, seen = [] } = props
+  const [movieSeen, setMovieSeen] = useState<any>(false)
 
   function like(i: number) {
     alert(`Liked movie is }`)
   }
 
-  const [movieSeen, setMovieSeen] = useState<any>(false)
-
   useEffect(() => {
     setMovieSeen(checkUserViews(userInfo.watchedMovies, movie._id))
   }, [userInfo.watchedMovies])
 
-  const actionsNew = [
+  const actions = [
     {
       icon: "❤️",
       handler: () => like(1),
@@ -114,7 +100,7 @@ const MovieCard = (props: any) => {
         }}
       >
         {loggedIn &&
-          actionsNew.map((action: any) => (
+          actions.map((action: any) => (
             <span onClick={action.handler}>{action.icon}</span>
           ))}
       </div>

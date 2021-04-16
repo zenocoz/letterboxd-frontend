@@ -42,7 +42,7 @@ const PopularMovies = () => {
   }, [])
 
   return (
-    <Row className="popular d-flex">
+    <Row className="popular mt-5 d-flex">
       {movies.length > 0 &&
         movies.map((movie): any => (
           <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />

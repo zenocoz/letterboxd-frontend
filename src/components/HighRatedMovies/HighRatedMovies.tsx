@@ -11,6 +11,7 @@ import { useMovieStatus } from "../../custom_hooks"
 //types and style
 import { IMovie } from "../../interface"
 import { IHighRatedMovies } from "./interface"
+import "./HighRatedMovies.css"
 
 const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
@@ -52,13 +53,20 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   }
 
   return (
-    <>
+    <Row className="mt-5 mb-4 d-flex no-gutters high-rated">
       {big
         ? movies.length > 0 &&
           movies
             .slice(0, limit)
-            .map((movie: IMovie) => (
-              <MovieCardBig {...movie} key={movie.imdbID} />
+            .map((movie: IMovie, i: number) => (
+              <MovieCardBig
+                {...movie}
+                key={i}
+                loggedIn={loggedIn}
+                onMouseLeave={() => setHovered(-1)}
+                onMouseEnter={() => setHovered(i)}
+                hovered={hovered === i}
+              />
             ))
         : movies.length > 0 &&
           movies.slice(0, limit).map((movie: IMovie, i: number) => (
@@ -69,7 +77,6 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               onMouseLeave={() => setHovered(-1)}
               onMouseEnter={() => setHovered(i)}
               hovered={hovered === i}
-              seen={movie.seenBy.some((user) => user._id === userInfo._id)} //test
               // actions={[
               //   {
               //     icon: "❤️",
@@ -88,7 +95,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               // ]}
             />
           ))}
-    </>
+    </Row>
   )
 }
 

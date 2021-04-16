@@ -4,4 +4,12 @@
   background-color: #1c2228;
   margin-top: 20px;
   justify-content: space-between;
+  position: relative;
+}
+
+.popular::before {
+  content: "Popular movies";
+  color: white;
+  position: absolute;
+  top: -30px;
 }
