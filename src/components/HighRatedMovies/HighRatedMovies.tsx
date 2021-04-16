@@ -6,6 +6,7 @@ import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
+import { useMovieStatus } from "../../custom_hooks"
 
 //types and style
 import { IMovie } from "../../interface"
@@ -68,22 +69,23 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               onMouseLeave={() => setHovered(-1)}
               onMouseEnter={() => setHovered(i)}
               hovered={hovered === i}
-              actions={[
-                {
-                  icon: "❤️",
-                  handler: () => like(i),
-                },
-                {
-                  icon:
-                    movie.seenBy.length > 0 &&
-                    movie.seenBy.find((user) => user._id === userInfo._id) ? (
-                      <FontAwesomeIcon icon={faEye} color={"green"} />
-                    ) : (
-                      <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
-                    ),
-                  handler: () => alert(`starred movie is ${i}`),
-                },
-              ]}
+              seen={movie.seenBy.some((user) => user._id === userInfo._id)} //test
+              // actions={[
+              //   {
+              //     icon: "❤️",
+              //     handler: () => like(i),
+              //   },
+              //   {
+              //     icon:
+              //       movie.seenBy.length > 0 &&
+              //       movie.seenBy.find((user) => user._id === userInfo._id) ? (
+              //         <FontAwesomeIcon icon={faEye} color={"green"} />
+              //       ) : (
+              //         <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+              //       ),
+              //     handler: () => alert(`starred movie is ${i}`),
+              //   },
+              // ]}
             />
           ))}
     </>
@@ -91,3 +93,5 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
 }
 
 export default HighRatedMovies
+
+// handler: () => alert(`starred movie is ${i}`)

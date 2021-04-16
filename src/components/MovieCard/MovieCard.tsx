@@ -6,7 +6,7 @@ import { useMovieStatus } from "../../custom_hooks"
 import { IMovieCardProps } from "./interface"
 // import { UserContext } from "../../context"
 import { API } from "../../API"
-import { checkViews } from "../../utils"
+import { checkViews, checkUserViews } from "../../utils"
 
 //external libraries
 import { Card, Col } from "react-bootstrap"
@@ -19,9 +19,13 @@ import "./MovieCard.css"
 
 const MovieCard = (props: any) => {
   const history = useHistory()
-  const [wasSeen, setWasSeen] = useState(false)
 
-  // const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const { userInfo } = useSelector((state: any) => state.user)
+  const movieAction = useMovieStatus(
+    userInfo._id,
+    props.movie._id,
+    props.movie.imdbID
+  )
 
   // const actions = useMovieStatus(userInfo._id, movie._id, movie.imdbID)
 
@@ -38,7 +42,38 @@ const MovieCard = (props: any) => {
 
   const width = "100%"
   const height = "100%"
-  const { movie, actions, loggedIn = [] } = props
+  const { movie, actions, loggedIn, seen = [] } = props
+
+  function like(i: number) {
+    alert(`Liked movie is }`)
+  }
+
+  const [movieSeen, setMovieSeen] = useState<any>(false)
+
+  useEffect(() => {
+    setMovieSeen(checkUserViews(userInfo.watchedMovies, movie._id))
+  }, [userInfo.watchedMovies])
+
+  const actionsNew = [
+    {
+      icon: "❤️",
+      handler: () => like(1),
+    },
+    {
+      icon: movieSeen ? (
+        <FontAwesomeIcon icon={faEye} color={"green"} />
+      ) : (
+        <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+      ),
+      handler: movieSeen
+        ? () => {
+            movieAction.unwatch()
+          }
+        : () => {
+            movieAction.watch()
+          },
+    },
+  ]
 
   return (
     <Col
@@ -79,7 +114,7 @@ const MovieCard = (props: any) => {
         }}
       >
         {loggedIn &&
-          actions.map((action: any) => (
+          actionsNew.map((action: any) => (
             <span onClick={action.handler}>{action.icon}</span>
           ))}
       </div>
