@@ -111,7 +111,7 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <Row className="md-8 mb-4 high-rated d-flex">
+      <Row className="mb-4 d-flex no-gutters">
         <HighRatedMovies big={false} limit={6} />
       </Row>
       <Row>
@@ -127,13 +127,13 @@ const Landing = () => {
         <Col sm={12} md={8}>
           <PopularReviews />
         </Col>
-        <Col sm={12} md={4}>
+        {/* <Col sm={12} md={4}>
           <List />
           <List />
           <List />
           <List />
           <List />
-        </Col>
+        </Col> */}
       </Row>
     </>
   )

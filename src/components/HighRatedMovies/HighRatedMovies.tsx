@@ -3,6 +3,9 @@ import { Row } from "react-bootstrap"
 import { API } from "../../API"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { useSelector } from "react-redux"
 
 //types and style
 import { IMovie } from "../../interface"
@@ -10,6 +13,8 @@ import { IHighRatedMovies } from "./interface"
 
 const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
+
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
   const findHighRatedMovies = async () => {
     const movieData = await API.getAllMoviesData()
@@ -57,6 +62,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
         : movies.length > 0 &&
           movies.slice(0, limit).map((movie: IMovie, i: number) => (
             <MovieCard
+              loggedIn={loggedIn}
               movie={movie}
               key={movie.imdbID}
               onMouseLeave={() => setHovered(-1)}
@@ -68,7 +74,13 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
                   handler: () => like(i),
                 },
                 {
-                  icon: "⭐️",
+                  icon:
+                    movie.seenBy.length > 0 &&
+                    movie.seenBy.find((user) => user._id === userInfo._id) ? (
+                      <FontAwesomeIcon icon={faEye} color={"green"} />
+                    ) : (
+                      <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+                    ),
                   handler: () => alert(`starred movie is ${i}`),
                 },
               ]}

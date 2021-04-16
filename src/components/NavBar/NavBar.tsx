@@ -77,7 +77,7 @@ const NavBar = () => {
                 >
                   FILMS
                 </Nav.Link>
-                <Nav.Link>LISTS</Nav.Link>
+                {/* <Nav.Link>LISTS</Nav.Link> */}
                 <Nav.Link
                   onClick={() => {
                     history.push("/club")

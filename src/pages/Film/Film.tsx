@@ -143,18 +143,22 @@ const Film = () => {
   }
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col>
           <Jumbotron>BIG PICTURE</Jumbotron>
         </Col>
-      </Row>
+      </Row> */}
       <Row>
         <Col xs={12} md={3}>
           <div
-            style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+            style={{
+              width: "100%",
+              height: "100vh",
+              backgroundColor: "#14181d",
+            }}
           >
-            <img src={Poster} />
-            <ListGroup>
+            <img src={Poster} style={{ width: "100%" }} />
+            {/* <ListGroup>
               <ListGroup.Item className="bg-dark">
                 Cras justo odio
               </ListGroup.Item>
@@ -162,12 +166,17 @@ const Film = () => {
               <ListGroup.Item>Morbi leo risus</ListGroup.Item>
               <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
               <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
+            </ListGroup> */}
           </div>
         </Col>
         <Col xs={12} md={6}>
           <div
-            style={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}
+            style={{
+              width: "100%",
+              height: "100vh",
+              backgroundColor: "#14181d",
+              color: "#587997",
+            }}
           >
             <span>
               {" "}
@@ -179,7 +188,12 @@ const Film = () => {
         </Col>
         <Col xs={12} md={3}>
           <div
-            style={{ width: "100%", height: "45vh", backgroundColor: "#fff" }}
+            style={{
+              width: "100%",
+              height: "45vh",
+              backgroundColor: "#14181d",
+              color: "#587997",
+            }}
           >
             {loggedIn ? (
               <div className="icons">

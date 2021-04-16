@@ -5,10 +5,12 @@ import { IMovie } from "../../interface"
 import { API } from "../../API"
 import { Row } from "react-bootstrap"
 import MovieCard from "../../components/MovieCard/MovieCard"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 
 const Activity = () => {
   const dispatch = useDispatch()
-  const { userInfo } = useSelector((state: any) => state.user)
+  const { userInfo, loggedIn } = useSelector((state: any) => state.user)
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
   const getWatchedMovies = async () => {
@@ -26,10 +28,39 @@ const Activity = () => {
   useEffect(() => {
     getWatchedMovies()
   }, [])
+  const [hovered, setHovered] = useState(-1)
+  function like(i: number) {
+    alert(`Liked movie is ${i}`)
+  }
   return (
     <Row>
       {movies.length > 0 &&
-        movies.map((movie, i) => <MovieCard movie={movie} key={i} />)}
+        movies.map((movie, i) => (
+          <MovieCard
+            loggedIn={loggedIn}
+            movie={movie}
+            key={movie.imdbID}
+            onMouseLeave={() => setHovered(-1)}
+            onMouseEnter={() => setHovered(i)}
+            hovered={hovered === i}
+            actions={[
+              {
+                icon: "❤️",
+                handler: () => like(i),
+              },
+              {
+                icon:
+                  movie.seenBy.length > 0 &&
+                  movie.seenBy.find((user) => user._id === userInfo._id) ? (
+                    <FontAwesomeIcon icon={faEye} color={"green"} />
+                  ) : (
+                    <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+                  ),
+                handler: () => alert(`starred movie is ${i}`),
+              },
+            ]}
+          />
+        ))}
     </Row>
   )
 }
