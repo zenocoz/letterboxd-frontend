@@ -8,11 +8,16 @@ import "./PopularMovies.css"
 //components and apis
 import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 import { API } from "../../API"
+import MovieCard from "../MovieCard/MovieCard"
 
 import { Row } from "react-bootstrap"
 
+import { useSelector } from "react-redux"
+
 const PopularMovies = () => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const [hovered, setHovered] = useState(-1)
 
   const findPopularMovies = async () => {
     const movieData = await API.getAllMoviesData()
@@ -42,10 +47,19 @@ const PopularMovies = () => {
   }, [])
 
   return (
-    <Row className="popular mt-5 d-flex">
+    <Row className="popular mt-5 d-flex no-gutters">
       {movies.length > 0 &&
-        movies.map((movie): any => (
+        movies.map((movie, i): any => (
           <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
+
+          // <MovieCard
+          //   {...movie}
+          //   // key={movie.imdbID}
+          //   loggedIn={loggedIn}
+          //   onMouseLeave={() => setHovered(-1)}
+          //   onMouseEnter={() => setHovered(i)}
+          //   hovered={hovered === i}
+          // />
         ))}
     </Row>
   )

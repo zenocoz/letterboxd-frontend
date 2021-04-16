@@ -93,7 +93,7 @@ const Landing = () => {
       </Row>
       <Row>
         {" "}
-        <Col className="md-8 mb-4">
+        <Col className="md-8 mb-4" style={{ height: "100px" }}>
           {" "}
           <div className="welcome-texts">
             <h1>Track films you've watched.</h1>
@@ -115,12 +115,10 @@ const Landing = () => {
       {/* <Row className="mb-4 d-flex no-gutters">
         <HighRatedMovies big={false} limit={6} />
       </Row> */}
-      <Row>
-        <Banner />
-      </Row>
-      <Row>
-        <SiteOffers />
-      </Row>
+      <Banner />
+
+      <SiteOffers />
+
       <Row>
         <PopularMovies />
       </Row>

@@ -14,17 +14,17 @@ const MovieCardSmall = ({
 }: IMovieCardSmallProps) => {
   const history = useHistory()
   return (
-    <div>
+    <>
       {!withInfo ? (
-        <div className="col sm-8  mb-4">
+        <Col className="sm-8  mb-1">
           <img
             style={{
-              height: "10vh",
+              height: "16vh",
             }}
             src={Poster}
             onClick={() => history.push(`/film/${imdbID}`)}
           />
-        </div>
+        </Col>
       ) : (
         <Row className="mt-5">
           <Col xs={12} md={2}>
@@ -92,7 +92,7 @@ const MovieCardSmall = ({
             </div>
           </Col> */
       )}
-    </div>
+    </>
   )
 }
 

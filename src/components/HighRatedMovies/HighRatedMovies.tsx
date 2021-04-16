@@ -53,7 +53,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   }
 
   return (
-    <Row className="mt-5 mb-4 d-flex no-gutters high-rated">
+    <Row className="ml-0 mt-5 mb-4 d-flex no-gutters high-rated">
       {big
         ? movies.length > 0 &&
           movies
@@ -69,32 +69,18 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               />
             ))
         : movies.length > 0 &&
-          movies.slice(0, limit).map((movie: IMovie, i: number) => (
-            <MovieCard
-              loggedIn={loggedIn}
-              movie={movie}
-              key={movie.imdbID}
-              onMouseLeave={() => setHovered(-1)}
-              onMouseEnter={() => setHovered(i)}
-              hovered={hovered === i}
-              // actions={[
-              //   {
-              //     icon: "❤️",
-              //     handler: () => like(i),
-              //   },
-              //   {
-              //     icon:
-              //       movie.seenBy.length > 0 &&
-              //       movie.seenBy.find((user) => user._id === userInfo._id) ? (
-              //         <FontAwesomeIcon icon={faEye} color={"green"} />
-              //       ) : (
-              //         <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
-              //       ),
-              //     handler: () => alert(`starred movie is ${i}`),
-              //   },
-              // ]}
-            />
-          ))}
+          movies
+            .slice(0, limit)
+            .map((movie: IMovie, i: number) => (
+              <MovieCard
+                loggedIn={loggedIn}
+                movie={movie}
+                key={movie.imdbID}
+                onMouseLeave={() => setHovered(-1)}
+                onMouseEnter={() => setHovered(i)}
+                hovered={hovered === i}
+              />
+            ))}
     </Row>
   )
 }

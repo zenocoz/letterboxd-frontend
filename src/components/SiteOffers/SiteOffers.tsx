@@ -13,12 +13,12 @@ import {
 
 const SiteOffers = () => {
   return (
-    <Row className="site-offers ">
-      <Col>
-        <Row>
-          <Col>
+    <div className="row site-offers ">
+      <div className="col">
+        <div className="row mr-0 ml-0">
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -34,10 +34,10 @@ const SiteOffers = () => {
                 </p>
               </div>
             </div>
-          </Col>
-          <Col>
+          </div>
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -53,10 +53,10 @@ const SiteOffers = () => {
                 </p>
               </div>
             </div>
-          </Col>
-          <Col>
+          </div>
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -76,12 +76,12 @@ const SiteOffers = () => {
                 </p>
               </div>
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div className="row mr-0 ml-0">
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -97,10 +97,10 @@ const SiteOffers = () => {
                 </p>
               </div>
             </div>
-          </Col>
-          <Col>
+          </div>
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -113,10 +113,10 @@ const SiteOffers = () => {
                 <p>Keep a diary of your film watching (and upgrade to</p>
               </div>
             </div>
-          </Col>
-          <Col>
+          </div>
+          <div className="col _panel">
             <div
-              className="mt-2"
+              className="mt-2 panel"
               style={{
                 width: "100%",
                 height: "6rem",
@@ -132,10 +132,10 @@ const SiteOffers = () => {
                 </p>
               </div>
             </div>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
