@@ -57,57 +57,61 @@ const FilmSearch = () => {
   return (
     <>
       <Row>
-        <Col className="d-flex">
-          <DropdownButton
-            className="film-buttons"
-            id="dropdown-item-button"
-            title="Year"
-          >
-            <Dropdown.Item as="button">All</Dropdown.Item>
-            <Dropdown.Item as="button">2020s</Dropdown.Item>
-            <Dropdown.Item as="button">2010s</Dropdown.Item>
-            <Dropdown.Item as="button">2000s</Dropdown.Item>
-            <Dropdown.Item as="button">1990s</Dropdown.Item>
-            <Dropdown.Item as="button">1980s</Dropdown.Item>
-            <Dropdown.Item as="button">1970s</Dropdown.Item>
-            <Dropdown.Item as="button">1960s</Dropdown.Item>
-            <Dropdown.Item as="button">1950s</Dropdown.Item>
-            <Dropdown.Item as="button">1940s</Dropdown.Item>
-            <Dropdown.Item as="button">1930s</Dropdown.Item>
-            <Dropdown.Item as="button">1920s</Dropdown.Item>
-            <Dropdown.Item as="button">1910s</Dropdown.Item>
-            <Dropdown.Item as="button">1900s</Dropdown.Item>
-            <Dropdown.Item as="button">1890s</Dropdown.Item>
-            <Dropdown.Item as="button">1880s</Dropdown.Item>
-          </DropdownButton>
-          <DropdownButton id="dropdown-item-button" title="Rating">
-            <Dropdown.Item as="button">Action</Dropdown.Item>
-            <Dropdown.Item as="button">Another action</Dropdown.Item>
-            <Dropdown.Item as="button">Something else</Dropdown.Item>
-          </DropdownButton>
-          <DropdownButton id="dropdown-item-button" title="Popular">
-            <Dropdown.Item as="button">Action</Dropdown.Item>
-            <Dropdown.Item as="button">Another action</Dropdown.Item>
-            <Dropdown.Item as="button">Something else</Dropdown.Item>
-          </DropdownButton>
-          <DropdownButton id="dropdown-item-button" title="Genre">
-            <Dropdown.Item as="button">Action</Dropdown.Item>
-            <Dropdown.Item as="button">Another action</Dropdown.Item>
-            <Dropdown.Item as="button">Something else</Dropdown.Item>
-          </DropdownButton>
-          <DropdownButton id="dropdown-item-button" title="Service">
-            <Dropdown.Item as="button">Action</Dropdown.Item>
-            <Dropdown.Item as="button">Another action</Dropdown.Item>
-            <Dropdown.Item as="button">Something else</Dropdown.Item>
-          </DropdownButton>
-          <Form inline>
-            <FormControl
-              type="text"
-              className="mr-sm-2 search-bar"
-              // value={value}
-              // onChange={handleSearch}
-            />
-          </Form>
+        <Col className="d-flex justify-content-between">
+          <div className="d-flex">
+            <DropdownButton
+              className="film-buttons"
+              id="dropdown-item-button"
+              title="Year"
+            >
+              <Dropdown.Item as="button">All</Dropdown.Item>
+              <Dropdown.Item as="button">2020s</Dropdown.Item>
+              <Dropdown.Item as="button">2010s</Dropdown.Item>
+              <Dropdown.Item as="button">2000s</Dropdown.Item>
+              <Dropdown.Item as="button">1990s</Dropdown.Item>
+              <Dropdown.Item as="button">1980s</Dropdown.Item>
+              <Dropdown.Item as="button">1970s</Dropdown.Item>
+              <Dropdown.Item as="button">1960s</Dropdown.Item>
+              <Dropdown.Item as="button">1950s</Dropdown.Item>
+              <Dropdown.Item as="button">1940s</Dropdown.Item>
+              <Dropdown.Item as="button">1930s</Dropdown.Item>
+              <Dropdown.Item as="button">1920s</Dropdown.Item>
+              <Dropdown.Item as="button">1910s</Dropdown.Item>
+              <Dropdown.Item as="button">1900s</Dropdown.Item>
+              <Dropdown.Item as="button">1890s</Dropdown.Item>
+              <Dropdown.Item as="button">1880s</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-item-button" title="Rating">
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-item-button" title="Popular">
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-item-button" title="Genre">
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+            </DropdownButton>
+            <DropdownButton id="dropdown-item-button" title="Service">
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+            </DropdownButton>
+          </div>
+          <div>
+            <Form inline>
+              <FormControl
+                type="text"
+                className="mr-sm-2 search-bar-inner"
+                // value={value}
+                // onChange={handleSearch}
+              />
+            </Form>
+          </div>
           {/* <div
               style={{
                 width: "100%",

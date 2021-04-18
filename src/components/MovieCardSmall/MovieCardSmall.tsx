@@ -11,15 +11,33 @@ const MovieCardSmall = ({
   Title,
   Year,
   Director,
+  onMouseEnter,
+  onMouseLeave,
+  hovered,
 }: IMovieCardSmallProps) => {
   const history = useHistory()
   return (
     <>
       {!withInfo ? (
-        <Col className="sm-8  mb-1">
+        <Col
+          className="sm-8  mb-1"
+          style={{
+            height: "100%",
+
+            transition: "0.2s",
+            cursor: "pointer",
+            background: `${hovered ? "black" : "transparent"}`,
+            border: `5px solid ${hovered ? "green" : "transparent"}`,
+          }}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
           <img
             style={{
-              height: "16vh",
+              height: "100%",
+              borderRadius: "3px",
+              transition: "0.2s",
+              opacity: `${hovered ? "0.5" : "1"}`,
             }}
             src={Poster}
             onClick={() => history.push(`/film/${imdbID}`)}

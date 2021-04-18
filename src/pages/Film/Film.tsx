@@ -80,21 +80,6 @@ const Film = () => {
     }
   }, [])
 
-  // const watch = () => {
-  //   Promise.all([API.addSeenToMovie(userInfo._id, _id)]).then((resp) => {
-  //     console.log(resp)
-  //     dispatch(updateUserInfo())
-  //     dispatch(getMovie(imdbID))
-  //   })
-  // }
-  // const unwatch = () => {
-  //   Promise.all([API.removeSeenMovie(userInfo._id, _id)]).then((resp) => {
-  //     console.log(resp)
-  //     dispatch(updateUserInfo())
-  //     dispatch(getMovie(imdbID))
-  //   })
-  // }
-
   const [reviewText, setReviewText] = useState("")
 
   const handleReviewLogChange = (e: React.ChangeEvent<HTMLInputElement>) => {

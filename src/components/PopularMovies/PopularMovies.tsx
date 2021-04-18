@@ -50,7 +50,15 @@ const PopularMovies = () => {
     <Row className="popular mt-5 d-flex no-gutters">
       {movies.length > 0 &&
         movies.map((movie, i): any => (
-          <MovieCardSmall {...movie} key={movie.imdbID} withInfo={false} />
+          <MovieCardSmall
+            {...movie}
+            key={movie.imdbID}
+            withInfo={false}
+            loggedIn={loggedIn}
+            onMouseLeave={() => setHovered(-1)}
+            onMouseEnter={() => setHovered(i)}
+            hovered={hovered === i}
+          />
 
           // <MovieCard
           //   {...movie}

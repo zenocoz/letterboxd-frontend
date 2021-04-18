@@ -1,7 +1,7 @@
 .site-offers {
   width: 100%;
   padding: 0;
-  background-color: #445566;
+  background-color: #14181d;
 
   margin: 20px 0;
 }
@@ -23,6 +23,7 @@
 .panel {
   margin: 2px;
   padding: 2px;
+  border-radius: 3px;
 }
 
 ._panel {

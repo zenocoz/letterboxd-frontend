@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { API } from "../../API"
 import "./UserProfile.css"
-import axios from "axios"
-// import { updateUserInfo } from "../../store/user/reducer"
 import { useUserInfo } from "../../custom_hooks"
 
 const UserProfile = () => {
@@ -40,7 +38,6 @@ const UserProfile = () => {
       const response = await API.getMemberById(userId)
       // console.log("TOTAl WATCHED", response.totalWatched) // TODO optimize to make other array length come from BE
       setMemberData(response)
-      checkFollowing()
     })()
   }, [])
 

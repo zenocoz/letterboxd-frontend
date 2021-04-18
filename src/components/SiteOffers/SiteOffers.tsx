@@ -14,7 +14,7 @@ import {
 const SiteOffers = () => {
   return (
     <div className="row site-offers ">
-      <div className="col">
+      <div className="col" style={{ paddingRight: 0, paddingLeft: 0 }}>
         <div className="row mr-0 ml-0">
           <div className="col _panel">
             <div
@@ -140,7 +140,3 @@ const SiteOffers = () => {
 }
 
 export default SiteOffers
-
-// <div className="site-offers d-flex">
-
-//     </div>

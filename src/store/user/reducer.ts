@@ -30,21 +30,12 @@ const reducer = (state: UserState = initialState, action: UserAction) => {
         loggedIn: false,
         userInfo: initialState.userInfo,
       }
-    // case actionTypes.SET_WATCHED_MOVIES:
-    //   return {
-    //     ...state,
-    //     userInfo: action.payload,
-    //   }
+
     case actionTypes.UPDATE_USER_INFO:
       return {
         ...state,
         userInfo: action.payload,
       }
-    // case actionTypes.SET_LOGGED_OUT:
-    //   return {
-    //     ...state,
-    //     loggedIn: false,
-    //   }
   }
   return state
 }
@@ -59,25 +50,6 @@ export const getUserInfo = () => {
   }
 }
 
-// export const updateWatchedMovies = () => {
-//   return (dispatch: DispatchType) => {
-//     API.getUser()
-//       .then((res) => {
-//         dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
-//       })
-//       .catch((err) => console.log("set watched movies error", err))
-//   }
-// }
-
-// export const updateMembersFollowed = () => {
-//   return (dispatch: DispatchType) => {
-//     API.getUser()
-//       .then((res) => {
-//         dispatch({ type: actionTypes.SET_FOLLOWERS, payload: res })
-//       })
-//       .catch((err) => console.log("set followers error", err))
-//   }
-// }
 export const updateUserInfo = () => {
   return (dispatch: DispatchType) => {
     API.getUser()
@@ -87,13 +59,6 @@ export const updateUserInfo = () => {
       .catch((err) => console.log("set followers error", err))
   }
 }
-
-// export const setLoggedIn = () => ({
-//   type: actionTypes.SET_LOGGED_IN,
-// })
-// export const setLoggedOut = () => ({
-//   type: actionTypes.SET_LOGGED_OUT,
-// })
 
 export const logoutUser = () => {
   return { type: actionTypes.LOGOUT_USER }

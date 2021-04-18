@@ -126,21 +126,14 @@ const Landing = () => {
 
       <SiteOffers />
 
-      <Row>
-        <PopularMovies />
-      </Row>
-      <Row>
+      <PopularMovies />
+
+      {/* <Row>
         <Col sm={12} md={8}>
           <PopularReviews />
         </Col>
-        {/* <Col sm={12} md={4}>
-          <List />
-          <List />
-          <List />
-          <List />
-          <List />
-        </Col> */}
-      </Row>
+  
+      </Row> */}
     </>
   )
 }

@@ -5,4 +5,8 @@ export interface IMovieCardSmallProps {
   Title: string
   Year: string
   Director: string
+  loggedIn: boolean
+  onMouseLeave: any
+  onMouseEnter: any
+  hovered: boolean
 }

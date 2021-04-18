@@ -1,6 +1,4 @@
 import axios from "axios"
-import MovieCardSmall from "../components/MovieCardSmall/MovieCardSmall"
-import { IMovie } from "../interface"
 
 export const API = {
   getMoviesByTitle: async (query: string) => {
