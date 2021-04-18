@@ -5,12 +5,18 @@ import { API } from "../../API"
 
 const PopularMembers = () => {
   const [memberList, setMemberList] = useState([])
+  const [filteredMemberList, setFilterdMemberList] = useState([])
+
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
   const getMembers = async () => {
     const members = await API.getAllMembers()
 
     setMemberList(members)
+    const filteredMembers = await members.filter(
+      (member: any) => member._id !== userInfo._id
+    )
+    setFilterdMemberList(filteredMembers)
   }
 
   useEffect(() => {
@@ -19,8 +25,15 @@ const PopularMembers = () => {
 
   return (
     <div>
-      {memberList.length > 0 &&
-        memberList.map((member, i) => <MemberMini {...member} key={i} />)}
+      {loggedIn
+        ? filteredMemberList.length > 0 &&
+          filteredMemberList.map((member, i) => (
+            <MemberMini {...member} key={i} />
+          ))
+        : memberList.length > 0 &&
+          memberList.map((member, i: number) => (
+            <MemberMini {...member} key={i} />
+          ))}
     </div>
   )
 }

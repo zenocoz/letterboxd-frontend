@@ -50,25 +50,24 @@ const MemberCard = (props: any) => {
     //     </Card>
     //   </div>
     // </Col>
-    <div className="row">
-      <div className="col-3 mb-2 mr-3">
-        <img
-          id="member-pic"
-          src={member.picture}
-          alt="https://res.cloudinary.com/drbq4el2x/image/upload/v1608377311/striveTest/r5ra89fi4qsu24wsq4wr.jpg"
-        />
-        <div style={{ color: "white" }}>
-          <p
-            onClick={() => {
-              history.push("/user/" + props._id)
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            {member.username}
-          </p>
-          <div className="d-flex">
-            <p>{member.totalWatched} films</p>
-          </div>
+
+    <div className="col-2 mb-2 mr-2">
+      <img
+        id="member-pic"
+        src={member.picture}
+        alt="https://res.cloudinary.com/drbq4el2x/image/upload/v1608377311/striveTest/r5ra89fi4qsu24wsq4wr.jpg"
+      />
+      <div style={{ color: "white" }}>
+        <p
+          onClick={() => {
+            history.push("/user/" + member._id)
+          }}
+          style={{ cursor: "pointer" }}
+        >
+          {member.username}
+        </p>
+        <div className="d-flex">
+          <p>{member.totalWatched} films</p>
         </div>
       </div>
     </div>

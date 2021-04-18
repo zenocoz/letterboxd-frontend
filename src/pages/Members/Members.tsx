@@ -12,10 +12,15 @@ import MemberCard from "../../components/MemberCard/MemberCard"
 const Members = () => {
   const [memberList, setMemberList] = useState([])
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const [filteredMemberList, setFilterdMemberList] = useState([])
 
   const getMembers = async () => {
     const members = await API.getAllMembers()
     setMemberList(members)
+    const filteredMembers = await members.filter(
+      (member: any) => member._id !== userInfo._id
+    )
+    setFilterdMemberList(filteredMembers)
   }
 
   const followMember = async (memberId: string) => {
@@ -55,75 +60,17 @@ const Members = () => {
           <h2>Film lovers, critics and friends — find popular members.</h2>
         </Jumbotron>
       </Row>
-      <Row>
-        {memberList.length > 0 &&
-          memberList.map((member: any, i: number) => (
-            <MemberCard member={member} key={i} />
-
-            // <li key={member._id}>
-            //   {member.username}
-            //   {loggedIn && member._id !== userInfo._id && (
-            //     <button
-            //       onClick={() => {
-            //         followMember(member._id)
-            //       }}
-            //     >
-            //       follow
-            //     </button>
-            //   )}
-            // </li>
-          ))}
-
-        {/* <MemberCard />
-        <Col>
-          <div
-            className="mb-2 mr-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#82ffc7",
-            }}
-          >
-            member card
-          </div>
-        </Col>
-        <Col>
-          <div
-            className="mb-2 mr-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#82ffc7",
-            }}
-          >
-            member card
-          </div>
-        </Col>
-        <Col>
-          <div
-            className="mb-2 mr-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#82ffc7",
-            }}
-          >
-            member card
-          </div>
-        </Col>
-        <Col>
-          <div
-            className="mb-2 mr-2"
-            style={{
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "#82ffc7",
-            }}
-          >
-            member card
-          </div>
-        </Col> */}
-      </Row>
+      <div className="row d-flex justify-content-between align-center">
+        {loggedIn
+          ? filteredMemberList.length > 0 &&
+            filteredMemberList.map((member: any, i: number) => (
+              <MemberCard member={member} key={i} />
+            ))
+          : memberList.length > 0 &&
+            memberList.map((member: any, i: number) => (
+              <MemberCard member={member} key={i} />
+            ))}
+      </div>
       <Row>
         <Col sm={12} md={8}>
           <PopularMembers />

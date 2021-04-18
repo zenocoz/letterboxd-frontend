@@ -151,6 +151,20 @@ export const API = {
       console.log(err)
     }
   },
+  getMemberById: async (memberId: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/member/${memberId}`
+      )
+      if (response) {
+        return response.data
+      } else {
+        console.log("couldn't retrieve member by id")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
 
   getWatchedMovies: async (userId: string) => {
     try {

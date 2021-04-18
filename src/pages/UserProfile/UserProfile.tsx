@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { API } from "../../API"
 import "./UserProfile.css"
 
 const UserProfile = () => {
-  const { _id } = useParams<{ _id: string }>()
-  //   const [username, setUsername] = useState<string>("")
-  const [userData, setUserData] = useState({
+  const { userId } = useParams<{ userId: string }>()
+  const [memberData, setMemberData] = useState({
     username: "",
     picture: "",
     watchedMovies: [],
     following: [],
     followers: [],
   })
-  const { username, picture, watchedMovies, following, followers } = userData
+  const { username, picture, watchedMovies, following, followers } = memberData
+
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
   useEffect(() => {
     ;(async () => {
-      const response = await API.getUser()
+      console.log(userId)
+      const response = await API.getMemberById(userId)
+      // console.log("TOTAl WATCHED", response.totalWatched) // TODO optimize to make other array length come from BE
       console.log(response)
-      setUserData(response)
+      setMemberData(response)
     })()
   }, [])
 
@@ -37,7 +41,11 @@ const UserProfile = () => {
             </div>
             <p>
               <p>{username}</p>
-              <button>edit profile</button>
+              {loggedIn && userInfo._id === userId ? (
+                <button>edit profile</button>
+              ) : (
+                <button>follow</button>
+              )}
             </p>
           </div>
         </div>
