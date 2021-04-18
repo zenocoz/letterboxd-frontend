@@ -45,6 +45,7 @@ const Film = () => {
     Director,
     seenBy,
     rating,
+    views,
   } = useSelector((state: any) => state.movie.movieInfo)
 
   const actions = useMovieStatus(userInfo._id, _id, imdbID)
@@ -91,7 +92,7 @@ const Film = () => {
     const userRating = parseInt(e.target.value, 10)
     const rating10 = parseInt(rating, 10)
     const members = await API.getAllMembers()
-    let globalRating = (userRating + rating10) / members.length
+    let globalRating = (userRating + rating10) / views
     await submitRating(userRating, globalRating)
   }
 

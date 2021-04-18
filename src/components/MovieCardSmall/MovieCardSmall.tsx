@@ -23,7 +23,6 @@ const MovieCardSmall = ({
           className="sm-8  mb-1"
           style={{
             height: "100%",
-
             transition: "0.2s",
             cursor: "pointer",
             background: `${hovered ? "black" : "transparent"}`,
