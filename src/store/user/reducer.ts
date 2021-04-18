@@ -30,7 +30,12 @@ const reducer = (state: UserState = initialState, action: UserAction) => {
         loggedIn: false,
         userInfo: initialState.userInfo,
       }
-    case actionTypes.SET_WATCHED_MOVIES:
+    // case actionTypes.SET_WATCHED_MOVIES:
+    //   return {
+    //     ...state,
+    //     userInfo: action.payload,
+    //   }
+    case actionTypes.UPDATE_USER_INFO:
       return {
         ...state,
         userInfo: action.payload,
@@ -54,13 +59,32 @@ export const getUserInfo = () => {
   }
 }
 
-export const updateWatchedMovies = () => {
+// export const updateWatchedMovies = () => {
+//   return (dispatch: DispatchType) => {
+//     API.getUser()
+//       .then((res) => {
+//         dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
+//       })
+//       .catch((err) => console.log("set watched movies error", err))
+//   }
+// }
+
+// export const updateMembersFollowed = () => {
+//   return (dispatch: DispatchType) => {
+//     API.getUser()
+//       .then((res) => {
+//         dispatch({ type: actionTypes.SET_FOLLOWERS, payload: res })
+//       })
+//       .catch((err) => console.log("set followers error", err))
+//   }
+// }
+export const updateUserInfo = () => {
   return (dispatch: DispatchType) => {
     API.getUser()
       .then((res) => {
-        dispatch({ type: actionTypes.SET_WATCHED_MOVIES, payload: res })
+        dispatch({ type: actionTypes.UPDATE_USER_INFO, payload: res })
       })
-      .catch((err) => console.log("set watched movies error", err))
+      .catch((err) => console.log("set followers error", err))
   }
 }
 

@@ -55,7 +55,7 @@ const MemberCard = (props: any) => {
       <img
         id="member-pic"
         src={member.picture}
-        alt="https://res.cloudinary.com/drbq4el2x/image/upload/v1608377311/striveTest/r5ra89fi4qsu24wsq4wr.jpg"
+        alt="https://res.cloudinary.com/drbq4el2x/image/upload/v1618673253/striveTest/xqlu1w52dncytydwlt1l.jpg"
       />
       <div style={{ color: "white" }}>
         <p

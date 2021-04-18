@@ -13,7 +13,8 @@ const CreateAccount = () => {
     email: "",
     username: "",
     password: "",
-    picture: "",
+    picture:
+      "https://res.cloudinary.com/drbq4el2x/image/upload/v1618673253/striveTest/xqlu1w52dncytydwlt1l.jpg",
     errorMsg: "",
   })
 
@@ -57,7 +58,8 @@ const CreateAccount = () => {
           email: "",
           username: "",
           password: "",
-          picture: "",
+          picture:
+            "https://res.cloudinary.com/drbq4el2x/image/upload/v1618673253/striveTest/xqlu1w52dncytydwlt1l.jpg",
           errorMsg: "",
         })
         setCreateAccount(false)

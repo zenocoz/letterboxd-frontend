@@ -1,3 +1,5 @@
 export const SET_USER = "SET_USER"
 export const LOGOUT_USER = "LOGOUT_USER"
-export const SET_WATCHED_MOVIES = "SET_WATCHED_MOVIES"
+// export const SET_WATCHED_MOVIES = "SET_WATCHED_MOVIES"
+// export const SET_FOLLOWERS = "SET_FOLLOWERS"
+export const UPDATE_USER_INFO = "UPDATE_USER_INFO"

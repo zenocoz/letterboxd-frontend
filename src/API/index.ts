@@ -166,6 +166,41 @@ export const API = {
     }
   },
 
+  followMember: async (userId: string, memberId: string) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/follow/${memberId}`,
+        {
+          headers: { "Content-type": "application/json" },
+        }
+      )
+      if (response) {
+        console.log("member succsefully followed", response)
+      } else {
+        console.log("something went wrong in adding to seenBy")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  unfollowMember: async (userId: string, memberId: string) => {
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/follow/${memberId}`,
+        {
+          headers: { "Content-type": "application/json" },
+        }
+      )
+      if (response.status < 400) {
+        console.log("member succsefully unfollowed")
+      } else {
+        console.log("something went wrong in adding to seenBy")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
   getWatchedMovies: async (userId: string) => {
     try {
       const movies = await axios.get(

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getMovie, clearMovieData } from "../../store/movie/reducer"
 import { API } from "../../API"
-import { updateWatchedMovies } from "../../store/user/reducer"
+import { updateUserInfo } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
 import { useMovieStatus } from "../../custom_hooks"
 
@@ -83,14 +83,14 @@ const Film = () => {
   // const watch = () => {
   //   Promise.all([API.addSeenToMovie(userInfo._id, _id)]).then((resp) => {
   //     console.log(resp)
-  //     dispatch(updateWatchedMovies())
+  //     dispatch(updateUserInfo())
   //     dispatch(getMovie(imdbID))
   //   })
   // }
   // const unwatch = () => {
   //   Promise.all([API.removeSeenMovie(userInfo._id, _id)]).then((resp) => {
   //     console.log(resp)
-  //     dispatch(updateWatchedMovies())
+  //     dispatch(updateUserInfo())
   //     dispatch(getMovie(imdbID))
   //   })
   // }
@@ -115,7 +115,7 @@ const Film = () => {
       await API.addRatingToMovie(userInfo._id, _id, userRating, globalRating),
     ]).then((resp) => {
       console.log(resp)
-      dispatch(updateWatchedMovies())
+      dispatch(updateUserInfo())
       dispatch(getMovie(imdbID))
     })
   }

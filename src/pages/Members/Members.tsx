@@ -23,27 +23,27 @@ const Members = () => {
     setFilterdMemberList(filteredMembers)
   }
 
-  const followMember = async (memberId: string) => {
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userInfo._id}/follow/${memberId}`,
-        {
-          headers: { "Content-type": "application/json" },
-        }
-      )
-      if (response.statusText === "OK") {
-        console.log(`${userInfo.username} followed`, memberId)
-      } else {
-        console.log("something went wrong in adding to seenBy")
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const followMember = async (memberId: string) => {
+  //   try {
+  //     const response = await axios.post(
+  //       `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userInfo._id}/follow/${memberId}`,
+  //       {
+  //         headers: { "Content-type": "application/json" },
+  //       }
+  //     )
+  //     if (response.statusText === "OK") {
+  //       console.log(`${userInfo.username} followed`, memberId)
+  //     } else {
+  //       console.log("something went wrong in adding to seenBy")
+  //     }
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  const unfollowMember = async (memberId: string) => {
-    //TODO
-  }
+  // const unfollowMember = async (memberId: string) => {
+  //   //TODO
+  // }
 
   useEffect(() => {
     getMembers()

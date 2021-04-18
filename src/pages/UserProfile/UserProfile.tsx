@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { API } from "../../API"
 import "./UserProfile.css"
+import axios from "axios"
+// import { updateUserInfo } from "../../store/user/reducer"
+import { useUserInfo } from "../../custom_hooks"
 
 const UserProfile = () => {
   const { userId } = useParams<{ userId: string }>()
@@ -16,16 +19,34 @@ const UserProfile = () => {
   const { username, picture, watchedMovies, following, followers } = memberData
 
   const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const [isFollowed, setIsFollowed] = useState(false)
+
+  const actions = useUserInfo(userInfo._id, userId)
+
+  const checkFollowing = () => {
+    const member = userInfo.following.find(
+      (member: any) => member._id === userId
+    )
+    if (member) {
+      setIsFollowed(true)
+    } else {
+      setIsFollowed(false)
+    }
+  }
 
   useEffect(() => {
     ;(async () => {
       console.log(userId)
       const response = await API.getMemberById(userId)
       // console.log("TOTAl WATCHED", response.totalWatched) // TODO optimize to make other array length come from BE
-      console.log(response)
       setMemberData(response)
+      checkFollowing()
     })()
   }, [])
+
+  useEffect(() => {
+    checkFollowing()
+  }, [userInfo.following])
 
   return (
     <>
@@ -41,10 +62,26 @@ const UserProfile = () => {
             </div>
             <p>
               <p>{username}</p>
-              {loggedIn && userInfo._id === userId ? (
+              {!loggedIn ? (
+                <div></div>
+              ) : userInfo._id === userId ? (
                 <button>edit profile</button>
+              ) : isFollowed ? (
+                <button
+                  onClick={() => {
+                    actions.unfollow()
+                  }}
+                >
+                  unfollow
+                </button>
               ) : (
-                <button>follow</button>
+                <button
+                  onClick={() => {
+                    actions.follow()
+                  }}
+                >
+                  follow
+                </button>
               )}
             </p>
           </div>
