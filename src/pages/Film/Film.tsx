@@ -6,7 +6,7 @@ import { updateWatchedMovies } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
 import { useMovieStatus } from "../../custom_hooks"
 
-//styles
+//styles and types
 import "./Film.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
@@ -25,7 +25,7 @@ import {
 import axios from "axios"
 
 const Film = () => {
-  const { imdbID }: any = useParams() //ANY
+  const { imdbID } = useParams<{ imdbID: string }>() //ANY
   const [wasSeen, setWasSeen] = useState(false)
   const [showModalReview, setShowModalReview] = useState(false)
   const [movieRating, setMovieRating] = useState(0)

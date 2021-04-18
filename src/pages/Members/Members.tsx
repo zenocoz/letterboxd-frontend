@@ -57,8 +57,8 @@ const Members = () => {
       </Row>
       <Row>
         {memberList.length > 0 &&
-          memberList.map((member: any) => (
-            <MemberCard {...member} />
+          memberList.map((member: any, i: number) => (
+            <MemberCard member={member} key={i} />
 
             // <li key={member._id}>
             //   {member.username}

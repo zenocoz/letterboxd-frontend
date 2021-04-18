@@ -13,6 +13,7 @@ const CreateAccount = () => {
     email: "",
     username: "",
     password: "",
+    picture: "",
     errorMsg: "",
   })
 
@@ -20,7 +21,7 @@ const CreateAccount = () => {
   const { setCreateAccount }: any = providerModals.accountModal
   const { setSignIn }: any = providerModals.signInModal
 
-  const { email, username, password, errorMsg } = formData
+  const { email, username, password, errorMsg, picture } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -42,8 +43,8 @@ const CreateAccount = () => {
     } else if (!isEmail(email)) {
       setFormData({ ...formData, errorMsg: "Invalid email" })
     } else {
-      let { email, username, password } = formData
-      let body = { email, username, password }
+      let { email, username, password, picture } = formData
+      let body = { email, username, password, picture }
       const response = await register(body)
 
       if (response.code > 400) {
@@ -56,6 +57,7 @@ const CreateAccount = () => {
           email: "",
           username: "",
           password: "",
+          picture: "",
           errorMsg: "",
         })
         setCreateAccount(false)

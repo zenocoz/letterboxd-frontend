@@ -20,7 +20,7 @@ const PopularMembers = () => {
   return (
     <div>
       {memberList.length > 0 &&
-        memberList.map((member) => <MemberMini {...member} />)}
+        memberList.map((member, i) => <MemberMini {...member} key={i} />)}
     </div>
   )
 }

@@ -15,6 +15,7 @@ import Members from "./pages/Members/Members"
 import FilmSearch from "./pages/FilmSearch/FilmSearch"
 import FilmClub from "./pages/FilmClub/FilmClub"
 import Activity from "./pages/Activity/Activity"
+import UserProfile from "./pages/UserProfile/UserProfile"
 
 //components
 import NavBar from "./components/NavBar/NavBar"
@@ -48,6 +49,11 @@ function App() {
             path="/activity"
             exact
             render={(props) => <Activity />}
+          ></Route>
+          <Route
+            path="/user/:userId"
+            exact
+            render={(props) => <UserProfile />}
           ></Route>
           <Footer />
         </ContextProvider>
