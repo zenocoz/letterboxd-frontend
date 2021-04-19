@@ -51,9 +51,7 @@ const Members = () => {
 
   return (
     <>
-      <Row>
-        <Banner />
-      </Row>
+      <Banner />
 
       <Row>
         <Jumbotron className="mt-5 members-hero d-flex">

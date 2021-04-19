@@ -64,7 +64,6 @@ const MovieCardSmall = ({
           <Col xs={12} md={10} className="info-card-sm">
             <div
               style={{
-                width: "100%",
                 height: "10vh",
                 backgroundColor: "#1c2228",
               }}
