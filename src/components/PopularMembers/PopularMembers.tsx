@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import MemberMini from "../MemberMini/MemberMini"
 import { useSelector } from "react-redux"
 import { API } from "../../API"
+import "./PopularMembers.css"
 
 const PopularMembers = () => {
   const [memberList, setMemberList] = useState([])
@@ -24,15 +25,15 @@ const PopularMembers = () => {
   }, [])
 
   return (
-    <div>
+    <div className="popular-members">
       {loggedIn
         ? filteredMemberList.length > 0 &&
           filteredMemberList.map((member, i) => (
-            <MemberMini {...member} key={i} />
+            <MemberMini member={member} key={i} withInfo={false} />
           ))
         : memberList.length > 0 &&
           memberList.map((member, i: number) => (
-            <MemberMini {...member} key={i} />
+            <MemberMini member={member} key={i} withInfo={false} />
           ))}
     </div>
   )

@@ -1,18 +1,14 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { getUserInfo } from "../../store/user/reducer"
 
 import "./Home.css"
-import { IMovie } from "../../interface"
 import { Row, Button } from "react-bootstrap"
-import { useHistory } from "react-router-dom"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 const Home = () => {
-  const history = useHistory()
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -26,12 +22,8 @@ const Home = () => {
 
   return (
     <>
-      <Row>
-        <HighRatedMovies big={true} limit={4} />
-      </Row>
-      <Row>
-        <PopularMovies />
-      </Row>
+      <HighRatedMovies big={true} limit={4} />
+      <PopularMovies />
     </>
   )
 }

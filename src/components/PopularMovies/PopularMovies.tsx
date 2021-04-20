@@ -47,7 +47,7 @@ const PopularMovies = () => {
   }, [])
 
   return (
-    <Row className="popular mt-5 d-flex no-gutters">
+    <div className="row popular d-flex no-gutters">
       {movies.length > 0 &&
         movies.map((movie, i): any => (
           <MovieCardSmall
@@ -69,7 +69,7 @@ const PopularMovies = () => {
           //   hovered={hovered === i}
           // />
         ))}
-    </Row>
+    </div>
   )
 }
 

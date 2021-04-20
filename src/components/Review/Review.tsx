@@ -1,4 +1,3 @@
-import React from "react"
 import { IReviewProps } from "./interface"
 
 const Review = ({ text }: IReviewProps) => {

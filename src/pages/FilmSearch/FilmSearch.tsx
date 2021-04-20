@@ -21,38 +21,6 @@ import Review from "../../components/Review/Review"
 
 const FilmSearch = () => {
   // const [movies, setMovies] = useState<Array<IMovie>>([])
-  const [reviews, setReviews] = useState([])
-
-  // const findHighRatedMovies = async () => {
-  //   const movieData = await API.getAllMoviesData()
-  //   const sortedByRating = await movieData.sort(function (a: any, b: any) {
-  //     if (a.rating < b.rating) {
-  //       return 1
-  //     } else {
-  //       return -1
-  //     }
-  //   })
-
-  //   const retrievedMovies: Array<Promise<IMovie>> = []
-  //   sortedByRating.slice(0, 4).forEach((sorted: any) => {
-  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
-  //     retrievedMovies.push(movie)
-  //   })
-
-  //   Promise.all(retrievedMovies).then((values) => {
-  //     console.log(values)
-  //     setMovies(values)
-  //   })
-  // }
-
-  const getPopularReviews = async () => {
-    const reviews = await API.getAllReviews()
-    setReviews(reviews)
-  }
-  useEffect(() => {
-    // findHighRatedMovies()
-    getPopularReviews()
-  }, [])
 
   return (
     <>
@@ -124,27 +92,14 @@ const FilmSearch = () => {
             </div> */}
         </Col>
       </Row>
-      <Row>
-        <HighRatedMovies big={true} limit={4} />
-      </Row>
+      <HighRatedMovies big={true} limit={4} />
       <Banner />
+      <PopularMovies />
+      <HighRatedMovies big={false} limit={12} />
       <Row>
-        <PopularMovies />
-      </Row>
-      <Row>
-        <HighRatedMovies big={false} limit={12} />
-      </Row>
-      <Row>
-        {reviews.length > 0 &&
-          reviews.map((review) => (
-            <Col sm={12} md={8}>
-              <Review {...review} />
-            </Col>
-          ))}
-        {/* <Col sm={12} md={8}>
-         
+        <Col md={8}>
           <PopularReviews />
-        </Col> */}
+        </Col>
         <Col sm={12} md={4}>
           <PopularMembers />
         </Col>

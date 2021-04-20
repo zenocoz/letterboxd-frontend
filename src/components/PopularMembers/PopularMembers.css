@@ -1,0 +1,11 @@
+.popular-members {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.popular-members::before {
+  content: "Popular Members";
+  color: white;
+  position: absolute;
+  top: -30px;
+}

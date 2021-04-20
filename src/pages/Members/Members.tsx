@@ -23,28 +23,6 @@ const Members = () => {
     setFilterdMemberList(filteredMembers)
   }
 
-  // const followMember = async (memberId: string) => {
-  //   try {
-  //     const response = await axios.post(
-  //       `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userInfo._id}/follow/${memberId}`,
-  //       {
-  //         headers: { "Content-type": "application/json" },
-  //       }
-  //     )
-  //     if (response.statusText === "OK") {
-  //       console.log(`${userInfo.username} followed`, memberId)
-  //     } else {
-  //       console.log("something went wrong in adding to seenBy")
-  //     }
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  // const unfollowMember = async (memberId: string) => {
-  //   //TODO
-  // }
-
   useEffect(() => {
     getMembers()
   }, [])
@@ -61,13 +39,19 @@ const Members = () => {
       <div className="row d-flex justify-content-between align-center">
         {loggedIn
           ? filteredMemberList.length > 0 &&
-            filteredMemberList.map((member: any, i: number) => (
-              <MemberCard member={member} key={i} />
-            ))
+            filteredMemberList.length >= 4 &&
+            filteredMemberList
+              .slice(0, 4)
+              .map((member: any, i: number) => (
+                <MemberCard member={member} key={i} />
+              ))
           : memberList.length > 0 &&
-            memberList.map((member: any, i: number) => (
-              <MemberCard member={member} key={i} />
-            ))}
+            memberList.length >= 4 &&
+            memberList
+              .slice(0, 4)
+              .map((member: any, i: number) => (
+                <MemberCard member={member} key={i} />
+              ))}
       </div>
       <Row>
         <Col sm={12} md={8}>

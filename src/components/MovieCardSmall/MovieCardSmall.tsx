@@ -69,7 +69,12 @@ const MovieCardSmall = ({
               }}
             >
               <span className="d-flex">
-                <h5>{Title}</h5>
+                <h5
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push(`/film/${imdbID}`)}
+                >
+                  {Title}
+                </h5>
                 <h6>{Year}</h6>
               </span>
               <p>Directed by {Director}</p>

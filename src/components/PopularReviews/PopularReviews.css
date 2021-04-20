@@ -1,0 +1,11 @@
+.popular-reviews {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.popular-reviews::before {
+  content: "Popular Reviews";
+  color: white;
+  position: absolute;
+  top: -30px;
+}

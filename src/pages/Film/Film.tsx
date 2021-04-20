@@ -55,21 +55,40 @@ const Film = () => {
     }
   }
 
+  // const checkFriendsMovieViews = () => {
+  //   if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
+  //     const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
+  //       userInfo.following.some((member: any) => user._id === member._id)
+  //     )
+
+  //     const friends: Promise<IUser>[] = []
+  //     friendsWhoSawMovie.forEach((member: any) => {
+  //       let friend: Promise<IUser> = API.getMemberById(member._id)
+  //       friends.push(friend)
+  //     })
+  //     Promise.all(friends).then((values) => {
+  //       console.log("VALUES", values)
+  //       setFriendsWhoSawMovie(values)
+  //     })
+  //   }
+  // }
+
   const checkFriendsMovieViews = () => {
     if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
       const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
         userInfo.following.some((member: any) => user._id === member._id)
       )
+      setFriendsWhoSawMovie(friendsWhoSawMovie)
 
-      const friends: Promise<IUser>[] = []
-      friendsWhoSawMovie.forEach((member: any) => {
-        let friend: Promise<IUser> = API.getMemberById(member._id)
-        friends.push(friend)
-      })
-      Promise.all(friends).then((values) => {
-        console.log("VALUES", values)
-        setFriendsWhoSawMovie(values)
-      })
+      // const friends: Promise<IUser>[] = []
+      // friendsWhoSawMovie.forEach((member: any) => {
+      //   let friend: Promise<IUser> = API.getMemberById(member._id)
+      //   friends.push(friend)
+      // })
+      // Promise.all(friends).then((values) => {
+      //   console.log("VALUES", values)
+      //   setFriendsWhoSawMovie(values)
+      // })
     }
   }
 
@@ -170,7 +189,7 @@ const Film = () => {
           <div>
             <img
               src={movieInfo.Poster}
-              style={{ width: "230px", height: "345px" }}
+              style={{ width: "230px", height: "345px", borderRadius: "3px" }}
             />
             {/* <ListGroup>
               <ListGroup.Item className="bg-dark">
@@ -324,7 +343,12 @@ const Film = () => {
         >
           {friendsWhoSawMovie.length > 0 &&
             friendsWhoSawMovie.map((member: any, i: number) => (
-              <MemberMini {...member} movieId={movieInfo._id} key={i} />
+              <MemberMini
+                member={member}
+                movieId={movieInfo._id}
+                key={i}
+                withInfo={true}
+              />
             ))}
         </div>
       </Row>

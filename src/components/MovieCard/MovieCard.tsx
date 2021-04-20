@@ -63,7 +63,7 @@ const MovieCard = (props: any) => {
 
   return (
     <div
-      className="col sm-12 md-8"
+      // className="col sm-12 md-8"
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{

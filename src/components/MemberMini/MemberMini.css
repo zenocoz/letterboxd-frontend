@@ -1,0 +1,18 @@
+.friend-info {
+  width: 4rem;
+  height: 6rem;
+  background-color: #05c1f6;
+  font-size: x-small;
+}
+
+.friend-info img {
+  height: 50%;
+  border-radius: 50px;
+}
+.friend-info {
+  margin-right: 2px;
+}
+
+.friend-info p:last-child p:first-child {
+  margin-right: 3px;
+}

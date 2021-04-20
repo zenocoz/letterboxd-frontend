@@ -11,7 +11,7 @@
 }
 
 .high-rated::before {
-  content: "High rated movies";
+  content: "High Rated Movies";
   color: white;
   position: absolute;
   top: -30px;
