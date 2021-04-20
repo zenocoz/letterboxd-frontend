@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { IMemberMiniProps } from "./interface"
 
-const MemberMini = ({ username, watchedMovies, movieId }: IMemberMiniProps) => {
+const MemberMini = ({
+  username,
+  watchedMovies,
+  picture,
+  movieId,
+}: IMemberMiniProps) => {
   const [rating, setRating] = useState(null)
 
   useEffect(() => {
@@ -23,6 +28,7 @@ const MemberMini = ({ username, watchedMovies, movieId }: IMemberMiniProps) => {
         backgroundColor: "#05c1f6",
       }}
     >
+      <img src={picture} style={{ width: "100%", borderRadius: "50px" }} />
       {username}
       <p>stars</p>
       <p>{rating && rating}</p>
