@@ -3,7 +3,7 @@ import MemberMini from "../MemberMini/MemberMini"
 import { useSelector } from "react-redux"
 import "./Following.css"
 
-const Following = () => {
+const Following = (props: any) => {
   const { userInfo } = useSelector((state: any) => state.user)
   const [friends, setFriends] = useState([])
 
@@ -18,7 +18,12 @@ const Following = () => {
       <div className="col d-flex " style={{ height: "6rem" }}>
         {friends.length > 0 &&
           friends.map((member: any, i: number) => (
-            <MemberMini member={member} withInfo={false} key={i} />
+            <MemberMini
+              member={member}
+              withInfo={false}
+              key={i}
+              club={props.club}
+            />
           ))}
       </div>
     </div>

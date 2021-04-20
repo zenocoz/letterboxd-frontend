@@ -14,6 +14,7 @@ const MemberMini = (props: any) => {
   })
   const { username, picture, watchedMovies } = friend
 
+  const [selected, setSelected] = useState(false)
   useEffect(() => {
     if (watchedMovies.length > 0) {
       const movie: any = watchedMovies.find(
@@ -34,8 +35,15 @@ const MemberMini = (props: any) => {
     })()
   }, [])
 
+  const handleSelected = () => {
+    setSelected(!selected)
+  }
+
   return (
-    <div className="friend-info">
+    <div
+      className="friend-info"
+      style={{ backgroundColor: selected ? "red" : "#05c1f6" }}
+    >
       {props.withInfo ? (
         <>
           <img src={picture} />
@@ -57,7 +65,9 @@ const MemberMini = (props: any) => {
           <img src={picture} />
           <p
             onClick={() => {
-              history.push("/user/" + props.member._id)
+              !props.club
+                ? history.push("/user/" + props.member._id)
+                : handleSelected()
             }}
             style={{ cursor: "pointer" }}
           >

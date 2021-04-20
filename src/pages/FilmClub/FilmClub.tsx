@@ -1,5 +1,12 @@
-import React from "react"
-import { Jumbotron, Row, Col, Button } from "react-bootstrap"
+import {
+  Jumbotron,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormControl,
+  Modal,
+} from "react-bootstrap"
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import "./FilmClub.css"
@@ -7,9 +14,19 @@ import { IMovie } from "../../interface"
 import { API } from "../../API"
 import { useEffect, useState } from "react"
 import MovieCard from "../../components/MovieCard/MovieCard"
+import Following from "../../components/Following/Following"
 
 const FilmClub = () => {
+  const [show, setShow] = useState(false)
   const [movies, setMovies] = useState<Array<IMovie>>([])
+  const [clubName, setClubName] = useState("")
+  const [memberName, setMemberName] = useState("")
+  const [filmClubData, setFilmClubData] = useState({
+    name: "",
+    members: [],
+    films: [],
+  })
+
   //placeholder function
   const getMovies = (): void => {
     const imdbIds: Array<string> = [
@@ -32,9 +49,62 @@ const FilmClub = () => {
     })
   }
 
+  const handleChange = (e: any) => {
+    setClubName(e.target.value)
+  }
+
+  const handleSearch = (e: any) => {}
+
+  const handleSearchSubmit = () => {}
+
   useEffect(() => {
     getMovies()
   }, [])
+
+  const showModal = () => {
+    return (
+      <Modal
+        show={show}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>{clubName}</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={1}
+                value={clubName}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Form>
+
+          <Form style={{ width: "10rem" }} onSubmit={handleSearchSubmit}>
+            <Form.Label>Invite Users</Form.Label>
+            <Following club={true} />
+            {/* <FormControl
+              type="text"
+              className="mr-sm-2 search-bar"
+              // value={value}
+              onChange={handleSearch}
+            /> */}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            onClick={() => {
+              setShow(false)
+            }}
+          >
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
 
   return (
     <>
@@ -42,7 +112,15 @@ const FilmClub = () => {
         <Col>
           <div className="d-flex club-hero mt-2 justify-content-between">
             <h1 className="offset-3">Welcome to your Film Club</h1>
-            <Button type="primary">Create a film club</Button>
+            {showModal()}
+            <Button
+              type="primary"
+              onClick={() => {
+                setShow(true)
+              }}
+            >
+              Create a film club
+            </Button>
           </div>
         </Col>
       </Row>
@@ -89,6 +167,15 @@ const FilmClub = () => {
           </Row>
         </Col>
         <Col sm={12} md={4}>
+          {/* <Form style={{ width: "10rem" }} onSubmit={handleSubmit}>
+            <Form.Label>Search Users</Form.Label>
+            <FormControl
+              type="text"
+              className="mr-sm-2 search-bar"
+              // value={value}
+              onChange={handleSearch}
+            />
+          </Form> */}
           <PopularMembers />
         </Col>
       </Row>
