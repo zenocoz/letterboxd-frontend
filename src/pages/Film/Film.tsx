@@ -10,6 +10,7 @@ import { useMovieStatus } from "../../custom_hooks"
 import "./Film.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { IUser } from "../../interface"
 
 //external dependencies
 import { useParams } from "react-router-dom"
@@ -23,67 +24,81 @@ import {
   Form,
 } from "react-bootstrap"
 import axios from "axios"
+import MemberMini from "../../components/MemberMini/MemberMini"
 
 const Film = () => {
-  const { imdbID } = useParams<{ imdbID: string }>() //ANY
+  const { imdbID } = useParams<{ imdbID: string }>()
+
+  //store
+  const dispatch = useDispatch()
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const { movieInfo } = useSelector((state: any) => state.movie)
+
+  //custom
+  const actions = useMovieStatus(userInfo._id, movieInfo._id, imdbID)
+
+  //state
   const [wasSeen, setWasSeen] = useState(false)
   const [showModalReview, setShowModalReview] = useState(false)
   const [movieRating, setMovieRating] = useState(0)
-  // const [globalRating, setGlobalRating] = useState(0)
-
-  const dispatch = useDispatch()
-  const { loggedIn, userInfo, following } = useSelector(
-    (state: any) => state.user
-  )
-  const {
-    _id,
-    Title,
-    Poster,
-    Actors,
-    Year,
-    Runtime,
-    Genre,
-    Plot,
-    Director,
-    seenBy,
-    rating,
-    views,
-  } = useSelector((state: any) => state.movie.movieInfo)
-
-  const actions = useMovieStatus(userInfo._id, _id, imdbID)
+  const [friendsWhoSawMovie, setFriendsWhoSawMovie] = useState<any>([])
+  const [reviewText, setReviewText] = useState("")
 
   const getRating = (): number => {
-    const movie = userInfo.watchedMovies.find((movie: any) => movie._id === _id)
+    const movie = userInfo.watchedMovies.find(
+      (movie: any) => movie._id === movieInfo._id
+    )
     if (movie) {
-      console.log("get rating", movie.rating)
       return movie.rating
     } else {
-      console.log("couldn't retrieve rating")
       return 0
     }
   }
 
+  const checkFriendsMovieViews = () => {
+    if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
+      const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
+        userInfo.following.some((member: any) => user._id === member._id)
+      )
+
+      const friends: Promise<IUser>[] = []
+      friendsWhoSawMovie.forEach((member: any) => {
+        let friend: Promise<IUser> = API.getMemberById(member._id)
+        friends.push(friend)
+      })
+      Promise.all(friends).then((values) => {
+        console.log("VALUES", values)
+        setFriendsWhoSawMovie(values)
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (movieInfo.seenBy && userInfo) {
+      checkFriendsMovieViews()
+      dispatch(updateUserInfo())
+    }
+  }, [movieInfo, imdbID])
+
   useEffect(() => {
     setMovieRating(getRating())
-  }, [userInfo.watchedMovies, _id, wasSeen])
+  }, [userInfo.watchedMovies, movieInfo._id, wasSeen])
 
   useEffect(() => {
     dispatch(getMovie(imdbID))
   }, [imdbID, dispatch])
 
   useEffect(() => {
-    if (seenBy && userInfo) {
-      setWasSeen(checkViews(seenBy, userInfo._id))
+    if (movieInfo.seenBy && userInfo) {
+      setWasSeen(checkViews(movieInfo.seenBy, userInfo._id))
     }
-  }, [seenBy, userInfo])
+  }, [movieInfo.seenBy, userInfo])
 
   useEffect((): any => {
     return () => {
       dispatch(clearMovieData())
     }
   }, [])
-
-  const [reviewText, setReviewText] = useState("")
 
   const handleReviewLogChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setReviewText(e.target.value)
@@ -92,15 +107,20 @@ const Film = () => {
   const calculateGlobalRating = async (e: any) => {
     e.preventDefault()
     const userRating = parseInt(e.target.value, 10)
-    const rating10 = parseInt(rating, 10)
-    const members = await API.getAllMembers()
-    let globalRating = (userRating + rating10) / views
+    const rating10 = parseInt(movieInfo.rating, 10)
+    // const members = await API.getAllMembers()
+    let globalRating = (userRating + rating10) / movieInfo.views
     await submitRating(userRating, globalRating)
   }
 
   const submitRating = async (userRating: number, globalRating: number) => {
     Promise.all([
-      await API.addRatingToMovie(userInfo._id, _id, userRating, globalRating),
+      await API.addRatingToMovie(
+        userInfo._id,
+        movieInfo._id,
+        userRating,
+        globalRating
+      ),
     ]).then((resp) => {
       console.log(resp)
       dispatch(updateUserInfo())
@@ -112,7 +132,7 @@ const Film = () => {
     e.preventDefault()
     const reviewInfo = {
       authorId: userInfo._id,
-      movieId: _id,
+      movieId: movieInfo._id,
       text: reviewText,
     }
     const config = {
@@ -148,7 +168,10 @@ const Film = () => {
           }}
         >
           <div>
-            <img src={Poster} style={{ width: "230px", height: "345px" }} />
+            <img
+              src={movieInfo.Poster}
+              style={{ width: "230px", height: "345px" }}
+            />
             {/* <ListGroup>
               <ListGroup.Item className="bg-dark">
                 Cras justo odio
@@ -172,13 +195,13 @@ const Film = () => {
           }}
         >
           <div className="relevant-info">
-            <h1 style={{ color: "white" }}> {Title}</h1>
+            <h1 style={{ color: "white" }}> {movieInfo.Title}</h1>
             <p>
-              {Year} Directed by {Director}
+              {movieInfo.Year} Directed by {movieInfo.Director}
             </p>
-            <p>{Plot}</p>
+            <p>{movieInfo.Plot}</p>
             <p style={{ color: "white" }}>Cast</p>
-            <p>{Actors}</p>
+            <p>{movieInfo.Actors}</p>
           </div>
         </Col>
         <Col
@@ -248,7 +271,7 @@ const Film = () => {
                   <Modal.Header closeButton>
                     <Modal.Title>I watched...</Modal.Title>
                     <span>
-                      {Title} {Year}
+                      {movieInfo.Title} {movieInfo.Year}
                     </span>
                   </Modal.Header>
 
@@ -296,9 +319,14 @@ const Film = () => {
       </Row>
       <Row className="justify-content-center">
         <div
-          className="col-6"
+          className="col-6 d-flex"
           style={{ height: "6rem", backgroundColor: "pink", left: "49px" }}
-        ></div>
+        >
+          {friendsWhoSawMovie.length > 0 &&
+            friendsWhoSawMovie.map((member: any, i: number) => (
+              <MemberMini {...member} movieId={movieInfo._id} key={i} />
+            ))}
+        </div>
       </Row>
     </>
   )
