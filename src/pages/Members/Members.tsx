@@ -1,6 +1,5 @@
 import { API } from "../../API"
 import { useState, useEffect } from "react"
-import axios from "axios"
 import { useSelector } from "react-redux"
 import Banner from "../../components/Banner/Banner"
 import { Row, Col, Jumbotron } from "react-bootstrap"
@@ -59,25 +58,6 @@ const Members = () => {
         </Col>
       </Row>
     </>
-    // <div className="members">
-    //   <ul>
-    //     {memberList.length > 0 &&
-    //       memberList.map((member: any) => (
-    //         <li key={member._id}>
-    //           {member.username}
-    //           {loggedIn && member._id !== userInfo._id && (
-    //             <button
-    //               onClick={() => {
-    //                 followMember(member._id)
-    //               }}
-    //             >
-    //               follow
-    //             </button>
-    //           )}
-    //         </li>
-    //       ))}
-    //   </ul>
-    // </div>
   )
 }
 

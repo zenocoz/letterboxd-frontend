@@ -3,10 +3,7 @@ import { Row } from "react-bootstrap"
 import { API } from "../../API"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
-import { useMovieStatus } from "../../custom_hooks"
 
 //types and style
 import { IMovie } from "../../interface"
@@ -44,10 +41,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   }, [])
 
   const [hovered, setHovered] = useState(-1)
-  // const movie = {
-  //   image:
-  //     "https://i.pinimg.com/736x/dc/66/64/dc666425b307216596a9b197aa885922.jpg"
-  // };
+
   function like(i: number) {
     alert(`Liked movie is ${i}`)
   }

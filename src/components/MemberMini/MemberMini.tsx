@@ -27,16 +27,6 @@ const MemberMini = (props: any) => {
     console.log("watchedMovies", watchedMovies)
   }, [username])
 
-  // const friends: Promise<IUser>[] = []
-  // friendsWhoSawMovie.forEach((member: any) => {
-  //   let friend: Promise<IUser> = API.getMemberById(member._id)
-  //   friends.push(friend)
-  // })
-  // Promise.all(friends).then((values) => {
-  //   console.log("VALUES", values)
-  //   setFriendsWhoSawMovie(values)
-  // })
-
   useEffect(() => {
     ;(async () => {
       const friend = await API.getMemberById(props.member._id)

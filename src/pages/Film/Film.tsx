@@ -55,40 +55,12 @@ const Film = () => {
     }
   }
 
-  // const checkFriendsMovieViews = () => {
-  //   if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
-  //     const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
-  //       userInfo.following.some((member: any) => user._id === member._id)
-  //     )
-
-  //     const friends: Promise<IUser>[] = []
-  //     friendsWhoSawMovie.forEach((member: any) => {
-  //       let friend: Promise<IUser> = API.getMemberById(member._id)
-  //       friends.push(friend)
-  //     })
-  //     Promise.all(friends).then((values) => {
-  //       console.log("VALUES", values)
-  //       setFriendsWhoSawMovie(values)
-  //     })
-  //   }
-  // }
-
   const checkFriendsMovieViews = () => {
     if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
       const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
         userInfo.following.some((member: any) => user._id === member._id)
       )
       setFriendsWhoSawMovie(friendsWhoSawMovie)
-
-      // const friends: Promise<IUser>[] = []
-      // friendsWhoSawMovie.forEach((member: any) => {
-      //   let friend: Promise<IUser> = API.getMemberById(member._id)
-      //   friends.push(friend)
-      // })
-      // Promise.all(friends).then((values) => {
-      //   console.log("VALUES", values)
-      //   setFriendsWhoSawMovie(values)
-      // })
     }
   }
 
@@ -127,7 +99,6 @@ const Film = () => {
     e.preventDefault()
     const userRating = parseInt(e.target.value, 10)
     const rating10 = parseInt(movieInfo.rating, 10)
-    // const members = await API.getAllMembers()
     let globalRating = (userRating + rating10) / movieInfo.views
     await submitRating(userRating, globalRating)
   }
@@ -191,15 +162,6 @@ const Film = () => {
               src={movieInfo.Poster}
               style={{ width: "230px", height: "345px", borderRadius: "3px" }}
             />
-            {/* <ListGroup>
-              <ListGroup.Item className="bg-dark">
-                Cras justo odio
-              </ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup> */}
           </div>
         </Col>
         <Col
