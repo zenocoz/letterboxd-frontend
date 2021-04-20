@@ -7,6 +7,7 @@ import { Row, Col } from "react-bootstrap"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import Following from "../../components/Following/Following"
 
 const Activity = () => {
   const dispatch = useDispatch()
@@ -68,6 +69,7 @@ const Activity = () => {
             />
           ))}
       </Row>
+      <Following />
     </>
   )
 }
