@@ -61,7 +61,6 @@ const SignIn = () => {
             errorMsg: "",
           })
           setSignIn(false)
-          console.log("Response", response)
           dispatch(getUserInfo())
           // window.location.replace("/home")
         }

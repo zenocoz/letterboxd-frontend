@@ -239,6 +239,22 @@ export const API = {
       )
       if (response.status < 400) {
         console.log("film club created with id", response.data)
+        return response.data
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  getUserMovieClubs: async (userId: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/${userId}`
+      )
+      if (response.status < 400) {
+        return response.data
+      } else {
+        console.log("errors getting user clubs")
       }
     } catch (err) {
       console.log(err)

@@ -16,15 +16,20 @@ import { useEffect, useState, useContext } from "react"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import Following from "../../components/Following/Following"
 import { UserContext as Context } from "../../context"
+import { useSelector } from "react-redux"
 
 const FilmClub = () => {
+  const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
+
   const [show, setShow] = useState(false)
   const [movies, setMovies] = useState<Array<IMovie>>([])
+  const [filmClubs, setFilmClubs] = useState<any>([])
+  const { userInfo, loggedIn } = useSelector((state: any) => state.user)
 
   //context
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
-  const { name } = filmClubData
+  const { name, members } = filmClubData
 
   //placeholder function
   const getMovies = (): void => {
@@ -53,8 +58,11 @@ const FilmClub = () => {
   }
   const handleClubSubmit = (e: any) => {
     e.preventDefault()
+    members.push({ _id: userInfo._id })
+    setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
     setFilmClubData({ name: "", members: [], films: [] })
+    setNumberOfClubs(filmClubs.length)
   }
 
   const handleSearch = (e: any) => {}
@@ -62,8 +70,24 @@ const FilmClub = () => {
   const handleSearchSubmit = () => {}
 
   useEffect(() => {
+    if (loggedIn) {
+      ;(async () => {
+        const response = await API.getUserMovieClubs(userInfo._id)
+        if (response) {
+          setFilmClubs(response)
+        }
+      })()
+    }
+  }, [numberOfClubs])
+
+  useEffect(() => {
     getMovies()
   }, [])
+
+  useEffect(() => {
+    setNumberOfClubs(filmClubs.length + 1)
+    console.log("number of clubs", numberOfClubs)
+  }, [filmClubs])
 
   const showModal = () => {
     return (
@@ -141,7 +165,20 @@ const FilmClub = () => {
       </Row>
       <Row>
         <Col sm={12} md={8}>
-          <div
+          {filmClubs.length > 0 &&
+            filmClubs.map((club: any) => (
+              <div
+                className="mt-2 mb-2"
+                style={{
+                  width: "100%",
+                  height: "8vh",
+                  backgroundColor: "#89249c",
+                }}
+              >
+                {club.name}
+              </div>
+            ))}
+          {/* <div
             className="mt-2 mb-2"
             style={{
               width: "100%",
@@ -170,13 +207,13 @@ const FilmClub = () => {
             }}
           >
             your film club #
-          </div>
+          </div> */}
           <Row>
             {movies.length > 0 &&
               movies.map((movie: IMovie, i: number) => (
                 <Col sm={12} md={3}>
                   {" "}
-                  <MovieCard movie={movie} key={i} />
+                  <MovieCard movie={movie} key={movie.imdbID} />
                 </Col>
               ))}
           </Row>

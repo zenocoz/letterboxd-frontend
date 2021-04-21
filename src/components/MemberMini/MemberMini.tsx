@@ -8,6 +8,8 @@ import { UserContext as Context } from "../../context"
 const MemberMini = (props: any) => {
   const history = useHistory()
   const [rating, setRating] = useState(null)
+  const [selected, setSelected] = useState(false)
+
   const [friend, setFriend] = useState({
     username: "",
     picture: "",
@@ -16,13 +18,10 @@ const MemberMini = (props: any) => {
   const { username, picture, watchedMovies } = friend
 
   //context
-  // const { clubMembersContext }: any = useContext(Context)
-  // const { clubMembers, setClubMembers } = clubMembersContext
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
   const { members } = filmClubData
 
-  const [selected, setSelected] = useState(false)
   useEffect(() => {
     if (watchedMovies.length > 0) {
       const movie: any = watchedMovies.find(
@@ -32,8 +31,6 @@ const MemberMini = (props: any) => {
         setRating(movie.rating)
       }
     }
-    console.log(rating)
-    console.log("watchedMovies", watchedMovies)
   }, [username])
 
   useEffect(() => {
@@ -48,7 +45,6 @@ const MemberMini = (props: any) => {
       const filteredMembers = members.filter(
         (member: any) => member._id !== props.member._id
       )
-      console.log("filtered", filteredMembers)
       setFilmClubData({ ...filmClubData, members: filteredMembers })
       setSelected(false)
     } else {

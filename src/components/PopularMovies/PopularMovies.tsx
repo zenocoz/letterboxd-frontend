@@ -29,7 +29,6 @@ const PopularMovies = () => {
         return -1
       }
     })
-    console.log(sortedMovies)
     const retrievedMovies: Array<Promise<IMovie>> = []
     sortedMovies.slice(0, 11).forEach((sorted: any) => {
       let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
@@ -37,7 +36,6 @@ const PopularMovies = () => {
     })
 
     Promise.all(retrievedMovies).then((values) => {
-      console.log(values)
       setMovies(values)
     })
   }

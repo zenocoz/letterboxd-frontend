@@ -32,7 +32,6 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
     })
 
     Promise.all(retrievedMovies).then((values) => {
-      console.log(values)
       setMovies(values)
     })
   }
