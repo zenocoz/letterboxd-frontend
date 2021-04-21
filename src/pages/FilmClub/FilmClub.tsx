@@ -14,6 +14,7 @@ import { IMovie } from "../../interface"
 import { API } from "../../API"
 import { useEffect, useState, useContext } from "react"
 import MovieCard from "../../components/MovieCard/MovieCard"
+import MemberMini from "../../components/MemberMini/MemberMini"
 import Following from "../../components/Following/Following"
 import { UserContext as Context } from "../../context"
 import { useSelector } from "react-redux"
@@ -168,7 +169,7 @@ const FilmClub = () => {
           {filmClubs.length > 0 &&
             filmClubs.map((club: any) => (
               <div
-                className="mt-2 mb-2"
+                className="mt-2 mb-2 d-flex justify-content-between"
                 style={{
                   width: "100%",
                   height: "8vh",
@@ -176,6 +177,15 @@ const FilmClub = () => {
                 }}
               >
                 {club.name}
+                {club.members.map((member: any, i: number) => (
+                  <MemberMini
+                    member={member}
+                    withInfo={false}
+                    key={i}
+                    club={true}
+                    essential={true}
+                  />
+                ))}
               </div>
             ))}
           {/* <div

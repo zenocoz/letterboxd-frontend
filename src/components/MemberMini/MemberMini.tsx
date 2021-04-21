@@ -9,6 +9,7 @@ const MemberMini = (props: any) => {
   const history = useHistory()
   const [rating, setRating] = useState(null)
   const [selected, setSelected] = useState(false)
+  const [confirmed, setConfirmed] = useState(false)
 
   const [friend, setFriend] = useState({
     username: "",
@@ -57,7 +58,7 @@ const MemberMini = (props: any) => {
   return (
     <div
       className="friend-info"
-      style={{ backgroundColor: selected ? "red" : "#05c1f6" }}
+      style={{ backgroundColor: selected ? "red" : "#05c1f6", height: "100%" }}
     >
       {props.withInfo ? (
         <>
@@ -77,18 +78,22 @@ const MemberMini = (props: any) => {
         </>
       ) : (
         <>
-          <img src={picture} />
+          {props.essential ? (
+            <img src={picture} style={{ opacity: confirmed ? "1" : "0.3" }} />
+          ) : (
+            <img src={picture} />
+          )}
           <p
             onClick={() => {
               !props.club
                 ? history.push("/user/" + props.member._id)
                 : handleSelected()
             }}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: props.essential ? "auto" : "pointer" }}
           >
             {username}
           </p>
-          <p>{watchedMovies.length} films </p>
+          {!props.essential && <p>{watchedMovies.length} films </p>}
         </>
       )}
     </div>

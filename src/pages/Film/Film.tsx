@@ -5,6 +5,7 @@ import { API } from "../../API"
 import { updateUserInfo } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
 import { useMovieStatus } from "../../custom_hooks"
+// import ReactStars from "react-rating-stars-component"
 
 //styles and types
 import "./Film.css"
@@ -208,7 +209,6 @@ const Film = () => {
                         actions.unwatch()
                       }}
                     />
-
                     <div style={{ width: "6rem" }}>
                       <Form.Group>
                         <Form.Label>Rate</Form.Label>
@@ -225,6 +225,12 @@ const Film = () => {
                         </Form.Control>
                       </Form.Group>
                     </div>
+                    {/* <ReactStars
+                      count={5}
+                      // onChange={ratingChanged}
+                      size={24}
+                      activeColor="#ffd700"
+                    /> */}
                     <p>Rated {movieRating}</p>
                   </>
                 ) : (
