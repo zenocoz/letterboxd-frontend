@@ -16,13 +16,11 @@ const MemberMini = (props: any) => {
   const { username, picture, watchedMovies } = friend
 
   //context
-  // const { filmClubProvider }: any = useContext(Context)
-  // const { filmClubData, setFilmClubData } = filmClubProvider
-  // const { members } = filmClubData
-
-  //context
-  const { clubMembersContext }: any = useContext(Context)
-  const { clubMembers, setClubMembers } = clubMembersContext
+  // const { clubMembersContext }: any = useContext(Context)
+  // const { clubMembers, setClubMembers } = clubMembersContext
+  const { filmClubContext }: any = useContext(Context)
+  const { filmClubData, setFilmClubData } = filmClubContext
+  const { members } = filmClubData
 
   const [selected, setSelected] = useState(false)
   useEffect(() => {
@@ -47,17 +45,16 @@ const MemberMini = (props: any) => {
 
   const handleSelected = () => {
     if (selected) {
-      const filteredMembers = clubMembers.filter(
+      const filteredMembers = members.filter(
         (member: any) => member._id !== props.member._id
       )
       console.log("filtered", filteredMembers)
-      setClubMembers(filteredMembers)
+      setFilmClubData({ ...filmClubData, members: filteredMembers })
       setSelected(false)
     } else {
       setSelected(true)
-      clubMembers.push({ _id: props.member._id })
-      console.log("members", clubMembers)
-      setClubMembers(clubMembers)
+      members.push({ _id: props.member._id })
+      setFilmClubData({ ...filmClubData, members })
     }
   }
 

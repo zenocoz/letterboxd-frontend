@@ -226,4 +226,22 @@ export const API = {
       console.log(err)
     }
   },
+
+  createClub: async (clubData: any) => {
+    try {
+      const config = {
+        clubData,
+        headers: { "Content-type": "application/json" },
+      }
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs`,
+        config
+      )
+      if (response.status < 400) {
+        console.log("film club created with id", response.data)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
 }

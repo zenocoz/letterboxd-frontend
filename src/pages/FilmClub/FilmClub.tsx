@@ -20,15 +20,11 @@ import { UserContext as Context } from "../../context"
 const FilmClub = () => {
   const [show, setShow] = useState(false)
   const [movies, setMovies] = useState<Array<IMovie>>([])
-  const [clubName, setClubName] = useState("")
 
   //context
-
-  const [filmClubData, setFilmClubData] = useState({
-    name: "",
-    members: [],
-    films: [],
-  })
+  const { filmClubContext }: any = useContext(Context)
+  const { filmClubData, setFilmClubData } = filmClubContext
+  const { name } = filmClubData
 
   //placeholder function
   const getMovies = (): void => {
@@ -53,7 +49,12 @@ const FilmClub = () => {
   }
 
   const handleChange = (e: any) => {
-    setClubName(e.target.value)
+    setFilmClubData({ ...filmClubData, name: e.target.value })
+  }
+  const handleClubSubmit = (e: any) => {
+    e.preventDefault()
+    API.createClub(filmClubData)
+    setFilmClubData({ name: "", members: [], films: [] })
   }
 
   const handleSearch = (e: any) => {}
@@ -75,11 +76,11 @@ const FilmClub = () => {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>{clubName}</Form.Label>
+              <Form.Label>{name}</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={1}
-                value={clubName}
+                value={name}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -98,11 +99,22 @@ const FilmClub = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button
+            variant="danger"
             onClick={() => {
+              setShow(false)
+              setFilmClubData({ name: "", members: [], films: [] })
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="alert"
+            onClick={(e) => {
+              handleClubSubmit(e)
               setShow(false)
             }}
           >
-            Save
+            Create Club
           </Button>
         </Modal.Footer>
       </Modal>
