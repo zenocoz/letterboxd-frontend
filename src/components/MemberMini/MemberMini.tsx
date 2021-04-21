@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { API } from "../../API"
 import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
+import { UserContext as Context } from "../../context"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
@@ -13,6 +14,15 @@ const MemberMini = (props: any) => {
     watchedMovies: [],
   })
   const { username, picture, watchedMovies } = friend
+
+  //context
+  // const { filmClubProvider }: any = useContext(Context)
+  // const { filmClubData, setFilmClubData } = filmClubProvider
+  // const { members } = filmClubData
+
+  //context
+  const { clubMembersContext }: any = useContext(Context)
+  const { clubMembers, setClubMembers } = clubMembersContext
 
   const [selected, setSelected] = useState(false)
   useEffect(() => {
@@ -36,7 +46,19 @@ const MemberMini = (props: any) => {
   }, [])
 
   const handleSelected = () => {
-    setSelected(!selected)
+    if (selected) {
+      const filteredMembers = clubMembers.filter(
+        (member: any) => member._id !== props.member._id
+      )
+      console.log("filtered", filteredMembers)
+      setClubMembers(filteredMembers)
+      setSelected(false)
+    } else {
+      setSelected(true)
+      clubMembers.push({ _id: props.member._id })
+      console.log("members", clubMembers)
+      setClubMembers(clubMembers)
+    }
   }
 
   return (

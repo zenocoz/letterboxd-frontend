@@ -12,15 +12,18 @@ import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import "./FilmClub.css"
 import { IMovie } from "../../interface"
 import { API } from "../../API"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import Following from "../../components/Following/Following"
+import { UserContext as Context } from "../../context"
 
 const FilmClub = () => {
   const [show, setShow] = useState(false)
   const [movies, setMovies] = useState<Array<IMovie>>([])
   const [clubName, setClubName] = useState("")
-  const [memberName, setMemberName] = useState("")
+
+  //context
+
   const [filmClubData, setFilmClubData] = useState({
     name: "",
     members: [],
@@ -158,10 +161,10 @@ const FilmClub = () => {
           </div>
           <Row>
             {movies.length > 0 &&
-              movies.map((movie: IMovie) => (
+              movies.map((movie: IMovie, i: number) => (
                 <Col sm={12} md={3}>
                   {" "}
-                  <MovieCard movie={movie} key={movie.imdbID} />
+                  <MovieCard movie={movie} key={i} />
                 </Col>
               ))}
           </Row>
