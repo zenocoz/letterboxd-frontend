@@ -136,6 +136,8 @@ const Film = () => {
     )
     if (response.statusText === "OK") {
       console.log(`review added`, response.data)
+      setReviewText("")
+      setShowModalReview(false)
     } else {
       console.log("something went wrong in adding review")
     }
@@ -254,34 +256,25 @@ const Film = () => {
                 Review or log
               </button>
               {showModalReview && (
-                <Modal.Dialog>
-                  <Modal.Header closeButton>
-                    <Modal.Title>I watched...</Modal.Title>
-                    <span>
-                      {movieInfo.Title} {movieInfo.Year}
-                    </span>
-                  </Modal.Header>
+                <Modal.Dialog
+                  style={{ right: "7rem", bottom: "10rem", color: "white" }}
+                >
+                  <Modal.Title>I watched...</Modal.Title>
+                  <span>
+                    {movieInfo.Title} - {movieInfo.Year}
+                  </span>
 
                   <Modal.Body>
-                    <Form onSubmit={submitReviewLog}>
-                      <Form.Group>
+                    <Form>
+                      <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Control
-                          type="text"
+                          as="textarea"
+                          rows={3}
                           placeholder="Add a review"
                           value={reviewText}
                           onChange={handleReviewLogChange}
                         />
                       </Form.Group>
-
-                      <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check
-                          type="checkbox"
-                          label="Specify the date you watched it"
-                        />
-                      </Form.Group>
-                      <Button variant="primary" type="submit">
-                        Save
-                      </Button>
                     </Form>
                   </Modal.Body>
 
@@ -290,11 +283,19 @@ const Film = () => {
                       variant="secondary"
                       onClick={() => {
                         setShowModalReview(false)
+                        setReviewText("")
                       }}
                     >
                       Close
                     </Button>
-                    <Button variant="primary">Save changes</Button>
+                    <Button
+                      variant="primary"
+                      onClick={(e) => {
+                        submitReviewLog(e)
+                      }}
+                    >
+                      Submit Review
+                    </Button>
                   </Modal.Footer>
                 </Modal.Dialog>
               )}
@@ -304,10 +305,10 @@ const Film = () => {
           )}
         </Col>
       </Row>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center" style={{ marginTop: "10rem" }}>
         <div
           className="col-6 d-flex"
-          style={{ height: "6rem", backgroundColor: "pink", left: "49px" }}
+          style={{ height: "6rem", backgroundColor: "#14181d", left: "49px" }}
         >
           {friendsWhoSawMovie.length > 0 &&
             friendsWhoSawMovie.map((member: any, i: number) => (

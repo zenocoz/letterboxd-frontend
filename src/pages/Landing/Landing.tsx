@@ -119,21 +119,11 @@ const Landing = () => {
         </Col>
       </Row>
       <HighRatedMovies big={false} limit={6} />
-      {/* <Row className="mb-4 d-flex no-gutters">
-        <HighRatedMovies big={false} limit={6} />
-      </Row> */}
       <Banner />
 
       <SiteOffers />
 
       <PopularMovies />
-
-      {/* <Row>
-        <Col sm={12} md={8}>
-          <PopularReviews />
-        </Col>
-  
-      </Row> */}
     </>
   )
 }

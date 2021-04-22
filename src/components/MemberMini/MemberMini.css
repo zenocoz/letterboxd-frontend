@@ -1,7 +1,9 @@
 .friend-info {
   width: 4rem;
   height: 6rem;
-  background-color: #05c1f6;
+  /* background-color: #05c1f6; */
+  background-color: #14181d;
+  color: white;
   font-size: x-small;
 }
 

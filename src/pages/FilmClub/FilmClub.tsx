@@ -59,7 +59,7 @@ const FilmClub = () => {
   }
   const handleClubSubmit = (e: any) => {
     e.preventDefault()
-    members.push({ _id: userInfo._id })
+    members.push({ _id: userInfo._id, email: userInfo.email })
     setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
     setFilmClubData({ name: "", members: [], films: [] })

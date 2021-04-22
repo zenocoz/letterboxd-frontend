@@ -14,6 +14,7 @@ const MemberMini = (props: any) => {
   const [friend, setFriend] = useState({
     username: "",
     picture: "",
+    email: "",
     watchedMovies: [],
   })
   const { username, picture, watchedMovies } = friend
@@ -50,7 +51,7 @@ const MemberMini = (props: any) => {
       setSelected(false)
     } else {
       setSelected(true)
-      members.push({ _id: props.member._id })
+      members.push({ _id: props.member._id, email: friend.email })
       setFilmClubData({ ...filmClubData, members })
     }
   }
@@ -58,7 +59,7 @@ const MemberMini = (props: any) => {
   return (
     <div
       className="friend-info"
-      style={{ backgroundColor: selected ? "red" : "#05c1f6", height: "100%" }}
+      style={{ backgroundColor: selected ? "red" : "#14181d", height: "100%" }}
     >
       {props.withInfo ? (
         <>

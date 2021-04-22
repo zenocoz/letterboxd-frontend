@@ -1,7 +1,7 @@
 export interface IReviewProps {
   likes: number
-  username: string
-  movieTitle: string
+  authorId: string
+  movieId: string
   text: string
   date: Date
 }

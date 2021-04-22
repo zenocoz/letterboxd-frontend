@@ -5,7 +5,14 @@ import { UserContext } from "../../context"
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
 //external libraries
-import { Navbar, Nav, Form, FormControl } from "react-bootstrap"
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 
@@ -42,6 +49,18 @@ const NavBar = () => {
     history.push("/search")
   }
 
+  const renderTooltip = (props: any) => (
+    <Tooltip
+      id="button-tooltip"
+      {...props}
+      onClick={() => {
+        history.push("/user/" + userInfo._id)
+      }}
+    >
+      Edit Profile
+    </Tooltip>
+  )
+
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -56,13 +75,19 @@ const NavBar = () => {
           <Nav>
             {loggedIn ? (
               <>
-                <Nav.Link
-                  onClick={() => {
-                    history.push("/home")
-                  }}
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
                 >
-                  {userInfo.username}
-                </Nav.Link>
+                  <Nav.Link
+                    onClick={() => {
+                      history.push("/home")
+                    }}
+                  >
+                    {userInfo.username}
+                  </Nav.Link>
+                </OverlayTrigger>
                 <Nav.Link
                   onClick={() => {
                     history.push("/activity")
