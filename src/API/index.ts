@@ -227,14 +227,6 @@ export const API = {
     }
   },
 
-  // postReview: async(review: any) => {
-
-  //   try {}
-  //   catch(err) {
-  //     console.log(err)
-  //   }
-  // },
-
   createClub: async (clubData: any) => {
     try {
       const config = {
@@ -268,4 +260,15 @@ export const API = {
       console.log(err)
     }
   },
+
+  // updateProfilePicture: async (userId: string) => {
+  //   try {
+  //     const response = axios.put(`${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/modifyPicture`)
+
+  //   }
+
+  //   catch(err) {
+
+  //   }
+  // }
 }

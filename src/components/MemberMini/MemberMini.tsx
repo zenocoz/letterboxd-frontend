@@ -47,11 +47,18 @@ const MemberMini = (props: any) => {
       const filteredMembers = members.filter(
         (member: any) => member._id !== props.member._id
       )
-      setFilmClubData({ ...filmClubData, members: filteredMembers })
+      setFilmClubData({
+        ...filmClubData,
+        members: filteredMembers,
+      })
       setSelected(false)
     } else {
       setSelected(true)
-      members.push({ _id: props.member._id, email: friend.email })
+      members.push({
+        _id: props.member._id,
+        email: friend.email,
+        confirmed: false,
+      })
       setFilmClubData({ ...filmClubData, members })
     }
   }

@@ -15,8 +15,8 @@ import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import "./MovieCard.css"
 
 const MovieCard = (props: any) => {
-  const width = "200px "
-  const height = "300px"
+  const width = "100% "
+  const height = "100%"
   const { movie, loggedIn = [] } = props
 
   const history = useHistory()
@@ -60,7 +60,7 @@ const MovieCard = (props: any) => {
 
   return (
     <div
-      // className="col sm-12 md-8"
+      className="col sm-12 md-4"
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
@@ -77,9 +77,11 @@ const MovieCard = (props: any) => {
         style={{
           width: "100%",
           height: "100%",
+          // minHeight: 300,
           transition: "0.2s",
           opacity: `${props.hovered ? "0.5" : "1"}`,
           borderRadius: "2px",
+          // objectFit: "cover",
         }}
         alt="batman"
         src={movie.Poster}
@@ -97,6 +99,7 @@ const MovieCard = (props: any) => {
           bottom: "15%",
           backgroundColor: "black",
           color: "#fff",
+          // minHeight: "36px",
         }}
       >
         {loggedIn &&

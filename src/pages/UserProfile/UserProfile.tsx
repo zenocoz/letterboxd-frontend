@@ -45,6 +45,9 @@ const UserProfile = () => {
     checkFollowing()
   }, [userInfo.following])
 
+  //TODO
+  const changePicture = () => {}
+
   return (
     <>
       <div
