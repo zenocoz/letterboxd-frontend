@@ -261,14 +261,23 @@ export const API = {
     }
   },
 
-  // updateProfilePicture: async (userId: string) => {
-  //   try {
-  //     const response = axios.put(`${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/modifyPicture`)
+  updateProfilePicture: async (userId: string, file: any) => {
+    try {
+      const _config = {
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/modifyPicture`,
+        file
+      )
 
-  //   }
-
-  //   catch(err) {
-
-  //   }
-  // }
+      return response.data
+    } catch (err) {
+      console.log("Edit current user error: ", err)
+      return err.response.data
+    }
+  },
 }

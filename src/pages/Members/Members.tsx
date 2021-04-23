@@ -52,11 +52,8 @@ const Members = () => {
                 <MemberCard member={member} key={i} />
               ))}
       </div>
-      <Row>
-        <Col sm={12} md={8}>
-          <PopularMembers />
-        </Col>
-      </Row>
+
+      <PopularMembers />
     </>
   )
 }

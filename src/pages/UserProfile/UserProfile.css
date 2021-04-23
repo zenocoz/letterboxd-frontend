@@ -8,11 +8,12 @@
   align-items: center;
 }
 
-.user-info img {
-  height: 100%;
-  width: 100%;
+/* .user-info img {
+  height: 75;
+  width: 75;
   border-radius: 50px;
-}
+  object-fit: cover;
+} */
 .user-info button {
   height: 30%;
   font-size: x-small;

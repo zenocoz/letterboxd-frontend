@@ -20,6 +20,7 @@ import { UserContext as Context } from "../../context"
 import { useSelector } from "react-redux"
 import { copyFile } from "node:fs"
 import { useInterval } from "../../custom_hooks"
+import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
@@ -61,7 +62,12 @@ const FilmClub = () => {
   }
   const handleClubSubmit = (e: any) => {
     e.preventDefault()
-    members.push({ _id: userInfo._id, email: userInfo.email, confirmed: true })
+    members.push({
+      _id: userInfo._id,
+      email: userInfo.email,
+      confirmed: true,
+      chooser: true,
+    })
     setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
     setFilmClubData({ name: "", members: [], films: [] })
@@ -124,13 +130,7 @@ const FilmClub = () => {
 
           <Form style={{ width: "10rem" }} onSubmit={handleSearchSubmit}>
             <Form.Label>Invite Users</Form.Label>
-            <Following club={true} />
-            {/* <FormControl
-              type="text"
-              className="mr-sm-2 search-bar"
-              // value={value}
-              onChange={handleSearch}
-            /> */}
+            <Following club={true} withInfo={false} />
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -160,7 +160,7 @@ const FilmClub = () => {
   const renderFilmClubs = () => {
     return filmClubs.map((club: any) => (
       <div
-        className="mt-2 mb-2 d-flex justify-content-between"
+        className="row mt-2 mb-2 d-flex justify-content-between"
         style={{
           width: "100%",
           height: "8vh",
@@ -201,80 +201,11 @@ const FilmClub = () => {
       </Row>
       <Row>
         <Col sm={12} md={8}>
-          {
-            filmClubs.length > 0 && renderFilmClubs()
-            // filmClubs.map((club: any) => (
-            //   <div
-            //     className="mt-2 mb-2 d-flex justify-content-between"
-            //     style={{
-            //       width: "100%",
-            //       height: "8vh",
-            //       backgroundColor: "#89249c",
-            //     }}
-            //   >
-            //     {club.name}
-            //     {club.members.map((member: any, i: number) => (
-            //       <MemberMini
-            //         member={member}
-            //         withInfo={false}
-            //         key={i}
-            //         club={true}
-            //         essential={true}
-            //       />
-            //     ))}
-            //   </div>
-            // ))}
-          }
-          {/* <div
-            className="mt-2 mb-2"
-            style={{
-              width: "100%",
-              height: "8vh",
-              backgroundColor: "#89249c",
-            }}
-          >
-            your film club #
-          </div>
-          <div
-            className="mt-2 mb-2"
-            style={{
-              width: "100%",
-              height: "8vh",
-              backgroundColor: "#89249c",
-            }}
-          >
-            your film club #
-          </div>
-          <div
-            className="mt-2 mb-2"
-            style={{
-              width: "100%",
-              height: "8vh",
-              backgroundColor: "#89249c",
-            }}
-          >
-            your film club #
-          </div> */}
-          <Row>
-            {movies.length > 0 &&
-              movies.map((movie: IMovie, i: number) => (
-                <Col sm={12} md={3}>
-                  {" "}
-                  <MovieCard movie={movie} key={movie.imdbID} />
-                </Col>
-              ))}
-          </Row>
+          {filmClubs.length > 0 && renderFilmClubs()}
+
+          <HighRatedMovies big={false} limit={4} />
         </Col>
         <Col sm={12} md={4}>
-          {/* <Form style={{ width: "10rem" }} onSubmit={handleSubmit}>
-            <Form.Label>Search Users</Form.Label>
-            <FormControl
-              type="text"
-              className="mr-sm-2 search-bar"
-              // value={value}
-              onChange={handleSearch}
-            />
-          </Form> */}
           <PopularMembers />
         </Col>
       </Row>

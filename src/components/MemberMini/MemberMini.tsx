@@ -4,6 +4,7 @@ import { API } from "../../API"
 import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
+import { Form, FormControl, OverlayTrigger, Popover } from "react-bootstrap"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
@@ -58,19 +59,24 @@ const MemberMini = (props: any) => {
         _id: props.member._id,
         email: friend.email,
         confirmed: false,
+        chooser: false,
       })
       setFilmClubData({ ...filmClubData, members })
     }
   }
 
+  const handleSearch = (e: any) => {}
+
+  const handleSearchSubmit = () => {}
+
   return (
     <div
-      className="friend-info"
-      style={{ backgroundColor: selected ? "red" : "#14181d", height: "100%" }}
+      className="col friend-info"
+      style={{ backgroundColor: selected ? "red" : "#14181d" }}
     >
       {props.withInfo ? (
         <>
-          <img src={picture} />
+          <img src={picture} style={{ width: "5rem", height: "5rem" }} />
           <p
             onClick={() => {
               history.push("/user/" + props.member._id)
@@ -87,12 +93,34 @@ const MemberMini = (props: any) => {
       ) : (
         <>
           {props.essential ? (
-            <img
-              src={picture}
-              style={{ opacity: props.member.confirmed ? "1" : "0.3" }}
-            />
+            <>
+              <img
+                src={picture}
+                style={{
+                  opacity: props.member.confirmed ? "1" : "0.3",
+                  width: "2rem",
+                  height: "2rem",
+                }}
+              />
+              {props.member.confirmed && !props.member.chooser && (
+                <Form onSubmit={handleSearchSubmit}>
+                  <FormControl
+                    type="text"
+                    className="mr-sm-2 search-bar"
+                    // value={value}
+                    style={{
+                      height: "2rem",
+                      width: "10rem",
+                      position: "absolute",
+                      marginTop: "3rem",
+                    }}
+                    onChange={handleSearch}
+                  />
+                </Form>
+              )}
+            </>
           ) : (
-            <img src={picture} />
+            <img src={picture} style={{ width: "3rem", height: "3rem" }} />
           )}
           <p
             onClick={() => {

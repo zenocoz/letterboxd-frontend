@@ -1,6 +1,6 @@
 .friend-info {
-  width: 4rem;
-  height: 6rem;
+  width: 3rem;
+  height: 100%;
   /* background-color: #05c1f6; */
   background-color: #14181d;
   color: white;
@@ -8,7 +8,8 @@
 }
 
 .friend-info img {
-  height: 50%;
+  height: 100%;
+  width: 100%;
   border-radius: 50px;
 }
 .friend-info {

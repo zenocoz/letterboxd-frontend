@@ -1,7 +1,7 @@
 .popular-members {
   position: relative;
   margin-top: 2rem;
-  height: 6rem;
+  height: 5rem;
 }
 
 .popular-members::before {

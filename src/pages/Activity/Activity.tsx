@@ -69,7 +69,7 @@ const Activity = () => {
             />
           ))}
       </Row>
-      <Following />
+      <Following withInfo={true} />
     </>
   )
 }
