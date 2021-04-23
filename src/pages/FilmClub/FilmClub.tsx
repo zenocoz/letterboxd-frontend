@@ -160,11 +160,13 @@ const FilmClub = () => {
   const renderFilmClubs = () => {
     return filmClubs.map((club: any) => (
       <div
-        className="row mt-2 mb-2 d-flex justify-content-between"
+        className="row mt-2 mb-5 d-flex justify-content-between"
         style={{
           width: "100%",
           height: "8vh",
-          backgroundColor: "#89249c",
+          backgroundColor: "#14181d",
+          color: "#ddd9cb",
+          // backgroundColor: "#89249c",
         }}
       >
         {club.name}
@@ -186,10 +188,10 @@ const FilmClub = () => {
       <Row>
         <Col>
           <div className="d-flex club-hero mt-2 justify-content-between">
-            <h1 className="offset-3">Welcome to your Film Club</h1>
+            <h1 className="offset-3">Welcome to the Film Club</h1>
             {showModal()}
             <Button
-              type="primary"
+              style={{ backgroundColor: "#485794", color: "#ddd9cb" }}
               onClick={() => {
                 setShow(true)
               }}
@@ -200,7 +202,7 @@ const FilmClub = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm={12} md={8}>
+        <Col sm={12} md={8} style={{ backgroundColor: "#485794" }}>
           {filmClubs.length > 0 && renderFilmClubs()}
 
           <HighRatedMovies big={false} limit={4} />

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import "./SearchResults.css"
 import { Row, Col, ListGroup } from "react-bootstrap"
 import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
+import PopularReviews from "../../components/PopularReviews/PopularReviews"
 
 const SearchResults = () => {
   const history = useHistory()
@@ -20,7 +21,8 @@ const SearchResults = () => {
             ))}
         </Col>
         <Col xs={12} md={4}>
-          <ListGroup as="ul">
+          <PopularReviews />
+          {/* <ListGroup as="ul">
             <div
               className="mb-1"
               style={{
@@ -85,7 +87,7 @@ const SearchResults = () => {
                 backgroundColor: "#fff",
               }}
             ></div>
-          </ListGroup>
+          </ListGroup> */}
         </Col>
       </Row>
     </>

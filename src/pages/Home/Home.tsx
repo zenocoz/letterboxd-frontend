@@ -22,7 +22,9 @@ const Home = () => {
 
   return (
     <>
-      <HighRatedMovies big={true} limit={4} />
+      <Row className="mt-2">
+        <HighRatedMovies big={true} limit={4} />
+      </Row>
       <PopularMovies />
     </>
   )

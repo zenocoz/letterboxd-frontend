@@ -5,6 +5,7 @@ import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
 import { Form, FormControl, OverlayTrigger, Popover } from "react-bootstrap"
+import { useSelector } from "react-redux"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
@@ -24,6 +25,8 @@ const MemberMini = (props: any) => {
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
   const { members } = filmClubData
+
+  const { userInfo } = useSelector((state: any) => state.user)
 
   useEffect(() => {
     if (watchedMovies.length > 0) {
@@ -71,7 +74,7 @@ const MemberMini = (props: any) => {
 
   return (
     <div
-      className="col friend-info"
+      className="col-2 friend-info"
       style={{ backgroundColor: selected ? "red" : "#14181d" }}
     >
       {props.withInfo ? (
@@ -102,22 +105,24 @@ const MemberMini = (props: any) => {
                   height: "2rem",
                 }}
               />
-              {props.member.confirmed && !props.member.chooser && (
-                <Form onSubmit={handleSearchSubmit}>
-                  <FormControl
-                    type="text"
-                    className="mr-sm-2 search-bar"
-                    // value={value}
-                    style={{
-                      height: "2rem",
-                      width: "10rem",
-                      position: "absolute",
-                      marginTop: "3rem",
-                    }}
-                    onChange={handleSearch}
-                  />
-                </Form>
-              )}
+              {props.member.confirmed &&
+                !props.member.chooser &&
+                props.member._id === userInfo._id && (
+                  <Form onSubmit={handleSearchSubmit}>
+                    <FormControl
+                      type="text"
+                      className="mr-sm-2 search-bar"
+                      // value={value}
+                      style={{
+                        height: "2rem",
+                        width: "10rem",
+                        position: "absolute",
+                        marginTop: "3rem",
+                      }}
+                      onChange={handleSearch}
+                    />
+                  </Form>
+                )}
             </>
           ) : (
             <img src={picture} style={{ width: "3rem", height: "3rem" }} />
