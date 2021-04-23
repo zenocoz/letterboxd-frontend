@@ -18,6 +18,8 @@ import MemberMini from "../../components/MemberMini/MemberMini"
 import Following from "../../components/Following/Following"
 import { UserContext as Context } from "../../context"
 import { useSelector } from "react-redux"
+import { copyFile } from "node:fs"
+import { useInterval } from "../../custom_hooks"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
@@ -69,6 +71,15 @@ const FilmClub = () => {
   const handleSearch = (e: any) => {}
 
   const handleSearchSubmit = () => {}
+
+  //check if there are unconfirmed members
+  useInterval(async () => {
+    const response = await API.getUserMovieClubs(userInfo._id)
+    if (response) {
+      setFilmClubs(response)
+      console.log("interval polled")
+    }
+  }, 5000)
 
   useEffect(() => {
     if (loggedIn) {
@@ -146,6 +157,30 @@ const FilmClub = () => {
     )
   }
 
+  const renderFilmClubs = () => {
+    return filmClubs.map((club: any) => (
+      <div
+        className="mt-2 mb-2 d-flex justify-content-between"
+        style={{
+          width: "100%",
+          height: "8vh",
+          backgroundColor: "#89249c",
+        }}
+      >
+        {club.name}
+        {club.members.map((member: any, i: number) => (
+          <MemberMini
+            member={member}
+            withInfo={false}
+            key={i}
+            club={true}
+            essential={true}
+          />
+        ))}
+      </div>
+    ))
+  }
+
   return (
     <>
       <Row>
@@ -166,28 +201,30 @@ const FilmClub = () => {
       </Row>
       <Row>
         <Col sm={12} md={8}>
-          {filmClubs.length > 0 &&
-            filmClubs.map((club: any) => (
-              <div
-                className="mt-2 mb-2 d-flex justify-content-between"
-                style={{
-                  width: "100%",
-                  height: "8vh",
-                  backgroundColor: "#89249c",
-                }}
-              >
-                {club.name}
-                {club.members.map((member: any, i: number) => (
-                  <MemberMini
-                    member={member}
-                    withInfo={false}
-                    key={i}
-                    club={true}
-                    essential={true}
-                  />
-                ))}
-              </div>
-            ))}
+          {
+            filmClubs.length > 0 && renderFilmClubs()
+            // filmClubs.map((club: any) => (
+            //   <div
+            //     className="mt-2 mb-2 d-flex justify-content-between"
+            //     style={{
+            //       width: "100%",
+            //       height: "8vh",
+            //       backgroundColor: "#89249c",
+            //     }}
+            //   >
+            //     {club.name}
+            //     {club.members.map((member: any, i: number) => (
+            //       <MemberMini
+            //         member={member}
+            //         withInfo={false}
+            //         key={i}
+            //         club={true}
+            //         essential={true}
+            //       />
+            //     ))}
+            //   </div>
+            // ))}
+          }
           {/* <div
             className="mt-2 mb-2"
             style={{

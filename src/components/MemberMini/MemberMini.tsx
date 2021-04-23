@@ -9,7 +9,7 @@ const MemberMini = (props: any) => {
   const history = useHistory()
   const [rating, setRating] = useState(null)
   const [selected, setSelected] = useState(false)
-  const [confirmed, setConfirmed] = useState(false)
+  // const [confirmed, setConfirmed] = useState(false)
 
   const [friend, setFriend] = useState({
     username: "",
@@ -87,7 +87,10 @@ const MemberMini = (props: any) => {
       ) : (
         <>
           {props.essential ? (
-            <img src={picture} style={{ opacity: confirmed ? "1" : "0.3" }} />
+            <img
+              src={picture}
+              style={{ opacity: props.member.confirmed ? "1" : "0.3" }}
+            />
           ) : (
             <img src={picture} />
           )}

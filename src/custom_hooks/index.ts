@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo, useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 
 import { updateUserInfo } from "../store/user/reducer"
@@ -46,4 +46,24 @@ export const useUserInfo = (userId: string, movieId: string): any => {
   }
 
   return { follow, unfollow }
+}
+
+export const useInterval = (callback: any, delay: number): any => {
+  const savedCallback: any = useRef()
+
+  useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current()
+    }
+    if (delay !== null) {
+      const id = setInterval(tick, delay)
+      return () => {
+        clearInterval(id)
+      }
+    }
+  }, [callback, delay])
 }
