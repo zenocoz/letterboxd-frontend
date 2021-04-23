@@ -201,11 +201,18 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row>
-        <Col sm={12} md={8} style={{ backgroundColor: "#485794" }}>
+      <Row style={{ height: "75vh" }}>
+        <Col
+          className="d-flex flex-column justify-content-between"
+          sm={12}
+          md={8}
+          style={{ backgroundColor: "#485794" }}
+        >
           {filmClubs.length > 0 && renderFilmClubs()}
 
-          <HighRatedMovies big={false} limit={4} />
+          <Row>
+            <HighRatedMovies big={false} limit={4} />
+          </Row>
         </Col>
         <Col sm={12} md={4}>
           <PopularMembers />

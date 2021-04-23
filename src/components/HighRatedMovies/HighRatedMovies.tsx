@@ -46,7 +46,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   }
 
   return (
-    <Row className="ml-0 mb-4 d-flex no-gutters high-rated">
+    <>
       {big
         ? movies.length > 0 &&
           movies
@@ -74,7 +74,7 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
                 hovered={hovered === i}
               />
             ))}
-    </Row>
+    </>
   )
 }
 

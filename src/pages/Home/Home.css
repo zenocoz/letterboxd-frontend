@@ -3,3 +3,7 @@
   color: white;
   font-family: Lora, serif;
 }
+
+#movies-row {
+  margin-top: 8rem;
+}

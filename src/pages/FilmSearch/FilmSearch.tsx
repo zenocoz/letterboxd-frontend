@@ -92,10 +92,14 @@ const FilmSearch = () => {
             </div> */}
         </Col>
       </Row>
-      <HighRatedMovies big={true} limit={4} />
+      <Row>
+        <HighRatedMovies big={true} limit={4} />
+      </Row>
       <Banner />
       <PopularMovies />
-      <HighRatedMovies big={false} limit={12} />
+      <Row>
+        <HighRatedMovies big={false} limit={12} />
+      </Row>
       <Row>
         <Col md={8}>
           <PopularReviews />
