@@ -6,6 +6,8 @@ import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
 import { Form, FormControl, OverlayTrigger, Popover } from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCrown } from "@fortawesome/free-solid-svg-icons"
 
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
@@ -111,6 +113,15 @@ const MemberMini = (props: any) => {
         <>
           {props.essential ? (
             <>
+              {props.member._id === userInfo._id && (
+                <FontAwesomeIcon
+                  className="mr-1"
+                  icon={faCrown}
+                  color={"gold"}
+                  size="1x"
+                />
+              )}
+
               <img
                 src={picture}
                 style={{

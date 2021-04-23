@@ -211,7 +211,7 @@ const FilmClub = () => {
 
   const showSearchResults = () => {
     return (
-      <Col className="col-2" xs={12} md={8}>
+      <>
         {movieList.length > 0 ? (
           movieList.map((movie: any) => (
             <MovieCardSmall {...movie} withInfo={false} />
@@ -219,7 +219,7 @@ const FilmClub = () => {
         ) : (
           <div>null</div>
         )}
-      </Col>
+      </>
     )
   }
 
@@ -254,7 +254,7 @@ const FilmClub = () => {
         >
           {filmClubs.length > 0 && renderFilmClubs()}
 
-          <Row>
+          <Row style={{ height: "200px" }}>
             {showSearchResults()}
             {/* <HighRatedMovies big={false} limit={4} /> */}
           </Row>

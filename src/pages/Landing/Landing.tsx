@@ -118,7 +118,9 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <HighRatedMovies big={false} limit={6} />
+      <Row>
+        <HighRatedMovies big={false} limit={6} />
+      </Row>
       <Banner />
 
       <SiteOffers />
