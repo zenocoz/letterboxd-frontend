@@ -5,13 +5,18 @@ import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
 import { Form, FormControl, OverlayTrigger, Popover } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
+import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
   const [rating, setRating] = useState(null)
   const [selected, setSelected] = useState(false)
   // const [confirmed, setConfirmed] = useState(false)
+
+  //redux
+  const dispatch = useDispatch()
 
   const [friend, setFriend] = useState({
     username: "",
@@ -68,9 +73,18 @@ const MemberMini = (props: any) => {
     }
   }
 
-  const handleSearch = (e: any) => {}
-
-  const handleSearchSubmit = () => {}
+  //Search Bar
+  const [value, setSearchValue] = useState("")
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+  }
+  const handleSearchSubmit = async (e: any) => {
+    e.preventDefault()
+    dispatch(setKeyword(value))
+    dispatch(loadSearchResults(value))
+    setSearchValue("")
+    // history.push("/search")
+  }
 
   return (
     <div

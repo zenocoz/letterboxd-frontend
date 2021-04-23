@@ -8,7 +8,7 @@ import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 
 const SearchResults = () => {
-  const history = useHistory()
+  // const history = useHistory()
   const { movieList } = useSelector((state: any) => state.search)
 
   return (

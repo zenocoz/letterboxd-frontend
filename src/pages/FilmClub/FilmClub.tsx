@@ -1,3 +1,4 @@
+//styles and ui frameworks
 import {
   Jumbotron,
   Row,
@@ -7,20 +8,32 @@ import {
   FormControl,
   Modal,
 } from "react-bootstrap"
+import "./FilmClub.css"
+
+//hooks
+import { useEffect, useState, useContext } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useInterval } from "../../custom_hooks"
+
+//context
+import { UserContext as Context } from "../../context"
+
+//functions and utils
+import { API } from "../../API"
+// import { setKeyword, loadSearchResults } from "../../store/search/reducer"
+
+//types and interfaces
+import { IMovie } from "../../interface"
+
+//components
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
-import "./FilmClub.css"
-import { IMovie } from "../../interface"
-import { API } from "../../API"
-import { useEffect, useState, useContext } from "react"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import MemberMini from "../../components/MemberMini/MemberMini"
 import Following from "../../components/Following/Following"
-import { UserContext as Context } from "../../context"
-import { useSelector } from "react-redux"
 import { copyFile } from "node:fs"
-import { useInterval } from "../../custom_hooks"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
+import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
@@ -28,6 +41,10 @@ const FilmClub = () => {
   const [show, setShow] = useState(false)
   const [movies, setMovies] = useState<Array<IMovie>>([])
   const [filmClubs, setFilmClubs] = useState<any>([])
+
+  //redux
+  // const dispatch = useDispatch()
+  const { movieList } = useSelector((state: any) => state.search)
   const { userInfo, loggedIn } = useSelector((state: any) => state.user)
 
   //context
@@ -74,9 +91,18 @@ const FilmClub = () => {
     setNumberOfClubs(filmClubs.length)
   }
 
-  const handleSearch = (e: any) => {}
-
-  const handleSearchSubmit = () => {}
+  // //Search Bar
+  // const [value, setSearchValue] = useState("")
+  // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchValue(e.target.value)
+  // }
+  // const handleSearchSubmit = async (e: any) => {
+  //   e.preventDefault()
+  //   dispatch(setKeyword(value))
+  //   dispatch(loadSearchResults(value))
+  //   setSearchValue("")
+  //   // history.push("/search")
+  // }
 
   //check if there are unconfirmed members
   useInterval(async () => {
@@ -128,7 +154,7 @@ const FilmClub = () => {
             </Form.Group>
           </Form>
 
-          <Form style={{ width: "10rem" }} onSubmit={handleSearchSubmit}>
+          <Form style={{ width: "10rem" }}>
             <Form.Label>Invite Users</Form.Label>
             <Following club={true} withInfo={false} />
           </Form>
@@ -183,6 +209,24 @@ const FilmClub = () => {
     ))
   }
 
+  const showSearchResults = () => {
+    return (
+      <Col className="col-2" xs={12} md={8}>
+        {movieList.length > 0 ? (
+          movieList.map((movie: any) => (
+            <MovieCardSmall {...movie} withInfo={false} />
+          ))
+        ) : (
+          <div>null</div>
+        )}
+      </Col>
+    )
+  }
+
+  useEffect(() => {
+    showSearchResults()
+  }, [movieList])
+
   return (
     <>
       <Row>
@@ -211,7 +255,8 @@ const FilmClub = () => {
           {filmClubs.length > 0 && renderFilmClubs()}
 
           <Row>
-            <HighRatedMovies big={false} limit={4} />
+            {showSearchResults()}
+            {/* <HighRatedMovies big={false} limit={4} /> */}
           </Row>
         </Col>
         <Col sm={12} md={4}>
