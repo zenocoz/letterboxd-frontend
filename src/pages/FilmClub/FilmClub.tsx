@@ -117,9 +117,7 @@ const FilmClub = () => {
     if (loggedIn) {
       ;(async () => {
         const response = await API.getUserMovieClubs(userInfo._id)
-        if (response) {
-          _setFilmClubs(response)
-        }
+        _setFilmClubs(response)
       })()
     }
   }, [numberOfClubs])

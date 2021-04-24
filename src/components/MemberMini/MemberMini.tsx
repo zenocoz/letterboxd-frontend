@@ -20,6 +20,8 @@ import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
+
+  //component state
   const [rating, setRating] = useState(null)
   const [selected, setSelected] = useState(false)
   // const [confirmed, setConfirmed] = useState(false)
@@ -134,24 +136,22 @@ const MemberMini = (props: any) => {
                 />
               )}
 
-              <div className="d-flex">
-                <img
-                  src={picture}
-                  style={{
-                    opacity: props.member.confirmed ? "1" : "0.3",
-                    width: "2rem",
-                    height: "2rem",
-                  }}
+              <img
+                src={picture}
+                style={{
+                  opacity: props.member.confirmed ? "1" : "0.3",
+                  width: "2rem",
+                  height: "2rem",
+                }}
+              />
+              {props.member.film !== null && (
+                <MovieCardSmall
+                  {...props.member.film}
+                  withInfo={false}
+                  // clubId={props.clubId}
+                  // memberId={props.member._id}
                 />
-                {props.member.film !== null && (
-                  <MovieCardSmall
-                    {...props.member.film}
-                    withInfo={false}
-                    // clubId={props.clubId}
-                    // memberId={props.member._id}
-                  />
-                )}
-              </div>
+              )}
               {props.member.confirmed &&
                 !props.member.chooser &&
                 props.member._id === userInfo._id && (

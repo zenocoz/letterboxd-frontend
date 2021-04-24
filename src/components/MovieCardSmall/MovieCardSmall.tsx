@@ -46,7 +46,7 @@ const MovieCardSmall = ({
   return (
     <>
       {!withInfo ? (
-        <div
+        <Col
           className="sm-8  mb-1"
           style={{
             height: "100%",
@@ -70,7 +70,7 @@ const MovieCardSmall = ({
               club ? setSelectedClubFilm() : history.push(`/film/${imdbID}`)
             }
           />
-        </div>
+        </Col>
       ) : (
         <Row className="mt-5">
           <Col xs={12} md={2}>
