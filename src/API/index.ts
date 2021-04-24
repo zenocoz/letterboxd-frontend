@@ -261,6 +261,40 @@ export const API = {
     }
   },
 
+  addSelectedMovieToClub: async (
+    clubId: string,
+    memberId: string,
+    filmId: string
+  ) => {
+    try {
+      const config = {
+        filmId,
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+      // const config = {
+      //   headers: {
+      //     "Content-type": "application/json",
+      //     "Access-Control-Allow-Origin": "*",
+      //   },
+      // }
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/${clubId}/${memberId}`,
+
+        config
+      )
+      if (response.status < 400) {
+        return response.data
+      } else {
+        console.log("error adding film to membber")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
   updateProfilePicture: async (userId: string, file: any) => {
     try {
       const _config = {

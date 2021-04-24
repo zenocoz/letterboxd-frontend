@@ -4,7 +4,13 @@ import { API } from "../../API"
 import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
-import { Form, FormControl, OverlayTrigger, Popover } from "react-bootstrap"
+import {
+  Form,
+  FormControl,
+  OverlayTrigger,
+  Popover,
+  Tooltip,
+} from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCrown } from "@fortawesome/free-solid-svg-icons"
@@ -33,6 +39,10 @@ const MemberMini = (props: any) => {
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
   const { members } = filmClubData
+
+  //club id pass it
+  const { currentFilmClubContext }: any = useContext(Context)
+  const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
 
   const { userInfo } = useSelector((state: any) => state.user)
 
@@ -86,6 +96,7 @@ const MemberMini = (props: any) => {
     dispatch(setKeyword(value))
     dispatch(loadSearchResults(value))
     setSearchValue("")
+    setCurrentFilmClub(props.clubId)
     // history.push("/search")
   }
 
@@ -133,7 +144,12 @@ const MemberMini = (props: any) => {
                   }}
                 />
                 {props.member.film !== null && (
-                  <MovieCardSmall {...props.member.film} withInfo={false} />
+                  <MovieCardSmall
+                    {...props.member.film}
+                    withInfo={false}
+                    // clubId={props.clubId}
+                    // memberId={props.member._id}
+                  />
                 )}
               </div>
               {props.member.confirmed &&

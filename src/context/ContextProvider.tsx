@@ -12,10 +12,24 @@ const ContextProvider: React.FC = ({ children }) => {
     films: [],
   })
 
+  //make film clubs accessible to many components
+  const [_filmClubs, _setFilmClubs] = useState([])
+  const [currentFilmClub, setCurrentFilmClub] = useState<string>("")
+
+  const _filmClubsContext = useMemo(() => ({ _filmClubs, _setFilmClubs }), [
+    _filmClubs,
+    _setFilmClubs,
+  ])
+
   const filmClubContext = useMemo(() => ({ filmClubData, setFilmClubData }), [
     filmClubData,
     setFilmClubData,
   ])
+
+  const currentFilmClubContext = useMemo(
+    () => ({ currentFilmClub, setCurrentFilmClub }),
+    [currentFilmClub, setCurrentFilmClub]
+  )
 
   const providerModals: IModal = {
     accountModal: { createAccount, setCreateAccount },
@@ -25,6 +39,8 @@ const ContextProvider: React.FC = ({ children }) => {
   const context = {
     providerModals,
     filmClubContext,
+    _filmClubsContext,
+    currentFilmClubContext,
   }
   return <UserContext.Provider value={context}>{children}</UserContext.Provider>
 }

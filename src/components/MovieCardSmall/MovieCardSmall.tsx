@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./MovieCardSmall.css"
 import { IMovieCardSmallProps } from "./interface"
-import { Col, Row } from "react-bootstrap"
+import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap"
 import { useHistory } from "react-router"
 import { useDispatch } from "react-redux"
 import { clearSearchResults } from "../../store/search/reducer"
+import { API } from "../../API"
+
+//context
+import { UserContext as Context } from "../../context"
 
 const MovieCardSmall = ({
+  _id,
   Poster,
   imdbID,
   withInfo,
@@ -17,14 +22,31 @@ const MovieCardSmall = ({
   onMouseLeave,
   hovered,
   club,
+  clubId,
+  memberId,
 }: IMovieCardSmallProps) => {
   const history = useHistory()
   const dispatch = useDispatch()
 
+  const renderTooltip = (props: any) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {props.Title}
+    </Tooltip>
+  )
+
+  //clubs array context
+  const { _filmClubsContext }: any = useContext(Context)
+  const { _filmClubs, _setFilmClubs } = _filmClubsContext
+
+  const setSelectedClubFilm = () => {
+    API.addSelectedMovieToClub(clubId, memberId, _id)
+    dispatch(clearSearchResults())
+  }
+
   return (
     <>
       {!withInfo ? (
-        <Col
+        <div
           className="sm-8  mb-1"
           style={{
             height: "100%",
@@ -45,12 +67,10 @@ const MovieCardSmall = ({
             }}
             src={Poster}
             onClick={() =>
-              club
-                ? dispatch(clearSearchResults())
-                : history.push(`/film/${imdbID}`)
+              club ? setSelectedClubFilm() : history.push(`/film/${imdbID}`)
             }
           />
-        </Col>
+        </div>
       ) : (
         <Row className="mt-5">
           <Col xs={12} md={2}>

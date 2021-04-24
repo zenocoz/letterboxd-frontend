@@ -39,8 +39,8 @@ const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
 
   const [show, setShow] = useState(false)
-  const [movies, setMovies] = useState<Array<IMovie>>([])
-  const [filmClubs, setFilmClubs] = useState<any>([])
+  // const [movies, setMovies] = useState<Array<IMovie>>([])
+  // const [filmClubs, setFilmClubs] = useState<any>([])
 
   //redux
   // const dispatch = useDispatch()
@@ -52,27 +52,40 @@ const FilmClub = () => {
   const { filmClubData, setFilmClubData } = filmClubContext
   const { name, members } = filmClubData
 
-  //placeholder function
-  const getMovies = (): void => {
-    const imdbIds: Array<string> = [
-      "tt0072684",
-      "tt0078788",
-      "tt0079501",
-      "tt0086984",
-      //   "tt0076740",
-      //   "tt0075612",
-    ]
-    const retrievedMovies: Array<Promise<IMovie>> = []
-    imdbIds.forEach((imdbId) => {
-      let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
-      retrievedMovies.push(movie)
-    })
+  //clubs array context
+  const { _filmClubsContext }: any = useContext(Context)
+  const { _filmClubs, _setFilmClubs } = _filmClubsContext
 
-    Promise.all(retrievedMovies).then((values) => {
-      console.log(values)
-      setMovies(values)
-    })
-  }
+  //current film club context
+
+  const { currentFilmClubContext }: any = useContext(Context)
+  const { currentFilmClub } = currentFilmClubContext
+
+  //placeholder function
+  // const getMovies = (): void => {
+  //   const imdbIds: Array<string> = [
+  //     "tt0072684",
+  //     "tt0078788",
+  //     "tt0079501",
+  //     "tt0086984",
+  //     //   "tt0076740",
+  //     //   "tt0075612",
+  //   ]
+  //   const retrievedMovies: Array<Promise<IMovie>> = []
+  //   imdbIds.forEach((imdbId) => {
+  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
+  //     retrievedMovies.push(movie)
+  //   })
+
+  //   Promise.all(retrievedMovies).then((values) => {
+  //     // console.log(values)
+  //     setMovies(values)
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   getMovies()
+  // }, [])
 
   const handleChange = (e: any) => {
     setFilmClubData({ ...filmClubData, name: e.target.value })
@@ -88,14 +101,14 @@ const FilmClub = () => {
     setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
     setFilmClubData({ name: "", members: [], films: [] })
-    setNumberOfClubs(filmClubs.length)
+    setNumberOfClubs(_filmClubs.length) //TODO FIX HERE
   }
 
   //check if there are unconfirmed members
   useInterval(async () => {
     const response = await API.getUserMovieClubs(userInfo._id)
     if (response) {
-      setFilmClubs(response)
+      _setFilmClubs(response)
       console.log("interval polled with response", response)
     }
   }, 5000)
@@ -105,20 +118,16 @@ const FilmClub = () => {
       ;(async () => {
         const response = await API.getUserMovieClubs(userInfo._id)
         if (response) {
-          setFilmClubs(response)
+          _setFilmClubs(response)
         }
       })()
     }
   }, [numberOfClubs])
 
   useEffect(() => {
-    getMovies()
-  }, [])
-
-  useEffect(() => {
-    setNumberOfClubs(filmClubs.length + 1)
+    setNumberOfClubs(_filmClubs.length + 1)
     console.log("number of clubs", numberOfClubs)
-  }, [filmClubs])
+  }, [_filmClubs])
 
   const showModal = () => {
     return (
@@ -171,7 +180,7 @@ const FilmClub = () => {
   }
 
   const renderFilmClubs = () => {
-    return filmClubs.map((club: any) => (
+    return _filmClubs.map((club: any) => (
       <div
         className="row mt-2 mb-5 d-flex justify-content-between"
         style={{
@@ -190,6 +199,7 @@ const FilmClub = () => {
             key={i}
             club={true}
             essential={true}
+            clubId={club._id}
           />
         ))}
       </div>
@@ -201,7 +211,13 @@ const FilmClub = () => {
       <>
         {movieList && movieList.length > 0 ? (
           movieList.map((movie: any) => (
-            <MovieCardSmall {...movie} withInfo={false} club={true} />
+            <MovieCardSmall
+              {...movie}
+              withInfo={false}
+              club={true}
+              clubId={currentFilmClub}
+              memberId={userInfo._id}
+            />
           ))
         ) : (
           <div>null</div>
@@ -239,7 +255,7 @@ const FilmClub = () => {
           md={8}
           style={{ backgroundColor: "#485794" }}
         >
-          {filmClubs.length > 0 && renderFilmClubs()}
+          {_filmClubs.length > 0 && renderFilmClubs()}
 
           <Row style={{ height: "200px" }}>
             {showSearchResults()}

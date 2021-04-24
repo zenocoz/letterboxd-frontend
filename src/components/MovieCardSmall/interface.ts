@@ -1,4 +1,5 @@
 export interface IMovieCardSmallProps {
+  _id: string
   Poster: string
   imdbID: string
   withInfo: boolean
@@ -10,4 +11,6 @@ export interface IMovieCardSmallProps {
   onMouseEnter: any
   hovered: boolean
   club: boolean
+  clubId?: string | any
+  memberId?: string | any
 }

@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { clearSearchResults } from "../../store/search/reducer"
 
 import { useHistory } from "react-router-dom"
 import { useSelector } from "react-redux"
@@ -10,6 +12,14 @@ import PopularReviews from "../../components/PopularReviews/PopularReviews"
 const SearchResults = () => {
   // const history = useHistory()
   const { movieList } = useSelector((state: any) => state.search)
+  const dispatch = useDispatch()
+
+  //clean search after unmounting
+  useEffect((): any => {
+    return () => {
+      dispatch(clearSearchResults())
+    }
+  }, [])
 
   return (
     <>
