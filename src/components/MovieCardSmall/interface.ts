@@ -9,4 +9,5 @@ export interface IMovieCardSmallProps {
   onMouseLeave: any
   onMouseEnter: any
   hovered: boolean
+  club: boolean
 }

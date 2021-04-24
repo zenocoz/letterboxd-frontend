@@ -3,6 +3,8 @@ import "./MovieCardSmall.css"
 import { IMovieCardSmallProps } from "./interface"
 import { Col, Row } from "react-bootstrap"
 import { useHistory } from "react-router"
+import { useDispatch } from "react-redux"
+import { clearSearchResults } from "../../store/search/reducer"
 
 const MovieCardSmall = ({
   Poster,
@@ -14,8 +16,11 @@ const MovieCardSmall = ({
   onMouseEnter,
   onMouseLeave,
   hovered,
+  club,
 }: IMovieCardSmallProps) => {
   const history = useHistory()
+  const dispatch = useDispatch()
+
   return (
     <>
       {!withInfo ? (
@@ -39,7 +44,11 @@ const MovieCardSmall = ({
               opacity: `${hovered ? "0.5" : "1"}`,
             }}
             src={Poster}
-            onClick={() => history.push(`/film/${imdbID}`)}
+            onClick={() =>
+              club
+                ? dispatch(clearSearchResults())
+                : history.push(`/film/${imdbID}`)
+            }
           />
         </Col>
       ) : (

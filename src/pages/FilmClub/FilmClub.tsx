@@ -91,25 +91,12 @@ const FilmClub = () => {
     setNumberOfClubs(filmClubs.length)
   }
 
-  // //Search Bar
-  // const [value, setSearchValue] = useState("")
-  // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearchValue(e.target.value)
-  // }
-  // const handleSearchSubmit = async (e: any) => {
-  //   e.preventDefault()
-  //   dispatch(setKeyword(value))
-  //   dispatch(loadSearchResults(value))
-  //   setSearchValue("")
-  //   // history.push("/search")
-  // }
-
   //check if there are unconfirmed members
   useInterval(async () => {
     const response = await API.getUserMovieClubs(userInfo._id)
     if (response) {
       setFilmClubs(response)
-      console.log("interval polled")
+      console.log("interval polled with response", response)
     }
   }, 5000)
 
@@ -212,9 +199,9 @@ const FilmClub = () => {
   const showSearchResults = () => {
     return (
       <>
-        {movieList.length > 0 ? (
+        {movieList && movieList.length > 0 ? (
           movieList.map((movie: any) => (
-            <MovieCardSmall {...movie} withInfo={false} />
+            <MovieCardSmall {...movie} withInfo={false} club={true} />
           ))
         ) : (
           <div>null</div>

@@ -56,6 +56,7 @@ const PopularMovies = () => {
             onMouseLeave={() => setHovered(-1)}
             onMouseEnter={() => setHovered(i)}
             hovered={hovered === i}
+            club={false}
           />
 
           // <MovieCard

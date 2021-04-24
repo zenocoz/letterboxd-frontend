@@ -19,6 +19,10 @@ const reducer = (state: SearchState = initialState, action: SearchAction) => {
         ...state,
         keyword: action.payload,
       }
+    case actionTypes.CLEAR_SEARCH:
+      return {
+        initialState,
+      }
     default:
       return state
   }
@@ -40,6 +44,10 @@ export const loadSearchResults = (keyword: string) => {
       })
       .catch((err) => console.log("search result error", err))
   }
+}
+
+export const clearSearchResults = () => {
+  return { type: actionTypes.CLEAR_SEARCH }
 }
 
 export default reducer

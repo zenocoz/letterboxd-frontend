@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCrown } from "@fortawesome/free-solid-svg-icons"
 
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
+import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
@@ -113,7 +114,7 @@ const MemberMini = (props: any) => {
         <>
           {props.essential ? (
             <>
-              {props.member._id === userInfo._id && (
+              {props.member.chooser && (
                 <FontAwesomeIcon
                   className="mr-1"
                   icon={faCrown}
@@ -122,14 +123,19 @@ const MemberMini = (props: any) => {
                 />
               )}
 
-              <img
-                src={picture}
-                style={{
-                  opacity: props.member.confirmed ? "1" : "0.3",
-                  width: "2rem",
-                  height: "2rem",
-                }}
-              />
+              <div className="d-flex">
+                <img
+                  src={picture}
+                  style={{
+                    opacity: props.member.confirmed ? "1" : "0.3",
+                    width: "2rem",
+                    height: "2rem",
+                  }}
+                />
+                {props.member.film !== null && (
+                  <MovieCardSmall {...props.member.film} withInfo={false} />
+                )}
+              </div>
               {props.member.confirmed &&
                 !props.member.chooser &&
                 props.member._id === userInfo._id && (
