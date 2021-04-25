@@ -34,6 +34,7 @@ import Following from "../../components/Following/Following"
 import { copyFile } from "node:fs"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
+import ClubMember from "../../components/ClubMember/ClubMember"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
@@ -183,7 +184,7 @@ const FilmClub = () => {
         className="row mt-2 mb-5 d-flex justify-content-between"
         style={{
           width: "100%",
-          height: "8vh",
+          height: "12vh",
           backgroundColor: "#14181d",
           color: "#ddd9cb",
           // backgroundColor: "#89249c",
@@ -191,14 +192,16 @@ const FilmClub = () => {
       >
         {club.name}
         {club.members.map((member: any, i: number) => (
-          <MemberMini
-            member={member}
-            withInfo={false}
-            key={i}
-            club={true}
-            essential={true}
-            clubId={club._id}
-          />
+          <ClubMember member={member} key={i} clubId={club._id} />
+
+          // <MemberMini
+          //   member={member}
+          //   withInfo={false}
+          //   key={i}
+          //   club={true}
+          //   essential={true}
+          //   clubId={club._id}
+          // />
         ))}
       </div>
     ))

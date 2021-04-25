@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCrown } from "@fortawesome/free-solid-svg-icons"
 
-import { setKeyword, loadSearchResults } from "../../store/search/reducer"
+// import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 
 const MemberMini = (props: any) => {
@@ -29,6 +29,7 @@ const MemberMini = (props: any) => {
   //redux
   const dispatch = useDispatch()
 
+  //regular members
   const [friend, setFriend] = useState({
     username: "",
     picture: "",
@@ -36,6 +37,9 @@ const MemberMini = (props: any) => {
     watchedMovies: [],
   })
   const { username, picture, watchedMovies } = friend
+
+  //current user
+  const { userInfo } = useSelector((state: any) => state.user)
 
   //context
   const { filmClubContext }: any = useContext(Context)
@@ -45,8 +49,6 @@ const MemberMini = (props: any) => {
   //club id pass it
   const { currentFilmClubContext }: any = useContext(Context)
   const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
-
-  const { userInfo } = useSelector((state: any) => state.user)
 
   useEffect(() => {
     if (watchedMovies.length > 0) {
@@ -59,12 +61,15 @@ const MemberMini = (props: any) => {
     }
   }, [username])
 
+  //regular members
   useEffect(() => {
     ;(async () => {
       const friend = await API.getMemberById(props.member._id)
       setFriend({ ...friend })
     })()
   }, [])
+
+  //*******************add members to film club********************* */
 
   const handleSelected = () => {
     if (selected) {
@@ -86,20 +91,6 @@ const MemberMini = (props: any) => {
       })
       setFilmClubData({ ...filmClubData, members })
     }
-  }
-
-  //Search Bar
-  const [value, setSearchValue] = useState("")
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
-  const handleSearchSubmit = async (e: any) => {
-    e.preventDefault()
-    dispatch(setKeyword(value))
-    dispatch(loadSearchResults(value))
-    setSearchValue("")
-    setCurrentFilmClub(props.clubId)
-    // history.push("/search")
   }
 
   return (
@@ -127,16 +118,7 @@ const MemberMini = (props: any) => {
         <>
           {props.essential ? (
             <>
-              {props.member.chooser && (
-                <FontAwesomeIcon
-                  className="mr-1"
-                  icon={faCrown}
-                  color={"gold"}
-                  size="1x"
-                />
-              )}
-
-              <div className="d-flex justify-content-center">
+              {/* <div className="d-flex justify-content-center">
                 <img
                   src={picture}
                   style={{
@@ -156,9 +138,9 @@ const MemberMini = (props: any) => {
                     />
                   )}
                 </div>
-              </div>
+              </div> */}
 
-              {props.member.confirmed &&
+              {/* {props.member.confirmed &&
                 !props.member.chooser &&
                 props.member._id === userInfo._id && (
                   <Form onSubmit={handleSearchSubmit}>
@@ -175,7 +157,7 @@ const MemberMini = (props: any) => {
                       onChange={handleSearch}
                     />
                   </Form>
-                )}
+                )} */}
             </>
           ) : (
             <img src={picture} style={{ width: "3rem", height: "3rem" }} />
@@ -186,11 +168,11 @@ const MemberMini = (props: any) => {
                 ? history.push("/user/" + props.member._id)
                 : handleSelected()
             }}
-            style={{ cursor: props.essential ? "auto" : "pointer" }}
+            style={{ cursor: "pointer" }}
           >
             {username}
           </p>
-          {!props.essential && <p>{watchedMovies.length} films </p>}
+          <p>{watchedMovies.length} films </p>
         </>
       )}
     </div>
