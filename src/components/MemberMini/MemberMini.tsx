@@ -79,7 +79,7 @@ const MemberMini = (props: any) => {
     } else {
       setSelected(true)
       members.push({
-        _id: props.member._id,
+        clubMember: props.member._id,
         email: friend.email,
         confirmed: false,
         chooser: false,
@@ -136,22 +136,28 @@ const MemberMini = (props: any) => {
                 />
               )}
 
-              <img
-                src={picture}
-                style={{
-                  opacity: props.member.confirmed ? "1" : "0.3",
-                  width: "2rem",
-                  height: "2rem",
-                }}
-              />
-              {props.member.film !== null && (
-                <MovieCardSmall
-                  {...props.member.film}
-                  withInfo={false}
-                  // clubId={props.clubId}
-                  // memberId={props.member._id}
+              <div className="d-flex justify-content-center">
+                <img
+                  src={picture}
+                  style={{
+                    opacity: props.member.confirmed ? "1" : "0.3",
+                    width: "2rem",
+                    height: "2rem",
+                  }}
                 />
-              )}
+
+                <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
+                  {props.member.film !== null && (
+                    <MovieCardSmall
+                      {...props.member.film}
+                      withInfo={false}
+                      // clubId={props.clubId}
+                      // memberId={props.member._id}
+                    />
+                  )}
+                </div>
+              </div>
+
               {props.member.confirmed &&
                 !props.member.chooser &&
                 props.member._id === userInfo._id && (

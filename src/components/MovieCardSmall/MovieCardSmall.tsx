@@ -39,6 +39,7 @@ const MovieCardSmall = ({
   const { _filmClubs, _setFilmClubs } = _filmClubsContext
 
   const setSelectedClubFilm = () => {
+    console.log("member", memberId)
     API.addSelectedMovieToClub(clubId, memberId, _id)
     dispatch(clearSearchResults())
   }
@@ -46,8 +47,8 @@ const MovieCardSmall = ({
   return (
     <>
       {!withInfo ? (
-        <Col
-          className="sm-8  mb-1"
+        <div
+          className=" sm-8  mb-1"
           style={{
             height: "100%",
             transition: "0.2s",
@@ -70,7 +71,7 @@ const MovieCardSmall = ({
               club ? setSelectedClubFilm() : history.push(`/film/${imdbID}`)
             }
           />
-        </Col>
+        </div>
       ) : (
         <Row className="mt-5">
           <Col xs={12} md={2}>

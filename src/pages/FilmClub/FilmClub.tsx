@@ -93,7 +93,7 @@ const FilmClub = () => {
   const handleClubSubmit = (e: any) => {
     e.preventDefault()
     members.push({
-      _id: userInfo._id,
+      clubMember: userInfo._id,
       email: userInfo.email,
       confirmed: true,
       chooser: true,
