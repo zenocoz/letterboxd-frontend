@@ -88,6 +88,7 @@ const MemberMini = (props: any) => {
         email: friend.email,
         confirmed: false,
         chooser: false,
+        filmSelected: false,
       })
       setFilmClubData({ ...filmClubData, members })
     }
@@ -99,7 +100,10 @@ const MemberMini = (props: any) => {
       style={{ backgroundColor: selected ? "red" : "#14181d" }}
     >
       {props.withInfo ? (
-        <>
+        <div
+          className="col-2 friend-info"
+          style={{ backgroundColor: selected ? "red" : "#14181d" }}
+        >
           <img src={picture} style={{ width: "5rem", height: "5rem" }} />
           <p
             onClick={() => {
@@ -113,7 +117,7 @@ const MemberMini = (props: any) => {
             <p>stars</p>
             <p>{rating && rating}</p>
           </p>
-        </>
+        </div>
       ) : (
         <>
           {props.essential ? (

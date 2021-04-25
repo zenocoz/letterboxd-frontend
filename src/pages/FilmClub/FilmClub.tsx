@@ -62,32 +62,6 @@ const FilmClub = () => {
   const { currentFilmClubContext }: any = useContext(Context)
   const { currentFilmClub } = currentFilmClubContext
 
-  //placeholder function
-  // const getMovies = (): void => {
-  //   const imdbIds: Array<string> = [
-  //     "tt0072684",
-  //     "tt0078788",
-  //     "tt0079501",
-  //     "tt0086984",
-  //     //   "tt0076740",
-  //     //   "tt0075612",
-  //   ]
-  //   const retrievedMovies: Array<Promise<IMovie>> = []
-  //   imdbIds.forEach((imdbId) => {
-  //     let movie: Promise<IMovie> = API.getMoviesByImdbId(imdbId)
-  //     retrievedMovies.push(movie)
-  //   })
-
-  //   Promise.all(retrievedMovies).then((values) => {
-  //     // console.log(values)
-  //     setMovies(values)
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   getMovies()
-  // }, [])
-
   const handleChange = (e: any) => {
     setFilmClubData({ ...filmClubData, name: e.target.value })
   }
@@ -98,6 +72,7 @@ const FilmClub = () => {
       email: userInfo.email,
       confirmed: true,
       chooser: true,
+      filmSelected: false,
     })
     setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
@@ -193,15 +168,6 @@ const FilmClub = () => {
         {club.name}
         {club.members.map((member: any, i: number) => (
           <ClubMember member={member} key={i} clubId={club._id} />
-
-          // <MemberMini
-          //   member={member}
-          //   withInfo={false}
-          //   key={i}
-          //   club={true}
-          //   essential={true}
-          //   clubId={club._id}
-          // />
         ))}
       </div>
     ))

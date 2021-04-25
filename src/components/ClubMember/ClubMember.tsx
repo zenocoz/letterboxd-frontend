@@ -7,6 +7,7 @@ import { Form, FormControl } from "react-bootstrap"
 import { UserContext as Context } from "../../context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCrown } from "@fortawesome/free-solid-svg-icons"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 const ClubMember = (props: any) => {
   //state
@@ -17,6 +18,8 @@ const ClubMember = (props: any) => {
   })
 
   const { username, picture, email } = clubFriend
+
+  const [showSearchBar, setShowSearchBar] = useState(false)
 
   //club id pass it
   const { currentFilmClubContext }: any = useContext(Context)
@@ -43,18 +46,52 @@ const ClubMember = (props: any) => {
     dispatch(loadSearchResults(value))
     setSearchValue("")
     setCurrentFilmClub(props.clubId)
+    setShowSearchBar(false)
     // history.push("/search")
+  }
+
+  const renderSearchBar = () => {
+    return (
+      <Form onSubmit={handleSearchSubmit}>
+        <FormControl
+          type="text"
+          className="mr-sm-2 search-bar"
+          // value={value}
+          style={{
+            height: "2rem",
+            width: "10rem",
+            position: "absolute",
+            marginTop: "3rem",
+          }}
+          onChange={handleSearch}
+        />
+      </Form>
+    )
   }
 
   return (
     <div className="col-2 justify-content-center">
       <div className="d-flex">
+        {props.member.confirmed &&
+          !props.member.chooser &&
+          props.member.clubMember === userInfo._id && (
+            <FontAwesomeIcon
+              className="mr-1"
+              icon={faPlus}
+              color={"grey"}
+              size="1x"
+              onClick={() => {
+                setShowSearchBar(!showSearchBar)
+              }}
+            />
+          )}
         <img
           src={picture}
           style={{
             opacity: props.member.confirmed ? "1" : "0.3",
             width: "2rem",
             height: "2rem",
+            borderRadius: "50px",
           }}
         />
         {props.member.chooser && (
@@ -79,26 +116,24 @@ const ClubMember = (props: any) => {
       </div>
 
       <div>
-        {props.member.confirmed &&
-          !props.member.chooser &&
-          props.member.clubMember === userInfo._id && (
-            /*props.member.clubMember === userInfo._id &&*/ <Form
-              onSubmit={handleSearchSubmit}
-            >
-              <FormControl
-                type="text"
-                className="mr-sm-2 search-bar"
-                // value={value}
-                style={{
-                  height: "2rem",
-                  width: "10rem",
-                  position: "absolute",
-                  marginTop: "3rem",
+        {/* {
+          props.member.confirmed &&
+            !props.member.chooser &&
+            !props.member.filmSelected &&
+            props.member.clubMember === userInfo._id && (
+              <FontAwesomeIcon
+                className="mr-1"
+                icon={faPlus}
+                color={"grey"}
+                size="1x"
+                onClick={() => {
+                  setShowSearchBar(!showSearchBar)
                 }}
-                onChange={handleSearch}
               />
-            </Form>
-          )}
+            )
+        } */}
+
+        {showSearchBar && renderSearchBar()}
       </div>
     </div>
   )
