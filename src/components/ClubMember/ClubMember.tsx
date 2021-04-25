@@ -8,6 +8,7 @@ import { UserContext as Context } from "../../context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCrown } from "@fortawesome/free-solid-svg-icons"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import ClubMovieCard from "../ClubMovieCard/ClubMovieCard"
 
 const ClubMember = (props: any) => {
   //state
@@ -94,6 +95,7 @@ const ClubMember = (props: any) => {
             borderRadius: "50px",
           }}
         />
+
         {props.member.chooser && (
           <FontAwesomeIcon
             className="mr-1"
@@ -105,15 +107,21 @@ const ClubMember = (props: any) => {
 
         <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
           {props.member.film !== null && (
-            <MovieCardSmall
-              {...props.member.film}
-              withInfo={false}
-              // clubId={props.clubId}
-              // memberId={props.member.clubMember}
-            />
+            <ClubMovieCard {...props.member.film} clubId={props.clubId} />
+            // <MovieCardSmall
+            //   {...props.member.film}
+            //   withInfo={false}
+            //   club={true}
+            //   clubId={props.clubId}
+
+            //   // clubId={props.clubId}
+            //   // memberId={props.member.clubMember}
+            // />
           )}
         </div>
       </div>
+
+      <p>{username}</p>
 
       <div>
         {/* {

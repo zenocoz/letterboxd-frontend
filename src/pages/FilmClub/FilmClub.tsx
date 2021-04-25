@@ -80,7 +80,7 @@ const FilmClub = () => {
     setNumberOfClubs(_filmClubs.length) //TODO FIX HERE
   }
 
-  //check if there are unconfirmed members
+  // check if there are unconfirmed members
   useInterval(async () => {
     const response = await API.getUserMovieClubs(userInfo._id)
     if (response) {

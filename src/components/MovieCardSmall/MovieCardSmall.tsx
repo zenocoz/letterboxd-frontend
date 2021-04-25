@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import "./MovieCardSmall.css"
 import { IMovieCardSmallProps } from "./interface"
 import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap"
@@ -27,12 +28,6 @@ const MovieCardSmall = ({
 }: IMovieCardSmallProps) => {
   const history = useHistory()
   const dispatch = useDispatch()
-
-  const renderTooltip = (props: any) => (
-    <Tooltip id="button-tooltip" {...props}>
-      {props.Title}
-    </Tooltip>
-  )
 
   //clubs array context
   const { _filmClubsContext }: any = useContext(Context)

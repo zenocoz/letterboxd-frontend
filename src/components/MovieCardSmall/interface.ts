@@ -13,4 +13,5 @@ export interface IMovieCardSmallProps {
   club: boolean
   clubId?: string | any
   memberId?: string | any
+  chooser?: boolean
 }
