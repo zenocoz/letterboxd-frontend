@@ -294,6 +294,28 @@ export const API = {
       console.log(err)
     }
   },
+  startWatchingMovie: async (clubId: string, movieId: string) => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+      const response = await axios.put(
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/watch/${clubId}/${movieId}`,
+
+        config
+      )
+      if (response.status < 400) {
+        return response.data
+      } else {
+        console.log("error adding film to membber")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
 
   updateProfilePicture: async (userId: string, file: any) => {
     try {

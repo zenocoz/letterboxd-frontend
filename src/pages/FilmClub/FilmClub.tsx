@@ -38,6 +38,7 @@ import ClubMember from "../../components/ClubMember/ClubMember"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
+  const watching = false
 
   const [show, setShow] = useState(false)
   // const [movies, setMovies] = useState<Array<IMovie>>([])
@@ -169,6 +170,7 @@ const FilmClub = () => {
         {club.members.map((member: any, i: number) => (
           <ClubMember member={member} key={i} clubId={club._id} />
         ))}
+        {watching && <p>are watching...</p>}
       </div>
     ))
   }

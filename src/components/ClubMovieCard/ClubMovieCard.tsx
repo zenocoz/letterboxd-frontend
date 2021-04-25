@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Tooltip } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
+
+import { API } from "../../API"
+
 //context
 import { UserContext as Context } from "../../context"
 
@@ -46,6 +49,8 @@ const ClubMovieCard = ({
     }
   }
 
+  //TODO fix logic for changing status to watching
+
   const chooseFilm = () => {
     console.log("CHOOSE")
   }
@@ -76,7 +81,9 @@ const ClubMovieCard = ({
         }}
         src={Poster}
         onClick={() =>
-          chooser ? chooseFilm() : history.push(`/film/${imdbID}`)
+          chooser
+            ? API.startWatchingMovie(clubId, _id)
+            : history.push(`/film/${imdbID}`)
         }
       />
     </div>

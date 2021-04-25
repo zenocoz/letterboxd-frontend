@@ -10,6 +10,7 @@ const ContextProvider: React.FC = ({ children }) => {
     name: "",
     members: [],
     films: [],
+    watching: false,
   })
 
   //make film clubs accessible to many components

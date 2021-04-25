@@ -18,6 +18,8 @@ const ClubMember = (props: any) => {
     email: "",
   })
 
+  const watching = false
+
   const { username, picture, email } = clubFriend
 
   const [showSearchBar, setShowSearchBar] = useState(false)
@@ -71,79 +73,78 @@ const ClubMember = (props: any) => {
   }
 
   return (
-    <div className="col-2 justify-content-center">
-      <div className="d-flex">
-        {props.member.confirmed &&
-          !props.member.chooser &&
-          props.member.clubMember === userInfo._id && (
-            <FontAwesomeIcon
-              className="mr-1"
-              icon={faPlus}
-              color={"grey"}
-              size="1x"
-              onClick={() => {
-                setShowSearchBar(!showSearchBar)
+    <>
+      {!watching ? (
+        <div className="col-2 justify-content-center">
+          <div className="d-flex">
+            {props.member.confirmed &&
+              !props.member.chooser &&
+              props.member.clubMember === userInfo._id && (
+                <FontAwesomeIcon
+                  className="mr-1"
+                  icon={faPlus}
+                  color={"grey"}
+                  size="1x"
+                  onClick={() => {
+                    setShowSearchBar(!showSearchBar)
+                  }}
+                />
+              )}
+            <img
+              src={picture}
+              style={{
+                opacity: props.member.confirmed ? "1" : "0.3",
+                width: "2rem",
+                height: "2rem",
+                borderRadius: "50px",
               }}
             />
-          )}
-        <img
-          src={picture}
-          style={{
-            opacity: props.member.confirmed ? "1" : "0.3",
-            width: "2rem",
-            height: "2rem",
-            borderRadius: "50px",
-          }}
-        />
 
-        {props.member.chooser && (
-          <FontAwesomeIcon
-            className="mr-1"
-            icon={faCrown}
-            color={"gold"}
-            size="1x"
-          />
-        )}
-
-        <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
-          {props.member.film !== null && (
-            <ClubMovieCard {...props.member.film} clubId={props.clubId} />
-            // <MovieCardSmall
-            //   {...props.member.film}
-            //   withInfo={false}
-            //   club={true}
-            //   clubId={props.clubId}
-
-            //   // clubId={props.clubId}
-            //   // memberId={props.member.clubMember}
-            // />
-          )}
-        </div>
-      </div>
-
-      <p>{username}</p>
-
-      <div>
-        {/* {
-          props.member.confirmed &&
-            !props.member.chooser &&
-            !props.member.filmSelected &&
-            props.member.clubMember === userInfo._id && (
+            {props.member.chooser && (
               <FontAwesomeIcon
                 className="mr-1"
-                icon={faPlus}
-                color={"grey"}
+                icon={faCrown}
+                color={"gold"}
                 size="1x"
-                onClick={() => {
-                  setShowSearchBar(!showSearchBar)
-                }}
               />
-            )
-        } */}
+            )}
 
-        {showSearchBar && renderSearchBar()}
-      </div>
-    </div>
+            <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
+              {props.member.film !== null && (
+                <ClubMovieCard {...props.member.film} clubId={props.clubId} />
+                // <MovieCardSmall
+                //   {...props.member.film}
+                //   withInfo={false}
+                //   club={true}
+                //   clubId={props.clubId}
+
+                //   // clubId={props.clubId}
+                //   // memberId={props.member.clubMember}
+                // />
+              )}
+            </div>
+          </div>
+
+          <p>{username}</p>
+
+          <div>{showSearchBar && renderSearchBar()}</div>
+        </div>
+      ) : (
+        <div className="col-2 ">
+          <img
+            src={picture}
+            style={{
+              // opacity: props.member.confirmed ? "1" : "0.3",
+              width: "2rem",
+              height: "2rem",
+              borderRadius: "50px",
+            }}
+          />
+
+          <p>{username}</p>
+        </div>
+      )}
+    </>
   )
 }
 
