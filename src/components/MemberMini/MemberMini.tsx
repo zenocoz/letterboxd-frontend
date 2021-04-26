@@ -64,7 +64,7 @@ const MemberMini = (props: any) => {
   //regular members
   useEffect(() => {
     ;(async () => {
-      const friend = await API.getMemberById(props.member._id)
+      const friend = await API.getMemberById(props.member)
       setFriend({ ...friend })
     })()
   }, [])
@@ -74,7 +74,7 @@ const MemberMini = (props: any) => {
   const handleSelected = () => {
     if (selected) {
       const filteredMembers = members.filter(
-        (member: any) => member._id !== props.member._id
+        (member: any) => member._id !== props.member
       )
       setFilmClubData({
         ...filmClubData,
@@ -84,7 +84,7 @@ const MemberMini = (props: any) => {
     } else {
       setSelected(true)
       members.push({
-        clubMember: props.member._id,
+        clubMember: props.member,
         email: friend.email,
         confirmed: false,
         chooser: false,
@@ -107,7 +107,7 @@ const MemberMini = (props: any) => {
           <img src={picture} style={{ width: "5rem", height: "5rem" }} />
           <p
             onClick={() => {
-              history.push("/user/" + props.member._id)
+              history.push("/user/" + props.member)
             }}
             style={{ cursor: "pointer" }}
           >
@@ -169,7 +169,7 @@ const MemberMini = (props: any) => {
           <p
             onClick={() => {
               !props.club
-                ? history.push("/user/" + props.member._id)
+                ? history.push("/user/" + props.member)
                 : handleSelected()
             }}
             style={{ cursor: "pointer" }}

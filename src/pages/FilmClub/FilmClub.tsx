@@ -63,6 +63,7 @@ const FilmClub = () => {
   const { _filmClubs, _setFilmClubs } = _filmClubsContext
 
   //current film club context
+  //probably not needed
 
   const { currentFilmClubContext }: any = useContext(Context)
   const { currentFilmClub } = currentFilmClubContext
@@ -81,7 +82,7 @@ const FilmClub = () => {
     })
     setFilmClubData({ ...filmClubData, members })
     API.createClub(filmClubData)
-    setFilmClubData({ name: "", members: [], films: [] })
+    setFilmClubData({ name: "", members: [], films: [], watching: false })
     setNumberOfClubs(_filmClubs.length) //TODO FIX HERE
   }
 
@@ -139,7 +140,12 @@ const FilmClub = () => {
             variant="danger"
             onClick={() => {
               setShow(false)
-              setFilmClubData({ name: "", members: [], films: [] })
+              setFilmClubData({
+                name: "",
+                members: [],
+                films: [],
+                watching: false,
+              })
             }}
           >
             Cancel

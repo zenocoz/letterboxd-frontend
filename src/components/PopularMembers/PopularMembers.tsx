@@ -28,12 +28,12 @@ const PopularMembers = () => {
     <div className="row popular-members d-flex">
       {loggedIn
         ? filteredMemberList.length > 0 &&
-          filteredMemberList.map((member, i) => (
-            <MemberMini member={member} key={i} withInfo={false} />
+          filteredMemberList.map((member: any, i: number) => (
+            <MemberMini member={member._id} key={i} withInfo={false} />
           ))
         : memberList.length > 0 &&
-          memberList.map((member, i: number) => (
-            <MemberMini member={member} key={i} withInfo={false} />
+          memberList.map((member: any, i: number) => (
+            <MemberMini member={member._id} key={i} withInfo={false} />
           ))}
     </div>
   )

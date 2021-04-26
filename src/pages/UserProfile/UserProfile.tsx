@@ -26,10 +26,9 @@ const UserProfile = () => {
 
   const actions = useUserInfo(userInfo._id, userId)
 
+  //given changes to db, members array in redux is simply id strings, so member and not member._id
   const checkFollowing = () => {
-    const member = userInfo.following.find(
-      (member: any) => member._id === userId
-    )
+    const member = userInfo.following.find((member: any) => member === userId)
     if (member) {
       setIsFollowed(true)
     } else {

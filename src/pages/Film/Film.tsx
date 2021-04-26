@@ -134,13 +134,10 @@ const Film = () => {
       reviewInfo,
       config
     )
-    if (response.statusText === "OK") {
-      console.log(`review added`, response.data)
-      setReviewText("")
-      setShowModalReview(false)
-    } else {
-      console.log("something went wrong in adding review")
-    }
+
+    console.log(`review added`, response.data)
+    setReviewText("")
+    setShowModalReview(false)
   }
   return (
     <>

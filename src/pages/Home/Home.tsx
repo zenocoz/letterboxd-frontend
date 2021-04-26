@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getUserInfo } from "../../store/user/reducer"
 
 import "./Home.css"
-import { Row, Button } from "react-bootstrap"
+import { Row } from "react-bootstrap"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
