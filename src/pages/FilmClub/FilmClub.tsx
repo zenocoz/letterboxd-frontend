@@ -9,6 +9,9 @@ import {
   Modal,
 } from "react-bootstrap"
 import "./FilmClub.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 //hooks
 import { useEffect, useState, useContext } from "react"
@@ -35,10 +38,11 @@ import { copyFile } from "node:fs"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 import ClubMember from "../../components/ClubMember/ClubMember"
+import ClubMovieCard from "../../components/ClubMovieCard/ClubMovieCard"
 
 const FilmClub = () => {
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
-  const watching = false
+  // const watching = false
 
   const [show, setShow] = useState(false)
   // const [movies, setMovies] = useState<Array<IMovie>>([])
@@ -154,8 +158,27 @@ const FilmClub = () => {
     )
   }
 
+  // find if current member is user //TODO Refactor
+
+  const isChooser = (clubId: string) => {
+    const currentClub = _filmClubs.find((club: any) => club._id === clubId)
+    if (currentClub) {
+      const currentMember = currentClub.members.find(
+        (member: any) => member.clubMember === userInfo._id
+      )
+      console.log("current member", currentMember.email)
+      if (currentMember.chooser) {
+        console.log("current member is chooser")
+        return true
+      } else {
+        console.log("current member is NOT chooser")
+        return false
+      }
+    }
+  }
+
   const renderFilmClubs = () => {
-    return _filmClubs.map((club: any) => (
+    return _filmClubs.map((club: any, c: number) => (
       <div
         className="row mt-2 mb-5 d-flex justify-content-between"
         style={{
@@ -168,9 +191,37 @@ const FilmClub = () => {
       >
         {club.name}
         {club.members.map((member: any, i: number) => (
-          <ClubMember member={member} key={i} clubId={club._id} />
+          <ClubMember
+            member={member}
+            key={i}
+            clubId={club._id}
+            watching={club.watching}
+          />
         ))}
-        {watching && <p>are watching...</p>}
+        {club.watching && (
+          <>
+            <p>are watching...</p>
+            {isChooser(club._id) === true && (
+              <FontAwesomeIcon
+                className="mr-1"
+                icon={faEdit}
+                color={"red"}
+                size="1x"
+                cursor="pointer"
+                onClick={() => {
+                  API.editWatchingMovie(
+                    club._id,
+                    _filmClubs[c].films[_filmClubs[c].films.length - 1]._id
+                  )
+                }}
+              />
+            )}
+
+            <ClubMovieCard
+              {..._filmClubs[c].films[_filmClubs[c].films.length - 1]}
+            />
+          </>
+        )}
       </div>
     ))
   }

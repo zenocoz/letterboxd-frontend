@@ -18,7 +18,7 @@ const ClubMember = (props: any) => {
     email: "",
   })
 
-  const watching = false
+  // const watching = false
 
   const { username, picture, email } = clubFriend
 
@@ -74,7 +74,7 @@ const ClubMember = (props: any) => {
 
   return (
     <>
-      {!watching ? (
+      {!props.watching ? (
         <div className="col-2 justify-content-center">
           <div className="d-flex">
             {props.member.confirmed &&

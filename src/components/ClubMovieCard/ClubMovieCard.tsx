@@ -33,6 +33,7 @@ const ClubMovieCard = ({
 
   const { userInfo, loggedIn } = useSelector((state: any) => state.user)
 
+  //TODO probably doesn't need to be asyn - check
   const findIfCurrentMemberIsChooser = async () => {
     const currentClub = await _filmClubs.find(
       (club: any) => club._id === clubId
@@ -47,12 +48,6 @@ const ClubMovieCard = ({
         setChooser(true)
       }
     }
-  }
-
-  //TODO fix logic for changing status to watching
-
-  const chooseFilm = () => {
-    console.log("CHOOSE")
   }
 
   useEffect(() => {
