@@ -22,9 +22,9 @@ const Home = () => {
 
   return (
     <>
-      <Row id="movies-row" className="ml-0 mb-4 d-flex no-gutters  high-rated">
+      <div id="movies-row" className="mt-5">
         <HighRatedMovies big={true} limit={4} />
-      </Row>
+      </div>
       <PopularMovies />
     </>
   )

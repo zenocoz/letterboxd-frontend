@@ -15,8 +15,8 @@ import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import "./MovieCard.css"
 
 const MovieCard = (props: any) => {
-  const width = "100% "
-  const height = "100%"
+  // const width = "100% "
+  // const height = "100%"
   const { movie, loggedIn = [] } = props
 
   const history = useHistory()
@@ -64,8 +64,8 @@ const MovieCard = (props: any) => {
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
-        width,
-        height,
+        width: "100%",
+        height: "100px",
         transition: "0.2s",
         cursor: "pointer",
         background: `${props.hovered ? "black" : "transparent"}`,
@@ -76,7 +76,7 @@ const MovieCard = (props: any) => {
       <img
         style={{
           width: "100%",
-          height: "100%",
+          height: "90px",
           // minHeight: 300,
           transition: "0.2s",
           opacity: `${props.hovered ? "0.5" : "1"}`,

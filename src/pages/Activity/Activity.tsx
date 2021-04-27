@@ -40,34 +40,36 @@ const Activity = () => {
           <h3 style={{ color: "white" }}>Movies watched by you</h3>
         </Col>
       </Row>
-      <Row>
-        {movies.length > 0 &&
-          movies.map((movie, i) => (
-            <MovieCard
-              loggedIn={loggedIn}
-              movie={movie}
-              key={movie.imdbID}
-              onMouseLeave={() => setHovered(-1)}
-              onMouseEnter={() => setHovered(i)}
-              hovered={hovered === i}
-              actions={[
-                {
-                  icon: "❤️",
-                  handler: () => like(i),
-                },
-                {
-                  icon:
-                    movie.seenBy.length > 0 &&
-                    movie.seenBy.find((user) => user._id === userInfo._id) ? (
-                      <FontAwesomeIcon icon={faEye} color={"green"} />
-                    ) : (
-                      <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
-                    ),
-                  handler: () => alert(`starred movie is ${i}`),
-                },
-              ]}
-            />
-          ))}
+      <Row style={{ minHeight: "200px" }}>
+        <>
+          {movies.length > 0 &&
+            movies.map((movie, i) => (
+              <MovieCard
+                loggedIn={loggedIn}
+                movie={movie}
+                key={movie.imdbID}
+                onMouseLeave={() => setHovered(-1)}
+                onMouseEnter={() => setHovered(i)}
+                hovered={hovered === i}
+                actions={[
+                  {
+                    icon: "❤️",
+                    handler: () => like(i),
+                  },
+                  {
+                    icon:
+                      movie.seenBy.length > 0 &&
+                      movie.seenBy.find((user) => user._id === userInfo._id) ? (
+                        <FontAwesomeIcon icon={faEye} color={"green"} />
+                      ) : (
+                        <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+                      ),
+                    handler: () => alert(`starred movie is ${i}`),
+                  },
+                ]}
+              />
+            ))}
+        </>
       </Row>
       <Following withInfo={true} />
     </>

@@ -45,18 +45,26 @@ const PopularMovies = () => {
   }, [])
 
   return (
-    <div className="row popular d-flex no-gutters">
+    <div className="row popular  mb-4">
       {movies.length > 0 &&
         movies.map((movie, i): any => (
-          <MovieCardSmall
-            {...movie}
-            key={movie.imdbID}
-            withInfo={false}
+          // <MovieCardSmall
+          //   {...movie}
+          //   key={movie.imdbID}
+          //   withInfo={false}
+          //   loggedIn={loggedIn}
+          //   onMouseLeave={() => setHovered(-1)}
+          //   onMouseEnter={() => setHovered(i)}
+          //   hovered={hovered === i}
+          //   club={false}
+          // />
+          <MovieCard
             loggedIn={loggedIn}
+            movie={movie}
+            key={movie.imdbID}
             onMouseLeave={() => setHovered(-1)}
             onMouseEnter={() => setHovered(i)}
             hovered={hovered === i}
-            club={false}
           />
 
           // <MovieCard

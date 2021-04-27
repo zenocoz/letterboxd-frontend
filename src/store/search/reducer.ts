@@ -22,6 +22,8 @@ const reducer = (state: SearchState = initialState, action: SearchAction) => {
     case actionTypes.CLEAR_SEARCH:
       return {
         ...state,
+        movieList: [],
+        keyword: "",
       }
     default:
       return state

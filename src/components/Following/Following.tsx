@@ -14,7 +14,7 @@ const Following = (props: any) => {
   }, [])
 
   return (
-    <div className="row mt-5 following d-flex">
+    <div className="row mt-5 following d-flex justify-content-between px-3">
       {friends.length > 0 &&
         friends.map((member: any, i: number) => (
           <MemberMini

@@ -96,12 +96,12 @@ const MemberMini = (props: any) => {
 
   return (
     <div
-      className="col-2 friend-info"
+      className="col-3 friend-info"
       style={{ backgroundColor: selected ? "red" : "#14181d" }}
     >
       {props.withInfo ? (
         <div
-          className="col-2 friend-info"
+          className=" friend-info mx-1 my-2"
           style={{ backgroundColor: selected ? "red" : "#14181d" }}
         >
           <img src={picture} style={{ width: "5rem", height: "5rem" }} />

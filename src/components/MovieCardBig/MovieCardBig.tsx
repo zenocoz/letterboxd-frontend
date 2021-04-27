@@ -24,8 +24,8 @@ const MovieCardBig = ({
   loggedIn,
 }: IMovieCardBigProps) => {
   const history = useHistory()
-  const width = "100%"
-  const height = "100%"
+  // const width = "100%"
+  // const height = "350px"
 
   const { userInfo } = useSelector((state: any) => state.user)
   const movieAction = useMovieStatus(userInfo._id, _id, imdbID)
@@ -65,20 +65,22 @@ const MovieCardBig = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
-        width,
-        height,
+        width: "100%",
+        height: "400px",
         transition: "0.2s",
         cursor: "pointer",
         background: `${hovered ? "black" : "transparent"}`,
         border: `8px solid ${hovered ? "green" : "transparent"}`,
+        paddingBottom: `${hovered ? 0 : "50px"}`,
       }}
     >
       <img
         style={{
-          width,
-          height,
+          width: "100%",
+          height: "350px",
           transition: "0.2s",
           opacity: `${hovered ? "0.5" : "1"}`,
+          borderRadius: "3px",
         }}
         alt="batman"
         src={Poster}

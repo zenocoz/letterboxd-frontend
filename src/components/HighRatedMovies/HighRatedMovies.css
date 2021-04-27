@@ -9,6 +9,8 @@
 .high-rated {
   /* margin-top: 12rem; */
   position: relative;
+  background-color: #1c2228;
+  border-radius: 10px;
 }
 
 .high-rated::before {
@@ -16,4 +18,5 @@
   color: white;
   position: absolute;
   top: -30px;
+  left: 20px;
 }

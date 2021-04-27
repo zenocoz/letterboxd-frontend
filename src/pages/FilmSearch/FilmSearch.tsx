@@ -24,7 +24,7 @@ const FilmSearch = () => {
 
   return (
     <>
-      <Row>
+      <Row className="mb-5">
         <Col className="d-flex justify-content-between">
           {/* <div className="d-flex">
             <DropdownButton
@@ -92,14 +92,13 @@ const FilmSearch = () => {
             </div> */}
         </Col>
       </Row>
-      <Row>
-        <HighRatedMovies big={true} limit={4} />
-      </Row>
+      <HighRatedMovies big={true} limit={4} />
       <Banner />
-      <PopularMovies />
-      <Row>
-        <HighRatedMovies big={false} limit={12} />
-      </Row>
+      <div className="mb-5">
+        <PopularMovies />
+      </div>
+
+      <HighRatedMovies big={false} limit={12} />
       <Row>
         <Col md={8}>
           <PopularReviews />

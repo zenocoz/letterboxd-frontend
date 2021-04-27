@@ -75,7 +75,7 @@ const ClubMember = (props: any) => {
   return (
     <>
       {!props.watching ? (
-        <div className="col-2 justify-content-center">
+        <div className="col-3 justify-content-center py-3">
           <div className="d-flex">
             {props.member.confirmed &&
               !props.member.chooser &&

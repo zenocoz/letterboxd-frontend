@@ -116,6 +116,7 @@ const FilmClub = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        style={{ padding: "0 10px" }}
       >
         <Modal.Body>
           <Form>
@@ -131,7 +132,7 @@ const FilmClub = () => {
           </Form>
 
           <Form.Group>
-            <Form style={{ width: "10rem" }}>
+            <Form>
               <Form.Label>Invite Users</Form.Label>
               <Following club={true} withInfo={false} />
             </Form>
@@ -188,12 +189,13 @@ const FilmClub = () => {
   const renderFilmClubs = () => {
     return _filmClubs.map((club: any, c: number) => (
       <div
-        className="row mt-2 mb-5 d-flex justify-content-between"
+        className="row mt-2 mb-5 d-flex justify-content-between pl-3"
         style={{
           width: "100%",
-          height: "12vh",
+          minHeight: "12vh",
           backgroundColor: "#14181d",
           color: "#ddd9cb",
+          borderRadius: "10px",
           // backgroundColor: "#89249c",
         }}
       >
@@ -276,12 +278,12 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ height: "75vh", marginTop: "3rem" }}>
+      <Row style={{ height: "75vh", marginTop: "3rem", marginBottom: "3rem" }}>
         <Col
-          className="d-flex flex-column justify-content-between "
+          className="d-flex flex-column justify-content-between align-items-center"
           sm={12}
           md={8}
-          style={{ backgroundColor: "#485794" }}
+          style={{ backgroundColor: "#485794", borderRadius: "10px" }}
         >
           {_filmClubs.length > 0 && renderFilmClubs()}
 
@@ -297,9 +299,7 @@ const FilmClub = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <PopularMovies />
-        </Col>
+        <PopularMovies />
       </Row>
     </>
   )
