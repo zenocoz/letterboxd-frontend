@@ -19,11 +19,11 @@ const Review = ({ text, authorId, movieId }: IReviewProps) => {
 
   return (
     <div
-      className="row mb-2 d-flex"
+      className="row mb-2 d-flex align-items-center"
       style={{
         width: "100%",
         height: "15vh",
-        backgroundColor: "#445566",
+        backgroundColor: "#1c2228",
         borderRadius: "3px",
       }}
     >
@@ -33,9 +33,11 @@ const Review = ({ text, authorId, movieId }: IReviewProps) => {
       </div>
 
       <div className="col-8" style={{ color: "white" }}>
-        <p>{filmName}</p>
+        <div className="d-flex justify-content-between">
+          <p>{filmName}</p>
 
-        <p>{username}</p>
+          <p>by {username}</p>
+        </div>
         <p> {text}</p>
       </div>
     </div>

@@ -11,11 +11,16 @@
 }
 
 .icons {
-  background-color: #445566;
+  border-radius: 10px;
+  background-color: #1c2228;
+  color: white;
   height: 100%;
   padding: 15px;
 }
 
 .relevant-info {
   font: Rubik;
+  background-color: #1c2228;
+  border-radius: 10px;
+  padding: 8px;
 }

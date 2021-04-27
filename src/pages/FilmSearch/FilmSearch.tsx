@@ -99,7 +99,7 @@ const FilmSearch = () => {
       </div>
 
       <HighRatedMovies big={false} limit={12} />
-      <Row>
+      <Row style={{ marginTop: "20px" }}>
         <Col md={8}>
           <PopularReviews />
         </Col>

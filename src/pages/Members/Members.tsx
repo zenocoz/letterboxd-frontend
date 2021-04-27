@@ -56,7 +56,10 @@ const Members = () => {
               ))}
       </div>
 
-      <Following />
+      <div style={{ maxWidth: "22rem" }}>
+        {" "}
+        <Following />
+      </div>
     </>
   )
 }

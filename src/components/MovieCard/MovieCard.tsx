@@ -64,6 +64,7 @@ const MovieCard = (props: any) => {
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
+        maxWidth: "100px",
         width: "100%",
         height: "100px",
         transition: "0.2s",

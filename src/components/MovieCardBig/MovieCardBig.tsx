@@ -61,16 +61,18 @@ const MovieCardBig = ({
   ]
 
   return (
-    <Col
+    <div
+      className="col-3"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
-        width: "100%",
+        maxWidth: "300px",
         height: "400px",
         transition: "0.2s",
         cursor: "pointer",
         background: `${hovered ? "black" : "transparent"}`,
         border: `8px solid ${hovered ? "green" : "transparent"}`,
+        borderRadius: "3px",
         paddingBottom: `${hovered ? 0 : "50px"}`,
       }}
     >
@@ -105,7 +107,7 @@ const MovieCardBig = ({
             <span onClick={action.handler}>{action.icon}</span>
           ))}
       </div>
-    </Col>
+    </div>
   )
 }
 

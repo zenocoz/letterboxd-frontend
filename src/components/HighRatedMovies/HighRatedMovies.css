@@ -11,6 +11,9 @@
   position: relative;
   background-color: #1c2228;
   border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .high-rated::before {

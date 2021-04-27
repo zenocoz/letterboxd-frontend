@@ -157,7 +157,15 @@ const Film = () => {
             backgroundColor: "#14181d",
           }}
         >
-          <div>
+          <div
+            className="align-items-center pt-3"
+            style={{
+              backgroundColor: "#1c2228",
+              width: "270px",
+              height: "385px",
+              borderRadius: "10px",
+            }}
+          >
             <img
               src={movieInfo.Poster}
               style={{ width: "230px", height: "345px", borderRadius: "3px" }}
@@ -230,7 +238,13 @@ const Film = () => {
                       size={24}
                       activeColor="#ffd700"
                     /> */}
-                    <p>Rated {movieRating}</p>
+                    <p>
+                      {movieRating !== 0 ? (
+                        <div>{movieRating} stars</div>
+                      ) : (
+                        <div>You haven't given any stars</div>
+                      )}
+                    </p>
                   </>
                 ) : (
                   <FontAwesomeIcon

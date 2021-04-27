@@ -40,7 +40,15 @@ const Activity = () => {
           <h3 style={{ color: "white" }}>Movies watched by you</h3>
         </Col>
       </Row>
-      <Row style={{ minHeight: "200px" }}>
+      <Row
+        className="align-items-center"
+        style={{
+          minHeight: "150px",
+          maxHeight: "300px",
+          backgroundColor: "#1c2228",
+          borderRadius: "10px",
+        }}
+      >
         <>
           {movies.length > 0 &&
             movies.map((movie, i) => (
@@ -71,7 +79,9 @@ const Activity = () => {
             ))}
         </>
       </Row>
-      <Following withInfo={true} />
+      <div style={{ maxWidth: "22rem" }}>
+        <Following withInfo={false} />
+      </div>
     </>
   )
 }

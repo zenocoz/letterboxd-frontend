@@ -1,5 +1,8 @@
 .following {
   position: relative;
+  background-color: #1c2228;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .following::before {
@@ -7,5 +10,6 @@
   color: white;
   position: absolute;
   top: -30px;
+  left: 5px;
   padding-left: 15px;
 }
