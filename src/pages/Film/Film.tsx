@@ -59,7 +59,7 @@ const Film = () => {
   const checkFriendsMovieViews = () => {
     if (movieInfo.seenBy.length > 0 && userInfo.following.length > 0) {
       const friendsWhoSawMovie = movieInfo.seenBy.filter((user: any) =>
-        userInfo.following.some((member: any) => user._id === member._id)
+        userInfo.following.some((member: any) => user._id === member)
       )
       setFriendsWhoSawMovie(friendsWhoSawMovie)
     }
@@ -310,7 +310,7 @@ const Film = () => {
           {friendsWhoSawMovie.length > 0 &&
             friendsWhoSawMovie.map((member: any, i: number) => (
               <MemberMini
-                member={member}
+                member={member._id}
                 movieId={movieInfo._id}
                 key={i}
                 withInfo={true}

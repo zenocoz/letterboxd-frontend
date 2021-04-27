@@ -21,7 +21,7 @@ const reducer = (state: SearchState = initialState, action: SearchAction) => {
       }
     case actionTypes.CLEAR_SEARCH:
       return {
-        initialState,
+        ...state,
       }
     default:
       return state

@@ -37,9 +37,15 @@ export const API = {
   },
 
   getAllMoviesData: async () => {
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/globalData`
+        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/globalData`,
+        config
       )
       if (response.statusText === "OK") {
         return response.data

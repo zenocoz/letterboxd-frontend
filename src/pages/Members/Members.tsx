@@ -7,6 +7,7 @@ import "./Members.css"
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import MemberCard from "../../components/MemberCard/MemberCard"
+import Following from "../../components/Following/Following"
 
 const Members = () => {
   const [memberList, setMemberList] = useState([])
@@ -35,6 +36,8 @@ const Members = () => {
           <h2>Film lovers, critics and friends — find popular members.</h2>
         </Jumbotron>
       </Row>
+      <h5 style={{ color: "white" }}>Popular members</h5>
+
       <div className="row d-flex justify-content-between align-center">
         {loggedIn
           ? filteredMemberList.length > 0 &&
@@ -53,7 +56,7 @@ const Members = () => {
               ))}
       </div>
 
-      <PopularMembers />
+      <Following />
     </>
   )
 }

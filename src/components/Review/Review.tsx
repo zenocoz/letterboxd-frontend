@@ -19,21 +19,25 @@ const Review = ({ text, authorId, movieId }: IReviewProps) => {
 
   return (
     <div
-      className="mb-2 d-flex"
+      className="row mb-2 d-flex"
       style={{
         width: "100%",
         height: "15vh",
-        backgroundColor: "#e68eb5",
+        backgroundColor: "#445566",
+        borderRadius: "3px",
       }}
     >
-      <img src={filmPoster} style={{ height: "100%" }} />
+      <div className="col-2 " style={{ height: "90%" }}>
+        {" "}
+        <img src={filmPoster} style={{ height: "100%" }} />
+      </div>
 
-      <p>
-        {filmName}
+      <div className="col-8" style={{ color: "white" }}>
+        <p>{filmName}</p>
 
-        {username}
-        {text}
-      </p>
+        <p>{username}</p>
+        <p> {text}</p>
+      </div>
     </div>
   )
 }

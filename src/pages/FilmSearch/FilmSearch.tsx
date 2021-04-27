@@ -26,7 +26,7 @@ const FilmSearch = () => {
     <>
       <Row>
         <Col className="d-flex justify-content-between">
-          <div className="d-flex">
+          {/* <div className="d-flex">
             <DropdownButton
               className="film-buttons"
               id="dropdown-item-button"
@@ -79,7 +79,7 @@ const FilmSearch = () => {
                 // onChange={handleSearch}
               />
             </Form>
-          </div>
+          </div> */}
           {/* <div
               style={{
                 width: "100%",

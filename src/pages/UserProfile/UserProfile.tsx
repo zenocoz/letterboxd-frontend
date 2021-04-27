@@ -103,7 +103,7 @@ const UserProfile = () => {
     <>
       <div
         className="row container-fluid"
-        style={{ backgroundColor: "yellow", paddingRight: "!important 0" }}
+        style={{ backgroundColor: "#14181d", paddingRight: "!important 0" }}
       >
         <div className="col-4 sm-12 md-8">
           <div className="user-info d-flex">

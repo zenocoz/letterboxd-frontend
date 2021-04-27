@@ -93,7 +93,7 @@ const FilmClub = () => {
       _setFilmClubs(response)
       console.log("interval polled with response", response)
     }
-  }, 5000)
+  }, 1000)
 
   useEffect(() => {
     if (loggedIn) {
@@ -130,10 +130,12 @@ const FilmClub = () => {
             </Form.Group>
           </Form>
 
-          <Form style={{ width: "10rem" }}>
-            <Form.Label>Invite Users</Form.Label>
-            <Following club={true} withInfo={false} />
-          </Form>
+          <Form.Group>
+            <Form style={{ width: "10rem" }}>
+              <Form.Label>Invite Users</Form.Label>
+              <Following club={true} withInfo={false} />
+            </Form>
+          </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -246,7 +248,7 @@ const FilmClub = () => {
             />
           ))
         ) : (
-          <div>null</div>
+          <div></div>
         )}
       </>
     )
@@ -259,7 +261,7 @@ const FilmClub = () => {
   return (
     <>
       <Row>
-        <Col>
+        <Col style={{ padding: 0 }}>
           <div className="d-flex club-hero mt-2 justify-content-between">
             <h1 className="offset-3">Welcome to the Film Club</h1>
             {showModal()}
@@ -274,9 +276,9 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ height: "75vh" }}>
+      <Row style={{ height: "75vh", marginTop: "3rem" }}>
         <Col
-          className="d-flex flex-column justify-content-between"
+          className="d-flex flex-column justify-content-between "
           sm={12}
           md={8}
           style={{ backgroundColor: "#485794" }}
@@ -289,7 +291,9 @@ const FilmClub = () => {
           </Row>
         </Col>
         <Col sm={12} md={4}>
-          <PopularMembers />
+          <div className="ml-3">
+            <PopularMembers />
+          </div>
         </Col>
       </Row>
       <Row>
