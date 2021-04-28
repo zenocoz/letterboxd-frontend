@@ -196,6 +196,7 @@ const FilmClub = () => {
           backgroundColor: "#14181d",
           color: "#ddd9cb",
           borderRadius: "10px",
+          padding: "20px",
           // backgroundColor: "#89249c",
         }}
       >
@@ -287,7 +288,11 @@ const FilmClub = () => {
           className="d-flex flex-column justify-content-between align-items-center"
           sm={12}
           md={8}
-          style={{ backgroundColor: "#485794", borderRadius: "10px" }}
+          style={{
+            backgroundColor: "#485794",
+            borderRadius: "10px",
+            paddingTop: "35px",
+          }}
         >
           {_filmClubs.length > 0 && renderFilmClubs()}
 
