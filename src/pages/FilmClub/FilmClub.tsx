@@ -227,9 +227,11 @@ const FilmClub = () => {
               />
             )}
 
-            <ClubMovieCard
-              {..._filmClubs[c].films[_filmClubs[c].films.length - 1]}
-            />
+            <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
+              <ClubMovieCard
+                {..._filmClubs[c].films[_filmClubs[c].films.length - 1]}
+              />
+            </div>
           </>
         )}
       </div>
@@ -278,7 +280,9 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ height: "75vh", marginTop: "3rem", marginBottom: "3rem" }}>
+      <Row
+        style={{ minHeight: "75vh", marginTop: "3rem", marginBottom: "3rem" }}
+      >
         <Col
           className="d-flex flex-column justify-content-between align-items-center"
           sm={12}
@@ -298,9 +302,7 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row>
-        <PopularMovies />
-      </Row>
+      <PopularMovies />
     </>
   )
 }

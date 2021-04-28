@@ -119,7 +119,7 @@ const Landing = () => {
         </Col>
       </Row>
       <Row>
-        <HighRatedMovies big={false} limit={6} />
+        <HighRatedMovies big={true} limit={4} />
       </Row>
       <Banner />
 

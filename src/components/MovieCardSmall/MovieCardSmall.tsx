@@ -69,31 +69,37 @@ const MovieCardSmall = ({
         </div>
       ) : (
         <Row className="mt-5">
-          <Col xs={12} md={2}>
-            <div
+          <div
+            className="col xs-12 md-2"
+            style={{
+              width: "90%",
+              minHeight: "15vh",
+              backgroundColor: "#1c2228",
+              borderRadius: "3px",
+            }}
+          >
+            <img
               style={{
-                width: "90%",
-                height: "10vh",
-                backgroundColor: "#1c2228",
+                width: "100%",
+                height: "100%",
+                borderRadius: "3px",
               }}
-            >
-              <img
-                style={{
-                  width: "100%",
-                }}
-                src={Poster}
-                onClick={() => history.push(`/film/${imdbID}`)}
-              />
-            </div>
-          </Col>
+              src={Poster}
+              onClick={() => history.push(`/film/${imdbID}`)}
+            />
+          </div>
+
           <Col xs={12} md={10} className="info-card-sm">
             <div
               style={{
                 height: "10vh",
                 backgroundColor: "#1c2228",
+                paddingTop: "5px",
+                paddingLeft: "10px",
+                borderRadius: "10px",
               }}
             >
-              <span className="d-flex">
+              <div className="d-flex">
                 <h5
                   style={{ cursor: "pointer" }}
                   onClick={() => history.push(`/film/${imdbID}`)}
@@ -101,7 +107,7 @@ const MovieCardSmall = ({
                   {Title}
                 </h5>
                 <h6>{Year}</h6>
-              </span>
+              </div>
               <p>Directed by {Director}</p>
             </div>
           </Col>

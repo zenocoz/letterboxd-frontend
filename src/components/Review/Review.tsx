@@ -22,17 +22,17 @@ const Review = ({ text, authorId, movieId }: IReviewProps) => {
       className="row mb-2 d-flex align-items-center"
       style={{
         width: "100%",
-        height: "15vh",
+        minHeight: "15vh",
         backgroundColor: "#1c2228",
         borderRadius: "3px",
       }}
     >
-      <div className="col-2 " style={{ height: "90%" }}>
+      <div className="col sm-12 md-2 " style={{ height: "90%" }}>
         {" "}
-        <img src={filmPoster} style={{ height: "100%" }} />
+        <img src={filmPoster} style={{ height: "15vh" }} />
       </div>
 
-      <div className="col-8" style={{ color: "white" }}>
+      <div className="col sm-12 md-10" style={{ color: "#ddd9cb" }}>
         <div className="d-flex justify-content-between">
           <p>{filmName}</p>
 

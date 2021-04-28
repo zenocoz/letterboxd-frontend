@@ -31,7 +31,9 @@ const SearchResults = () => {
             ))}
         </Col>
         <Col xs={12} md={4}>
-          <PopularReviews />
+          <div className="mt-5">
+            <PopularReviews />
+          </div>
         </Col>
       </Row>
     </>
