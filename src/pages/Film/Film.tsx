@@ -94,13 +94,6 @@ const Film = () => {
     let globalRating = (userRating + rating10) / movieInfo.views
     await submitRating(userRating, globalRating)
   }
-  // const calculateGlobalRating = async (e: any) => {
-  //   e.preventDefault()
-  //   const userRating = parseInt(e.target.value, 10)
-  //   const rating10 = parseInt(movieInfo.rating, 10)
-  //   let globalRating = (userRating + rating10) / movieInfo.views
-  //   await submitRating(userRating, globalRating)
-  // }
 
   const submitRating = async (userRating: number, globalRating: number) => {
     Promise.all([
@@ -208,13 +201,16 @@ const Film = () => {
                   <>
                     <FontAwesomeIcon
                       icon={faEye}
-                      size="3x"
+                      size="2x"
                       color={"green"}
                       onClick={() => {
                         actions.unwatch()
                       }}
                     />
-                    <div style={{ width: "100%" }}>
+                    <div style={{ width: "100%", marginTop: "15px" }}>
+                      <p style={{ textAlign: "left", fontSize: "small" }}>
+                        Rate
+                      </p>
                       <Rating
                         readonly={false}
                         initialRating={movieRating}
@@ -237,34 +233,12 @@ const Film = () => {
                           />
                         }
                       />
-                      {/* <Form.Group>
-                        <Form.Label>Rate</Form.Label>
-                        <Form.Control
-                          type="number"
-                          onChange={calculateGlobalRating.bind(this)}
-                          as="select"
-                        >
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </Form.Control>
-                      </Form.Group> */}
                     </div>
-
-                    {/* <p>
-                      {movieRating !== 0 ? (
-                        <div>{movieRating} stars</div>
-                      ) : (
-                        <div>You haven't given any stars</div>
-                      )}
-                    </p> */}
                   </>
                 ) : (
                   <FontAwesomeIcon
                     icon={faEyeSlash}
-                    size="3x"
+                    size="2x"
                     color={"grey"}
                     onClick={() => {
                       actions.watch()

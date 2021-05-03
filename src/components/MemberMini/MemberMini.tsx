@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom"
 import { API } from "../../API"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
+import Rating from "react-rating"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
 
 // import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
@@ -10,7 +13,7 @@ const MemberMini = (props: any) => {
   const history = useHistory()
 
   //component state
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(0)
   const [selected, setSelected] = useState(false)
   // const [confirmed, setConfirmed] = useState(false)
 
@@ -99,8 +102,19 @@ const MemberMini = (props: any) => {
             {username}
           </p>
           <p className="d-flex">
-            <p>stars</p>
-            <p>{rating && rating}</p>
+            {rating > 0 && (
+              <Rating
+                readonly={true}
+                initialRating={rating}
+                fractions={2}
+                emptySymbol={
+                  <FontAwesomeIcon icon={faStar} size="1x" color={"grey"} />
+                }
+                fullSymbol={
+                  <FontAwesomeIcon icon={faStar} size="1x" color={"yellow"} />
+                }
+              />
+            )}
           </p>
         </div>
       ) : (
