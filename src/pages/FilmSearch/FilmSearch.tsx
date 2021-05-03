@@ -95,8 +95,8 @@ const FilmSearch = () => {
       </div>
 
       <HighRatedMovies big={false} limit={12} />
-      <Row style={{ marginTop: "20px" }}>
-        <Col md={8}>
+      <Row style={{ marginTop: "20px", marginLeft: 0, marginRight: 0 }}>
+        <Col md={8} style={{ paddingLeft: "0!important" }}>
           <PopularReviews />
         </Col>
         <Col sm={12} md={4}>

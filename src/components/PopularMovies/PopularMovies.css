@@ -3,6 +3,8 @@
   height: 7rem;
   background-color: #1c2228;
   margin-top: 3rem;
+  margin-right: 0;
+  margin-left: 0;
   justify-content: space-around;
   position: relative;
   align-items: center;
