@@ -2,6 +2,8 @@
   position: relative;
   margin-top: 2rem;
   min-height: 5rem;
+  background-color: #1c2228;
+  border-radius: 10px;
 }
 
 .popular-members::before {

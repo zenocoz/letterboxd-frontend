@@ -70,7 +70,7 @@ const MovieCard = (props: any) => {
         transition: "0.2s",
         cursor: "pointer",
         background: `${props.hovered ? "black" : "transparent"}`,
-        border: `5px solid ${props.hovered ? "green" : "transparent"}`,
+        border: `3px solid ${props.hovered ? "green" : "transparent"}`,
         borderRadius: "3px",
       }}
     >

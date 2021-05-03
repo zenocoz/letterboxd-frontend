@@ -70,7 +70,7 @@ const MovieCardBig = ({
         transition: "0.2s",
         cursor: "pointer",
         background: `${hovered ? "black" : "transparent"}`,
-        border: `8px solid ${hovered ? "green" : "transparent"}`,
+        border: `5px solid ${hovered ? "green" : "transparent"}`,
         borderRadius: "3px",
         paddingBottom: `${hovered ? 0 : "50px"}`,
       }}

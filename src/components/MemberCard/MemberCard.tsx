@@ -18,38 +18,6 @@ const MemberCard = (props: any) => {
     console.log("test", member.totalWatched)
   }, [])
   return (
-    // <Col>
-    //   <div
-    //     className="mb-2 mr-2"
-    //     style={{
-    //       width: "100%",
-    //       height: "30vh",
-    //       backgroundColor: "#82ffc7",
-    //     }}
-    //   >
-    //     <Card style={{ width: "100%", height: "100%" }}>
-    //       <Card.Img
-    //         variant="top"
-    //         src={picture}
-    //         style={{ height: "100%", width: "100%" }}
-    //         alt="https://res.cloudinary.com/drbq4el2x/image/upload/v1608377311/striveTest/r5ra89fi4qsu24wsq4wr.jpg"
-    //       />
-    //       <Card.Body>
-    //         <Card.Title
-    //           onClick={() => {
-    //             history.push("/user/" + _id)
-    //           }}
-    //         >
-    //           {username}
-    //         </Card.Title>
-    //         <Card.Text>
-    //           <p style={{ color: "727068" }}>1.4k films 969 reviews</p>
-    //         </Card.Text>
-    //       </Card.Body>
-    //     </Card>
-    //   </div>
-    // </Col>
-
     <div className="col-2 mb-2 mr-2">
       <img
         id="member-pic"

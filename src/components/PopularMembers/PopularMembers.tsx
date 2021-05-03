@@ -25,7 +25,7 @@ const PopularMembers = () => {
   }, [])
 
   return (
-    <div className="row popular-members d-flex">
+    <div className="row popular-members d-flex justify-content-around">
       {loggedIn
         ? filteredMemberList.length > 0 &&
           filteredMemberList.map((member: any, i: number) => (
