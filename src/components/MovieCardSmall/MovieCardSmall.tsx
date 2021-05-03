@@ -1,15 +1,10 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import "./MovieCardSmall.css"
 import { IMovieCardSmallProps } from "./interface"
-import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import { useHistory } from "react-router"
 import { useDispatch } from "react-redux"
 import { clearSearchResults } from "../../store/search/reducer"
 import { API } from "../../API"
-
-//context
-import { UserContext as Context } from "../../context"
 
 const MovieCardSmall = ({
   _id,
@@ -29,9 +24,9 @@ const MovieCardSmall = ({
   const history = useHistory()
   const dispatch = useDispatch()
 
-  //clubs array context
-  const { _filmClubsContext }: any = useContext(Context)
-  const { _filmClubs, _setFilmClubs } = _filmClubsContext
+  // //clubs array context
+  // const { _filmClubsContext }: any = useContext(Context)
+  // const { _filmClubs, _setFilmClubs } = _filmClubsContext
 
   const setSelectedClubFilm = () => {
     console.log("member", memberId)
@@ -62,6 +57,7 @@ const MovieCardSmall = ({
               opacity: `${hovered ? "0.5" : "1"}`,
             }}
             src={Poster}
+            alt=""
             onClick={() =>
               club ? setSelectedClubFilm() : history.push(`/film/${imdbID}`)
             }
@@ -85,6 +81,7 @@ const MovieCardSmall = ({
                 borderRadius: "3px",
               }}
               src={Poster}
+              alt=""
               onClick={() => history.push(`/film/${imdbID}`)}
             />
           </div>

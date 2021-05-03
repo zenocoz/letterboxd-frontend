@@ -1,16 +1,15 @@
-import { resolveAny } from "node:dns"
+// import { resolveAny } from "node:dns"
 import { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { IMovie } from "../../interface"
 import { API } from "../../API"
 import { Row, Col } from "react-bootstrap"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import Following from "../../components/Following/Following"
 
 const Activity = () => {
-  const dispatch = useDispatch()
   const { userInfo, loggedIn } = useSelector((state: any) => state.user)
   const [movies, setMovies] = useState<Array<IMovie>>([])
 

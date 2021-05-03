@@ -29,7 +29,7 @@ const Review = ({ text, authorId, movieId }: IReviewProps) => {
     >
       <div className="col sm-12 md-2 " style={{ height: "90%" }}>
         {" "}
-        <img src={filmPoster} style={{ height: "15vh" }} />
+        <img src={filmPoster} alt="" style={{ height: "15vh" }} />
       </div>
 
       <div className="col sm-12 md-10" style={{ color: "#ddd9cb" }}>

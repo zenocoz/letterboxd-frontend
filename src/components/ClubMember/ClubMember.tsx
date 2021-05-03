@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
 import { API } from "../../API"
-import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 import { useSelector, useDispatch } from "react-redux"
 import { Form, FormControl } from "react-bootstrap"
@@ -20,13 +19,13 @@ const ClubMember = (props: any) => {
 
   // const watching = false
 
-  const { username, picture, email } = clubFriend
+  const { username, picture } = clubFriend
 
   const [showSearchBar, setShowSearchBar] = useState(false)
 
   //club id pass it
   const { currentFilmClubContext }: any = useContext(Context)
-  const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
+  const { setCurrentFilmClub } = currentFilmClubContext
 
   const dispatch = useDispatch()
   //current user
@@ -92,6 +91,7 @@ const ClubMember = (props: any) => {
               )}
             <img
               src={picture}
+              alt=""
               style={{
                 opacity: props.member.confirmed ? "1" : "0.3",
                 width: "2rem",
@@ -133,6 +133,7 @@ const ClubMember = (props: any) => {
         <div className="col-2 ">
           <img
             src={picture}
+            alt=""
             style={{
               // opacity: props.member.confirmed ? "1" : "0.3",
               width: "2rem",

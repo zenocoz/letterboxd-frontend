@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 
 import { updateUserInfo } from "../store/user/reducer"

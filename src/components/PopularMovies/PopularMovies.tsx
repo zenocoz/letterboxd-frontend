@@ -1,22 +1,18 @@
 //hooks and context
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 
 //types and style
 import { IMovie } from "../../interface"
 import "./PopularMovies.css"
 
 //components and apis
-import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 import { API } from "../../API"
 import MovieCard from "../MovieCard/MovieCard"
 
-import { Row } from "react-bootstrap"
-
-import { useSelector } from "react-redux"
-
 const PopularMovies = () => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
-  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const { loggedIn } = useSelector((state: any) => state.user)
   const [hovered, setHovered] = useState(-1)
 
   const findPopularMovies = async () => {

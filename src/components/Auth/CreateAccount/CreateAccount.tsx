@@ -22,7 +22,7 @@ const CreateAccount = () => {
   const { setCreateAccount }: any = providerModals.accountModal
   const { setSignIn }: any = providerModals.signInModal
 
-  const { email, username, password, errorMsg, picture } = formData
+  const { email, username, password, errorMsg } = formData
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({

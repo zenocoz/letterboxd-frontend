@@ -1,10 +1,9 @@
 //hooks and context
-import { useEffect, useState, useContext } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../context"
 
 //types and style
 import "./Landing.css"
-import { IMovie } from "../../interface"
 
 //components and apis
 // import MovieCard from "../../components/MovieCard/MovieCard"
@@ -12,14 +11,12 @@ import CreateAccount from "../../components/Auth/CreateAccount/CreateAccount"
 import Banner from "../../components/Banner/Banner"
 import SiteOffers from "../../components/SiteOffers/SiteOffers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
-import PopularReviews from "../../components/PopularReviews/PopularReviews"
-import List from "../../components/List/List"
 import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
 
 // import { API } from "../../API"
 
 //external libraries
-import { Row, Jumbotron, Button, Col } from "react-bootstrap"
+import { Row, Button, Col } from "react-bootstrap"
 
 const Landing = () => {
   const { providerModals }: any = useContext(UserContext)

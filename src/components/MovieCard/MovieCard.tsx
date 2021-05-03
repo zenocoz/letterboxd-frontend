@@ -3,13 +3,13 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useMovieStatus } from "../../custom_hooks"
 
-import { IMovieCardProps } from "./interface"
-import { checkViews, checkUserViews } from "../../utils"
+// import { IMovieCardProps } from "./interface"
+import { checkUserViews } from "../../utils"
 
 //external libraries
 import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 
 //style
 import "./MovieCard.css"

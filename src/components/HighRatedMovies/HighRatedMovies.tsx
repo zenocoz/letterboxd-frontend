@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Row } from "react-bootstrap"
 import { API } from "../../API"
 import MovieCard from "../../components/MovieCard/MovieCard"
 import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
@@ -13,7 +12,7 @@ import "./HighRatedMovies.css"
 const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
   const [movies, setMovies] = useState<Array<IMovie>>([])
 
-  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+  const { loggedIn } = useSelector((state: any) => state.user)
 
   const findHighRatedMovies = async () => {
     const movieData = await API.getAllMoviesData()
@@ -41,9 +40,9 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
 
   const [hovered, setHovered] = useState(-1)
 
-  function like(i: number) {
-    alert(`Liked movie is ${i}`)
-  }
+  // function like(i: number) {
+  //   alert(`Liked movie is ${i}`)
+  // }
 
   return (
     <div className="row high-rated">

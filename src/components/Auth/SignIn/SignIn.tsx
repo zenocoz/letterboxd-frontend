@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 
 //external libraries
 import { Modal, Form, Button } from "react-bootstrap"
-import { useHistory } from "react-router-dom"
 import isEmail from "validator/lib/isEmail"
 import isEmpty from "validator/lib/isEmpty"
 
@@ -13,7 +12,6 @@ import { signin } from ".."
 import { getUserInfo } from "../../../store/user/reducer"
 
 const SignIn = () => {
-  const history = useHistory()
   const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({

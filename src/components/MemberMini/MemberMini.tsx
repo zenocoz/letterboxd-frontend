@@ -1,22 +1,10 @@
-import React, { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { API } from "../../API"
-import { IMemberMiniProps } from "./interface"
 import "./MemberMini.css"
 import { UserContext as Context } from "../../context"
-import {
-  Form,
-  FormControl,
-  OverlayTrigger,
-  Popover,
-  Tooltip,
-} from "react-bootstrap"
-import { useSelector, useDispatch } from "react-redux"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCrown } from "@fortawesome/free-solid-svg-icons"
 
 // import { setKeyword, loadSearchResults } from "../../store/search/reducer"
-import MovieCardSmall from "../MovieCardSmall/MovieCardSmall"
 
 const MemberMini = (props: any) => {
   const history = useHistory()
@@ -25,9 +13,6 @@ const MemberMini = (props: any) => {
   const [rating, setRating] = useState(null)
   const [selected, setSelected] = useState(false)
   // const [confirmed, setConfirmed] = useState(false)
-
-  //redux
-  const dispatch = useDispatch()
 
   //regular members
   const [friend, setFriend] = useState({
@@ -39,16 +24,16 @@ const MemberMini = (props: any) => {
   const { username, picture, watchedMovies } = friend
 
   //current user
-  const { userInfo } = useSelector((state: any) => state.user)
+  // const { userInfo } = useSelector((state: any) => state.user)
 
   //context
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
   const { members } = filmClubData
 
-  //club id pass it
-  const { currentFilmClubContext }: any = useContext(Context)
-  const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
+  // //club id pass it
+  // const { currentFilmClubContext }: any = useContext(Context)
+  // const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
 
   useEffect(() => {
     if (watchedMovies.length > 0) {
@@ -104,7 +89,7 @@ const MemberMini = (props: any) => {
           className=" friend-info mx-1 my-2"
           style={{ backgroundColor: selected ? "red" : "#14181d" }}
         >
-          <img src={picture} style={{ width: "5rem", height: "5rem" }} />
+          <img src={picture} alt="" style={{ width: "5rem", height: "5rem" }} />
           <p
             onClick={() => {
               history.push("/user/" + props.member)
@@ -164,7 +149,11 @@ const MemberMini = (props: any) => {
                 )} */}
             </>
           ) : (
-            <img src={picture} style={{ width: "3rem", height: "3rem" }} />
+            <img
+              src={picture}
+              alt=""
+              style={{ width: "3rem", height: "3rem" }}
+            />
           )}
           <p
             onClick={() => {

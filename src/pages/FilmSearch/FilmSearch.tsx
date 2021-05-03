@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react"
 import "./FilmSearch.css"
 import Banner from "../../components/Banner/Banner"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
-import { IMovie } from "../../interface"
-import MovieCardBig from "../../components/MovieCardBig/MovieCardBig"
-import { API } from "../../API"
 
 import {
   Row,

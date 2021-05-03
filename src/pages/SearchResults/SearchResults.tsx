@@ -1,11 +1,9 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { clearSearchResults } from "../../store/search/reducer"
-
-import { useHistory } from "react-router-dom"
 import { useSelector } from "react-redux"
 import "./SearchResults.css"
-import { Row, Col, ListGroup } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 import PopularReviews from "../../components/PopularReviews/PopularReviews"
 

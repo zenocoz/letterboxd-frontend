@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import { Card, Col } from "react-bootstrap"
+import { useEffect } from "react"
 // import { IMemberCardProps } from "./interface"
 import { useHistory } from "react-router-dom"
 import "./MemberCard.css"

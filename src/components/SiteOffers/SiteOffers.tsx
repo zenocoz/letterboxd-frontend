@@ -1,6 +1,4 @@
-import React from "react"
 import "./SiteOffers.css"
-import { Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faEye,

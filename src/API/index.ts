@@ -348,12 +348,12 @@ export const API = {
 
   updateProfilePicture: async (userId: string, file: any) => {
     try {
-      const _config = {
-        headers: {
-          "Content-type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
+      // const _config = {
+      //   headers: {
+      //     "Content-type": "application/json",
+      //     "Access-Control-Allow-Origin": "*",
+      //   },
+      // }
       const response = await axios.put(
         `${process.env.REACT_APP_REMOTE_SERVER}/api/users/${userId}/modifyPicture`,
         file

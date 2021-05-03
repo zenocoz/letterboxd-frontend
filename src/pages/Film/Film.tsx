@@ -10,20 +10,12 @@ import { useMovieStatus } from "../../custom_hooks"
 //styles and types
 import "./Film.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faStar, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import { IUser } from "../../interface"
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+// import { IUser } from "../../interface"
 
 //external dependencies
 import { useParams } from "react-router-dom"
-import {
-  Row,
-  Col,
-  Jumbotron,
-  ListGroup,
-  Modal,
-  Button,
-  Form,
-} from "react-bootstrap"
+import { Row, Col, ListGroup, Modal, Button, Form } from "react-bootstrap"
 import axios from "axios"
 import MemberMini from "../../components/MemberMini/MemberMini"
 
@@ -168,6 +160,7 @@ const Film = () => {
           >
             <img
               src={movieInfo.Poster}
+              alt=""
               style={{ width: "230px", height: "345px", borderRadius: "3px" }}
             />
           </div>

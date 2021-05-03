@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react"
+import { useState, useContext, useEffect } from "react"
 import { useSelector } from "react-redux"
-import { Tooltip } from "react-bootstrap"
+// import { Tooltip } from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 
 import { API } from "../../API"
@@ -20,18 +20,18 @@ const ClubMovieCard = ({
 }: any) => {
   const history = useHistory()
 
-  const renderTooltip = (props: any) => (
-    <Tooltip id="button-tooltip" {...props}>
-      {props.Title}
-    </Tooltip>
-  )
+  // const renderTooltip = (props: any) => (
+  //   <Tooltip id="button-tooltip" {...props}>
+  //     {props.Title}
+  //   </Tooltip>
+  // )
   const [chooser, setChooser] = useState(false)
 
   //clubs array context
   const { _filmClubsContext }: any = useContext(Context)
-  const { _filmClubs, _setFilmClubs } = _filmClubsContext
+  const { _filmClubs } = _filmClubsContext
 
-  const { userInfo, loggedIn } = useSelector((state: any) => state.user)
+  const { userInfo } = useSelector((state: any) => state.user)
 
   //TODO probably doesn't need to be asyn - check
   const findIfCurrentMemberIsChooser = async () => {
@@ -75,6 +75,7 @@ const ClubMovieCard = ({
           //   opacity: `${hovered ? "0.5" : "1"}`,
         }}
         src={Poster}
+        alt=""
         onClick={() =>
           chooser
             ? API.startWatchingMovie(clubId, _id)

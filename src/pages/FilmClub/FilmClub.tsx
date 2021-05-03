@@ -1,21 +1,12 @@
 //styles and ui frameworks
-import {
-  Jumbotron,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormControl,
-  Modal,
-} from "react-bootstrap"
+import { Row, Col, Button, Form, Modal } from "react-bootstrap"
 import "./FilmClub.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 //hooks
 import { useEffect, useState, useContext } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useInterval } from "../../custom_hooks"
 
 //context
@@ -26,16 +17,13 @@ import { API } from "../../API"
 // import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 
 //types and interfaces
-import { IMovie } from "../../interface"
+// import { IMovie } from "../../interface"
 
 //components
 import PopularMembers from "../../components/PopularMembers/PopularMembers"
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
-import MovieCard from "../../components/MovieCard/MovieCard"
-import MemberMini from "../../components/MemberMini/MemberMini"
 import Following from "../../components/Following/Following"
-import { copyFile } from "node:fs"
-import HighRatedMovies from "../../components/HighRatedMovies/HighRatedMovies"
+// import { copyFile } from "node:fs"
 import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 import ClubMember from "../../components/ClubMember/ClubMember"
 import ClubMovieCard from "../../components/ClubMovieCard/ClubMovieCard"
