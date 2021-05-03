@@ -1,7 +1,7 @@
 import axios from "axios"
 import { IUserData } from "./interface"
 
-const { REACT_APP_LOCAL_SERVER } = process.env
+const { REACT_APP_REMOTE_SERVER } = process.env
 export const register = async (data: IUserData) => {
   const config = {
     headers: {
@@ -11,7 +11,7 @@ export const register = async (data: IUserData) => {
   }
   try {
     const response = await axios.post(
-      `${REACT_APP_LOCAL_SERVER}/api/users/register`,
+      `${REACT_APP_REMOTE_SERVER}/api/users/register`,
       data,
       config
     )
@@ -35,9 +35,10 @@ export const signin = async (data: IUserData) => {
     },
     withCredentials: true,
   }
+
   try {
     const response = await axios.post(
-      `${REACT_APP_LOCAL_SERVER}/api/users/login`,
+      `${REACT_APP_REMOTE_SERVER}/api/users/login`,
       data,
       config
     )

@@ -4,7 +4,7 @@ export const API = {
   getMoviesByTitle: async (query: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films?title=${query}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films?title=${query}`
         // "http://localhost:3002/api/externalFilmApi?title=" + query,
       )
 
@@ -16,7 +16,7 @@ export const API = {
   getMoviesByImdbId: async (query: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films?imdbId=${query}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films?imdbId=${query}`
       )
 
       return response.data
@@ -28,7 +28,7 @@ export const API = {
   getMoviesById: async (filmId: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/internal/${filmId}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films/internal/${filmId}`
       )
       return response.data
     } catch (err) {
@@ -44,7 +44,7 @@ export const API = {
     }
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/globalData`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films/globalData`,
         config
       )
       if (response.statusText === "OK") {
@@ -59,7 +59,7 @@ export const API = {
   searchByKeyword: async (query: string) => {
     //searches first in own db then external if not found
     const response = await axios.get(
-      `${process.env.REACT_APP_LOCAL_SERVER}/api/films?query=${query}`
+      `${process.env.REACT_APP_REMOTE_SERVER}/api/films?query=${query}`
     )
 
     console.log(response.data)
@@ -68,7 +68,7 @@ export const API = {
   addSeenToMovie: async (userId: string, movieId: string) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/seen/${userId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films/${movieId}/seen/${userId}`,
         {
           headers: { "Content-type": "application/json" },
         }
@@ -86,7 +86,7 @@ export const API = {
     try {
       console.log("MOVIE ID REM", movieId)
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/seen/${userId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films/${movieId}/seen/${userId}`,
         {
           headers: { "Content-type": "application/json" },
         }
@@ -114,7 +114,7 @@ export const API = {
         headers: { "Content-type": "application/json" },
       }
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/films/${movieId}/rate`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/films/${movieId}/rate`,
         config
       )
       if (response.statusText === "OK") {
@@ -130,7 +130,7 @@ export const API = {
   getUser: async () => {
     try {
       const user = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/me`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/me`,
         {
           withCredentials: true,
         }
@@ -144,7 +144,7 @@ export const API = {
   getAllMembers: async () => {
     try {
       const members = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users`
       )
       if (members) {
         return members.data
@@ -158,7 +158,7 @@ export const API = {
   getMemberById: async (memberId: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/member/${memberId}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/member/${memberId}`
       )
       if (response) {
         return response.data
@@ -173,7 +173,7 @@ export const API = {
   followMember: async (userId: string, memberId: string) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/follow/${memberId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/${userId}/follow/${memberId}`,
         {
           headers: { "Content-type": "application/json" },
         }
@@ -190,7 +190,7 @@ export const API = {
   unfollowMember: async (userId: string, memberId: string) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/follow/${memberId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/${userId}/follow/${memberId}`,
         {
           headers: { "Content-type": "application/json" },
         }
@@ -208,7 +208,7 @@ export const API = {
   getWatchedMovies: async (userId: string) => {
     try {
       const movies = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/films/${userId}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/films/${userId}`
       )
       if (movies) {
         return movies.data
@@ -221,7 +221,7 @@ export const API = {
   getAllReviews: async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/reviews`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/reviews`
       )
       if (response) {
         return response.data
@@ -240,7 +240,7 @@ export const API = {
         headers: { "Content-type": "application/json" },
       }
       const response = await axios.post(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs`,
         config
       )
       if (response.status < 400) {
@@ -255,7 +255,7 @@ export const API = {
   getUserMovieClubs: async (userId: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/${userId}`
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs/${userId}`
       )
       if (response.status < 400) {
         return response.data
@@ -287,7 +287,7 @@ export const API = {
       //   },
       // }
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/${clubId}/${memberId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs/${clubId}/${memberId}`,
 
         config
       )
@@ -309,7 +309,7 @@ export const API = {
         },
       }
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/watch/${clubId}/${movieId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs/watch/${clubId}/${movieId}`,
 
         config
       )
@@ -332,7 +332,7 @@ export const API = {
         },
       }
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/clubs/editWatch/${clubId}/${movieId}`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs/editWatch/${clubId}/${movieId}`,
 
         config
       )
@@ -355,7 +355,7 @@ export const API = {
         },
       }
       const response = await axios.put(
-        `${process.env.REACT_APP_LOCAL_SERVER}/api/users/${userId}/modifyPicture`,
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/users/${userId}/modifyPicture`,
         file
       )
 
