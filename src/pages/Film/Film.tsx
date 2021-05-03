@@ -5,12 +5,11 @@ import { API } from "../../API"
 import { updateUserInfo } from "../../store/user/reducer"
 import { checkViews } from "../../utils"
 import { useMovieStatus } from "../../custom_hooks"
-// import ReactStars from "react-rating-stars-component"
 
 //styles and types
 import "./Film.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { faEye, faEyeSlash, faStar } from "@fortawesome/free-solid-svg-icons"
 // import { IUser } from "../../interface"
 
 //external dependencies
@@ -18,6 +17,7 @@ import { useParams } from "react-router-dom"
 import { Row, Col, ListGroup, Modal, Button, Form } from "react-bootstrap"
 import axios from "axios"
 import MemberMini from "../../components/MemberMini/MemberMini"
+import Rating from "react-rating"
 
 const Film = () => {
   const { imdbID } = useParams<{ imdbID: string }>()
@@ -88,13 +88,19 @@ const Film = () => {
     setReviewText(e.target.value)
   }
 
-  const calculateGlobalRating = async (e: any) => {
-    e.preventDefault()
-    const userRating = parseInt(e.target.value, 10)
+  const calculateGlobalRating = async (value: number) => {
+    const userRating = value
     const rating10 = parseInt(movieInfo.rating, 10)
     let globalRating = (userRating + rating10) / movieInfo.views
     await submitRating(userRating, globalRating)
   }
+  // const calculateGlobalRating = async (e: any) => {
+  //   e.preventDefault()
+  //   const userRating = parseInt(e.target.value, 10)
+  //   const rating10 = parseInt(movieInfo.rating, 10)
+  //   let globalRating = (userRating + rating10) / movieInfo.views
+  //   await submitRating(userRating, globalRating)
+  // }
 
   const submitRating = async (userRating: number, globalRating: number) => {
     Promise.all([
@@ -122,14 +128,13 @@ const Film = () => {
       headers: { "Content-type": "application/json" },
     }
     const response = await axios.post(
-      `${process.env.REACT_APP_LOCAL_SERVER}/api/reviews`,
+      `${process.env.REACT_APP_REMOTE_SERVER}/api/reviews`,
       reviewInfo,
       config
     )
 
     console.log(`review added`, response.data)
     setReviewText("")
-    setShowModalReview(false)
   }
   return (
     <>
@@ -209,8 +214,30 @@ const Film = () => {
                         actions.unwatch()
                       }}
                     />
-                    <div style={{ width: "6rem" }}>
-                      <Form.Group>
+                    <div style={{ width: "100%" }}>
+                      <Rating
+                        readonly={false}
+                        initialRating={movieRating}
+                        onChange={(value: number) => {
+                          calculateGlobalRating(value)
+                        }}
+                        fractions={2}
+                        emptySymbol={
+                          <FontAwesomeIcon
+                            icon={faStar}
+                            size="2x"
+                            color={"grey"}
+                          />
+                        }
+                        fullSymbol={
+                          <FontAwesomeIcon
+                            icon={faStar}
+                            size="2x"
+                            color={"yellow"}
+                          />
+                        }
+                      />
+                      {/* <Form.Group>
                         <Form.Label>Rate</Form.Label>
                         <Form.Control
                           type="number"
@@ -223,21 +250,16 @@ const Film = () => {
                           <option value="4">4</option>
                           <option value="5">5</option>
                         </Form.Control>
-                      </Form.Group>
+                      </Form.Group> */}
                     </div>
-                    {/* <ReactStars
-                      count={5}
-                      // onChange={ratingChanged}
-                      size={24}
-                      activeColor="#ffd700"
-                    /> */}
-                    <p>
+
+                    {/* <p>
                       {movieRating !== 0 ? (
                         <div>{movieRating} stars</div>
                       ) : (
                         <div>You haven't given any stars</div>
                       )}
-                    </p>
+                    </p> */}
                   </>
                 ) : (
                   <FontAwesomeIcon
@@ -252,6 +274,14 @@ const Film = () => {
               </p>
 
               <button
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  borderRadius: "3px",
+                  backgroundColor: "#3c4e5d",
+                  color: "white",
+                  font: "Rubik",
+                }}
                 onClick={() => {
                   setShowModalReview(true)
                 }}
@@ -296,6 +326,7 @@ const Film = () => {
                       variant="primary"
                       onClick={(e) => {
                         submitReviewLog(e)
+                        setShowModalReview(false)
                       }}
                     >
                       Submit Review
