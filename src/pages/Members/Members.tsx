@@ -54,10 +54,12 @@ const Members = () => {
               ))}
       </div>
 
-      <div style={{ maxWidth: "22rem" }}>
-        {" "}
-        <Following />
-      </div>
+      {loggedIn && (
+        <div style={{ maxWidth: "22rem" }}>
+          {" "}
+          <Following />
+        </div>
+      )}
     </>
   )
 }
