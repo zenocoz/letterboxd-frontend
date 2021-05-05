@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Form, FormControl } from "react-bootstrap"
 import { UserContext as Context } from "../../context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCrown } from "@fortawesome/free-solid-svg-icons"
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faPlus, faCrown, faTrash } from "@fortawesome/free-solid-svg-icons"
 import ClubMovieCard from "../ClubMovieCard/ClubMovieCard"
 
 const ClubMember = (props: any) => {
@@ -79,15 +78,29 @@ const ClubMember = (props: any) => {
             {props.member.confirmed &&
               !props.member.chooser &&
               props.member.clubMember === userInfo._id && (
-                <FontAwesomeIcon
-                  className="mr-1"
-                  icon={faPlus}
-                  color={"grey"}
-                  size="1x"
-                  onClick={() => {
-                    setShowSearchBar(!showSearchBar)
-                  }}
-                />
+                <>
+                  <FontAwesomeIcon
+                    className="mr-1"
+                    icon={faPlus}
+                    color={"grey"}
+                    size="1x"
+                    onClick={() => {
+                      setShowSearchBar(!showSearchBar)
+                    }}
+                  />
+                  <FontAwesomeIcon
+                    className="mr-1"
+                    icon={faTrash}
+                    color={"red"}
+                    size="1x"
+                    cursor="pointer"
+                    // onClick={() => {
+                    //   API.editWatchingMovie(
+                    //     club._id
+                    //   )
+                    // }}
+                  />
+                </>
               )}
             <img
               src={picture}

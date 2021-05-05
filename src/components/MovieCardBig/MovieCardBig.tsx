@@ -61,7 +61,7 @@ const MovieCardBig = ({
 
   return (
     <div
-      className="col-3"
+      className="col-3 sm-12 md-8"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{

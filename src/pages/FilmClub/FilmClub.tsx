@@ -2,7 +2,7 @@
 import { Row, Col, Button, Form, Modal } from "react-bootstrap"
 import "./FilmClub.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
 
 //hooks
 import { useEffect, useState, useContext } from "react"
@@ -214,18 +214,6 @@ const FilmClub = () => {
                       _filmClubs[c].films[_filmClubs[c].films.length - 1]._id
                     )
                   }}
-                />
-                <FontAwesomeIcon
-                  className="mr-1"
-                  icon={faTrash}
-                  color={"red"}
-                  size="1x"
-                  cursor="pointer"
-                  // onClick={() => {
-                  //   API.editWatchingMovie(
-                  //     club._id
-                  //   )
-                  // }}
                 />
               </>
             )}

@@ -60,7 +60,7 @@ const MovieCard = (props: any) => {
 
   return (
     <div
-      className="col sm-12 md-4"
+      className="col sm-12 md-8"
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
@@ -76,7 +76,7 @@ const MovieCard = (props: any) => {
     >
       <img
         style={{
-          width: "100%",
+          minWidth: "60px",
           height: "90px",
           // minHeight: 300,
           transition: "0.2s",

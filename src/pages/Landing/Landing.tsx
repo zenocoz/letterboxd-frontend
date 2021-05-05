@@ -82,16 +82,16 @@ const Landing = () => {
 
   return (
     <>
-      <Row>
-        <Col className="md-8 mb-4">
+      <Row xs={12} md={8}>
+        <Col className=" mb-4">
           <div className="overlay"></div>
           <div className="jumbo"></div>
         </Col>
       </Row>
-      <Row>
+      <Row xs={12} md={8}>
         {" "}
         <Col
-          className="md-8 mb-4"
+          className=" mb-4"
           style={{
             height: "100px",
             justifyContent: "center",
@@ -115,7 +115,7 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <Row>
+      <Row style={{ marginLeft: 0, marginRight: 0 }}>
         <HighRatedMovies big={true} limit={4} />
       </Row>
       <Banner />
