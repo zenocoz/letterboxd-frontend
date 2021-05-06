@@ -78,29 +78,15 @@ const ClubMember = (props: any) => {
             {props.member.confirmed &&
               !props.member.chooser &&
               props.member.clubMember === userInfo._id && (
-                <>
-                  <FontAwesomeIcon
-                    className="mr-1"
-                    icon={faPlus}
-                    color={"grey"}
-                    size="1x"
-                    onClick={() => {
-                      setShowSearchBar(!showSearchBar)
-                    }}
-                  />
-                  <FontAwesomeIcon
-                    className="mr-1"
-                    icon={faTrash}
-                    color={"red"}
-                    size="1x"
-                    cursor="pointer"
-                    // onClick={() => {
-                    //   API.editWatchingMovie(
-                    //     club._id
-                    //   )
-                    // }}
-                  />
-                </>
+                <FontAwesomeIcon
+                  className="mr-1"
+                  icon={faPlus}
+                  color={"grey"}
+                  size="1x"
+                  onClick={() => {
+                    setShowSearchBar(!showSearchBar)
+                  }}
+                />
               )}
             <img
               src={picture}
@@ -114,28 +100,32 @@ const ClubMember = (props: any) => {
             />
 
             {props.member.chooser && (
-              <FontAwesomeIcon
-                className="mr-1"
-                icon={faCrown}
-                color={"gold"}
-                size="1x"
-              />
+              <div className="ml-2">
+                <FontAwesomeIcon
+                  className="ml-2 mr-2"
+                  icon={faCrown}
+                  color={"gold"}
+                  size="1x"
+                />
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  color={"red"}
+                  size="1x"
+                  cursor="pointer"
+                  // onClick={() => {
+                  //   API.editWatchingMovie(
+                  //     club._id
+                  //   )
+                  // }}
+                />
+              </div>
             )}
 
-            <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
-              {props.member.film !== null && (
+            {props.member.film !== null && (
+              <div className="ml-2" style={{ height: "5rem", width: "6rem" }}>
                 <ClubMovieCard {...props.member.film} clubId={props.clubId} />
-                // <MovieCardSmall
-                //   {...props.member.film}
-                //   withInfo={false}
-                //   club={true}
-                //   clubId={props.clubId}
-
-                //   // clubId={props.clubId}
-                //   // memberId={props.member.clubMember}
-                // />
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           <p>{username}</p>

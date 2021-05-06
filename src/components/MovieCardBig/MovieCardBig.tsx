@@ -27,7 +27,7 @@ const MovieCardBig = ({
   // const height = "350px"
 
   const { userInfo } = useSelector((state: any) => state.user)
-  const movieAction = useMovieStatus(userInfo._id, _id, imdbID)
+  const movieAction = useMovieStatus(_id, imdbID)
   const [movieSeen, setMovieSeen] = useState<any>(false)
 
   function like(i: number) {
@@ -35,8 +35,10 @@ const MovieCardBig = ({
   }
 
   useEffect(() => {
-    setMovieSeen(checkUserViews(userInfo.watchedMovies, _id))
-  }, [userInfo.watchedMovies])
+    if (loggedIn) {
+      setMovieSeen(checkUserViews(userInfo.watchedMovies, _id))
+    }
+  }, [userInfo])
 
   const actions = [
     {
@@ -61,7 +63,7 @@ const MovieCardBig = ({
 
   return (
     <div
-      className="col-3 sm-12 md-8"
+      className="col-3 sm-6 md-4"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
@@ -78,6 +80,7 @@ const MovieCardBig = ({
       <img
         style={{
           width: "100%",
+          minWidth: "200px",
           height: "350px",
           transition: "0.2s",
           opacity: `${hovered ? "0.5" : "1"}`,

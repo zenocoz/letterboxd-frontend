@@ -9,6 +9,7 @@
 .inner-items {
   margin-top: 0;
   /* margin-bottom: 1rem; */
+  height: 100%;
   margin-left: 65px;
   margin-right: 65px;
   margin-bottom: 65px;

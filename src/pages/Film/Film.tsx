@@ -28,7 +28,7 @@ const Film = () => {
   const { movieInfo } = useSelector((state: any) => state.movie)
 
   //custom
-  const actions = useMovieStatus(userInfo._id, movieInfo._id, imdbID)
+  const actions = useMovieStatus(movieInfo._id, imdbID)
 
   //state
   const [wasSeen, setWasSeen] = useState(false)
@@ -65,8 +65,10 @@ const Film = () => {
   }, [movieInfo, imdbID])
 
   useEffect(() => {
-    setMovieRating(getRating())
-  }, [userInfo.watchedMovies, movieInfo._id, wasSeen])
+    if (loggedIn) {
+      setMovieRating(getRating())
+    }
+  }, [userInfo, movieInfo._id, wasSeen])
 
   useEffect(() => {
     dispatch(getMovie(imdbID))

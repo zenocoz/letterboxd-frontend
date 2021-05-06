@@ -1,48 +1,59 @@
 import { useEffect, useRef } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { updateUserInfo } from "../store/user/reducer"
 import { getMovie } from "../store/movie/reducer"
 import { API } from "../API"
 
 export const useMovieStatus = (
-  userId: string,
+  // userId: string,
   movieId: string,
   imdbID: string
 ): any => {
   const dispatch = useDispatch()
 
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
+
   const watch = () => {
-    Promise.all([API.addSeenToMovie(userId, movieId)]).then((resp) => {
-      console.log(resp)
-      dispatch(updateUserInfo())
-      dispatch(getMovie(imdbID))
-    })
+    if (loggedIn) {
+      Promise.all([API.addSeenToMovie(userInfo._id, movieId)]).then((resp) => {
+        console.log(resp)
+        dispatch(updateUserInfo())
+        dispatch(getMovie(imdbID))
+      })
+    }
   }
 
   const unwatch = () => {
-    Promise.all([API.removeSeenMovie(userId, movieId)]).then((resp) => {
-      console.log(resp)
-      dispatch(updateUserInfo())
-      dispatch(getMovie(imdbID))
-    })
+    if (loggedIn) {
+      Promise.all([API.removeSeenMovie(userInfo._id, movieId)]).then((resp) => {
+        console.log(resp)
+        dispatch(updateUserInfo())
+        dispatch(getMovie(imdbID))
+      })
+    }
   }
 
   return { watch, unwatch }
 }
 
-export const useUserInfo = (userId: string, movieId: string): any => {
+export const useFollow = (memberId: string): any => {
   const dispatch = useDispatch()
+  const { loggedIn, userInfo } = useSelector((state: any) => state.user)
 
   const follow = () => {
-    Promise.all([API.followMember(userId, movieId)]).then((resp) => {
-      dispatch(updateUserInfo())
-    })
+    if (loggedIn) {
+      Promise.all([API.followMember(userInfo._id, memberId)]).then((resp) => {
+        dispatch(updateUserInfo())
+      })
+    }
   }
   const unfollow = () => {
-    Promise.all([API.unfollowMember(userId, movieId)]).then((resp) => {
-      dispatch(updateUserInfo())
-    })
+    if (loggedIn) {
+      Promise.all([API.unfollowMember(userInfo._id, memberId)]).then((resp) => {
+        dispatch(updateUserInfo())
+      })
+    }
   }
 
   return { follow, unfollow }

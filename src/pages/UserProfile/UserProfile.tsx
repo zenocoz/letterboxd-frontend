@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { API } from "../../API"
 import "./UserProfile.css"
-import { useUserInfo } from "../../custom_hooks"
+import { useFollow } from "../../custom_hooks"
 import { Modal, Button } from "react-bootstrap"
 
 const UserProfile = () => {
@@ -24,7 +24,7 @@ const UserProfile = () => {
 
   const [showPictureModal, setShowPictureModal] = useState(false)
 
-  const actions = useUserInfo(userInfo._id, userId)
+  const actions = useFollow(userId)
 
   //given changes to db, members array in redux is simply id strings, so member and not member._id
   const checkFollowing = () => {
@@ -38,18 +38,16 @@ const UserProfile = () => {
 
   useEffect(() => {
     ;(async () => {
-      console.log(userId)
       const response = await API.getMemberById(userId)
-      // console.log("TOTAl WATCHED", response.totalWatched) // TODO optimize to make other array length come from BE
       setMemberData(response)
     })()
   }, [isUpdated])
 
   useEffect(() => {
-    checkFollowing()
-  }, [userInfo.following])
-
-  // useEffect(() => {}, [isUpdated])
+    if (loggedIn) {
+      checkFollowing()
+    }
+  }, [userInfo])
 
   const updateImage = async () => {
     const input: any = document.querySelector('input[type="file"]')
@@ -66,7 +64,6 @@ const UserProfile = () => {
     } else {
       const error = response.errors
       console.log(error)
-      // <Alert variant='danger'>Something went wrong</Alert>;
     }
   }
 

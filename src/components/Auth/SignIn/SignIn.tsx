@@ -54,7 +54,6 @@ const SignIn = () => {
         } else {
           setFormData({
             email: "",
-            // username: "",
             password: "",
             errorMsg: "",
           })
@@ -96,16 +95,6 @@ const SignIn = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            {/* <Form.Group controlId="formBasicPassword">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={username}
-                onChange={handleChange}
-              />
-            </Form.Group> */}
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control

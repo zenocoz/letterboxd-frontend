@@ -12,9 +12,9 @@ import {
 const SiteOffers = () => {
   return (
     <div className="row site-offers ">
-      <div className="col" style={{ paddingRight: 0, paddingLeft: 0 }}>
+      <div className="col  " style={{ paddingRight: 0, paddingLeft: 0 }}>
         <div className="row mr-0 ml-0">
-          <div className="col _panel">
+          <div className="col sm-12 md-6  _panel">
             <div
               className="mt-2 panel"
               style={{
@@ -33,7 +33,7 @@ const SiteOffers = () => {
               </div>
             </div>
           </div>
-          <div className="col _panel">
+          <div className="col sm-12 md-6 _panel">
             <div
               className="mt-2 panel"
               style={{
@@ -52,7 +52,7 @@ const SiteOffers = () => {
               </div>
             </div>
           </div>
-          <div className="col _panel">
+          <div className="col sm-12 md-6 _panel">
             <div
               className="mt-2 panel"
               style={{
@@ -77,7 +77,7 @@ const SiteOffers = () => {
           </div>
         </div>
         <div className="row mr-0 ml-0">
-          <div className="col _panel">
+          <div className="col sm-12 md-6 _panel">
             <div
               className="mt-2 panel"
               style={{
@@ -96,7 +96,7 @@ const SiteOffers = () => {
               </div>
             </div>
           </div>
-          <div className="col _panel">
+          <div className="col sm-12 md-6 _panel">
             <div
               className="mt-2 panel"
               style={{
@@ -112,7 +112,7 @@ const SiteOffers = () => {
               </div>
             </div>
           </div>
-          <div className="col _panel">
+          <div className="col sm-12 md-6 _panel">
             <div
               className="mt-2 panel"
               style={{

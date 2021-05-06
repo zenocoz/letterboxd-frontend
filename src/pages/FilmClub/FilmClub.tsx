@@ -29,8 +29,9 @@ import ClubMember from "../../components/ClubMember/ClubMember"
 import ClubMovieCard from "../../components/ClubMovieCard/ClubMovieCard"
 
 const FilmClub = () => {
+  //state
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
-  // const watching = false
+  const [unauthorized, setUnauthorized] = useState(false)
 
   const [show, setShow] = useState(false)
   // const [movies, setMovies] = useState<Array<IMovie>>([])
@@ -76,10 +77,12 @@ const FilmClub = () => {
 
   // check if there are unconfirmed members
   useInterval(async () => {
-    const response = await API.getUserMovieClubs(userInfo._id)
-    if (response) {
-      _setFilmClubs(response)
-      console.log("interval polled with response", response)
+    if (loggedIn) {
+      const response = await API.getUserMovieClubs(userInfo._id)
+      if (response) {
+        _setFilmClubs(response)
+        console.log("interval polled with response", response)
+      }
     }
   }, 1000)
 
@@ -93,8 +96,10 @@ const FilmClub = () => {
   }, [numberOfClubs])
 
   useEffect(() => {
-    setNumberOfClubs(_filmClubs.length + 1)
-    console.log("number of clubs", numberOfClubs)
+    if (loggedIn) {
+      setNumberOfClubs(_filmClubs.length + 1)
+      console.log("number of clubs", numberOfClubs)
+    }
   }, [_filmClubs])
 
   const showModal = () => {
@@ -154,8 +159,6 @@ const FilmClub = () => {
       </Modal>
     )
   }
-
-  // find if current member is user //TODO Refactor
 
   const isChooser = (clubId: string) => {
     const currentClub = _filmClubs.find((club: any) => club._id === clubId)
@@ -250,7 +253,9 @@ const FilmClub = () => {
   }
 
   useEffect(() => {
-    showSearchResults()
+    if (loggedIn) {
+      showSearchResults()
+    }
   }, [movieList])
 
   return (
@@ -261,12 +266,19 @@ const FilmClub = () => {
             <h1 className="offset-3">Welcome to the Film Club</h1>
             {showModal()}
             <Button
-              style={{ backgroundColor: "#485794", color: "#ddd9cb" }}
-              onClick={() => {
-                setShow(true)
+              style={{
+                backgroundColor: "#485794",
+                color: "#ddd9cb",
+                display: "inline-grid",
               }}
+              onClick={() => (loggedIn ? setShow(true) : setUnauthorized(true))}
             >
-              Create a film club
+              <p style={{ marginBottom: 0 }}>Create a film club</p>
+              {unauthorized && (
+                <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                  log in to create a club
+                </small>
+              )}
             </Button>
           </div>
         </Col>

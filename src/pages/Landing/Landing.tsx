@@ -99,7 +99,7 @@ const Landing = () => {
           }}
         >
           {" "}
-          <div className="welcome-texts md-8">
+          <div className="welcome-texts sm-12 md-8">
             <h1>Track films you've watched.</h1>
             <h1>Save those you want to see.</h1>
             <h1>Tell your friends what's good.</h1>
@@ -115,7 +115,7 @@ const Landing = () => {
           {createAccount === true && <CreateAccount />}
         </Col>
       </Row>
-      <Row style={{ marginLeft: 0, marginRight: 0 }}>
+      <Row style={{ marginLeft: 0, marginRight: 0, marginTop: "10rem" }}>
         <HighRatedMovies big={true} limit={4} />
       </Row>
       <Banner />

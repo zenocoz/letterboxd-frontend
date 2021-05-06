@@ -22,11 +22,7 @@ const MovieCard = (props: any) => {
   const history = useHistory()
 
   const { userInfo } = useSelector((state: any) => state.user)
-  const movieAction = useMovieStatus(
-    userInfo._id,
-    props.movie._id,
-    props.movie.imdbID
-  )
+  const movieAction = useMovieStatus(props.movie._id, props.movie.imdbID)
   const [movieSeen, setMovieSeen] = useState<any>(false)
 
   function like(i: number) {
@@ -34,8 +30,10 @@ const MovieCard = (props: any) => {
   }
 
   useEffect(() => {
-    setMovieSeen(checkUserViews(userInfo.watchedMovies, movie._id))
-  }, [userInfo.watchedMovies])
+    if (loggedIn) {
+      setMovieSeen(checkUserViews(userInfo.watchedMovies, movie._id))
+    }
+  }, [userInfo])
 
   const actions = [
     {
@@ -60,7 +58,7 @@ const MovieCard = (props: any) => {
 
   return (
     <div
-      className="col sm-12 md-8"
+      className="col sm-6 md-4"
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       style={{
@@ -76,7 +74,8 @@ const MovieCard = (props: any) => {
     >
       <img
         style={{
-          minWidth: "60px",
+          width: "100%",
+          minWidth: "40px",
           height: "90px",
           // minHeight: 300,
           transition: "0.2s",
