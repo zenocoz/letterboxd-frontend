@@ -26,17 +26,10 @@ const MemberMini = (props: any) => {
   })
   const { username, picture, watchedMovies } = friend
 
-  //current user
-  // const { userInfo } = useSelector((state: any) => state.user)
-
   //context
   const { filmClubContext }: any = useContext(Context)
   const { filmClubData, setFilmClubData } = filmClubContext
   const { members } = filmClubData
-
-  // //club id pass it
-  // const { currentFilmClubContext }: any = useContext(Context)
-  // const { currentFilmClub, setCurrentFilmClub } = currentFilmClubContext
 
   useEffect(() => {
     if (watchedMovies.length > 0) {

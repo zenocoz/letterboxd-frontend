@@ -4,8 +4,13 @@ import { IModal } from "./interface"
 import { UserContext } from "."
 
 const ContextProvider: React.FC = ({ children }) => {
+  //account modals state
   const [createAccount, setCreateAccount] = useState(false)
   const [signIn, setSignIn] = useState(false)
+
+  //film club state
+
+  //create film club
   const [filmClubData, setFilmClubData] = useState({
     name: "",
     members: [],
@@ -13,8 +18,9 @@ const ContextProvider: React.FC = ({ children }) => {
     watching: false,
   })
 
-  //make film clubs accessible to many components
+  //film clubs
   const [_filmClubs, _setFilmClubs] = useState([])
+
   const [currentFilmClub, setCurrentFilmClub] = useState<string>("")
 
   const _filmClubsContext = useMemo(() => ({ _filmClubs, _setFilmClubs }), [
