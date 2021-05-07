@@ -43,8 +43,14 @@ const FilmClub = () => {
   const { userInfo, loggedIn } = useSelector((state: any) => state.user)
 
   //context
-  const { filmClubContext, _filmClubsContext }: any = useContext(Context)
+  const {
+    filmClubContext,
+    _filmClubsContext,
+    providerModals,
+  }: any = useContext(Context)
   const { _filmClubs, _setFilmClubs } = _filmClubsContext
+
+  const { setSignIn } = providerModals.signInModal
 
   //context variables
   const { filmClubData, setFilmClubData } = filmClubContext
@@ -270,6 +276,10 @@ const FilmClub = () => {
   }
 
   useEffect(() => {
+    setUnauthorized(false)
+  }, [loggedIn])
+
+  useEffect(() => {
     if (loggedIn) {
       showSearchResults()
     }
@@ -277,7 +287,7 @@ const FilmClub = () => {
 
   return (
     <>
-      <Row>
+      <Row style={{ marginLeft: 0, marginRight: 0 }}>
         <Col style={{ padding: 0 }}>
           <div className="d-flex club-hero mt-2 justify-content-between">
             <h1 className="offset-3">Welcome to the Film Club</h1>
@@ -294,11 +304,6 @@ const FilmClub = () => {
                 }
               >
                 <p style={{ marginBottom: 0 }}>Add a new film club</p>
-                {unauthorized && (
-                  <small className="ml-2 mb-2 mt-0 text-danger text-center">
-                    log in to create a club
-                  </small>
-                )}
               </Button>
             )}
           </div>
@@ -331,7 +336,14 @@ const FilmClub = () => {
               <p style={{ marginBottom: 0 }}>Create a film club</p>
               {unauthorized && (
                 <small className="ml-2 mb-2 mt-0 text-danger text-center">
-                  log in to create a club
+                  <strong
+                    onClick={() => {
+                      setSignIn(true)
+                    }}
+                  >
+                    log in
+                  </strong>{" "}
+                  to create a club
                 </small>
               )}
             </Button>

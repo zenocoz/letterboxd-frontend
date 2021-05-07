@@ -1,8 +1,9 @@
 .club-hero {
-  width: 98%;
+  width: 100%;
   height: 6vh;
   background-color: #80231b;
   text-align: center;
   color: #ddd9cb;
   border-radius: 10px;
+  padding: 0;
 }
