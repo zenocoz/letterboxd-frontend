@@ -282,21 +282,25 @@ const FilmClub = () => {
           <div className="d-flex club-hero mt-2 justify-content-between">
             <h1 className="offset-3">Welcome to the Film Club</h1>
             {showModal()}
-            <Button
-              style={{
-                backgroundColor: "#485794",
-                color: "#ddd9cb",
-                display: "inline-grid",
-              }}
-              onClick={() => (loggedIn ? setShow(true) : setUnauthorized(true))}
-            >
-              <p style={{ marginBottom: 0 }}>Create a film club</p>
-              {unauthorized && (
-                <small className="ml-2 mb-2 mt-0 text-danger text-center">
-                  log in to create a club
-                </small>
-              )}
-            </Button>
+            {_filmClubs.length > 0 && (
+              <Button
+                style={{
+                  backgroundColor: "#485794",
+                  color: "#ddd9cb",
+                  display: "inline-grid",
+                }}
+                onClick={() =>
+                  loggedIn ? setShow(true) : setUnauthorized(true)
+                }
+              >
+                <p style={{ marginBottom: 0 }}>Add a new film club</p>
+                {unauthorized && (
+                  <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                    log in to create a club
+                  </small>
+                )}
+              </Button>
+            )}
           </div>
         </Col>
       </Row>
@@ -313,7 +317,25 @@ const FilmClub = () => {
             paddingTop: "35px",
           }}
         >
-          {_filmClubs.length > 0 && renderFilmClubs()}
+          {_filmClubs.length > 0 ? (
+            renderFilmClubs()
+          ) : (
+            <Button
+              style={{
+                backgroundColor: "#ddd9cb",
+                color: "#80231b",
+                display: "inline-grid",
+              }}
+              onClick={() => (loggedIn ? setShow(true) : setUnauthorized(true))}
+            >
+              <p style={{ marginBottom: 0 }}>Create a film club</p>
+              {unauthorized && (
+                <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                  log in to create a club
+                </small>
+              )}
+            </Button>
+          )}
 
           <Row style={{ height: "200px" }}>
             {showSearchResults()}
