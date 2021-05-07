@@ -26,7 +26,7 @@ const PopularMovies = () => {
       }
     })
     const retrievedMovies: Array<Promise<IMovie>> = []
-    sortedMovies.slice(0, 11).forEach((sorted: any) => {
+    sortedMovies.slice(0, 12).forEach((sorted: any) => {
       let movie: Promise<IMovie> = API.getMoviesByImdbId(sorted.imdbID)
       retrievedMovies.push(movie)
     })
@@ -44,33 +44,16 @@ const PopularMovies = () => {
     <div className="row popular  mb-4">
       {movies.length > 0 &&
         movies.map((movie, i): any => (
-          // <MovieCardSmall
-          //   {...movie}
-          //   key={movie.imdbID}
-          //   withInfo={false}
-          //   loggedIn={loggedIn}
-          //   onMouseLeave={() => setHovered(-1)}
-          //   onMouseEnter={() => setHovered(i)}
-          //   hovered={hovered === i}
-          //   club={false}
-          // />
-          <MovieCard
-            loggedIn={loggedIn}
-            movie={movie}
-            key={movie.imdbID}
-            onMouseLeave={() => setHovered(-1)}
-            onMouseEnter={() => setHovered(i)}
-            hovered={hovered === i}
-          />
-
-          // <MovieCard
-          //   {...movie}
-          //   // key={movie.imdbID}
-          //   loggedIn={loggedIn}
-          //   onMouseLeave={() => setHovered(-1)}
-          //   onMouseEnter={() => setHovered(i)}
-          //   hovered={hovered === i}
-          // />
+          <div style={{ width: "80px" }}>
+            <MovieCard
+              loggedIn={loggedIn}
+              movie={movie}
+              key={movie.imdbID}
+              onMouseLeave={() => setHovered(-1)}
+              onMouseEnter={() => setHovered(i)}
+              hovered={hovered === i}
+            />
+          </div>
         ))}
     </div>
   )

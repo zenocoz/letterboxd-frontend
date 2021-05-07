@@ -64,12 +64,14 @@ const MovieCard = (props: any) => {
       style={{
         maxWidth: "100px",
         width: "100%",
+        minWidth: "80px",
         height: "100px",
         transition: "0.2s",
         cursor: "pointer",
         background: `${props.hovered ? "black" : "transparent"}`,
         border: `3px solid ${props.hovered ? "green" : "transparent"}`,
         borderRadius: "3px",
+        padding: "5px",
       }}
     >
       <img

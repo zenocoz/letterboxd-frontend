@@ -51,30 +51,34 @@ const Activity = () => {
         <>
           {movies.length > 0 &&
             movies.map((movie, i) => (
-              <MovieCard
-                loggedIn={loggedIn}
-                movie={movie}
-                key={movie.imdbID}
-                onMouseLeave={() => setHovered(-1)}
-                onMouseEnter={() => setHovered(i)}
-                hovered={hovered === i}
-                actions={[
-                  {
-                    icon: "❤️",
-                    handler: () => like(i),
-                  },
-                  {
-                    icon:
-                      movie.seenBy.length > 0 &&
-                      movie.seenBy.find((user) => user._id === userInfo._id) ? (
-                        <FontAwesomeIcon icon={faEye} color={"green"} />
-                      ) : (
-                        <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
-                      ),
-                    handler: () => alert(`starred movie is ${i}`),
-                  },
-                ]}
-              />
+              <div style={{ width: "80px", padding: 0, margin: 0 }}>
+                <MovieCard
+                  loggedIn={loggedIn}
+                  movie={movie}
+                  key={movie.imdbID}
+                  onMouseLeave={() => setHovered(-1)}
+                  onMouseEnter={() => setHovered(i)}
+                  hovered={hovered === i}
+                  actions={[
+                    {
+                      icon: "❤️",
+                      handler: () => like(i),
+                    },
+                    {
+                      icon:
+                        movie.seenBy.length > 0 &&
+                        movie.seenBy.find(
+                          (user) => user._id === userInfo._id
+                        ) ? (
+                          <FontAwesomeIcon icon={faEye} color={"green"} />
+                        ) : (
+                          <FontAwesomeIcon icon={faEyeSlash} color={"grey"} />
+                        ),
+                      handler: () => alert(`starred movie is ${i}`),
+                    },
+                  ]}
+                />
+              </div>
             ))}
         </>
       </Row>

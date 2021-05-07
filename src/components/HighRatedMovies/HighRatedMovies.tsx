@@ -61,9 +61,8 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
               />
             ))
         : movies.length > 0 &&
-          movies
-            .slice(0, limit)
-            .map((movie: IMovie, i: number) => (
+          movies.slice(0, limit).map((movie: IMovie, i: number) => (
+            <div style={{ width: "80px" }}>
               <MovieCard
                 loggedIn={loggedIn}
                 movie={movie}
@@ -72,7 +71,8 @@ const HighRatedMovies = ({ big, limit }: IHighRatedMovies) => {
                 onMouseEnter={() => setHovered(i)}
                 hovered={hovered === i}
               />
-            ))}
+            </div>
+          ))}
     </div>
   )
 }
