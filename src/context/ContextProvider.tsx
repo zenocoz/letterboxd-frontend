@@ -4,44 +4,39 @@ import { IModal } from "./interface"
 import { UserContext } from "."
 
 const ContextProvider: React.FC = ({ children }) => {
-  //account modals state
+  //STATE
+  //modals
   const [createAccount, setCreateAccount] = useState(false)
   const [signIn, setSignIn] = useState(false)
 
-  //film club state
-
-  //create film club
+  //film club
   const [filmClubData, setFilmClubData] = useState({
     name: "",
     members: [],
     films: [],
     watching: false,
   })
-
-  //film clubs
   const [_filmClubs, _setFilmClubs] = useState([])
-
   const [currentFilmClub, setCurrentFilmClub] = useState<string>("")
 
-  const _filmClubsContext = useMemo(() => ({ _filmClubs, _setFilmClubs }), [
-    _filmClubs,
-    _setFilmClubs,
-  ])
+  //CONTEXTS
+  const providerModals: IModal = {
+    accountModal: { createAccount, setCreateAccount },
+    signInModal: { signIn, setSignIn },
+  }
 
   const filmClubContext = useMemo(() => ({ filmClubData, setFilmClubData }), [
     filmClubData,
     setFilmClubData,
   ])
-
+  const _filmClubsContext = useMemo(() => ({ _filmClubs, _setFilmClubs }), [
+    _filmClubs,
+    _setFilmClubs,
+  ])
   const currentFilmClubContext = useMemo(
     () => ({ currentFilmClub, setCurrentFilmClub }),
     [currentFilmClub, setCurrentFilmClub]
   )
-
-  const providerModals: IModal = {
-    accountModal: { createAccount, setCreateAccount },
-    signInModal: { signIn, setSignIn },
-  }
 
   const context = {
     providerModals,

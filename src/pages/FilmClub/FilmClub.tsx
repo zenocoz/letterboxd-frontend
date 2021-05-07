@@ -34,25 +34,18 @@ const FilmClub = () => {
   const [unauthorized, setUnauthorized] = useState(false)
 
   const [show, setShow] = useState(false)
-  // const [movies, setMovies] = useState<Array<IMovie>>([])
-  // const [filmClubs, setFilmClubs] = useState<any>([])
 
   //redux
-  // const dispatch = useDispatch()
   const { movieList } = useSelector((state: any) => state.search)
   const { userInfo, loggedIn } = useSelector((state: any) => state.user)
 
   //context
-  const { filmClubContext }: any = useContext(Context)
-  const { filmClubData, setFilmClubData } = filmClubContext
-  const { name, members } = filmClubData
-
-  //clubs array context
-  const { _filmClubsContext }: any = useContext(Context)
+  const { filmClubContext, _filmClubsContext }: any = useContext(Context)
   const { _filmClubs, _setFilmClubs } = _filmClubsContext
 
-  //current film club context
-  //probably not needed
+  //context variables
+  const { filmClubData, setFilmClubData } = filmClubContext
+  const { name, members } = filmClubData
 
   const { currentFilmClubContext }: any = useContext(Context)
   const { currentFilmClub } = currentFilmClubContext

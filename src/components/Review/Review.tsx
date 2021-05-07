@@ -1,11 +1,14 @@
 import { IReviewProps } from "./interface"
 import { API } from "../../API"
 import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 
 const Review = ({ text, authorId, movieId }: IReviewProps) => {
   const [username, setUserName] = useState("")
   const [filmName, setFilmName] = useState("")
   const [filmPoster, setFilmPoster] = useState("")
+
+  const history = useHistory()
 
   useEffect(() => {
     ;(async () => {

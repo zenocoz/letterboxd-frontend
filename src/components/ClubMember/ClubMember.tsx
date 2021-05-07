@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import { API } from "../../API"
 import { setKeyword, loadSearchResults } from "../../store/search/reducer"
 import { useSelector, useDispatch } from "react-redux"
-import { Form, FormControl } from "react-bootstrap"
+import { Form, FormControl, Modal, Button } from "react-bootstrap"
 import { UserContext as Context } from "../../context"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus, faCrown, faTrash } from "@fortawesome/free-solid-svg-icons"
@@ -15,26 +15,18 @@ const ClubMember = (props: any) => {
     picture: "",
     email: "",
   })
-
-  // const watching = false
-
   const { username, picture } = clubFriend
 
   const [showSearchBar, setShowSearchBar] = useState(false)
+  const [showDeleteClubModal, setShowDeleteClubModal] = useState(false)
 
-  //club id pass it
+  //context
   const { currentFilmClubContext }: any = useContext(Context)
   const { setCurrentFilmClub } = currentFilmClubContext
 
+  //redux
   const dispatch = useDispatch()
-  //current user
   const { userInfo } = useSelector((state: any) => state.user)
-  useEffect(() => {
-    ;(async () => {
-      const friend = await API.getMemberById(props.member.clubMember)
-      setClubFriend({ ...friend })
-    })()
-  }, [])
 
   //film club search bar
   const [value, setSearchValue] = useState("")
@@ -69,6 +61,13 @@ const ClubMember = (props: any) => {
       </Form>
     )
   }
+
+  useEffect(() => {
+    ;(async () => {
+      const friend = await API.getMemberById(props.member.clubMember)
+      setClubFriend({ ...friend })
+    })()
+  }, [])
 
   return (
     <>
@@ -112,12 +111,47 @@ const ClubMember = (props: any) => {
                   color={"red"}
                   size="1x"
                   cursor="pointer"
-                  // onClick={() => {
-                  //   API.editWatchingMovie(
-                  //     club._id
-                  //   )
-                  // }}
+                  onClick={() => {
+                    setShowDeleteClubModal(true)
+                  }}
                 />
+                <Modal
+                  dialogClassName="modal-50w"
+                  onHide={() => setShowDeleteClubModal(false)}
+                  show={showDeleteClubModal}
+                  style={{
+                    height: "200px",
+                    position: "absolute",
+                    top: "14rem",
+                    left: "22rem",
+                    padding: 0,
+                  }}
+                >
+                  <Modal.Body style={{ padding: "0.50rem", fontSize: "small" }}>
+                    <p>
+                      Are you sure you want to delete this film club. The
+                      operation is irreversible
+                    </p>
+                  </Modal.Body>
+
+                  <Modal.Footer style={{ padding: 0 }}>
+                    <Button
+                      style={{ padding: 0, fontSize: "small" }}
+                      variant="danger"
+                    >
+                      delete
+                    </Button>
+                    <Button
+                      style={{ padding: 0, fontSize: "small" }}
+                      variant="primary"
+                      onClick={() => {
+                        setShowDeleteClubModal(false)
+                      }}
+                    >
+                      cancel
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             )}
 
