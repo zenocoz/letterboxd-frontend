@@ -15,8 +15,6 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import "./MovieCard.css"
 
 const MovieCard = (props: any) => {
-  // const width = "100% "
-  // const height = "100%"
   const { movie, loggedIn = [] } = props
 
   const history = useHistory()
@@ -25,9 +23,9 @@ const MovieCard = (props: any) => {
   const movieAction = useMovieStatus(props.movie._id, props.movie.imdbID)
   const [movieSeen, setMovieSeen] = useState<any>(false)
 
-  function like(i: number) {
-    alert(`Liked movie is }`)
-  }
+  // function like(i: number) {
+  //   alert(`Liked movie is }`)
+  // }
 
   useEffect(() => {
     if (loggedIn) {
@@ -36,10 +34,10 @@ const MovieCard = (props: any) => {
   }, [userInfo])
 
   const actions = [
-    {
-      icon: "❤️",
-      handler: () => like(1),
-    },
+    // {
+    //   icon: "❤️",
+    //   handler: () => like(1),
+    // },
     {
       icon: movieSeen ? (
         <FontAwesomeIcon icon={faEye} color={"green"} />
@@ -101,6 +99,7 @@ const MovieCard = (props: any) => {
           bottom: "15%",
           backgroundColor: "black",
           color: "#fff",
+          borderRadius: "10px",
           // minHeight: "36px",
         }}
       >

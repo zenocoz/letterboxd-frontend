@@ -23,16 +23,13 @@ const MovieCardBig = ({
   loggedIn,
 }: IMovieCardBigProps) => {
   const history = useHistory()
-  // const width = "100%"
-  // const height = "350px"
-
   const { userInfo } = useSelector((state: any) => state.user)
   const movieAction = useMovieStatus(_id, imdbID)
   const [movieSeen, setMovieSeen] = useState<any>(false)
 
-  function like(i: number) {
-    alert(`Liked movie is }`)
-  }
+  // function like(i: number) {
+  //   alert(`Liked movie is }`)
+  // }
 
   useEffect(() => {
     if (loggedIn) {
@@ -55,10 +52,10 @@ const MovieCardBig = ({
             movieAction.watch()
           },
     },
-    {
-      icon: <FontAwesomeIcon icon={faStar} color={"gold"} size="2x" />,
-      handler: () => like(1),
-    },
+    // {
+    //   icon: <FontAwesomeIcon icon={faStar} color={"gold"} size="2x" />,
+    //   handler: () => like(1),
+    // },
   ]
 
   return (
