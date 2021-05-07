@@ -28,6 +28,9 @@ import MovieCardSmall from "../../components/MovieCardSmall/MovieCardSmall"
 import ClubMember from "../../components/ClubMember/ClubMember"
 import ClubMovieCard from "../../components/ClubMovieCard/ClubMovieCard"
 
+//external libraries
+import isEmpty from "validator/lib/isEmpty"
+
 const FilmClub = () => {
   //state
   const [numberOfClubs, setNumberOfClubs] = useState<any>(0)
@@ -45,7 +48,7 @@ const FilmClub = () => {
 
   //context variables
   const { filmClubData, setFilmClubData } = filmClubContext
-  const { name, members } = filmClubData
+  const { name, members, errorMsg } = filmClubData
 
   const { currentFilmClubContext }: any = useContext(Context)
   const { currentFilmClub } = currentFilmClubContext
@@ -55,17 +58,31 @@ const FilmClub = () => {
   }
   const handleClubSubmit = (e: any) => {
     e.preventDefault()
-    members.push({
-      clubMember: userInfo._id,
-      email: userInfo.email,
-      confirmed: true,
-      chooser: true,
-      filmSelected: false,
-    })
-    setFilmClubData({ ...filmClubData, members })
-    API.createClub(filmClubData)
-    setFilmClubData({ name: "", members: [], films: [], watching: false })
-    setNumberOfClubs(_filmClubs.length) //TODO FIX HERE
+    if (isEmpty(name)) {
+      setFilmClubData({
+        ...filmClubData,
+        errorMsg: "You must provide a name for the Film Club",
+      })
+    } else {
+      members.push({
+        clubMember: userInfo._id,
+        email: userInfo.email,
+        confirmed: true,
+        chooser: true,
+        filmSelected: false,
+      })
+      setFilmClubData({ ...filmClubData, members })
+      API.createClub(filmClubData)
+      setFilmClubData({
+        name: "",
+        members: [],
+        films: [],
+        watching: false,
+        errorMsg: "",
+      })
+      setNumberOfClubs(_filmClubs.length) //TODO FIX HERE
+      setShow(false)
+    }
   }
 
   // check if there are unconfirmed members
@@ -114,6 +131,11 @@ const FilmClub = () => {
                 value={name}
                 onChange={handleChange}
               />
+              {errorMsg && (
+                <small className="ml-2 mb-2 mt-0 text-danger text-center">
+                  {errorMsg}
+                </small>
+              )}
             </Form.Group>
           </Form>
 
@@ -134,6 +156,7 @@ const FilmClub = () => {
                 members: [],
                 films: [],
                 watching: false,
+                errorMsg: "",
               })
             }}
           >
@@ -143,7 +166,6 @@ const FilmClub = () => {
             variant="alert"
             onClick={(e) => {
               handleClubSubmit(e)
-              setShow(false)
             }}
           >
             Create Club

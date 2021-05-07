@@ -15,6 +15,7 @@ const ContextProvider: React.FC = ({ children }) => {
     members: [],
     films: [],
     watching: false,
+    errorMsg: "",
   })
   const [_filmClubs, _setFilmClubs] = useState([])
   const [currentFilmClub, setCurrentFilmClub] = useState<string>("")
