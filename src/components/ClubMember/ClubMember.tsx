@@ -129,8 +129,8 @@ const ClubMember = (props: any) => {
                 >
                   <Modal.Body style={{ padding: "0.50rem", fontSize: "small" }}>
                     <p>
-                      Are you sure you want to delete this film club. The
-                      operation is irreversible
+                      Are you sure you want to delete {props.clubName} film
+                      club? The operation is irreversible
                     </p>
                   </Modal.Body>
 
@@ -138,6 +138,9 @@ const ClubMember = (props: any) => {
                     <Button
                       style={{ padding: 0, fontSize: "small" }}
                       variant="danger"
+                      onClick={() => {
+                        API.deleteClub(props.clubId)
+                      }}
                     >
                       delete
                     </Button>

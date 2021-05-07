@@ -252,6 +252,21 @@ export const API = {
     }
   },
 
+  deleteClub: async (clubId: string) => {
+    try {
+      const response = await axios.delete(
+        `${process.env.REACT_APP_REMOTE_SERVER}/api/clubs/${clubId}`
+      )
+      if (response.status < 400) {
+        return response.data
+      } else {
+        console.log("errors getting user clubs")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
   getUserMovieClubs: async (userId: string) => {
     try {
       const response = await axios.get(

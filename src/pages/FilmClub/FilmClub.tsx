@@ -77,7 +77,7 @@ const FilmClub = () => {
         console.log("interval polled with response", response)
       }
     }
-  }, 1000)
+  }, 5000)
 
   useEffect(() => {
     if (loggedIn) {
@@ -191,6 +191,7 @@ const FilmClub = () => {
             key={i}
             clubId={club._id}
             watching={club.watching}
+            clubName={club.name}
           />
         ))}
         {club.watching && (
