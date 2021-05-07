@@ -72,6 +72,7 @@ const MovieCardBig = ({
         border: `5px solid ${hovered ? "green" : "transparent"}`,
         borderRadius: "3px",
         paddingBottom: `${hovered ? 0 : "50px"}`,
+        paddingTop: "18px",
       }}
     >
       <img
