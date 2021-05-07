@@ -28,7 +28,7 @@ const SearchResults = () => {
               <MovieCardSmall {...movie} withInfo={true} />
             ))}
         </Col>
-        <Col xs={12} md={4}>
+        <Col xs={12} md={4} style={{ paddingRight: 0 }}>
           <div className="mt-5">
             <PopularReviews />
           </div>

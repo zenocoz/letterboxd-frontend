@@ -6,7 +6,7 @@
 }
 
 .following::before {
-  content: "members you follow";
+  content: "Members You Follow";
   color: white;
   position: absolute;
   top: -30px;

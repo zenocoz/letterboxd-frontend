@@ -36,7 +36,7 @@ const Activity = () => {
     <>
       <Row>
         <Col>
-          <h3 style={{ color: "white" }}>Movies watched by you</h3>
+          <h3 style={{ color: "white" }}>Movies Watched by You</h3>
         </Col>
       </Row>
       <Row

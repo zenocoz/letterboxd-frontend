@@ -130,6 +130,7 @@ const FilmClub = () => {
                 rows={1}
                 value={name}
                 onChange={handleChange}
+                placeholder="Choose a name for the film club"
               />
               {errorMsg && (
                 <small className="ml-2 mb-2 mt-0 text-danger text-center">
