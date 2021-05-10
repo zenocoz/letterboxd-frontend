@@ -7,28 +7,6 @@ import { initialState as userInitialState } from "./user/reducer"
 import { initialState as movieInitialState } from "./movie/reducer"
 import { initialState as searchInitialState } from "./search/reducer"
 
-// import api from "./middleware/api"
-// export const initialState = {
-//   // currentSong: {},
-//   // songs: {
-//   // 	likedSongs: [],
-//   // },
-//   artist: {
-//     loading: false,
-//     errorMessage: null,
-//     performer: {},
-//     isError: false,
-//   },
-
-//   search: {
-//     songList: [],
-//     keyword: "",
-//     loading: false,
-//     errorMessage: null,
-//   },
-//   user: { userInfo: {}, isLoggedIn: false, playLists: [] },
-// }
-
 export const initialState: any = {
   movie: movieInitialState,
   user: userInitialState,

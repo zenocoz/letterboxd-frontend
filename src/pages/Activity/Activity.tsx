@@ -43,7 +43,6 @@ const Activity = () => {
         className="align-items-center"
         style={{
           minHeight: "150px",
-          maxHeight: "300px",
           backgroundColor: "#1c2228",
           borderRadius: "10px",
         }}
