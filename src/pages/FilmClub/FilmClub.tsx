@@ -309,9 +309,7 @@ const FilmClub = () => {
           </div>
         </Col>
       </Row>
-      <Row
-        style={{ minHeight: "75vh", marginTop: "3rem", marginBottom: "3rem" }}
-      >
+      <Row className="club-space">
         <Col
           className="d-flex flex-column justify-content-between align-items-center"
           sm={12}
@@ -366,7 +364,7 @@ const FilmClub = () => {
             {/* <HighRatedMovies big={false} limit={4} /> */}
           </Row>
         </Col>
-        <Col sm={12} md={4}>
+        <Col sm={12} md={4} style={{ paddingLeft: 0, paddingRight: 0 }}>
           <div className="ml-3">
             <PopularMembers />
           </div>
