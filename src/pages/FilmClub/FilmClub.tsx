@@ -349,7 +349,6 @@ const FilmClub = () => {
                 )}
               </Button>
 
-              <p>TESTESTETS</p>
               <p>...invite members you follow...</p>
               <p>...wait for their suggestion...</p>
               <p>...choose the film you want to see together.</p>
